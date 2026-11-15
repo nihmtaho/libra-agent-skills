@@ -29,7 +29,9 @@ Not for tagging or publishing releases; that is a separate decision.
    commit. A stale green is not green.
 3. Make the docs true: the feature row says `done`, `Dừng ở` is empty, the task
    file is deleted (git keeps the history), and `PROJECT.md`'s `updated` date is
-   today. A shipped change with a lying state file is not shipped.
+   today. If `plan-work` opened a feature issue, close it now; an open issue is a
+   second stale copy of the status. A shipped change with a lying state file is
+   not shipped.
 4. Set `## Tiếp theo` to three items, the first one small.
 5. Merge with the project's own mechanism. Commit and PR titles use Conventional
    Commits, English, and never carry a co-author line or an AI signature.

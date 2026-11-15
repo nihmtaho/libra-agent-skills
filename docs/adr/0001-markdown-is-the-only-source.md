@@ -1,7 +1,6 @@
 ---
 title: Markdown là nguồn sự thật duy nhất
 updated: 2026-11-15
-status: accepted
 ---
 # ADR-0001: Markdown là nguồn sự thật duy nhất, Word và Excel chỉ là cửa vào và cửa ra
 

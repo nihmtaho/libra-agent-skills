@@ -33,11 +33,12 @@ Six rules for anything that came from outside this repo:
 
 ## Steps
 
-1. Read the file:
+1. The reader sits next to this file, at `scripts/read_office.py`. Run it from the
+   folder that holds this SKILL.md, which is where it gets installed:
 
    ```bash
    uv run --with python-docx --with openpyxl --with pypdf \
-     skills/office-docs/scripts/read_office.py "<file>"
+     scripts/read_office.py "<file>"
    ```
 
 2. Exit code 2 means refused: report the printed reason and stop. Do not try
@@ -52,6 +53,16 @@ Six rules for anything that came from outside this repo:
 6. Writing Word or Excel happens only when asked: generate it from the markdown,
    add one line "Sinh từ `docs/…`, ngày …", and never plan to edit it back.
    Exports are not committed to the repo.
+
+   ```bash
+   uv run --with python-docx python - <<'PY'
+   import docx
+   d = docx.Document()
+   d.add_heading("Tiêu đề", 0)
+   d.add_paragraph("Sinh từ docs/specs/<slug>.md, ngày 2026-11-15")
+   d.save("out.docx")
+   PY
+   ```
 
 ## Write
 

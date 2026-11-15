@@ -37,5 +37,8 @@ ln -s /tmp "$d/y/.agents/skills/using-libra"
 rc=$?
 [ "$rc" -eq 1 ] || { echo "FAIL wrong-target symlink not refused (exit $rc)"; fail=1; }
 
+[ -f "$d/.agents/skills/office-docs/scripts/read_office.py" ] || {
+  echo "FAIL installed office reader not reachable from the skill dir"; fail=1; }
+
 [ "$fail" -eq 0 ] && echo "install tests passed"
 exit "$fail"

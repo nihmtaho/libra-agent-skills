@@ -53,11 +53,15 @@ def read_xlsx(path):
     out = []
     for name in wb.sheetnames:
         out.append(f"## {name}")
+        first = True
         for row in wb[name].iter_rows(values_only=True):
             if all(c is None for c in row):
                 continue
             cells = ["" if c is None else str(c) for c in row]
             out.append("| " + " | ".join(cells) + " |")
+            if first:
+                out.append("|" + "---|" * len(cells))
+                first = False
     return "\n".join(out)
 
 
@@ -87,7 +91,12 @@ def main():
     readers = {".docx": read_docx, ".xlsx": read_xlsx, ".pdf": read_pdf}
     if ext not in readers:
         refuse(f"unsupported extension: {ext or 'none'}")
-    print(readers[ext](path))
+    try:
+        print(readers[ext](path))
+    except SystemExit:
+        raise
+    except Exception as exc:
+        refuse(f"cannot read {ext} file: {exc}")
 
 
 if __name__ == "__main__":

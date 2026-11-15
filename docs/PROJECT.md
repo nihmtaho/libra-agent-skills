@@ -7,12 +7,13 @@ updated: 2026-11-15
 ## Chạy & kiểm chứng
 - `bash scripts/test.sh` — kiểm hợp đồng của mọi skill rồi chạy bốn phép thử cài đặt.
 - `bash scripts/check.sh` — chỉ phần hợp đồng skill và mục rỗng của `PROJECT.md`.
-- Dấu hiệu đúng: `all checks passed`.
+- Dấu hiệu đúng: exit 0, và hai dòng `all checks passed` rồi `install tests passed`.
 
 ## Bản đồ module
-- `skills/<tên>/SKILL.md` — nguồn duy nhất của bộ skill; mỗi file tối đa 80 dòng, năm mục cố định.
-- `scripts/check.sh` — hợp đồng của skill (frontmatter, độ dài, heading, token cấm, mục rỗng).
-- `scripts/test-install.sh` — symlink, chạy hai lần, từ chối ghi đè.
+- `skills/<tên>/SKILL.md` — nguồn duy nhất của bộ skill; ≤80 dòng, năm mục cố định; đổi tên file là phải đổi `name`.
+- `install.sh` — symlink vào đích; dễ vỡ nhất ở chỗ ghi đè và ở đường dẫn có dấu cách.
+- `scripts/check.sh` — hợp đồng skill (frontmatter, độ dài, heading, token cấm, mục rỗng); sửa luật ở đây là sửa cho cả 14 skill.
+- `scripts/test-install.sh` — symlink, chạy hai lần, từ chối ghi đè, script đọc Office phải chạy được từ đích đã cài.
 - `docs/` — xương sống của chính repo này; repo này là nơi dogfood đầu tiên.
 
 ## Tính năng

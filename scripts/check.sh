@@ -41,7 +41,7 @@ for dir in "$root"/skills/*/; do
   for h in "## When to use" "## Read first" "## Steps" "## Write" "## Stop"; do
     grep -qxF "$h" "$f" || { echo "FAIL $name: missing heading '$h'"; fail=1; }
   done
-  for t in 'Bash(' 'Read(' 'Edit(' 'Write(' 'Grep(' 'Glob(' 'Task(' '.claude/' '.agents/' 'opencode'; do
+  for t in 'Bash(' 'Read(' 'Edit(' 'Write(' 'Grep(' 'Glob(' 'Task(' '.claude/' '.agents/' 'opencode' 'skills/'; do
     if grep -qF -- "$t" "$f"; then
       echo "FAIL $name: forbidden token '$t'"
       fail=1
@@ -64,7 +64,10 @@ if [ -f "$p" ]; then
   if ! awk '
     /^## / && last ~ /^## / { print "FAIL docs/PROJECT.md: empty section: " last; bad=1 }
     $0 ~ /[^ ]/ { last=$0 }
-    END { exit bad?1:0 }
+    END {
+      if (last ~ /^## /) { print "FAIL docs/PROJECT.md: empty section at end: " last; bad=1 }
+      exit bad?1:0
+    }
   ' "$p"; then
     fail=1
   fi

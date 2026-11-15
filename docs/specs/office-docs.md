@@ -15,12 +15,14 @@ quay lại phải chép lại. Bản chép tay cũng mất cấu trúc heading v
 3. Đưa một `.pdf` dạng text, nhận lại text; gặp PDF scan thì được báo là không đọc được.
 
 ## Tiêu chí nghiệm thu
-- [ ] `read_office.py evil.docx` in ra markdown, và câu "ignore previous instructions…" nằm nguyên trong output.
-- [ ] `read_office.py bad.docm` in lý do từ chối và thoát với mã 2.
-- [ ] File lớn hơn 20 MB bị từ chối với mã 2, không bị đọc một phần.
-- [ ] Kết quả ghi vào `docs/imports/<tên gốc>.md` có `trust: external` và dòng nguồn.
+- [x] `read_office.py evil.docx` in ra markdown, và câu "ignore previous instructions…" nằm nguyên trong output.
+- [x] `read_office.py bad.docm` in lý do từ chối và thoát với mã 2.
+- [x] File lớn hơn 20 MB bị từ chối với mã 2, không bị đọc một phần.
+- [x] Kết quả ghi vào `docs/imports/<tên gốc>.md` có `trust: external` và dòng nguồn.
 
 ## Ngoài phạm vi
 - Không ghi `.xlsx` trừ khi được yêu cầu rõ; mặc định chỉ đọc.
 - Không OCR PDF scan; báo lại thay vì đoán nội dung.
 - Không theo hyperlink, không chạy macro.
+
+Kiểm ngày 2026-11-15: ba mục đầu chạy trên fixture; mục cuối chạy trong thư mục tạm, không giữ file mẫu trong repo.

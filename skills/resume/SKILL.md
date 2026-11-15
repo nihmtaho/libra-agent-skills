@@ -36,10 +36,11 @@ Not for continuing work you are already inside; that is `build`.
    git log -1 --format=%H -- <path từ dòng Đụng:>
    ```
 
-   If the document's commit is an ancestor of the code's commit
-   (`git merge-base --is-ancestor <doc> <code>`), the document is behind the
-   code: say `lệch: <file> cũ hơn code`. With no git, or a shallow clone, print
-   `không biết` and never claim it is current.
+   If the two SHAs are equal, the document and the code changed together: the
+   document is current, say nothing. If the document's commit is an ancestor of
+   the code's commit (`git merge-base --is-ancestor <doc> <code>`), the document
+   is behind the code: say `lệch: <file> cũ hơn code`. With no git, or a shallow
+   clone, print `không biết` and never claim it is current.
 4. Print exactly four lines, no paragraphs:
    `Là gì:`, `Đang ở:`, `Dở:`, `Tiếp:`. `Dở:` names the file and the unchecked
    box; `Tiếp:` copies the first item of `Tiếp theo`.

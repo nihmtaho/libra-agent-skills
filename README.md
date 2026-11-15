@@ -11,8 +11,8 @@ as an Obsidian vault without plugins.
 ## Install
 
 ```bash
-./install.sh --to agents,claude                 # into this project
-./install.sh --to agents,claude --dest "$HOME"  # into your user dirs
+./install.sh --to agents,claude --dest /path/to/your/project
+./install.sh --to agents,claude --dest "$HOME"   # into your user dirs
 npx skills add nihmtaho/libra-agent-skills -a claude-code -a opencode
 ```
 

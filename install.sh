@@ -47,3 +47,4 @@ for dir in "$repo"/skills/*/; do
 done
 
 echo "$installed installed"
+[ -f "$dest/AGENTS.md" ] || echo "note: no AGENTS.md in $dest — add a short one pointing at docs/PROJECT.md" >&2

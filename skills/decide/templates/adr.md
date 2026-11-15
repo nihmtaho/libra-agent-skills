@@ -1,7 +1,6 @@
 ---
 title: <quyết định trong một dòng>
 updated: YYYY-MM-DD
-status: accepted
 ---
 # ADR-NNNN: <quyết định>
 

@@ -39,7 +39,8 @@ criteria is a wish list.
 7. Write the file, set the feature row to `in progress`, and link the task file in
    its `Tài liệu` cell. If the repo uses GitHub issues
    (`gh repo view --json hasIssuesEnabled` returns true), open one issue for the
-   feature with the checklist as its body; never one issue per task.
+   feature with the checklist as its body; never one issue per task. No `gh`, or
+   the command errors: skip the issue and say so in the reply, do not block the plan.
 
 ## Write
 
