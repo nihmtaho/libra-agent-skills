@@ -17,7 +17,7 @@ Not when the behavior is merely undesigned; that is `write-spec`.
 ## Read first
 
 1. The failing command and its full output, not the summary.
-2. `docs/PROJECT.md` `## Chạy & kiểm chứng`, to make sure you are running the
+2. `docs/PROJECT.md` `## Run & verify`, to make sure you are running the
    project's own command and not a guess.
 3. The task file box that was being worked on when it broke.
 

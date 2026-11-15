@@ -19,7 +19,7 @@ criteria is a wish list.
 ## Read first
 
 1. The spec in `docs/specs/`.
-2. `docs/PROJECT.md` `## Bản đồ module`, to know which paths a task will touch.
+2. `docs/PROJECT.md` `## Module map`, to know which paths a task will touch.
 3. `docs/tasks/` for a file already open on this feature.
 
 ## Steps
@@ -30,14 +30,14 @@ criteria is a wish list.
    means the split is wrong; split by outcome instead.
 3. Cut vertical slices: each task crosses the layers it needs and leaves the
    project runnable. Never "all of the database, then all of the UI".
-4. For each task write: name, `Xong nghĩa là:` as one command or one observation,
-   `Đụng:` the paths, and `Phụ thuộc:` when it has one.
+4. For each task write: name, `Done means:` as one command or one observation,
+   `Touches:` the paths, and `Depends on:` when it has one.
 5. Put a checkpoint after the first task and after the last: the command to run
    and what green looks like.
 6. Three to seven tasks. More means the spec is too large: go back and cut scope,
    do not shrink tasks until they fit.
 7. Write the file, set the feature row to `in progress`, and link the task file in
-   its `Tài liệu` cell.
+   its `Docs` cell.
 8. GitHub issues, only when `docs/PROJECT.md` frontmatter says `issues: on` and
    `gh` works: open one issue per feature (never one per task). Title is the
    feature name; body is the goal, a link to the spec, the acceptance summary, and

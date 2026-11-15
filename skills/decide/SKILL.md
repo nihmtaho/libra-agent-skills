@@ -18,7 +18,7 @@ Not for reversible choices inside one task; those belong in the commit message.
 
 ## Read first
 
-1. `docs/PROJECT.md` `## Quyết định`, so a new ADR does not contradict an old one.
+1. `docs/PROJECT.md` `## Decisions`, so a new ADR does not contradict an old one.
 2. The spec in `docs/specs/` this decision serves.
 3. `docs/adr/` for the highest existing number.
 
@@ -39,7 +39,7 @@ Not for reversible choices inside one task; those belong in the commit message.
 
 ## Write
 
-`docs/adr/NNNN-<slug>.md`, plus one line under `## Quyết định` in
+`docs/adr/NNNN-<slug>.md`, plus one line under `## Decisions` in
 `docs/PROJECT.md`: what was decided and why, linking the ADR.
 
 ## Stop

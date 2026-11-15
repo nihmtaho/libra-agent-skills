@@ -25,12 +25,12 @@ Not for tagging or publishing releases; that is a separate decision.
 
 1. Compare `git rev-parse HEAD` with the sha in the verdict. Any difference means
    the PASS does not apply: stop and ask for a review of the new sha.
-2. Run the check command from `## Chạy & kiểm chứng` one more time on this exact
+2. Run the check command from `## Run & verify` one more time on this exact
    commit. A stale green is not green.
-3. Make the docs true: the feature row says `done`, `Dừng ở` is empty, the task
+3. Make the docs true: the feature row says `done`, `Stopped at` is empty, the task
    file is deleted (git keeps the history), and `PROJECT.md`'s `updated` date is
    today. A shipped change with a lying state file is not shipped.
-4. Set `## Tiếp theo` to three items, the first one small.
+4. Set `## Next` to three items, the first one small.
 5. Work abandoned instead of landed: set the row to `dropped` and delete the task
    file, with one line in the reply saying why.
 6. Merge with the project's own mechanism. Commit and PR titles use Conventional
@@ -43,7 +43,7 @@ Not for tagging or publishing releases; that is a separate decision.
 
 ## Write
 
-`docs/PROJECT.md` — the feature row, `Tiếp theo`, the date — and deletion of
+`docs/PROJECT.md` — the feature row, `Next`, the date — and deletion of
 `docs/tasks/<feature>.md`.
 
 ## Stop

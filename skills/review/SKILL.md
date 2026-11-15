@@ -27,7 +27,7 @@ when the harness has one.
 1. Confirm this session did not write the code under review. If it did, stop and
    say so: ask for a fresh session, and when the harness can spawn one, hand it
    this file and the diff range.
-2. Run the project's check command exactly as `## Chạy & kiểm chứng` says; read
+2. Run the project's check command exactly as `## Run & verify` says; read
    the output yourself.
 3. Read the diff in full, plus the callers of what it changes.
 4. Judge five axes, and for each finding say which axis:

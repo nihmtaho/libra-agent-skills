@@ -43,18 +43,18 @@ Ask one question at a time, in this order, and wait for each answer.
    observation? "It runs" is not checkable.
 5. What is the biggest risk, and if this is wrong, where is it wrong?
 
-An unanswered question goes under `## Câu hỏi mở`; never guess an answer. Then
+An unanswered question goes under `## Open questions`; never guess an answer. Then
 pick a size: short (half a page, the five sections of the template) or full (the
 same plus alternatives considered and open technical questions). Default to
 short.
 
 For a large change to an existing feature, write `docs/specs/<slug>-delta.md`
-with `## Hiện tại`, `## Sau khi đổi`, and the acceptance list, instead of
-rewriting the old spec.
+with `## Current state`, `## After the change`, and the acceptance list, instead
+of rewriting the old spec.
 
 ## Write
 
-`docs/specs/<slug>.md` from the template, and one new row in the `## Tính năng`
+`docs/specs/<slug>.md` from the template, and one new row in the `## Features`
 table with status `planned`. Nothing else.
 
 ## Stop

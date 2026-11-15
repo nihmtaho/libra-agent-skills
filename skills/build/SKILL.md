@@ -16,8 +16,8 @@ Not for throwaway exploration; that is the spike mode at the end of this file.
 
 ## Read first
 
-1. The task file, especially the unchecked task's `Xong nghĩa là:` and `Đụng:`.
-2. `docs/PROJECT.md` `## Chạy & kiểm chứng` for the commands.
+1. The task file, especially the unchecked task's `Done means:` and `Touches:`.
+2. `docs/PROJECT.md` `## Run & verify` for the commands.
 3. The spec section this task implements, if the acceptance line is not enough.
 
 ## Steps
@@ -29,8 +29,8 @@ Not for throwaway exploration; that is the spike mode at the end of this file.
    only the new test.
 3. Refactor only with the suite green, in its own commit.
 4. Tick the box, and if you stop mid-task write the exact position in
-   `Dừng ở:`, for example `T2, retry chưa bật`. A position someone can resume
-   from, not a mood.
+   `Stopped at:`, for example `T2, retry not on yet`. A position someone can
+   resume from, not a mood.
 5. Commit small, Conventional Commits, and never include a co-author line or an
    AI signature.
 6. New dependency or framework decision? Stop and run `decide`; do not bury it
@@ -38,12 +38,12 @@ Not for throwaway exploration; that is the spike mode at the end of this file.
 
 **Spike mode**, when the human wants to learn rather than ship: build the
 throwaway, skip tests, keep it off the main branch, then write the one thing you
-learned into `## Quyết định` or `## Tiếp theo`. No other document comes out of a
+learned into `## Decisions` or `## Next`. No other document comes out of a
 spike; if it produced documents, it was not a spike.
 
 ## Write
 
-`docs/tasks/<feature>.md` — the checkbox and `Dừng ở` — and `docs/PROJECT.md`
+`docs/tasks/<feature>.md` — the checkbox and `Stopped at` — and `docs/PROJECT.md`
 when the feature row changes.
 
 ## Stop
