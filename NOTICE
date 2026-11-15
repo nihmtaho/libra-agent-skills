@@ -1,0 +1,7 @@
+This project takes mechanism ideas from two reference sets:
+
+- addyosmani/agent-skills (MIT) — https://github.com/addyosmani/agent-skills
+- pm-skills / hiraku workflow (Apache-2.0)
+
+Every file here is written from scratch for this design. No source code,
+prose, or skill body from those projects is included or adapted verbatim.
