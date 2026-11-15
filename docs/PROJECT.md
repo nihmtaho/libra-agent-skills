@@ -18,6 +18,7 @@ updated: 2026-11-15
 ## Tính năng
 | Tính năng | Trạng thái | Dừng ở | Tài liệu |
 | bộ 14 skill | in progress | T3 xong, T4 đang làm | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
+| đọc tài liệu Office | planned | | [spec](specs/office-docs.md) |
 
 ## Tiếp theo
 1. Viết xong `bootstrap-project` và template của nó.
