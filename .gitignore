@@ -1,3 +1,6 @@
 docs/flow-skills-hiraku-native-docs/
 node_modules/
 .DS_Store
+.agents/
+.claude/skills/
+skills-lock.json
