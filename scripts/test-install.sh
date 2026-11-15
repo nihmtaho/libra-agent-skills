@@ -40,5 +40,10 @@ rc=$?
 [ -f "$d/.agents/skills/office-docs/scripts/read_office.py" ] || {
   echo "FAIL installed office reader not reachable from the skill dir"; fail=1; }
 
+checker="$d/.agents/skills/bootstrap-project/scripts/check-docs.sh"
+[ -x "$checker" ] || { echo "FAIL installed markdown checker not executable"; fail=1; }
+[ -x "$checker" ] && { out=$(bash "$checker" "$root/docs/PROJECT.md" 2>&1) ||
+  { echo "FAIL installed checker fails on a clean document: $out"; fail=1; }; }
+
 [ "$fail" -eq 0 ] && echo "install tests passed"
 exit "$fail"

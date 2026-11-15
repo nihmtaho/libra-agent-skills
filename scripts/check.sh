@@ -59,6 +59,16 @@ if [ "$skill_count" -eq 0 ]; then
   fail=1
 fi
 
+# The checker ships inside bootstrap-project and is copied into each project, so
+# the repo copy and the bundled copy must stay byte-identical.
+for f in scripts/check-docs.sh skills/bootstrap-project/scripts/check-docs.sh; do
+  [ -f "$root/$f" ] || { echo "FAIL $f: missing"; fail=1; }
+done
+if [ -f "$root/scripts/check-docs.sh" ] && [ -f "$root/skills/bootstrap-project/scripts/check-docs.sh" ]; then
+  cmp -s "$root/scripts/check-docs.sh" "$root/skills/bootstrap-project/scripts/check-docs.sh" ||
+    { echo "FAIL the two copies of check-docs.sh differ"; fail=1; }
+fi
+
 p="$root/docs/PROJECT.md"
 if [ -f "$p" ]; then
   if ! awk '
