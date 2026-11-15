@@ -46,7 +46,7 @@ Not for continuing work you are already inside; that is `build`.
 
 ## Write
 
-Không ghi file nào.
+none — read-only skill.
 
 ## Stop
 

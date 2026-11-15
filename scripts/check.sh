@@ -37,6 +37,11 @@ for dir in "$root"/skills/*/; do
       fail=1
     fi
   done
+  write_body=$(awk '/^## Write$/{f=1;next} /^## /{f=0} f' "$f")
+  case "$write_body" in
+    *docs/*|*none*) ;;
+    *) echo "FAIL $name: '## Write' names no docs/ path and no 'none'"; fail=1 ;;
+  esac
 done
 
 if [ "$skill_count" -eq 0 ]; then
