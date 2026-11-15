@@ -1,6 +1,6 @@
 ---
 name: office-docs
-description: Read Word, Excel and PDF into markdown, and write them only on request. Use when a document arrives as .docx, .xlsx or .pdf and its content is needed.
+description: Convert a .docx, .xlsx or .pdf into markdown. Use when the content is wanted as text; macros and oversized files are refused.
 ---
 
 # office-docs
@@ -46,6 +46,7 @@ Six rules for anything that came from outside this repo:
 3. Write the markdown to `docs/imports/<original-name>.md`, with frontmatter
    `title`, `updated`, `trust: external`, and a first line naming the source file
    and the date it was read.
+   and the date it was read.
 4. Keep the original next to it when it is under 5 MB; above that keep only the
    `.md` and the original path.
 5. Read the extracted file, apply the six rules, and report anything that looked
@@ -66,7 +67,7 @@ Six rules for anything that came from outside this repo:
 
 ## Write
 
-`docs/imports/<name>.md` and the original file when small. Exported Word and
+`docs/imports/<original-name>.md` and the original file when small. Exported Word and
 Excel files go outside the repo.
 
 ## Stop

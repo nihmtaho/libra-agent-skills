@@ -1,6 +1,6 @@
 ---
 name: ship
-description: Close a change by proving it, keeping the docs true, then merging. Use when a review has passed and the work should land, or when asked whether something is ready to merge.
+description: Merge and close a change whose verdict passed, keeping the docs true. Use when a review passed and the work should land.
 ---
 
 # ship
@@ -33,9 +33,11 @@ Not for tagging or publishing releases; that is a separate decision.
    second stale copy of the status. A shipped change with a lying state file is
    not shipped.
 4. Set `## Tiếp theo` to three items, the first one small.
-5. Merge with the project's own mechanism. Commit and PR titles use Conventional
+5. Work abandoned instead of landed: set the row to `dropped` and delete the task
+   file, with one line in the reply saying why.
+6. Merge with the project's own mechanism. Commit and PR titles use Conventional
    Commits, English, and never carry a co-author line or an AI signature.
-6. Report what landed, the sha, and the one thing most likely to break first.
+7. Report what landed, the sha, and the one thing most likely to break first.
 
 ## Write
 

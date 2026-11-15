@@ -130,12 +130,17 @@ Quy ước:
 | `plan-work` | `tasks/<feature>.md`, đổi dòng sang `in progress`, mở issue nếu repo dùng GitHub issues |
 | `build` | cột "Dừng ở" khi dừng giữa việc; `done` khi xong |
 | `verify` | "Chạy & kiểm chứng" nếu lệnh kiểm chứng đổi |
-| `ship` | `done`, xoá file task, cập nhật "Tiếp theo" |
+| `ship` | `done`, xoá file task, cập nhật "Tiếp theo"; việc bị bỏ thì đặt `dropped` và xoá task |
 | `decide` | `adr/`, thêm một dòng vào "Quyết định" |
 | `bootstrap-project` | dựng lại toàn bộ `PROJECT.md` từ code, git, tài liệu cũ; cũng là skill tạo file này cho repo mới |
 
 Luật bắt buộc: **code khác spec thì sửa spec trong cùng phiên đó**, không để sang hôm sau.
 Đây là lý do chính tài liệu mục; nó là một câu trong `AGENTS.md` và một bước trong `ship`.
+
+Ngoại lệ đã gặp khi chạy thật: repo có `docs/` trong `.gitignore` (ví dụ `goxviet`). File
+trạng thái khi đó không ai clone được. `bootstrap-project` phải chạy
+`git check-ignore docs/PROJECT.md` trước khi ghi, và hỏi người muốn bỏ ignore (`docs/*` cộng
+`!docs/PROJECT.md`) hay để file chỉ sống trên máy họ. Không tự sửa `.gitignore` của repo khác.
 
 ## Dự án rỗng: đường ngắn nhất
 

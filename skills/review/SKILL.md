@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review a change against its task, tests and docs, and return a verdict bound to one commit. Use when a branch or PR is ready to merge, or when someone asks whether a change is safe.
+description: Judge a diff or PR and return a verdict bound to one commit, changing nothing. Use when a branch is proposed for merge.
 ---
 
 # review

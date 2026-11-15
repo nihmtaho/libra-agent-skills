@@ -1,6 +1,6 @@
 ---
 name: build
-description: Implement one thin slice at a time, failing test first. Use when a task file has an unchecked task ready to code, or when fixing one item from a review.
+description: Write code for one unchecked task, failing test first. Use when a task file has a task ready, or when fixing one item from a review.
 ---
 
 # build

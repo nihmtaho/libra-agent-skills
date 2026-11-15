@@ -1,6 +1,6 @@
 ---
 name: plan-work
-description: Turn a spec into three to seven ordered tasks with checkable acceptance. Use when a spec is approved and the work has to be cut into pieces before implementation.
+description: Cut an approved spec into three to seven ordered tasks, before any code exists. Use when the spec is accepted and implementation has not started.
 ---
 
 # plan-work

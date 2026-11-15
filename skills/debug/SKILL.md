@@ -1,6 +1,6 @@
 ---
 name: debug
-description: Find and fix a defect from evidence instead of guesses. Use when a test fails, a build breaks, or behavior does not match what was expected.
+description: Diagnose a failure whose cause is unknown, then fix the cause once. Use when a test fails, a build breaks, or behavior contradicts expectation.
 ---
 
 # debug

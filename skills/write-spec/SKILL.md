@@ -1,6 +1,6 @@
 ---
 name: write-spec
-description: Turn an idea or existing documents into a spec with use cases and checkable acceptance. Use when a feature has no spec, or when asked to clarify what to build.
+description: Decide what to build and why, with checkable acceptance criteria. Use when a feature has no accepted spec, or when an idea must be clarified before code.
 ---
 
 # write-spec

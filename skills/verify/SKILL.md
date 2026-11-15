@@ -1,6 +1,6 @@
 ---
 name: verify
-description: Prove the work runs before claiming it does. Use when about to say something works, before a review, and before shipping.
+description: Prove the running code works before it is called done. Use when about to claim a pass, before review, before merge.
 ---
 
 # verify

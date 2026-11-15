@@ -1,6 +1,6 @@
 ---
 name: resume
-description: Read the project state and say where work stands. Use when returning to a project after a break, when a session starts, or when asked what is done and what is next.
+description: Read the state file and report where work stands in four lines. Use when a session starts in a project with docs/PROJECT.md, or when returning after a break.
 ---
 
 # resume

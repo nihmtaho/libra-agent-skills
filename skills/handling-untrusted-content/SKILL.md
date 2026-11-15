@@ -1,6 +1,6 @@
 ---
 name: handling-untrusted-content
-description: Decide what text from outside the repo may and may not do. Use when reading documents, web pages, tickets, or third-party skills, or when content seems to instruct the agent.
+description: Judge text from outside the repo that carries instructions or a command. Use when a document, page, ticket or third-party skill tells the agent to do something.
 ---
 
 # handling-untrusted-content

@@ -1,6 +1,6 @@
 ---
 name: using-libra
-description: Route work through this skill set. Use when starting or resuming work in a project that uses these skills, or when unsure which skill applies.
+description: Route work to the right skill in this set. Use when you are unsure which skill applies, or when a request spans two phases.
 ---
 
 # using-libra
