@@ -25,6 +25,6 @@ updated: 2026-11-15
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown là nguồn duy nhất; Word/Excel chỉ là cửa vào và cửa ra.
 
 ## Tiếp theo
-1. Chạy `bootstrap-project` trên một repo cũ thật, rồi để một phiên mới chỉ đọc `PROJECT.md` trả lời bốn dòng của `resume`.
+1. Chốt cách xử lý khi `docs/` bị gitignore — chạy thật trên `goxviet` cho thấy skill chỉ biết hỏi, chưa có đường đi.
 2. Dùng bộ này một tuần trên công việc thật; ghi chỗ vướng vào đây.
 3. Push lên GitHub rồi kiểm lại `npx skills add nihmtaho/libra-agent-skills`.
