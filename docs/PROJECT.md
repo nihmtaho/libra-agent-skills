@@ -5,9 +5,9 @@ updated: 2026-11-15
 # Bộ 14 skill cho agent lập trình, dựng quanh một file trạng thái để mở lại project sau sáu tháng
 
 ## Chạy & kiểm chứng
-- `bash scripts/test.sh` — kiểm hợp đồng của mọi skill rồi chạy ba phép thử cài đặt.
-- `./install.sh --to agents,claude --dest <thư mục>` — cài thử vào một thư mục tạm.
-- Dấu hiệu đúng: `all checks passed` rồi `install tests passed`.
+- `bash scripts/test.sh` — kiểm hợp đồng của mọi skill rồi chạy bốn phép thử cài đặt.
+- `bash scripts/check.sh` — chỉ phần hợp đồng skill và mục rỗng của `PROJECT.md`.
+- Dấu hiệu đúng: `all checks passed`.
 
 ## Bản đồ module
 - `skills/<tên>/SKILL.md` — nguồn duy nhất của bộ skill; mỗi file tối đa 80 dòng, năm mục cố định.
