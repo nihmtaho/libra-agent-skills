@@ -25,6 +25,9 @@ updated: 2026-11-15
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown là nguồn duy nhất; Word/Excel chỉ là cửa vào và cửa ra.
 
 ## Tiếp theo
-1. Dùng bộ này một tuần trên công việc thật; ghi chỗ vướng vào đây.
-2. Viết test hành vi cho ba skill sinh tài liệu (`write-spec`, `plan-work`, `ship`) — hiện chỉ có kiểm cấu trúc.
+1. Thực hiện next phases plan (10 tasks, 3 phases):
+   - **Phase 1 (tuần này):** Migrate 14 skills sang English, thêm README tiếng Việt + tiếng Nhật, thêm quick start/uninstall/symlink warning, test trên project thứ 3
+   - **Phase 2 (tháng tới):** CI workflow, CHANGELOG.md, demo video, tag v0.1.0
+   - **Phase 3 (quý tới):** Landing page, case studies, đánh giá tách PROJECT.md
+2. Dùng bộ này một tuần trên công việc thật; ghi chỗ vướng vào đây.
 3. Push lên GitHub rồi kiểm lại `npx skills add nihmtaho/libra-agent-skills`.
