@@ -20,6 +20,9 @@ updated: 2026-11-15
 | bộ 14 skill | in progress | T3 xong, T4 đang làm | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | đọc tài liệu Office | planned | | [spec](specs/office-docs.md) |
 
+## Quyết định
+- [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown là nguồn duy nhất; Word/Excel chỉ là cửa vào và cửa ra.
+
 ## Tiếp theo
 1. Viết xong `bootstrap-project` và template của nó.
 2. `resume` đọc bốn dòng trạng thái.

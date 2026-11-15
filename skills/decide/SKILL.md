@@ -1,0 +1,48 @@
+---
+name: decide
+description: Record a real decision as an ADR with rejected options and consequences. Use when a choice between two or more approaches will be hard to reverse, or when asked why something is built this way.
+---
+
+# decide
+
+An ADR is ten minutes that prevent a two-hour argument six months later. It
+records what was rejected, because that is what the next reader cannot recover
+from the code.
+
+## When to use
+
+Use when at least two real approaches exist and choosing wrong would cost a
+rewrite, when a convention is set that later work must follow, or when the human
+asks why something is the way it is.
+Not for reversible choices inside one task; those belong in the commit message.
+
+## Read first
+
+1. `docs/PROJECT.md` `## Quyết định`, so a new ADR does not contradict an old one.
+2. The spec in `docs/specs/` this decision serves.
+3. `docs/adr/` for the highest existing number.
+
+## Steps
+
+1. Test that this is a decision: name two approaches and the cost of being wrong.
+   If there is only one approach, there is nothing to record.
+2. Write the context as events, not feelings: what happened, what the constraint
+   is, who said what.
+3. List the rejected options with the specific reason each lost. "More complex"
+   is not a reason; "needs a server we do not have" is.
+4. Write the consequences, including the bad ones. An ADR with no downside is
+   marketing.
+5. If the choice is uncertain, argue against it once: restate the reasoning from
+   scratch as if you had just arrived, then compare. If the conclusion moves,
+   record that too.
+6. Number the file `NNNN` as the highest existing number plus one, zero-padded.
+
+## Write
+
+`docs/adr/NNNN-<slug>.md`, plus one line under `## Quyết định` in
+`docs/PROJECT.md`: what was decided and why, linking the ADR.
+
+## Stop
+
+Stop when the two approaches are not really different, or when the human has not
+decided yet. Ask; do not record a decision nobody made.
