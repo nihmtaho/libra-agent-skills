@@ -13,6 +13,8 @@ for f in "$@"; do
     continue
   fi
   case "$f" in *.md) ;; *) continue ;; esac
+  tpl=0
+  case "$f" in */templates/*.md) tpl=1 ;; esac
 
   # 1. frontmatter opens on line 1 and closes by line 10
   fmend=0
@@ -29,10 +31,13 @@ for f in "$@"; do
     fi
   fi
 
-  # 2. title present; updated is YYYY-MM-DD
+  # 2. title present; updated is YYYY-MM-DD (a template keeps the literal placeholder)
   [ -n "$(awk -v e="$fmend" 'NR<=e && /^title:[ ]*[^ ]/{print; exit}' "$f")" ] ||
     { echo "FAIL $f:1: empty or missing title"; fail=1; }
-  awk -v e="$fmend" 'NR<=e && /^updated: [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/{ok=1} END{exit !ok}' "$f" ||
+  awk -v e="$fmend" -v tpl="$tpl" '
+    NR <= e && (/^updated: [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/ ||
+                (tpl && /^updated: YYYY-MM-DD$/)) { ok = 1 }
+    END { exit !ok }' "$f" ||
     { echo "FAIL $f:1: updated is not YYYY-MM-DD"; fail=1; }
 
   # 3-6. one H1 first, no empty heading, no empty section, fences balanced
@@ -84,6 +89,10 @@ for f in "$@"; do
     */docs/adr/*.md|docs/adr/*.md) type=adr ;;
     */docs/tasks/*.md|docs/tasks/*.md) type=task ;;
     */docs/imports/*.md|docs/imports/*.md) type=import ;;
+    */templates/project.md) type=project ;;
+    */templates/spec.md) type=spec ;;
+    */templates/adr.md) type=adr ;;
+    */templates/task.md) type=task ;;
   esac
   case "$type" in
     project) need="Run & verify|Module map|Features|Decisions|Next" ;;
