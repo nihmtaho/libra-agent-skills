@@ -5,7 +5,7 @@ spec: ../specs/markdown-check.md
 ---
 # markdown check after every write
 
-Stopped at: T4 done, T5 not started
+Stopped at: T5 done; feature complete, waiting for ship
 
 ## Checkpoint — after T1
 `bash scripts/check-docs.sh docs/PROJECT.md docs/specs/markdown-check.md` exits 0
@@ -27,7 +27,7 @@ with one `FAIL <path>:<line>: <rule>` line naming `Use cases`.
       Done means: `bash scripts/test.sh` ends with `all checks passed` then `install tests passed`, and deleting the check line from any one skill makes `scripts/check.sh` fail.
       Touches: `skills/{build,debug,decide,office-docs,plan-work,ship,using-libra,verify,write-spec}/SKILL.md`, `scripts/check.sh`, `scripts/test.sh`
       Depends on: T3
-- [ ] **T5 — this repo dogfoods it**
+- [x] **T5 — this repo dogfoods it**
       Done means: `bash scripts/check-docs.sh docs/PROJECT.md docs/tasks/markdown-check.md` exits 0, and the reply on a broken document shows the check ran and the fix landed in the same turn.
       Touches: `docs/PROJECT.md`, `README.md`
       Depends on: T4

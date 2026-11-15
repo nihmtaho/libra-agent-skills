@@ -75,6 +75,18 @@ One file is kept fresh: run commands, module map, a feature table with a
 files hang off it and are deleted when done. See
 `docs/design/2026-11-15-libra-agent-skills-design.md`.
 
+## The check that comes with it
+
+`bootstrap-project` copies `scripts/check-docs.sh` into your project and lists it
+in `## Run & verify`. Every skill that writes a document runs it on what it just
+wrote: frontmatter, one H1, no empty section, balanced code fences, internal
+links that resolve, and the sections that document type requires. One
+`FAIL <path>:<line>: <rule>` per problem and exit 1; silence means clean.
+
+```bash
+bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
+```
+
 ## Uninstall
 
 ```bash

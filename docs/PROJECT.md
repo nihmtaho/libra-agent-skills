@@ -14,6 +14,8 @@ updated: 2026-11-15
 - `skills/<name>/SKILL.md` — the single source of the skill set; ≤80 lines, five fixed sections; renaming the file means renaming `name`.
 - `install.sh` — symlinks into the destination; the fragile parts are overwriting and paths with spaces.
 - `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 14 skills.
+- `scripts/check-docs.sh` — the document rules; the copy in `scripts/` and the one shipped in `skills/bootstrap-project/scripts/` must stay byte-identical.
+- `scripts/test-check-docs.sh` — one broken fixture per rule, plus every shipped template and this repo's own documents must stay clean.
 - `scripts/test-install.sh` — symlink, run twice, refuse to overwrite, the Office-reading script must run from the installed destination.
 - `docs/` — the backbone of this repo itself; this repo is the first place it is dogfooded.
 
