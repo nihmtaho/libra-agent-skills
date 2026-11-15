@@ -31,5 +31,11 @@ case "$out" in
   *) echo "FAIL no refusing message"; fail=1 ;;
 esac
 
+mkdir -p "$d/y/.agents/skills"
+ln -s /tmp "$d/y/.agents/skills/using-libra"
+"$root/install.sh" --to agents --dest "$d/y" >/dev/null 2>&1
+rc=$?
+[ "$rc" -eq 1 ] || { echo "FAIL wrong-target symlink not refused (exit $rc)"; fail=1; }
+
 [ "$fail" -eq 0 ] && echo "install tests passed"
 exit "$fail"
