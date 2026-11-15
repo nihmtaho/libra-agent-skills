@@ -62,16 +62,16 @@ Skip the log; write "no git history yet" in `## Next`. Do not guess what came fi
 Run `git check-ignore docs/PROJECT.md` first; if ignored, ask whether to un-ignore
 it. A state file nobody can clone is not state.
 
-Copy the checker next to this file into the project, list it in `## Run & verify`,
-and run it on what you wrote — keep a `check-docs.sh` the project already has and
-say so in one line:
+Copy the checker that sits next to this SKILL.md into the project, list it in
+`## Run & verify`, and run it — the source is the skill's own copy, and these
+commands run from the folder holding this SKILL.md:
 
 ```bash
-mkdir -p scripts && cp scripts/check-docs.sh scripts/check-docs.sh
-bash scripts/check-docs.sh docs/PROJECT.md
+mkdir -p <project>/scripts && cp scripts/check-docs.sh <project>/scripts/
+bash <project>/scripts/check-docs.sh <project>/docs/PROJECT.md
 ```
 
-Fix every FAIL before you stop.
+Keep a `check-docs.sh` the project already has and say so. Fix every FAIL.
 
 ## Stop
 
