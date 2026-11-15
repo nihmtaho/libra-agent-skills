@@ -42,6 +42,9 @@ Not for reversible choices inside one task; those belong in the commit message.
 `docs/adr/NNNN-<slug>.md`, plus one line under `## Decisions` in
 `docs/PROJECT.md`: what was decided and why, linking the ADR.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when the two approaches are not really different, or when the human has not

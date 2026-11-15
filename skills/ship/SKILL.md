@@ -46,6 +46,9 @@ Not for tagging or publishing releases; that is a separate decision.
 `docs/PROJECT.md` — the feature row, `Next`, the date — and deletion of
 `docs/tasks/<feature>.md`.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when the verdict is missing or bound to another sha, the check is red,

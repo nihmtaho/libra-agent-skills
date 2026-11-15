@@ -52,6 +52,14 @@ for dir in "$root"/skills/*/; do
     *docs/*|*none*) ;;
     *) echo "FAIL $name: '## Write' names no docs/ path and no 'none'"; fail=1 ;;
   esac
+  case "$write_body" in
+    *docs/*)
+      case "$write_body" in
+        *check-docs.sh*) ;;
+        *) echo "FAIL $name: '## Write' names docs/ but never runs check-docs.sh"; fail=1 ;;
+      esac
+      ;;
+  esac
 done
 
 if [ "$skill_count" -eq 0 ]; then

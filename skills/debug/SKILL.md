@@ -41,6 +41,9 @@ Not when the behavior is merely undesigned; that is `write-spec`.
 The regression test, and the one line in `docs/tasks/<feature>.md` that records
 what was actually wrong when it is not obvious from the test name.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop and report when the cause is a design decision rather than a defect, when

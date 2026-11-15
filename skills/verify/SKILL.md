@@ -42,6 +42,9 @@ it silently is the one failure this set cannot detect from the outside.
 `docs/PROJECT.md` `## Run & verify`, only when the command or its expected
 signal changed.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when the command cannot be run at all (missing toolchain, missing permission)

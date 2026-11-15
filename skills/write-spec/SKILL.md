@@ -57,6 +57,9 @@ of rewriting the old spec.
 `docs/specs/<slug>.md` from the template, and one new row in the `## Features`
 table with status `planned`. Nothing else.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when an answer changes scope and the human has not decided it, or when the

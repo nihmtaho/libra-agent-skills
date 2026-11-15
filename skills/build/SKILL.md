@@ -46,6 +46,9 @@ spike; if it produced documents, it was not a spike.
 `docs/tasks/<feature>.md` — the checkbox and `Stopped at` — and `docs/PROJECT.md`
 when the feature row changes.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when the acceptance line cannot be checked, when the task needs a decision

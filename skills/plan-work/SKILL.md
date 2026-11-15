@@ -53,6 +53,9 @@ criteria is a wish list.
 `docs/tasks/<feature>.md`, the feature row in `docs/PROJECT.md`, and at most one
 GitHub issue for the feature.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when a task cannot be described without a decision the spec does not make:

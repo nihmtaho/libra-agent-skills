@@ -69,6 +69,9 @@ Six rules for anything that came from outside this repo:
 `docs/imports/<original-name>.md` and the original file when small. Exported Word and
 Excel files go outside the repo.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when the file is refused, when the text cannot be extracted (a scanned PDF),

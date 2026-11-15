@@ -3,4 +3,5 @@
 set -eu
 here=$(cd "$(dirname "$0")" && pwd)
 bash "$here/check.sh"
+bash "$here/test-check-docs.sh"
 bash "$here/test-install.sh"

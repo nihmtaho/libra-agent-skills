@@ -61,6 +61,9 @@ Every other change belongs to the skill named in the table. Set `issues: on` in 
 frontmatter only if the human wants GitHub issues used; `plan-work` and `ship`
 follow that switch and never guess from the repository settings.
 
+Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
+you finish; no script in the project: say so in one line and continue.
+
 ## Stop
 
 Stop when the task needs a skill that is not installed, when two sources of truth
