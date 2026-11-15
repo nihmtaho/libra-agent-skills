@@ -12,13 +12,25 @@ for f in "$@"; do
     fail=1
     continue
   fi
-  case "$f" in *.md) ;; *) continue ;; esac
+  case "$f" in *.md|*.MD) ;; *)
+    echo "FAIL $f:0: not a markdown file"
+    fail=1
+    continue
+    ;;
+  esac
   tpl=0
   case "$f" in */templates/*.md) tpl=1 ;; esac
+  # frontmatter is a docs/ convention; a README at the project root has none.
+  # A shipped template keeps one, because it is a document being written.
+  indocs=0
+  case "$f" in */docs/*|docs/*) indocs=1 ;; esac
+  [ "$tpl" = 1 ] && indocs=1
 
   # 1. frontmatter opens on line 1 and closes by line 10
   fmend=0
-  if [ "$(head -1 "$f")" != "---" ]; then
+  if [ "$indocs" = 0 ]; then
+    :
+  elif [ "$(head -1 "$f")" != "---" ]; then
     echo "FAIL $f:1: no frontmatter"
     fail=1
   else
@@ -32,19 +44,21 @@ for f in "$@"; do
   fi
 
   # 2. title present; updated is YYYY-MM-DD (a template keeps the literal placeholder)
-  [ -n "$(awk -v e="$fmend" 'NR<=e && /^title:[ ]*[^ ]/{print; exit}' "$f")" ] ||
-    { echo "FAIL $f:1: empty or missing title"; fail=1; }
-  awk -v e="$fmend" -v tpl="$tpl" '
-    NR <= e && (/^updated: [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/ ||
-                (tpl && /^updated: YYYY-MM-DD$/)) { ok = 1 }
-    END { exit !ok }' "$f" ||
-    { echo "FAIL $f:1: updated is not YYYY-MM-DD"; fail=1; }
+  if [ "$indocs" = 1 ]; then
+    [ -n "$(awk -v e="$fmend" 'NR<=e && /^title:[ ]*[^ ]/{print; exit}' "$f")" ] ||
+      { echo "FAIL $f:1: empty or missing title"; fail=1; }
+    awk -v e="$fmend" -v tpl="$tpl" '
+      NR <= e && (/^updated: [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/ ||
+                  (tpl && /^updated: YYYY-MM-DD$/)) { ok = 1 }
+      END { exit !ok }' "$f" ||
+      { echo "FAIL $f:1: updated is not YYYY-MM-DD"; fail=1; }
+  fi
 
   # 3-6. one H1 first, no empty heading, no empty section, fences balanced
   body=$(awk -v f="$f" -v fm="$fmend" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     NR <= fm { next }
-    /^```/ { fence = !fence; nfence++; next }
+    /^```/ { if (!fence) pend = ""; fence = !fence; nfence++; next }
     fence { next }
     /[^ \t]/ {
       if (!first) { first = NR; firstline = $0 }
@@ -59,7 +73,7 @@ for f in "$@"; do
       if (pend != "") bad(pendline, "empty section under " pend)
       if (nfence % 2) bad(NR, "unclosed code fence")
       if (h1 != 1) bad(first, "expected one H1, found " h1)
-      else if (firstline !~ /^# /) bad(first, "first body line is not the H1")
+      else if (fm > 0 && firstline !~ /^# /) bad(first, "first body line is not the H1")
     }' "$f")
   [ -z "$body" ] || { printf '%s\n' "$body"; fail=1; }
 
@@ -101,9 +115,18 @@ for f in "$@"; do
     task) need="Checkpoint" ;;
     *) need="" ;;
   esac
+  # required headings must be real headings: outside frontmatter and outside fences,
+  # so a heading quoted in a code block cannot satisfy the rule
+  heads=$(awk -v fm="$fmend" '
+    NR <= fm { next }
+    /^```/ { fence = !fence; next }
+    fence { next }
+    /^#/ { print }' "$f")
   while IFS= read -r h; do
     [ -n "$h" ] || continue
-    awk -v h="## $h" 'index($0, h) == 1 { ok = 1 } END { exit !ok }' "$f" ||
+    printf '%s\n' "$heads" | awk -v h="## $h" '
+      { if ($0 == h || (index($0, h) == 1 && substr($0, length(h) + 1, 1) == " ")) ok = 1 }
+      END { exit !ok }' ||
       { echo "FAIL $f:1: missing heading '## $h'"; fail=1; }
   done <<< "$(printf '%s' "$need" | tr '|' '\n')"
   case "$type" in
