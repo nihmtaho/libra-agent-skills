@@ -17,13 +17,13 @@ updated: 2026-11-15
 
 ## Tính năng
 | Tính năng | Trạng thái | Dừng ở | Tài liệu |
-| bộ 14 skill | in progress | T3 xong, T4 đang làm | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
-| đọc tài liệu Office | in progress | T1 chưa bắt đầu | [task](tasks/office-docs.md) |
+| bộ 14 skill | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
+| đọc tài liệu Office | done | | [spec](specs/office-docs.md) |
 
 ## Quyết định
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown là nguồn duy nhất; Word/Excel chỉ là cửa vào và cửa ra.
 
 ## Tiếp theo
-1. Viết xong `bootstrap-project` và template của nó.
-2. `resume` đọc bốn dòng trạng thái.
-3. `write-spec` hỏi năm câu.
+1. Chạy `bootstrap-project` trên một repo cũ thật, rồi để một phiên mới chỉ đọc `PROJECT.md` trả lời bốn dòng của `resume`.
+2. Dùng bộ này một tuần trên công việc thật; ghi chỗ vướng vào đây.
+3. Push lên GitHub rồi kiểm lại `npx skills add nihmtaho/libra-agent-skills`.

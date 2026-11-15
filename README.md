@@ -47,6 +47,13 @@ One file is kept fresh: run commands, module map, a feature table with a
 files hang off it and are deleted when done. See
 `docs/design/2026-11-15-libra-agent-skills-design.md`.
 
+## Why not a fork of `agent-skills`
+
+That set is 25 technique skills with no state artifact: it makes a clean session
+better, it does not answer "where does this project stand". Six ideas were taken
+from it, none copied; the rest install straight from upstream, MIT, when a
+project needs them. Reasons and the name-by-name mapping are in the design doc.
+
 ## License
 
 MIT. See `NOTICE` for the two reference sets this design learned from.
