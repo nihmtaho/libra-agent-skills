@@ -18,6 +18,10 @@ for dir in "$root"/skills/*/; do
     continue
   fi
   [ "$(head -1 "$f")" = "---" ] || { echo "FAIL $name: no frontmatter"; fail=1; }
+  if ! sed -n '2,10p' "$f" | grep -qxF -- '---'; then
+    echo "FAIL $name: frontmatter not closed by '---' on its own line"
+    fail=1
+  fi
   fmname=$(awk '/^name:[ ]*/{sub(/^name:[ ]*/,""); print; exit}' "$f")
   desc=$(awk '/^description:[ ]*/{sub(/^description:[ ]*/,""); print; exit}' "$f")
   [ "$fmname" = "$name" ] || { echo "FAIL $name: name field is '$fmname'"; fail=1; }
@@ -25,6 +29,12 @@ for dir in "$root"/skills/*/; do
   case "$desc" in
     *"Use when"*) ;;
     *) echo "FAIL $name: description lacks 'Use when'"; fail=1 ;;
+  esac
+  case "$desc" in
+    *": "*)
+      echo "FAIL $name: description contains ': ', which breaks YAML unless quoted"
+      fail=1
+      ;;
   esac
   lines=$(wc -l < "$f" | tr -d ' ')
   [ "$lines" -le 80 ] || { echo "FAIL $name: $lines lines (max 80)"; fail=1; }

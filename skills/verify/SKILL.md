@@ -1,6 +1,7 @@
 ---
 name: verify
-description: Prove the work runs before claiming it does. Use when about to say something works, before a review, and before shipping.---
+description: Prove the work runs before claiming it does. Use when about to say something works, before a review, and before shipping.
+---
 
 # verify
 
