@@ -20,12 +20,13 @@ updated: 2026-11-15
 | Feature | Status | Stopped at | Docs |
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
+| github distribution | in progress | pushed, tagged v0.1.0; `npx skills add` from GitHub blocked by this network's git-over-HTTPS, local-path install verified 14/14 | [readme](../README.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
 
 ## Next
-1. Push to GitHub, tag v0.1.0, and verify `npx skills add nihmtaho/libra-agent-skills` from a clean directory.
+1. Test `npx skills add nihmtaho/libra-agent-skills` on a normal network — this machine's git-over-HTTPS stalls, so the GitHub install is unverified here (SSH and curl are fine; local-path install gave 14/14).
 2. Hand the install guide to the user for a third-project test (manual); record the report here.
 3. Use this set for a week on real work; write down what snags here.
 
