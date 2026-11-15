@@ -1,12 +1,12 @@
 ---
 title: libra-agent-skills
-updated: 2026-11-15
+updated: 2026-11-16
 ---
 # 14 skills for coding agents, built around one state file so a project can be reopened six months later
 
 ## Run & verify
 - `bash scripts/test.sh` — the skill contract, the markdown fixtures, then the install tests.
-- `bash scripts/check.sh` — only the skill contract and the empty sections of `PROJECT.md`.
+- `bash scripts/check.sh` — the skill contract: frontmatter, length, headings, forbidden tokens, the `check-docs.sh` line in every `## Write`, byte-identical checker copies, and the empty sections of `PROJECT.md`.
 - `bash scripts/check-docs.sh <file>` — one document against the rules in `docs/specs/markdown-check.md`.
 - Sign of success: exit 0, and three lines `all checks passed`, `fixtures passed`, `install tests passed`.
 
@@ -24,7 +24,7 @@ updated: 2026-11-15
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
-| markdown check after every write | in progress | T1 not started | [spec](specs/markdown-check.md), [tasks](tasks/markdown-check.md) |
+| markdown check after every write | in progress | all five tasks done, waiting for ship | [spec](specs/markdown-check.md), [tasks](tasks/markdown-check.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
