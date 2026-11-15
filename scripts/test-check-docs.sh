@@ -24,6 +24,13 @@ expect_fail() { # <label> <text the output must contain> <file...>
   fi
 }
 
+expect_clean() { # <label> <file...>
+  label=$1
+  shift
+  out=$(bash "$check" "$@" 2>&1)
+  [ -z "$out" ] || { echo "FAIL $label: $out"; fail=1; }
+}
+
 doc docs/specs/no-frontmatter.md <<'EOF'
 # title
 
@@ -309,6 +316,111 @@ updated: 2026-11-16
 body
 EOF
 expect_fail "import without trust" "no 'trust: external' in frontmatter" "$tmp/docs/imports/plain.md"
+
+doc docs/PROJECT.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Run & verify
+x
+
+## Features
+x
+
+## Decisions
+x
+
+## Next
+x
+EOF
+expect_fail "project missing Module map" "missing heading '## Module map'" "$tmp/docs/PROJECT.md"
+
+# A required heading quoted inside a code block is not the heading itself.
+doc docs/specs/quoted-heading.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+x
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+```text
+## Out of scope
+```
+EOF
+expect_fail "heading only inside a fence" "missing heading '## Out of scope'" "$tmp/docs/specs/quoted-heading.md"
+
+# A section whose only content is a fenced block is not empty.
+doc docs/adr/0003-fenced.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Context
+```text
+code only
+```
+
+## Decision
+x
+
+## Rejected options
+x
+
+## Consequences
+x
+EOF
+expect_clean "fenced block is content" "$tmp/docs/adr/0003-fenced.md"
+
+printf 'plain text\n' > "$tmp/notes.txt"
+expect_fail "not markdown" "not a markdown file" "$tmp/notes.txt"
+
+# Frontmatter belongs to docs/; a project README has none and must stay clean.
+doc README.md <<'EOF'
+# the project
+
+## Install
+x
+
+## Use
+x
+EOF
+expect_clean "root readme without frontmatter" "$tmp/README.md"
+
+# The contract rule must fire: a skill that names docs/ but drops the check line
+# is caught by scripts/check.sh. Proven in a throwaway tree, not in this repo.
+tree="$tmp/tree"
+mkdir -p "$tree" "$tree/docs"
+cp -R "$root/skills" "$root/scripts" "$tree/"
+cp "$root/docs/PROJECT.md" "$tree/docs/"
+if ! bash "$tree/scripts/check.sh" >/dev/null 2>&1; then
+  echo "FAIL the throwaway tree is not green"
+  fail=1
+fi
+grep -v 'check-docs.sh <the file' "$root/skills/build/SKILL.md" |
+  grep -v 'you finish; no script' > "$tree/skills/build/SKILL.md"
+if out=$(bash "$tree/scripts/check.sh" 2>&1); then
+  echo "FAIL check.sh stayed green after the check line was removed"
+  fail=1
+else
+  case "$out" in
+    *"never runs check-docs.sh"*) ;;
+    *) echo "FAIL check.sh lost the skill-check rule: $out"; fail=1 ;;
+  esac
+fi
 
 # The shipped templates and this repo's own documents must stay clean: a checker
 # that cries wolf is as wrong as one that misses a broken file.
