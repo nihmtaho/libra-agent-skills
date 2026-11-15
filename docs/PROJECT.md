@@ -21,6 +21,7 @@ updated: 2026-11-15
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
+| markdown check after every write | in progress | T1 not started | [spec](specs/markdown-check.md), [tasks](tasks/markdown-check.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
@@ -28,5 +29,4 @@ updated: 2026-11-15
 ## Next
 1. Hand the install guide to the user for a third-project test (manual); record the report here.
 2. Use this set for a week on real work; write down what snags here.
-
-Deferred until usage data exists: Vietnamese/Japanese README translations, CI workflow, demo video, landing page, case studies, splitting PROJECT.md.
+3. Once usage data exists, pick up the deferred list: Vietnamese/Japanese README translations, CI workflow, demo video, landing page, case studies, splitting PROJECT.md.
