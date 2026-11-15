@@ -1,21 +1,21 @@
 ---
-title: <tên project>
+title: <project name>
 updated: YYYY-MM-DD
 ---
-# <một câu: là gì, cho ai>
+# <one sentence: what it is, for whom>
 
-## Chạy & kiểm chứng
-<lệnh chạy, lệnh test, dấu hiệu "đúng">
+## Run & verify
+<run command, test command, sign of "right">
 
-## Bản đồ module
-<thư mục → việc gì → dễ vỡ ở đâu>
+## Module map
+<directory → what it does → where it breaks easily>
 
-## Tính năng
-<!-- Trạng thái chỉ có bốn giá trị: planned | in progress | done | dropped -->
-| Tính năng | Trạng thái | Dừng ở | Tài liệu |
+## Features
+<!-- Status has only four values: planned | in progress | done | dropped -->
+| Feature | Status | Stopped at | Docs |
 
-## Quyết định
-<mỗi ADR một dòng: cái gì, vì sao>
+## Decisions
+<one line per ADR: what, why>
 
-## Tiếp theo
-1. <việc mở màn>
+## Next
+1. <opening move>

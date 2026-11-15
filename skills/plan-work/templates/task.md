@@ -1,20 +1,20 @@
 ---
-title: <tên tính năng>
+title: <feature name>
 updated: YYYY-MM-DD
 spec: ../specs/<slug>.md
-# issue: <số issue> — chỉ khi PROJECT.md có `issues: on`
+# issue: <issue number> — only when PROJECT.md has `issues: on`
 ---
-# <tên tính năng>
+# <feature name>
 
-Dừng ở: <task và chỗ dừng, hoặc "chưa bắt đầu">
+Stopped at: <task and stop point, or "not started">
 
-## Checkpoint — sau <T1>
-<lệnh phải xanh, hoặc điều phải quan sát được trước khi sang task tiếp>
+## Checkpoint — after <T1>
+<the command that must be green, or what must be observable before the next task>
 
-- [ ] **T1 — <tên task>**
-      Xong nghĩa là: <một lệnh hoặc một quan sát>
-      Đụng: `<đường dẫn>`
-- [ ] **T2 — <tên task>**
-      Xong nghĩa là: <...>
-      Đụng: `<đường dẫn>`
-      Phụ thuộc: T1
+- [ ] **T1 — <task name>**
+      Done means: <one command or one observation>
+      Touches: `<path>`
+- [ ] **T2 — <task name>**
+      Done means: <...>
+      Touches: `<path>`
+      Depends on: T1

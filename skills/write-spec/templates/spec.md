@@ -1,22 +1,22 @@
 ---
-title: <tên tính năng>
+title: <feature name>
 updated: YYYY-MM-DD
 ---
-# <tên tính năng>
+# <feature name>
 
-## Vấn đề
-<ai đang đau, vì sao, bằng chứng nếu có>
+## Problem
+<who is hurting, why, evidence if any>
 
-## Use case
-1. <người dùng làm gì, thấy gì>
+## Use cases
+1. <what the user does, what they see>
 2. <...>
 3. <...>
 
-## Tiêu chí nghiệm thu
-- [ ] <một lệnh hoặc một quan sát chứng minh điều này đúng>
+## Acceptance criteria
+- [ ] <one command or one observation proving this is true>
 
-## Ngoài phạm vi
-- <cố tình không làm trong phiên bản này, và vì sao>
+## Out of scope
+- <deliberately not done in this version, and why>
 
-## Câu hỏi mở
-- <câu chưa trả lời được; bỏ mục này nếu không có>
+## Open questions
+- <question not answerable yet; drop this section if none>

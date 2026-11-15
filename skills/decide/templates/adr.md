@@ -1,17 +1,17 @@
 ---
-title: <quyết định trong một dòng>
+title: <decision in one line>
 updated: YYYY-MM-DD
 ---
-# ADR-NNNN: <quyết định>
+# ADR-NNNN: <decision>
 
-## Bối cảnh
-<những sự kiện khiến phải chọn, không phải cảm giác>
+## Context
+<the facts that force a choice, not feelings>
 
-## Quyết định
-<chọn gì, làm gì ngay bây giờ>
+## Decision
+<what to pick, what to do right now>
 
-## Phương án đã loại
-- <phương án> — loại vì <lý do cụ thể>
+## Rejected options
+- <option> — rejected because <specific reason>
 
-## Hệ quả
-<điều xấu phải chấp nhận; việc phải làm để giảm nó>
+## Consequences
+<the bad part to accept; the work needed to reduce it>
