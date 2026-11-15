@@ -5,7 +5,7 @@ spec: ../specs/markdown-check.md
 ---
 # markdown check after every write
 
-Stopped at: T1 done, T2 not started
+Stopped at: T2 done, T3 not started
 
 ## Checkpoint — after T1
 `bash scripts/check-docs.sh docs/PROJECT.md docs/specs/markdown-check.md` exits 0
@@ -15,7 +15,7 @@ with one `FAIL <path>:<line>: <rule>` line naming `Use cases`.
 - [x] **T1 — write the checker**
       Done means: `bash scripts/check-docs.sh docs/PROJECT.md docs/specs/markdown-check.md` exits 0; a broken copy exits 1 with the rule name.
       Touches: `scripts/check-docs.sh`
-- [ ] **T2 — fixtures, one per rule**
+- [x] **T2 — fixtures, one per rule**
       Done means: `bash scripts/test-check-docs.sh` exits 0 and prints `fixtures passed`.
       Touches: `scripts/test-check-docs.sh`
       Depends on: T1
