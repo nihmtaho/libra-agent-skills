@@ -5,9 +5,10 @@ updated: 2026-11-15
 # 14 skills for coding agents, built around one state file so a project can be reopened six months later
 
 ## Run & verify
-- `bash scripts/test.sh` — checks every skill against the contract, then runs the four install tests.
+- `bash scripts/test.sh` — the skill contract, the markdown fixtures, then the install tests.
 - `bash scripts/check.sh` — only the skill contract and the empty sections of `PROJECT.md`.
-- Sign of success: exit 0, and two lines `all checks passed` then `install tests passed`.
+- `bash scripts/check-docs.sh <file>` — one document against the rules in `docs/specs/markdown-check.md`.
+- Sign of success: exit 0, and three lines `all checks passed`, `fixtures passed`, `install tests passed`.
 
 ## Module map
 - `skills/<name>/SKILL.md` — the single source of the skill set; ≤80 lines, five fixed sections; renaming the file means renaming `name`.

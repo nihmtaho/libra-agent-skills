@@ -5,7 +5,7 @@ spec: ../specs/markdown-check.md
 ---
 # markdown check after every write
 
-Stopped at: T3 done, T4 not started
+Stopped at: T4 done, T5 not started
 
 ## Checkpoint — after T1
 `bash scripts/check-docs.sh docs/PROJECT.md docs/specs/markdown-check.md` exits 0
@@ -23,7 +23,7 @@ with one `FAIL <path>:<line>: <rule>` line naming `Use cases`.
       Done means: `skills/bootstrap-project/scripts/check-docs.sh` is identical to `scripts/check-docs.sh`, the skill copies it into the project and stays ≤80 lines, and the installed destination has it runnable.
       Touches: `skills/bootstrap-project/SKILL.md`, `skills/bootstrap-project/scripts/check-docs.sh`, `scripts/check.sh`
       Depends on: T1
-- [ ] **T4 — the eight other writers name the check**
+- [x] **T4 — the nine other writers name the check**
       Done means: `bash scripts/test.sh` ends with `all checks passed` then `install tests passed`, and deleting the check line from any one skill makes `scripts/check.sh` fail.
       Touches: `skills/{build,debug,decide,office-docs,plan-work,ship,using-libra,verify,write-spec}/SKILL.md`, `scripts/check.sh`, `scripts/test.sh`
       Depends on: T3

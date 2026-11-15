@@ -62,7 +62,7 @@ existing `scripts/check-docs.sh`: keep the project's file and say so in one line
 - [ ] `bash scripts/test-check-docs.sh` exits 0 and prints `fixtures passed`; it holds one broken fixture per rule above and asserts the FAIL line names that rule.
 - [ ] The four shipped templates in `skills/*/templates/` pass their type's rules despite `<placeholders>`.
 - [ ] `bash scripts/check.sh` fails if any doc-writing skill stops naming `check-docs.sh`; `test-check-docs.sh` proves this by temporarily removing the line from a copy.
-- [ ] `bash scripts/test.sh` still ends with `all checks passed` then `install tests passed`.
+- [ ] `bash scripts/test.sh` still prints `all checks passed`, `fixtures passed`, then `install tests passed`, all exit 0.
 - [ ] From an installed destination (`./install.sh --dest DIR`), `DIR/.agents/skills/bootstrap-project/scripts/check-docs.sh` runs and exits 0 on a good document.
 - [ ] Observation, on a real project: a spec written with `## Use cases` deleted comes back fixed in the same turn, and the reply says the check ran.
 
