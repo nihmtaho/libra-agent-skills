@@ -1,31 +1,32 @@
 ---
-title: Markdown là nguồn sự thật duy nhất
+title: Markdown is the only source of truth
 updated: 2026-11-15
 ---
-# ADR-0001: Markdown là nguồn sự thật duy nhất, Word và Excel chỉ là cửa vào và cửa ra
+# ADR-0001: Markdown is the only source of truth, Word and Excel are only the way in and the way out
 
-## Bối cảnh
-Tài liệu của project có thể nằm ở Word, Excel, hoặc markdown. Nếu hai định dạng
-cùng tồn tại, chúng sẽ lệch nhau: Word không diff được, không merge được, và mỗi
-lần agent đọc phải parse lại từ đầu. Người đọc lại sau sáu tháng cần một bản duy
-nhất đáng tin, mở được bằng Obsidian.
+## Context
+A project's docs can live in Word, Excel, or markdown. If two formats coexist they
+drift: Word cannot be diffed, cannot be merged, and the agent has to parse it again
+from scratch every time it reads it. Someone reading again six months later needs
+one trustworthy copy that opens in Obsidian.
 
-## Quyết định
-Mọi tài liệu sống ở dạng markdown trong `docs/`. Word và Excel chỉ dùng để nhận
-vào (trích thành `docs/imports/*.md`) hoặc gửi đi (sinh một chiều từ markdown).
-Sửa nội dung thì sửa markdown rồi xuất lại.
+## Decision
+Every document lives as markdown in `docs/`. Word and Excel are only used to bring
+content in (extracted into `docs/imports/*.md`) or to send it out (generated one
+way from markdown). To change content, change the markdown and export again.
 
-## Phương án đã loại
-- `.docx` là nguồn, markdown là bản trích — loại vì phải đồng bộ hai chiều bằng
-  tay, và bản trích sẽ lệch trong vòng một tuần.
-- Chỉ dùng Word, không markdown — loại vì agent không diff được, Obsidian không
-  dựng graph được, và lịch sử thay đổi mất.
-- Markdown cho mọi thứ kể cả bảng tính có công thức — loại vì `.xlsx` chứa công
-  thức là sản phẩm thật; với trường hợp đó, chính file `.xlsx` là nguồn và
-  markdown chỉ ghi chú.
+## Rejected options
+- `.docx` as the source, markdown as the extract — rejected because the two have to
+  be synced by hand in both directions, and the extract drifts within a week.
+- Word only, no markdown — rejected because the agent cannot diff it, Obsidian
+  cannot build the graph, and the change history is lost.
+- Markdown for everything, including spreadsheets with formulas — rejected because
+  an `.xlsx` with formulas is a real product; in that case the `.xlsx` file itself
+  is the source and markdown is only a note.
 
-## Hệ quả
-- Gửi cho người khác phải xuất file, và bản xuất không sửa tay được.
-- Bảng tính có công thức là ngoại lệ: một file `.xlsx` là nguồn, markdown chỉ trỏ
-  tới nó, và phải ghi rõ "nguồn:".
-- Ảnh và sơ đồ nằm ở `docs/assets/` để graph không bị rác.
+## Consequences
+- Sending to someone else means exporting a file, and the export cannot be edited by
+  hand.
+- Spreadsheets with formulas are the exception: one `.xlsx` file is the source,
+  markdown only points to it, and must state "source:".
+- Images and diagrams live in `docs/assets/` so the graph stays clean.

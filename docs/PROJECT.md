@@ -2,32 +2,31 @@
 title: libra-agent-skills
 updated: 2026-11-15
 ---
-# Bộ 14 skill cho agent lập trình, dựng quanh một file trạng thái để mở lại project sau sáu tháng
+# 14 skills for coding agents, built around one state file so a project can be reopened six months later
 
-## Chạy & kiểm chứng
-- `bash scripts/test.sh` — kiểm hợp đồng của mọi skill rồi chạy bốn phép thử cài đặt.
-- `bash scripts/check.sh` — chỉ phần hợp đồng skill và mục rỗng của `PROJECT.md`.
-- Dấu hiệu đúng: exit 0, và hai dòng `all checks passed` rồi `install tests passed`.
+## Run & verify
+- `bash scripts/test.sh` — checks every skill against the contract, then runs the four install tests.
+- `bash scripts/check.sh` — only the skill contract and the empty sections of `PROJECT.md`.
+- Sign of success: exit 0, and two lines `all checks passed` then `install tests passed`.
 
-## Bản đồ module
-- `skills/<tên>/SKILL.md` — nguồn duy nhất của bộ skill; ≤80 dòng, năm mục cố định; đổi tên file là phải đổi `name`.
-- `install.sh` — symlink vào đích; dễ vỡ nhất ở chỗ ghi đè và ở đường dẫn có dấu cách.
-- `scripts/check.sh` — hợp đồng skill (frontmatter, độ dài, heading, token cấm, mục rỗng); sửa luật ở đây là sửa cho cả 14 skill.
-- `scripts/test-install.sh` — symlink, chạy hai lần, từ chối ghi đè, script đọc Office phải chạy được từ đích đã cài.
-- `docs/` — xương sống của chính repo này; repo này là nơi dogfood đầu tiên.
+## Module map
+- `skills/<name>/SKILL.md` — the single source of the skill set; ≤80 lines, five fixed sections; renaming the file means renaming `name`.
+- `install.sh` — symlinks into the destination; the fragile parts are overwriting and paths with spaces.
+- `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 14 skills.
+- `scripts/test-install.sh` — symlink, run twice, refuse to overwrite, the Office-reading script must run from the installed destination.
+- `docs/` — the backbone of this repo itself; this repo is the first place it is dogfooded.
 
-## Tính năng
-| Tính năng | Trạng thái | Dừng ở | Tài liệu |
-| bộ 14 skill | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
-| đọc tài liệu Office | done | | [spec](specs/office-docs.md) |
+## Features
+| Feature | Status | Stopped at | Docs |
+| the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
+| reading Office documents | done | | [spec](specs/office-docs.md) |
 
-## Quyết định
-- [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown là nguồn duy nhất; Word/Excel chỉ là cửa vào và cửa ra.
+## Decisions
+- [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
 
-## Tiếp theo
-1. Thực hiện next phases plan (10 tasks, 3 phases):
-   - **Phase 1 (tuần này):** Migrate 14 skills sang English, thêm README tiếng Việt + tiếng Nhật, thêm quick start/uninstall/symlink warning, test trên project thứ 3
-   - **Phase 2 (tháng tới):** CI workflow, CHANGELOG.md, demo video, tag v0.1.0
-   - **Phase 3 (quý tới):** Landing page, case studies, đánh giá tách PROJECT.md
-2. Dùng bộ này một tuần trên công việc thật; ghi chỗ vướng vào đây.
-3. Push lên GitHub rồi kiểm lại `npx skills add nihmtaho/libra-agent-skills`.
+## Next
+1. Push to GitHub, tag v0.1.0, and verify `npx skills add nihmtaho/libra-agent-skills` from a clean directory.
+2. Hand the install guide to the user for a third-project test (manual); record the report here.
+3. Use this set for a week on real work; write down what snags here.
+
+Deferred until usage data exists: Vietnamese/Japanese README translations, CI workflow, demo video, landing page, case studies, splitting PROJECT.md.

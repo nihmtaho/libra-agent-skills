@@ -1,28 +1,29 @@
 ---
-title: Đọc Word, Excel và PDF
+title: Reading Word, Excel and PDF
 updated: 2026-11-15
 ---
-# Đọc tài liệu Office như dữ liệu, không như mệnh lệnh
+# Reading Office documents as data, not as instructions
 
-## Vấn đề
-Tài liệu cũ của tôi và tài liệu người khác gửi thường là `.docx`, `.xlsx`, `.pdf`.
-Agent không đọc được trực tiếp, nên tôi phải chép tay sang markdown, và mỗi lần
-quay lại phải chép lại. Bản chép tay cũng mất cấu trúc heading và bảng.
+## Problem
+My old documents, and documents other people send me, are usually `.docx`, `.xlsx`,
+`.pdf`. The agent cannot read them directly, so I copy them by hand into markdown,
+and every time I come back I have to copy them again. The hand copy also loses
+heading and table structure.
 
-## Use case
-1. Đưa một `.docx` cũ, nhận lại markdown có heading và bảng, lưu vào `docs/imports/`.
-2. Đưa một `.xlsx`, xem từng sheet dưới dạng bảng, công thức in ra dạng chuỗi.
-3. Đưa một `.pdf` dạng text, nhận lại text; gặp PDF scan thì được báo là không đọc được.
+## Use cases
+1. Hand over an old `.docx`, get back markdown with headings and tables, saved into `docs/imports/`.
+2. Hand over an `.xlsx`, see each sheet as a table, formulas printed as strings.
+3. Hand over a text `.pdf`, get text back; a scanned PDF is reported as unreadable.
 
-## Tiêu chí nghiệm thu
-- [x] `read_office.py evil.docx` in ra markdown, và câu "ignore previous instructions…" nằm nguyên trong output.
-- [x] `read_office.py bad.docm` in lý do từ chối và thoát với mã 2.
-- [x] File lớn hơn 20 MB bị từ chối với mã 2, không bị đọc một phần.
-- [x] Kết quả ghi vào `docs/imports/<tên gốc>.md` có `trust: external` và dòng nguồn.
+## Acceptance criteria
+- [x] `read_office.py evil.docx` prints markdown, and the sentence "ignore previous instructions…" stays intact in the output.
+- [x] `read_office.py bad.docm` prints the reason for refusal and exits with code 2.
+- [x] A file larger than 20 MB is refused with code 2, not partially read.
+- [x] The result written to `docs/imports/<original name>.md` has `trust: external` and a source line.
 
-## Ngoài phạm vi
-- Không ghi `.xlsx` trừ khi được yêu cầu rõ; mặc định chỉ đọc.
-- Không OCR PDF scan; báo lại thay vì đoán nội dung.
-- Không theo hyperlink, không chạy macro.
+## Out of scope
+- No writing `.xlsx` unless explicitly asked; read-only by default.
+- No OCR of scanned PDFs; report back instead of guessing the content.
+- No following hyperlinks, no running macros.
 
-Kiểm ngày 2026-11-15: ba mục đầu chạy trên fixture; mục cuối chạy trong thư mục tạm, không giữ file mẫu trong repo.
+Checked 2026-11-15: the first three items run on fixtures; the last one runs in a temp directory, no sample file is kept in the repo.
