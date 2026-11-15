@@ -2,6 +2,7 @@
 title: <tên tính năng>
 updated: YYYY-MM-DD
 spec: ../specs/<slug>.md
+# issue: <số issue> — chỉ khi PROJECT.md có `issues: on`
 ---
 # <tên tính năng>
 

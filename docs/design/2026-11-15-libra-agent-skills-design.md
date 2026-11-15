@@ -281,6 +281,13 @@ một danh sách. Tách ra là ba chỗ phải sửa cùng lúc, và chỗ bị 
 Cũng không mở một issue cho mỗi task: 3–7 issue cho một tính năng là tiếng ồn. Một issue mỗi
 tính năng đủ để có dấu vết trên GitHub, chi tiết sống trong repo.
 
+GitHub issues là tuỳ chọn, bật bằng `issues: on` trong frontmatter của `PROJECT.md` — không
+đoán từ cài đặt của repo, vì "repo bật issues" không có nghĩa là "dự án muốn dùng issues".
+Khi bật: một issue cho mỗi tính năng; thân issue là con trỏ (mục tiêu, link spec, đường dẫn
+task file), **không chép checklist** — chép là có bản sao thứ hai, và nó sai ngay lần tick
+đầu tiên. Số issue ghi vào frontmatter task; PR mang `Closes #n`; merge tay thì
+`gh issue close <n>`.
+
 ### Từ bộ cũ (34 skill) — port và bỏ
 
 Port cơ chế, không port nguyên văn:

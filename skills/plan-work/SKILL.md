@@ -37,10 +37,16 @@ criteria is a wish list.
 6. Three to seven tasks. More means the spec is too large: go back and cut scope,
    do not shrink tasks until they fit.
 7. Write the file, set the feature row to `in progress`, and link the task file in
-   its `Tài liệu` cell. If the repo uses GitHub issues
-   (`gh repo view --json hasIssuesEnabled` returns true), open one issue for the
-   feature with the checklist as its body; never one issue per task. No `gh`, or
-   the command errors: skip the issue and say so in the reply, do not block the plan.
+   its `Tài liệu` cell.
+8. GitHub issues, only when `docs/PROJECT.md` frontmatter says `issues: on` and
+   `gh` works: open one issue per feature (never one per task). Title is the
+   feature name; body is the goal, a link to the spec, the acceptance summary, and
+   the path `docs/tasks/<feature>.md`. Never copy the checklist into the issue: the
+   file is the list, and a copy starts lying the first time a box is ticked.
+   Record the number as `issue:` in the task frontmatter. No `gh`, or the command
+   errors: skip the issue, say so, and do not block the plan. With more than one
+   remote or more than one signed-in GitHub host, pass `--repo <owner/name>`
+   explicitly; `gh` otherwise picks a host you did not mean.
 
 ## Write
 
