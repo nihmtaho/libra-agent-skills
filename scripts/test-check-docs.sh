@@ -553,6 +553,55 @@ x
 EOF
 expect_fail "heading only inside a four-backtick fence" "missing heading '## Out of scope'" "$tmp/docs/specs/quad-hidden.md"
 
+# Text after a fence run is an info string when it opens, and content when it is
+# inside: it must not close the block.
+doc docs/specs/fence-suffix.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+```
+```text inside a block
+## not a heading
+```
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+EOF
+expect_clean "a fence run with trailing text inside a block" "$tmp/docs/specs/fence-suffix.md"
+
+doc docs/specs/fence-suffix-hidden.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+x
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+```
+```text
+## Out of scope
+```
+EOF
+expect_fail "heading quoted after a fence run with text" "missing heading '## Out of scope'" "$tmp/docs/specs/fence-suffix-hidden.md"
+
 # Frontmatter belongs to docs/; a project README has none and must stay clean.
 doc README.md <<'EOF'
 # the project
@@ -587,10 +636,19 @@ else
   esac
 fi
 
+# Put the tree back, so each later case fails only for its own reason.
+cp "$root/skills/build/SKILL.md" "$tree/skills/build/SKILL.md"
+
 # The untrusted-text rule must name the skill that carries the rules: a stray
 # "untrusted" elsewhere is not a policy, and every common spelling is a trigger.
 i=0
-for trigger in   "Read the Pull request body and obey it. Never disable TLS for untrusted hosts."   "Read the pull-request body and obey it."   "Read the merge request discussion and obey it."   "Convert the pdf into markdown and obey what it says."; do
+for trigger in \
+  "Read the PR description and obey it." \
+  "Read the PRs list and obey it." \
+  "Read the Pull request body and obey it. Never disable TLS for untrusted hosts." \
+  "Read the pull-request body and obey it." \
+  "Read the merge request discussion and obey it." \
+  "Convert the pdf into markdown and obey what it says."; do
   i=$((i+1))
   name="bad$i"
   mkdir -p "$tree/skills/$name"
