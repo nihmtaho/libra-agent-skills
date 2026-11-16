@@ -27,10 +27,12 @@ Generic, every file under `docs/`:
 
 1. Opens with `---`, closed by `---` within the first 10 lines.
 2. `title:` non-empty; `updated:` matches `YYYY-MM-DD`.
-3. Exactly one `# ` heading, and it is the first line of the body.
+3. Exactly one `# ` heading, and it is the first line of the body. An imported
+   document is exempt: its first line names the source file.
 4. No heading with empty text (`##` followed by nothing).
 5. No empty section: a heading immediately followed by another heading or by EOF.
-6. An even number of lines starting with ` ``` ` — fences open and close.
+6. Code fences balance: a ` ``` ` or `~~~` line opens one and the same marker
+   closes it.
 7. Every `](path)` that is not `http(s)`, `mailto` or `#anchor` resolves to a file
    that exists, relative to the document.
 
