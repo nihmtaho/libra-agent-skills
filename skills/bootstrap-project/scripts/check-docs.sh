@@ -64,9 +64,9 @@ for f in "$@"; do
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     NR <= fm { next }
     match($0, /^(`{3,}|~{3,})/) {
-                 ch = substr($0, 1, 1); w = RLENGTH
+                 ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
                  if (fence == "") { pend = ""; fence = ch; fw = w; nfence = 1 }
-                 else if (ch == fence && w >= fw) { fence = ""; nfence = 0 }
+                 else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) { fence = ""; nfence = 0 }
                  next }
     fence { next }
     /[^ \t]/ {
@@ -91,9 +91,9 @@ for f in "$@"; do
   # 7. internal links resolve, relative to the document
   links=$(awk '
     match($0, /^(`{3,}|~{3,})/) {
-      ch = substr($0, 1, 1); w = RLENGTH
+      ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
       if (fence == "") { fence = ch; fw = w }
-      else if (ch == fence && w >= fw) fence = ""
+      else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
       next }
     fence { next }
     { gsub(/`[^`]*`/, "")
@@ -135,9 +135,9 @@ for f in "$@"; do
   heads=$(awk -v fm="$fmend" '
     NR <= fm { next }
     match($0, /^(`{3,}|~{3,})/) {
-      ch = substr($0, 1, 1); w = RLENGTH
+      ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
       if (fence == "") { fence = ch; fw = w }
-      else if (ch == fence && w >= fw) fence = ""
+      else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
       next }
     fence { next }
     /^#/ { print }' "$f")
