@@ -62,8 +62,8 @@ for dir in "$root"/skills/*/; do
   esac
   # A skill whose input includes outsider text must name the rule that makes that
   # text data: a stray "untrusted" in another sentence is not a policy.
-  if grep -qiE '\bprs?\b|pull request' "$f" ||
-     grep -qE 'docs/imports|Word|Excel|PDF|web page|ticket' "$f"; then
+  if grep -qiE '\bprs?\b|pull[- ]requests?|merge[- ]requests?|\bpdfs?\b|\bdocx\b|\bdocm\b|\bxlsx\b|\bxlsm\b|docs/imports|web page|ticket|issue thread|review comment' "$f" ||
+     grep -qE 'Word|Excel|PDF' "$f"; then
     grep -q 'handling-untrusted-content' "$f" ||
       { echo "FAIL $name: outside text is read but handling-untrusted-content is never named"; fail=1; }
   fi
