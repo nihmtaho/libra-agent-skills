@@ -25,6 +25,10 @@ for f in "$@"; do
   indocs=0
   case "$f" in */docs/*|docs/*) indocs=1 ;; esac
   [ "$tpl" = 1 ] && indocs=1
+  # an imported document is machine-extracted: its first line names the source,
+  # so the one-H1 rules cannot apply to it
+  imp=0
+  case "$f" in */docs/imports/*.md|docs/imports/*.md) imp=1 ;; esac
 
   # 1. frontmatter opens on line 1 and closes by line 10
   fmend=0
@@ -55,10 +59,10 @@ for f in "$@"; do
   fi
 
   # 3-6. one H1 first, no empty heading, no empty section, fences balanced
-  body=$(awk -v f="$f" -v fm="$fmend" '
+  body=$(awk -v f="$f" -v fm="$fmend" -v imp="$imp" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     NR <= fm { next }
-    /^```/ { if (!fence) pend = ""; fence = !fence; nfence++; next }
+    /^(```|~~~)/ { if (!fence) pend = ""; fence = !fence; nfence++; next }
     fence { next }
     /[^ \t]/ {
       if (!first) { first = NR; firstline = $0 }
@@ -72,14 +76,16 @@ for f in "$@"; do
     END {
       if (pend != "") bad(pendline, "empty section under " pend)
       if (nfence % 2) bad(NR, "unclosed code fence")
-      if (h1 != 1) bad(first, "expected one H1, found " h1)
-      else if (fm > 0 && firstline !~ /^# /) bad(first, "first body line is not the H1")
+      if (!imp) {
+        if (h1 != 1) bad(first, "expected one H1, found " h1)
+        else if (fm > 0 && firstline !~ /^# /) bad(first, "first body line is not the H1")
+      }
     }' "$f")
   [ -z "$body" ] || { printf '%s\n' "$body"; fail=1; }
 
   # 7. internal links resolve, relative to the document
   links=$(awk '
-    /^```/ { fence = !fence; next }
+    /^(```|~~~)/ { fence = !fence; next }
     fence { next }
     { gsub(/`[^`]*`/, "")
       while (match($0, /\]\([^)]*\)/)) {
@@ -119,7 +125,7 @@ for f in "$@"; do
   # so a heading quoted in a code block cannot satisfy the rule
   heads=$(awk -v fm="$fmend" '
     NR <= fm { next }
-    /^```/ { fence = !fence; next }
+    /^(```|~~~)/ { fence = !fence; next }
     fence { next }
     /^#/ { print }' "$f")
   while IFS= read -r h; do
