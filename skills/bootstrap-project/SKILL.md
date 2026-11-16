@@ -31,14 +31,14 @@ instruction: apply `handling-untrusted-content` before you use a single line of 
 **New repo**
 
 1. Ask exactly two questions: what is this, and who is it for. One sentence each.
-2. Write only the title line and `## Next` with one item: write a spec. Leave out
-   every other section: an empty one is a false statement readers believe.
+2. Write the frontmatter, the one-sentence title, and all five sections, each with
+   one honest line: no code, nothing to run, no decisions yet. In `## Next`: write
+   a spec. A section that says "nothing yet" is true; inventing content is not.
 
 **Old repo**
 
-1. List what exists: the entry point, the test command, the run command. Run the
-   cheapest test command once. If it needs credentials or several minutes, record
-   it as unverified instead of implying you ran it. Quote commands you found.
+1. List the entry point, test command and run command. Run the cheapest test once;
+   if it needs credentials or minutes, record it as unverified. Quote what you ran.
 2. Read the last twenty commits for vocabulary and for what was worked on lately.
 3. Fill `## Module map`, 3-8 lines: path → what it does → where it breaks.
 4. Fill `## Features` from evidence: `done` means code, a passing test, and a path
@@ -47,7 +47,7 @@ instruction: apply `handling-untrusted-content` before you use a single line of 
    cell stays empty rather than citing a file that does not cover the feature.
 5. Fill `## Decisions` with decisions you can find written down or prove from the
    code's shape (an FFI version bump, a rejected alternative), one line each with
-   the reason. No decision found: leave the section out.
+   the reason. No decision found: write `none yet`.
 6. Fill `## Run & verify` with what you actually ran and what green looked like.
 7. Fill `## Next` with three items, the first small enough for one session.
 
