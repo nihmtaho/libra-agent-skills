@@ -60,11 +60,10 @@ for dir in "$root"/skills/*/; do
       esac
       ;;
   esac
-  # A skill that reads pull request text takes orders from a stranger unless its
-  # own rules say that text is data.
-  if grep -qE '\bPR\b|pull request' "$f"; then
+  # A skill whose input includes outsider text must say that text is data.
+  if grep -qE '\bPR\b|pull request|docs/imports|Word|Excel|PDF|web page|ticket' "$f"; then
     grep -q 'untrusted' "$f" ||
-      { echo "FAIL $name: PR text is read but never called untrusted"; fail=1; }
+      { echo "FAIL $name: outside text is read but never called untrusted"; fail=1; }
   fi
 done
 
