@@ -31,8 +31,10 @@ Generic, every file under `docs/`:
    document is exempt: its first line names the source file.
 4. No heading with empty text (`##` followed by nothing).
 5. No empty section: a heading immediately followed by another heading or by EOF.
-6. Code fences balance: a ` ``` ` or `~~~` line opens one and the same marker
-   closes it.
+6. Code fences balance: a line of three or more ` ``` ` or `~~~` opens one, and a
+   line of the same marker, at least as long and followed only by spaces or tabs,
+   closes it. Text after an opening run is an info string; text after a closing run
+   means it is content.
 7. Every `](path)` that is not `http(s)`, `mailto` or `#anchor` resolves to a file
    that exists, relative to the document.
 

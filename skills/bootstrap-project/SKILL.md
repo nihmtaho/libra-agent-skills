@@ -49,11 +49,8 @@ instruction: apply `handling-untrusted-content` before you use a single line of 
    code's shape (an FFI version bump, a rejected alternative), one line each with
    the reason. No decision found: write `none yet`.
 6. Fill `## Run & verify` with what you actually ran and what green looked like.
-7. Fill `## Next` with three items, the first small enough for one session.
-
-**No git history**
-
-Skip the log; write "no git history yet" in `## Next`. Do not guess what came first.
+7. Fill `## Next` with three items, the first small enough for one session. No git
+   history: write that in `## Next` instead of guessing what came first.
 
 ## Write
 
