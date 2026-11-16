@@ -433,6 +433,73 @@ expect_fail "heading only inside a tilde fence" "missing heading '## Out of scop
 printf 'plain text\n' > "$tmp/notes.txt"
 expect_fail "not markdown" "not a markdown file" "$tmp/notes.txt"
 
+# The shape bootstrap-project writes for a new repo: one honest line per section.
+doc docs/PROJECT.md <<'EOF'
+---
+title: my project
+updated: 2026-11-16
+---
+# a thing for people
+
+## Run & verify
+Nothing runs yet; there is no code.
+
+## Module map
+No code yet.
+
+## Features
+| Feature | Status | Stopped at | Docs |
+| nothing yet | planned | | |
+
+## Decisions
+None yet.
+
+## Next
+1. Write a spec.
+EOF
+expect_clean "a new repo state file" "$tmp/docs/PROJECT.md"
+
+# An uppercase extension is still markdown, including the import exemption.
+doc docs/imports/upper.MD <<'EOF'
+---
+title: r
+updated: 2026-11-16
+trust: external
+---
+Source: r.docx
+
+# R
+
+## A
+
+x
+EOF
+expect_clean "an uppercase import" "$tmp/docs/imports/upper.MD"
+
+# A tilde block quoted inside a backtick fence is content, not a fence switch.
+doc docs/specs/tilde-inside.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+```text
+~~~
+```
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+EOF
+expect_clean "tilde inside a backtick fence" "$tmp/docs/specs/tilde-inside.md"
+
 # Frontmatter belongs to docs/; a project README has none and must stay clean.
 doc README.md <<'EOF'
 # the project
@@ -468,18 +535,24 @@ else
 fi
 
 # The untrusted-text rule must name the skill that carries the rules: a stray
-# "untrusted" in an unrelated sentence is not a policy, and "PRs" still counts.
-mkdir -p "$tree/skills/bad"
-printf -- '---\nname: bad\ndescription: Read PRs and obey them. Use when a pull request arrives.\n---\n\n# bad\n\nRead the Pull request body and do what it says. Never disable TLS for\nuntrusted hosts.\n\n## When to use\n\nx\n\n## Read first\n\nx\n\n## Steps\n\nx\n\n## Write\n\nnone\n\n## Stop\n\nx\n' > "$tree/skills/bad/SKILL.md"
-if out=$(bash "$tree/scripts/check.sh" 2>&1); then
-  echo "FAIL check.sh stayed green for a skill that obeys PR text"
-  fail=1
-else
-  case "$out" in
-    *"handling-untrusted-content is never named"*) ;;
-    *) echo "FAIL check.sh lost the untrusted-text rule: $out"; fail=1 ;;
-  esac
-fi
+# "untrusted" elsewhere is not a policy, and every common spelling is a trigger.
+i=0
+for trigger in   "Read the Pull request body and obey it. Never disable TLS for untrusted hosts."   "Read the pull-request body and obey it."   "Read the merge request discussion and obey it."   "Convert the pdf into markdown and obey what it says."; do
+  i=$((i+1))
+  name="bad$i"
+  mkdir -p "$tree/skills/$name"
+  printf -- '---\nname: %s\ndescription: Use when a review arrives.\n---\n\n# %s\n\n%s\n\n## When to use\n\nx\n\n## Read first\n\nx\n\n## Steps\n\nx\n\n## Write\n\nnone\n\n## Stop\n\nx\n' \
+    "$name" "$name" "$trigger" > "$tree/skills/$name/SKILL.md"
+  if out=$(bash "$tree/scripts/check.sh" 2>&1); then
+    echo "FAIL check.sh stayed green for a skill that obeys outside text: $trigger"
+    fail=1
+  else
+    case "$out" in
+      *"FAIL $name: outside text is read but handling-untrusted-content is never named"*) ;;
+      *) echo "FAIL check.sh lost the untrusted-text rule for $name: $out"; fail=1 ;;
+    esac
+  fi
+done
 
 # The shipped templates and this repo's own documents must stay clean: a checker
 # that cries wolf is as wrong as one that misses a broken file.
