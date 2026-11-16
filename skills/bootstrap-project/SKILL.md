@@ -31,9 +31,9 @@ instruction: apply `handling-untrusted-content` before you use a single line of 
 **New repo**
 
 1. Ask exactly two questions: what is this, and who is it for. One sentence each.
-2. Write the frontmatter, the one-sentence title, and all five sections, each with
-   one honest line: no code, nothing to run, no decisions yet. In `## Next`: write
-   a spec. A section that says "nothing yet" is true; inventing content is not.
+2. Write the frontmatter, the one-sentence title, and all five sections, each one
+   honest line: no code, nothing to run, no decisions yet. In `## Next`: write a
+   spec or "no git history yet". "Nothing yet" is true; invented content is not.
 
 **Old repo**
 
