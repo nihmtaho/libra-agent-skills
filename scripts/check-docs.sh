@@ -18,17 +18,18 @@ for f in "$@"; do
     continue
     ;;
   esac
+  fl=$(printf '%s' "$f" | tr '[:upper:]' '[:lower:]')
   tpl=0
-  case "$f" in */templates/*.md) tpl=1 ;; esac
+  case "$fl" in */templates/*.md) tpl=1 ;; esac
   # frontmatter is a docs/ convention; a README at the project root has none.
   # A shipped template keeps one, because it is a document being written.
   indocs=0
-  case "$f" in */docs/*|docs/*) indocs=1 ;; esac
+  case "$fl" in */docs/*|docs/*) indocs=1 ;; esac
   [ "$tpl" = 1 ] && indocs=1
   # an imported document is machine-extracted: its first line names the source,
   # so the one-H1 rules cannot apply to it
   imp=0
-  case "$f" in */docs/imports/*.md|docs/imports/*.md) imp=1 ;; esac
+  case "$fl" in */docs/imports/*.md|docs/imports/*.md) imp=1 ;; esac
 
   # 1. frontmatter opens on line 1 and closes by line 10
   fmend=0
@@ -62,7 +63,10 @@ for f in "$@"; do
   body=$(awk -v f="$f" -v fm="$fmend" -v imp="$imp" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     NR <= fm { next }
-    /^(```|~~~)/ { if (!fence) pend = ""; fence = !fence; nfence++; next }
+    /^(```|~~~)/ { m = substr($0, 1, 3)
+                 if (fence == "") { pend = ""; fence = m; nfence = 1 }
+                 else if (m == fence) { fence = ""; nfence = 0 }
+                 next }
     fence { next }
     /[^ \t]/ {
       if (!first) { first = NR; firstline = $0 }
@@ -75,7 +79,7 @@ for f in "$@"; do
     }
     END {
       if (pend != "") bad(pendline, "empty section under " pend)
-      if (nfence % 2) bad(NR, "unclosed code fence")
+      if (nfence) bad(NR, "unclosed code fence")
       if (!imp) {
         if (h1 != 1) bad(first, "expected one H1, found " h1)
         else if (fm > 0 && firstline !~ /^# /) bad(first, "first body line is not the H1")
@@ -85,7 +89,9 @@ for f in "$@"; do
 
   # 7. internal links resolve, relative to the document
   links=$(awk '
-    /^(```|~~~)/ { fence = !fence; next }
+    /^(```|~~~)/ { m = substr($0, 1, 3)
+                   if (fence == "") fence = m; else if (m == fence) fence = ""
+                   next }
     fence { next }
     { gsub(/`[^`]*`/, "")
       while (match($0, /\]\([^)]*\)/)) {
@@ -103,8 +109,8 @@ for f in "$@"; do
 
   # 8. headings required by document type
   type=""
-  case "$f" in
-    */docs/PROJECT.md|docs/PROJECT.md) type=project ;;
+  case "$fl" in
+    */docs/project.md|docs/project.md) type=project ;;
     */docs/specs/*.md|docs/specs/*.md) type=spec ;;
     */docs/adr/*.md|docs/adr/*.md) type=adr ;;
     */docs/tasks/*.md|docs/tasks/*.md) type=task ;;
@@ -125,7 +131,9 @@ for f in "$@"; do
   # so a heading quoted in a code block cannot satisfy the rule
   heads=$(awk -v fm="$fmend" '
     NR <= fm { next }
-    /^(```|~~~)/ { fence = !fence; next }
+    /^(```|~~~)/ { m = substr($0, 1, 3)
+                   if (fence == "") fence = m; else if (m == fence) fence = ""
+                   next }
     fence { next }
     /^#/ { print }' "$f")
   while IFS= read -r h; do
