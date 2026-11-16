@@ -449,6 +449,7 @@ No code yet.
 
 ## Features
 | Feature | Status | Stopped at | Docs |
+|---|---|---|---|
 | nothing yet | planned | | |
 
 ## Decisions
@@ -499,6 +500,58 @@ x
 x
 EOF
 expect_clean "tilde inside a backtick fence" "$tmp/docs/specs/tilde-inside.md"
+
+# A four-backtick block quoting a three-backtick one: the quoted heading and link
+# are content, so the document stays clean and the quoted link is not checked.
+doc docs/specs/quad-fence.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+````markdown
+```
+# quoted
+[gone](nope.md)
+```
+````
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+EOF
+expect_clean "a quoted block inside a longer fence" "$tmp/docs/specs/quad-fence.md"
+
+doc docs/specs/quad-hidden.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+x
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+````markdown
+```
+## Out of scope
+```
+````
+EOF
+expect_fail "heading only inside a four-backtick fence" "missing heading '## Out of scope'" "$tmp/docs/specs/quad-hidden.md"
 
 # Frontmatter belongs to docs/; a project README has none and must stay clean.
 doc README.md <<'EOF'
