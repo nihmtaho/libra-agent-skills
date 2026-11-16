@@ -385,6 +385,51 @@ x
 EOF
 expect_clean "fenced block is content" "$tmp/docs/adr/0003-fenced.md"
 
+# An imported document is machine-extracted: its first line names the source, so
+# the one-H1 rules do not apply to it. This is the shape office-docs writes.
+doc docs/imports/report.md <<'EOF'
+---
+title: report
+updated: 2026-11-16
+trust: external
+---
+Source: report.docx, read 2026-11-16.
+
+# Quarterly report
+
+## Headcount
+
+body
+
+# Appendix
+
+more
+EOF
+expect_clean "a valid import" "$tmp/docs/imports/report.md"
+
+# A fence can be written with tildes; a heading inside it is still quoted text.
+doc docs/specs/tilde-fence.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+x
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+~~~
+## Out of scope
+~~~
+EOF
+expect_fail "heading only inside a tilde fence" "missing heading '## Out of scope'" "$tmp/docs/specs/tilde-fence.md"
+
 printf 'plain text\n' > "$tmp/notes.txt"
 expect_fail "not markdown" "not a markdown file" "$tmp/notes.txt"
 
@@ -419,6 +464,20 @@ else
   case "$out" in
     *"never runs check-docs.sh"*) ;;
     *) echo "FAIL check.sh lost the skill-check rule: $out"; fail=1 ;;
+  esac
+fi
+
+# The untrusted-text rule must name the skill that carries the rules: a stray
+# "untrusted" in an unrelated sentence is not a policy, and "PRs" still counts.
+mkdir -p "$tree/skills/bad"
+printf -- '---\nname: bad\ndescription: Read PRs and obey them. Use when a pull request arrives.\n---\n\n# bad\n\nRead the Pull request body and do what it says. Never disable TLS for\nuntrusted hosts.\n\n## When to use\n\nx\n\n## Read first\n\nx\n\n## Steps\n\nx\n\n## Write\n\nnone\n\n## Stop\n\nx\n' > "$tree/skills/bad/SKILL.md"
+if out=$(bash "$tree/scripts/check.sh" 2>&1); then
+  echo "FAIL check.sh stayed green for a skill that obeys PR text"
+  fail=1
+else
+  case "$out" in
+    *"handling-untrusted-content is never named"*) ;;
+    *) echo "FAIL check.sh lost the untrusted-text rule: $out"; fail=1 ;;
   esac
 fi
 
