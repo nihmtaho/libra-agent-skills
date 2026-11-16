@@ -63,9 +63,10 @@ for f in "$@"; do
   body=$(awk -v f="$f" -v fm="$fmend" -v imp="$imp" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     NR <= fm { next }
-    /^(```|~~~)/ { m = substr($0, 1, 3)
-                 if (fence == "") { pend = ""; fence = m; nfence = 1 }
-                 else if (m == fence) { fence = ""; nfence = 0 }
+    match($0, /^(`{3,}|~{3,})/) {
+                 ch = substr($0, 1, 1); w = RLENGTH
+                 if (fence == "") { pend = ""; fence = ch; fw = w; nfence = 1 }
+                 else if (ch == fence && w >= fw) { fence = ""; nfence = 0 }
                  next }
     fence { next }
     /[^ \t]/ {
@@ -89,9 +90,11 @@ for f in "$@"; do
 
   # 7. internal links resolve, relative to the document
   links=$(awk '
-    /^(```|~~~)/ { m = substr($0, 1, 3)
-                   if (fence == "") fence = m; else if (m == fence) fence = ""
-                   next }
+    match($0, /^(`{3,}|~{3,})/) {
+      ch = substr($0, 1, 1); w = RLENGTH
+      if (fence == "") { fence = ch; fw = w }
+      else if (ch == fence && w >= fw) fence = ""
+      next }
     fence { next }
     { gsub(/`[^`]*`/, "")
       while (match($0, /\]\([^)]*\)/)) {
@@ -131,9 +134,11 @@ for f in "$@"; do
   # so a heading quoted in a code block cannot satisfy the rule
   heads=$(awk -v fm="$fmend" '
     NR <= fm { next }
-    /^(```|~~~)/ { m = substr($0, 1, 3)
-                   if (fence == "") fence = m; else if (m == fence) fence = ""
-                   next }
+    match($0, /^(`{3,}|~{3,})/) {
+      ch = substr($0, 1, 1); w = RLENGTH
+      if (fence == "") { fence = ch; fw = w }
+      else if (ch == fence && w >= fw) fence = ""
+      next }
     fence { next }
     /^#/ { print }' "$f")
   while IFS= read -r h; do
