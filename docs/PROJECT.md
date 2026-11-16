@@ -30,6 +30,6 @@ updated: 2026-11-16
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
 
 ## Next
-1. Make `office-docs` check the markdown file only, so passing the original Word file cannot earn a FAIL the agent cannot fix.
-2. Test the set on a third project (manual); record the report here.
-3. Use the set for a week on real work, then pick up [the deferred list](plans/2026-11-15-next-phases-plan.md); write down what snags here.
+1. Install `v0.1.1` into a third project and watch the checker on the first document it writes; record the report here.
+2. Use the set for a week on real work; write down what snags, with the exact words that were said.
+3. Then pick up [the deferred list](plans/2026-11-15-next-phases-plan.md).
