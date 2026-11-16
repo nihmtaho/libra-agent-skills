@@ -60,6 +60,12 @@ for dir in "$root"/skills/*/; do
       esac
       ;;
   esac
+  # A skill that reads pull request text takes orders from a stranger unless its
+  # own rules say that text is data.
+  if grep -qE '\bPR\b|pull request' "$f"; then
+    grep -q 'untrusted' "$f" ||
+      { echo "FAIL $name: PR text is read but never called untrusted"; fail=1; }
+  fi
 done
 
 if [ "$skill_count" -eq 0 ]; then
