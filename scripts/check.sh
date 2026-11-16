@@ -60,10 +60,12 @@ for dir in "$root"/skills/*/; do
       esac
       ;;
   esac
-  # A skill whose input includes outsider text must say that text is data.
-  if grep -qE '\bPR\b|pull request|docs/imports|Word|Excel|PDF|web page|ticket' "$f"; then
-    grep -q 'untrusted' "$f" ||
-      { echo "FAIL $name: outside text is read but never called untrusted"; fail=1; }
+  # A skill whose input includes outsider text must name the rule that makes that
+  # text data: a stray "untrusted" in another sentence is not a policy.
+  if grep -qiE '\bprs?\b|pull request' "$f" ||
+     grep -qE 'docs/imports|Word|Excel|PDF|web page|ticket' "$f"; then
+    grep -q 'handling-untrusted-content' "$f" ||
+      { echo "FAIL $name: outside text is read but handling-untrusted-content is never named"; fail=1; }
   fi
 done
 
