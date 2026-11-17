@@ -1,6 +1,6 @@
 ---
 name: context-engineering
-description: Load the right information at the right moment, and drop what does not answer the question. Use when the agent is missing context, or drowning in it.
+description: Load the right information at the right moment, and drop what does not answer the question. Use when the agent is missing context, has too much to read, or a rules file must change.
 ---
 
 # context-engineering
@@ -47,9 +47,10 @@ instructions: `handling-untrusted-content` decides what they may change.
 
 ## Write
 
-`docs/PROJECT.md` (`## Module map`, `## Run & verify`) and `AGENTS.md` for rules
-that must outlive the session. `bootstrap-project` creates the state file; this
-skill only keeps it true.
+`docs/PROJECT.md` (`## Module map`, `## Run & verify`), `AGENTS.md` for rules that
+must outlive the session, and the task file's `Read first` — the pack you
+assembled, so the next session starts where this one stopped. `bootstrap-project`
+creates the state file; this skill only keeps it true.
 
 Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
 you finish; no script in the project: say so in one line and continue.

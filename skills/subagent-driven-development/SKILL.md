@@ -11,11 +11,11 @@ reviewed.
 
 ## When to use
 
-Use when two or more tasks in `docs/tasks/` touch disjoint paths, when a search
-must stay out of your context, or when a second reader is needed from someone who
-did not write the change.
-Not for a task that needs another's output first, and not when the tasks share a
-file: run those one after the other.
+Use when two or more tasks in `docs/tasks/` touch disjoint paths and can run at
+the same time.
+Not for a task that needs another's output first, not when the tasks share a
+file, and not for a read-only search or a second opinion: those are
+`context-engineering` and `doubt-driven-development`.
 
 ## Read first
 
@@ -34,10 +34,11 @@ file: run those one after the other.
    and what it could not verify. Not a summary of how it felt.
 4. Run the suite yourself after each return. A subagent's green is not the
    project's green: it may have run a subset, or the wrong version.
-5. Commit from the parent, one slice at a time, and tick the box there. A
-   subagent never commits, never pushes, and never ticks a box.
+5. Commit from the parent, one slice at a time. A subagent never commits, never
+   pushes, and never ticks a box; the parent records the slice through
+   `incremental-implementation`.
 6. If two returns changed the same file, the split was wrong. Land one, rerun the
-   other, and say so in the task file's `Stopped at:`.
+   other, and say so in your reply, so the slice is recorded with its stop point.
 
 ## Write
 

@@ -1,6 +1,6 @@
 ---
 name: frontend-ui-engineering
-description: Build a screen from components, one design system and one state model, and make it work at every width and for every keyboard. Use when building or changing a component, a responsive layout, or an accessibility fix.
+description: Build a screen from components, one design system and one state model, and make it work at every width and for every keyboard. Use when building or changing a component, a responsive layout, or an accessibility (a11y) fix.
 ---
 
 # frontend-ui-engineering

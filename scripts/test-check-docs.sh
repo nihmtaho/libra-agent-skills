@@ -674,7 +674,7 @@ else
 fi
 
 # Put the tree back, so each later case fails only for its own reason.
-cp "$root/skills/build/SKILL.md" "$tree/skills/build/SKILL.md"
+cp "$root/skills/incremental-implementation/SKILL.md" "$tree/skills/incremental-implementation/SKILL.md"
 
 # The untrusted-text rule must name the skill that carries the rules: a stray
 # "untrusted" elsewhere is not a policy, and every common spelling is a trigger.

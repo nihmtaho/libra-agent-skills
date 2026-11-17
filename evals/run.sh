@@ -87,7 +87,11 @@ for step in 'test-driven-development' 'incremental-implementation'; do
   steps_body "$root/skills/build/SKILL.md" | grep -qiF -- "$step" ||
     { echo "FAIL build: the dispatcher does not route to $step"; fail=1; }
 done
+steps_body "$root/skills/build/SKILL.md" | grep -qF 'not done, whatever the suite says' ||
+  { echo "FAIL build: TDD and incremental are a menu, not a rule"; fail=1; }
 has build 'Spike mode' 'a throwaway would have to pass the tests'
+steps_body "$root/skills/build/SKILL.md" | grep -qF 'skip the tests' ||
+  { echo "FAIL build: the spike exception does not say the tests are skipped"; fail=1; }
 write_body "$root/skills/build/SKILL.md" | grep -q 'none' ||
   { echo "FAIL build: Write must be none, it dispatches"; fail=1; }
 
@@ -96,12 +100,14 @@ steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git r
   { echo "FAIL incremental-implementation: may commit without knowing the branch"; fail=1; }
 has incremental-implementation 'One slice, one commit' 'a slice is not tied to a commit'
 has incremental-implementation 'Conventional Commits'  'the commit convention is gone'
-has incremental-implementation 'co-author'             'an AI signature is allowed'
+has incremental-implementation 'never a co-author'      'an AI signature is allowed'
 has incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
   { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Stopped at:' ||
   { echo "FAIL incremental-implementation: a stop position is a mood, not a line"; fail=1; }
+steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Tick the box' ||
+  { echo "FAIL incremental-implementation: a landed slice is never reported"; fail=1; }
 
 # --- test-driven-development: the order, and the trap ----------------------
 has test-driven-development 'A test that passes before any change' 'a test of nothing is allowed'
@@ -135,7 +141,8 @@ write_body "$root/skills/source-driven-development/SKILL.md" | grep -q 'none' ||
 # --- subagent-driven-development: the parent keeps the commit -------------
 has subagent-driven-development 'overlap table'      'parallel work is dispatched without checking paths'
 has subagent-driven-development 'never commits'      'a subagent can commit'
-has subagent-driven-development 'A subagent'         'the parent may trust a subagent green'
+steps_body "$root/skills/subagent-driven-development/SKILL.md" | grep -qF 'Run the suite yourself' ||
+  { echo "FAIL subagent-driven-development: the parent may trust a subagent green"; fail=1; }
 write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' ||
   { echo "FAIL subagent-driven-development: Write must be none, the parent writes"; fail=1; }
 

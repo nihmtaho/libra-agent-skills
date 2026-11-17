@@ -71,10 +71,12 @@ and leave the set worse than it is now, at 26 skills instead of 18.
 `incremental-implementation` inherits the two rules `build` had for
 `docs/tasks/<feature>.md`: tick the box, and write `Stopped at:` when it stops
 mid-task. It does not become the file's only writer, because it is not:
-`plan-work` creates the file, and `debug` and `ship` amend it. The one-owner rule
-stays scoped to `docs/specs/`, `docs/ideas/` and `docs/CONSTRAINTS.md`, which is
-what `evals/run.sh` checks today. `docs/PROJECT.md` already has eleven writers;
-that is by design, because it is the state file.
+`plan-work` creates the file, `context-engineering` fills its `Read first`,
+`debug` and `ship` amend it, and `subagent-driven-development` reports the slice
+back so `incremental-implementation` can record it. The one-owner rule stays
+scoped to `docs/specs/`, `docs/ideas/` and `docs/CONSTRAINTS.md`, which is what
+`evals/run.sh` checks today. `docs/PROJECT.md` already has eleven writers; that is
+by design, because it is the state file.
 
 ## The dispatcher's order
 
@@ -103,7 +105,7 @@ a reader is holding when they need it; `test-driven-development` stays absolute.
 - `test-driven-development` — "no failing test yet", "test written after code".
 - `incremental-implementation` — "too big", "too risky", "rollback", "flag".
 - `context-engineering` — "missing context", "too much to read", "rules file".
-- `source-driven-development` — "which library", "how does this API work",
+- `source-driven-development` — "which library", "how does this API behave",
   "cite the docs".
 - `doubt-driven-development` — "a claim no command can check", "re-derive it".
 - `frontend-ui-engineering` — "component", "layout", "responsive", "a11y".
@@ -151,9 +153,13 @@ without a test as unfinished.
 - [x] `ls skills | wc -l` prints 26, the README loop lists 26 names, and the
       README prose says twenty-six.
 - [x] Deleting the `test-driven-development` step from `build`'s `## Steps` fails
-      `evals/run.sh`.
+      `evals/run.sh`, and so does removing the sentence that makes steps 2 and 3
+      mandatory: a menu must not pass.
 - [x] Deleting the tick-the-box and `Stopped at:` rules from
       `incremental-implementation`'s `## Steps` fails `evals/run.sh`.
+- [x] Every trigger word in this spec appears in exactly one description, and
+      each routing case names one phrase rather than an OR that a live branch can
+      carry alone.
 - [x] `bash scripts/test-routing.sh` passes with the eight new names and fails
       when two of them are given the same trigger words; `verify`/`doubt` and
       `review`/`incremental` each have a case that separates them.

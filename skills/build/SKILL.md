@@ -48,8 +48,9 @@ document comes out of a spike; if it produced documents, it was not a spike.
 
 ## Write
 
-`none` — this skill dispatches. `incremental-implementation` writes the task
-file, and `doubt-driven-development` writes `## Next` when a claim fails.
+`none` — this skill dispatches. `incremental-implementation` ticks the task file
+and records the stop, `context-engineering` fills its `Read first`, and
+`doubt-driven-development` writes `## Next` when a claim fails.
 
 ## Stop
 

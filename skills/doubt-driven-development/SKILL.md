@@ -1,6 +1,6 @@
 ---
 name: doubt-driven-development
-description: Put an important claim through CLAIM, EXTRACT, DOUBT, RECONCILE and STOP in a fresh context before relying on it. Use when the answer rests on reasoning no command can check, and being wrong is expensive.
+description: Put an important claim through CLAIM, EXTRACT, DOUBT, RECONCILE and STOP in a fresh context before relying on it. Use when a claim must be re-derived in a fresh context and no command can check it.
 ---
 
 # doubt-driven-development

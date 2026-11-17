@@ -34,14 +34,18 @@ route 'no bar written down|weakened'                  constraint-driven-developm
 
 # Neighbours that must not be swallowed by the new four.
 route 'ordered tasks|spec is accepted'                plan-work
-route 'failing test first'                            test-driven-development
-route 'too big|too risky'                             incremental-implementation
-route 'no command can check|re-derive'                doubt-driven-development
-route 'missing context|too much to read|rules file'   context-engineering
-route 'which library|cannot be proved from'           source-driven-development
-route 'in parallel|independent tasks'                 subagent-driven-development
-route 'responsive|a11y|component'                     frontend-ui-engineering
-route 'response shape|error format'                   api-and-interface-design
+route 'no failing test'                               test-driven-development
+route 'too big'                                       incremental-implementation
+route 'rollback'                                      incremental-implementation
+route 'no command can check'                          doubt-driven-development
+route 'missing context'                               context-engineering
+route 'has too much to read'                          context-engineering
+route 'rules file'                                    context-engineering
+route 'which library'                                 source-driven-development
+route 'in parallel'                                   subagent-driven-development
+route 'a11y'                                          frontend-ui-engineering
+route 'adding an endpoint'                            api-and-interface-design
+route 'ready to implement'                            build
 route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
 

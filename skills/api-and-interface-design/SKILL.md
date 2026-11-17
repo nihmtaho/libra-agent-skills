@@ -1,6 +1,6 @@
 ---
 name: api-and-interface-design
-description: Write the contract before the handler — shapes, errors, versioning, validation at the boundary. Use when adding or changing an API, a response shape or an error format.
+description: Write the contract before the handler — shapes, errors, versioning, validation at the boundary. Use when adding an endpoint or changing an API, a response shape or an error format.
 ---
 
 # api-and-interface-design

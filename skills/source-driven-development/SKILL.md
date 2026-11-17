@@ -1,6 +1,6 @@
 ---
 name: source-driven-development
-description: Ground a framework or API decision in the official source, and cite it. Use when choosing a library, or when a claim about how an API behaves cannot be proved from the repository.
+description: Ground a framework or API decision in the official source, and cite it. Use when choosing which library to use, or when a claim about how an API behaves cannot be proved from the repository.
 ---
 
 # source-driven-development

@@ -4,7 +4,8 @@ All notable changes to this skill set. Earlier releases are in the git tags.
 
 ## [Unreleased]
 
-The release phase gets an owner, and `ship` stops pointing at nothing.
+The Build phase splits into eight skills behind one dispatcher, and the release
+phase gets an owner.
 
 ### Added
 - `release`: four gates before a tag, the changelog before the tag, an annotated

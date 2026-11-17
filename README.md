@@ -62,7 +62,15 @@ cp -R /path/to/libra-agent-skills/skills/* /your-project/.agents/skills/
 | Define | `constraint-driven-development` | The quality bar in `CONSTRAINTS.md`, and proof it did not move |
 | Define | `decide` | An ADR with rejected options and consequences |
 | Plan | `plan-work` | One task file per feature, with checkable acceptance |
-| Build | `build` | One thin slice: failing test first, small commit |
+| Build | `build` | Dispatch one ready task to the skill that runs next |
+| Build | `test-driven-development` | Red, green, refactor; 80/15/5; DAMP over DRY |
+| Build | `incremental-implementation` | Thin slices, a flag when risky, one slice per commit |
+| Build | `doubt-driven-development` | CLAIM, EXTRACT, DOUBT, RECONCILE, STOP in a fresh context |
+| Build | `context-engineering` | The smallest reading that answers the question |
+| Build | `source-driven-development` | The version pinned, the primary source cited |
+| Build | `subagent-driven-development` | Parallel tasks, parent keeps the commit |
+| Build | `frontend-ui-engineering` | Tokens, components, state, three widths, WCAG 2.1 AA |
+| Build | `api-and-interface-design` | The contract before the handler |
 | Build | `debug` | Five steps to a root-cause fix |
 | Build | `office-docs` | Reads Word, Excel, PDF as untrusted data |
 | Verify | `verify` | Real output, no lowered bar |

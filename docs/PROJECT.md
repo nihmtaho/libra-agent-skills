@@ -9,7 +9,7 @@ updated: 2026-11-18
 - `bash scripts/check.sh` — the skill contract: frontmatter, length, headings, forbidden tokens, the `check-docs.sh` line in every `## Write`, byte-identical checker copies, the README uninstall loop, and the empty sections of `PROJECT.md`.
 - `bash scripts/check-docs.sh <file>` — one document against the rules in `docs/specs/markdown-check.md`.
 - `bash scripts/test-routing.sh` — a request a human would type must match exactly one skill description; two skills answering the same words fail.
-- `bash evals/run.sh` — contract evals for the four Define skills, one owner per artifact, and every behavior case's grader self-test.
+- `bash evals/run.sh` — contract evals for the Define and Build skills, one owner per artifact, and every behavior case's grader self-test.
 - `bash evals/behavior/run.sh <case>` — prepares a sandbox and prints the prompt; `--verify <dir>` grades it, `--self-test` proves the grader can fail.
 - `bash evals/routing/run.sh` — ten requests a model must route to the right skill; `--verify <dir>` grades the answers, `--self-test` proves the grader can fail.
 - Sign of success: exit 0, and five lines `all checks passed`, `fixtures passed`, `routing passed`, `evals passed`, `install tests passed`.
@@ -23,8 +23,8 @@ updated: 2026-11-18
 - `scripts/test-install.sh` — symlink, run twice, refuse to overwrite, the Office-reading script must run from the installed destination.
 - `docs/` — the backbone of this repo itself; this repo is the first place it is dogfooded.
 - `docs/CONSTRAINTS.md` — this repo's own quality bar; `constraint-driven-development` is dogfooded here first.
-- `docs/api/` — a contract written before the handler, one file per interface; owner `api-and-interface-design`.
-- `docs/design-system.md` — tokens, the components that exist, and where state lives; owner `frontend-ui-engineering`.
+- `docs/api/` — the document type this set writes into a project, one file per interface; owner `api-and-interface-design`. Not used in this repo.
+- `docs/design-system.md` — the document type for tokens, components and where state lives; owner `frontend-ui-engineering`. Not used in this repo.
 - `evals/` — contract evals for the Define and Build skills, plus the live rubric a human runs by hand.
 
 ## Features
