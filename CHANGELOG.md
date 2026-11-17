@@ -13,6 +13,8 @@ The release phase gets an owner, and `ship` stops pointing at nothing.
 ### Changed
 - `ship` names `release` instead of deferring to "a separate decision", and says
   that nothing to merge is normal, not permission to tag.
+- `build` prints the branch before the first commit, and stops when it is not the
+  branch the work was started on.
 
 ## [0.1.2] - 2026-11-17
 

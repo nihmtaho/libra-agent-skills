@@ -31,9 +31,12 @@ Not for throwaway exploration; that is the spike mode at the end of this file.
 4. Tick the box, and if you stop mid-task write the exact position in
    `Stopped at:`, for example `T2, retry not on yet`. A position someone can
    resume from, not a mood.
-5. Commit small, Conventional Commits, and never include a co-author line or an
+5. Before the first commit, print the branch you are on:
+   `git rev-parse --abbrev-ref HEAD`. A commit on a branch you did not choose is
+   a merge nobody planned, and the mistake is invisible until release time.
+6. Commit small, Conventional Commits, and never include a co-author line or an
    AI signature.
-6. New dependency or framework decision? Stop and run `decide`; do not bury it
+7. New dependency or framework decision? Stop and run `decide`; do not bury it
    in this commit.
 
 **Spike mode**, when the human wants to learn rather than ship: build the
@@ -52,5 +55,5 @@ you finish; no script in the project: say so in one line and continue.
 ## Stop
 
 Stop when the acceptance line cannot be checked, when the task needs a decision
-the spec does not make, or when making the test pass would require disabling a
-check. Report which one.
+the spec does not make, when making the test pass would require disabling a
+check, or when the branch you are on is not the one you said. Report which one.

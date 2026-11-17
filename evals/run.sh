@@ -82,6 +82,9 @@ for s in idea-refine spec-driven-development constraint-driven-development; do
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
 
+# --- build: a commit knows its branch ---------------------------------------
+has build 'git rev-parse --abbrev-ref HEAD' 'may commit without knowing the branch'
+
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
             'git status -sb' 'git tag -l'; do
