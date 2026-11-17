@@ -30,7 +30,8 @@ context.
    series, however small the shared change looks.
 2. Give each subagent four things and nothing more: the task file, the spec
    clause, the command that must go green, and the rule that it may not touch
-   files outside `Touches:`.
+   files outside `Touches:`. For a doubt pass there is no task file: hand the
+   claim and the question instead, and ask for the strongest case against it.
 3. Ask each for three things back: files changed, the real output of the command,
    and what it could not verify. Not a summary of how it felt.
 4. Run the suite yourself after each return. A subagent's green is not the
