@@ -115,6 +115,28 @@ for rung in CLAIM EXTRACT DOUBT RECONCILE STOP; do
 done
 has doubt-driven-development 'Never hand it your conclusion' 'the doubter may be told the answer'
 
+# --- context-engineering: what goes in, and what is data --------------------
+write_body "$root/skills/context-engineering/SKILL.md" | grep -qF 'AGENTS.md' ||
+  { echo "FAIL context-engineering: a rule cannot outlive the session"; fail=1; }
+has context-engineering 'handling-untrusted-content'    'a fetched page may act as an instruction'
+has context-engineering 'Write the pack you assembled'  'the next session searches again'
+write_body "$root/skills/context-engineering/SKILL.md" | grep -qF 'docs/PROJECT.md' ||
+  { echo "FAIL context-engineering: Write does not name docs/PROJECT.md"; fail=1; }
+
+# --- source-driven-development: a claim needs an address ------------------
+has source-driven-development 'Pin the version'                'a claim may be for another version'
+has source-driven-development 'primary source'                 'a blog post counts as a source'
+has source-driven-development 'handling-untrusted-content'     'a fetched page may act as an instruction'
+write_body "$root/skills/source-driven-development/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL source-driven-development: Write must be none, decide writes the ADR"; fail=1; }
+
+# --- subagent-driven-development: the parent keeps the commit -------------
+has subagent-driven-development 'overlap table'      'parallel work is dispatched without checking paths'
+has subagent-driven-development 'never commits'      'a subagent can commit'
+has subagent-driven-development 'A subagent'         'the parent may trust a subagent green'
+write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL subagent-driven-development: Write must be none, the parent writes"; fail=1; }
+
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
             'git status -sb' 'git tag -l' 'git ls-remote --tags origin'; do

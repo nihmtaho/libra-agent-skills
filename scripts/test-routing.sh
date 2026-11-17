@@ -37,6 +37,9 @@ route 'ordered tasks|spec is accepted'                plan-work
 route 'failing test first'                            test-driven-development
 route 'too big|too risky'                             incremental-implementation
 route 'no command can check|re-derive'                doubt-driven-development
+route 'missing context|too much to read|rules file'   context-engineering
+route 'which library|cannot be proved from'           source-driven-development
+route 'in parallel|independent tasks'                 subagent-driven-development
 route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
 

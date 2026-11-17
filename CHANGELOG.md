@@ -15,6 +15,12 @@ The release phase gets an owner, and `ship` stops pointing at nothing.
   commit, and the branch check the commit needs.
 - `doubt-driven-development`: an important claim re-derived in a fresh context
   through CLAIM, EXTRACT, DOUBT, RECONCILE and STOP.
+- `context-engineering`: the smallest set of reading that answers the question,
+  rules that survive a session in `AGENTS.md`, and a refreshed module map.
+- `source-driven-development`: the installed version pinned, the primary source
+  quoted, the citation in the ADR.
+- `subagent-driven-development`: an overlap table by path, the parent keeps the
+  commit, and a subagent's green is not the project's green.
 
 ### Changed
 - `ship` names `release` instead of deferring to "a separate decision", and says
