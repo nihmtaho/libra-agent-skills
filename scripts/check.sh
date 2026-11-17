@@ -74,6 +74,14 @@ if [ "$skill_count" -eq 0 ]; then
   fail=1
 fi
 
+# The README uninstall loop is a command a user runs by hand. If a skill is
+# renamed or added and the loop is not, the documented uninstall leaves a
+# symlink behind and nobody notices until they try it.
+readme_loop=$(sed -n 's/^for s in \(.*\); do$/\1/p' "$root/README.md" | tr ' ' '\n' | sort | tr '\n' ' ')
+actual=$(ls -1 "$root/skills" | sort | tr '\n' ' ')
+[ "$readme_loop" = "$actual" ] ||
+  { echo "FAIL README.md: the uninstall loop does not list the skills that exist"; fail=1; }
+
 # The checker ships inside bootstrap-project and is copied into each project, so
 # the repo copy and the bundled copy must stay byte-identical.
 for f in scripts/check-docs.sh skills/bootstrap-project/scripts/check-docs.sh; do
