@@ -95,7 +95,7 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in bootstrap-project build constraint-driven-development context-engineering debug decide doubt-driven-development handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work release resume review ship simplify source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify; do
+for s in api-and-interface-design bootstrap-project build constraint-driven-development context-engineering debug decide doubt-driven-development frontend-ui-engineering handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work release resume review ship simplify source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

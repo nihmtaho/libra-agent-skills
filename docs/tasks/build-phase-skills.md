@@ -5,7 +5,7 @@ spec: ../specs/build-phase-skills.md
 ---
 # The Build phase becomes eight skills behind one dispatcher
 
-Stopped at: T3, not started
+Stopped at: T4, not started
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 21.
@@ -43,7 +43,7 @@ stop: T2 and T3 only add more of the same.
       points at `bootstrap-project` for creating `docs/PROJECT.md`; it refreshes
       `## Module map` and `## Run & verify` and does not build the file.
 
-- [ ] **T3 — the two domain skills**
+- [x] **T3 — the two domain skills**
       Done means: `bash scripts/test.sh && ls skills | wc -l` exits 0 and prints 26
       Touches: `skills/frontend-ui-engineering/SKILL.md`,
       `skills/api-and-interface-design/SKILL.md`, `README.md`,

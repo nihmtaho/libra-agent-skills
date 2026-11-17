@@ -40,6 +40,8 @@ route 'no command can check|re-derive'                doubt-driven-development
 route 'missing context|too much to read|rules file'   context-engineering
 route 'which library|cannot be proved from'           source-driven-development
 route 'in parallel|independent tasks'                 subagent-driven-development
+route 'responsive|a11y|component'                     frontend-ui-engineering
+route 'response shape|error format'                   api-and-interface-design
 route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
 

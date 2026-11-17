@@ -21,6 +21,10 @@ The release phase gets an owner, and `ship` stops pointing at nothing.
   quoted, the citation in the ADR.
 - `subagent-driven-development`: an overlap table by path, the parent keeps the
   commit, and a subagent's green is not the project's green.
+- `frontend-ui-engineering`: tokens over literals, one responsibility per
+  component, an explicit state model, three widths, and WCAG 2.1 AA.
+- `api-and-interface-design`: the contract in `docs/api/` before the handler, one
+  error format, validation at the boundary, and Hyrum's Law.
 
 ### Changed
 - `ship` names `release` instead of deferring to "a separate decision", and says

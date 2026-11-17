@@ -137,6 +137,20 @@ has subagent-driven-development 'A subagent'         'the parent may trust a sub
 write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' ||
   { echo "FAIL subagent-driven-development: Write must be none, the parent writes"; fail=1; }
 
+# --- frontend-ui-engineering: the system, the widths, the keyboard ---------
+has frontend-ui-engineering 'WCAG 2.1 AA'   'accessibility is a preference, not a rule'
+has frontend-ui-engineering 'keyboard only' 'a screen can be done without the keyboard'
+has frontend-ui-engineering 'Tokens before literals' 'a hex value may live in a component'
+write_body "$root/skills/frontend-ui-engineering/SKILL.md" | grep -qF 'docs/design-system.md' ||
+  { echo "FAIL frontend-ui-engineering: Write does not name docs/design-system.md"; fail=1; }
+
+# --- api-and-interface-design: the contract comes first --------------------
+has api-and-interface-design "Hyrum's Law"     'an observable behaviour is not treated as a contract'
+has api-and-interface-design 'boundary, once'  'validation may be spread through the logic'
+has api-and-interface-design 'idempotent'      'a retryable write may double'
+write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
+  { echo "FAIL api-and-interface-design: Write does not name docs/api/"; fail=1; }
+
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
             'git status -sb' 'git tag -l' 'git ls-remote --tags origin'; do
