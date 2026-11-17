@@ -33,11 +33,11 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 ## Code style
 - The set's voice: short declarative sentences, a command where a command exists.
 - One line per skill in the changelog, never per file.
-- The gates are the four commands as typed, not a description of them.
+- The gates are the commands as typed, not a description of them.
 
 ## Test plan
 - `bash scripts/test.sh` — five green lines.
-- `bash evals/run.sh` — fails when any of the four gate commands is removed from
+- `bash evals/run.sh` — fails when any of the five gate commands is removed from
   the skill; proven by deleting one and re-running.
 - `bash scripts/test-routing.sh` — "cut a version" reaches `release`, "verdict
   passed" still reaches `ship`.

@@ -37,7 +37,8 @@ or a release with nothing to record.
      name.
 
    A tag cut from a feature branch is public before anyone can review it, and
-   moving it afterwards is a lie about what shipped.
+   moving it afterwards is a lie about what shipped. Ahead means push the branch
+   and start again; behind means pull; no upstream means set one.
 2. Version gate: patch for a fix, minor for a new skill, document type or removal
    before 1.0, major after 1.0. When a rename or removal breaks an install, the
    changelog says so in one line, with the command that fixes it.
@@ -68,6 +69,6 @@ you finish; no script in the project: say so in one line and continue.
 ## Stop
 
 Stop when the branch is not the default one, has no upstream, or is ahead of or
-behind it; when the tree is dirty; when the tag exists locally or on the remote;
-when the changelog section is empty; or when the suite is red. Report which gate
-failed and the command output that shows it.
+behind its upstream; when the tree is dirty; when the tag exists locally or on
+the remote; when the changelog section is empty; or when the suite is red. Report
+which gate failed and the command output that shows it.
