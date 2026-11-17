@@ -29,7 +29,7 @@ updated: 2026-11-16
 | Feature | Status | Stopped at | Docs |
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | the Define pipeline (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) | done | | [readme](../README.md) |
-| v0.1.2 release | in progress | | [task](tasks/release-v0-1-2.md) |
+| v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
@@ -39,6 +39,6 @@ updated: 2026-11-16
 - [ADR-0002](adr/0002-four-define-skills-and-constraints-md.md) — `spec-driven-development` replaces `write-spec`; the quality bar lives in `docs/CONSTRAINTS.md`.
 
 ## Next
-1. Install `v0.1.1` into a third project and watch the checker on the first document it writes; record the report here.
+1. Install `v0.1.2` into a third project and watch the checker on the first document it writes; record the report here.
 2. Use the set for a week on real work; write down what snags, with the exact words that were said.
 3. Then pick up [the deferred list](plans/2026-11-15-next-phases-plan.md).

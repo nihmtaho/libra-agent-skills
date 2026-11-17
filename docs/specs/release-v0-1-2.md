@@ -22,8 +22,7 @@ get the set without the four Define skills, and nothing tells them that
 - `CHANGELOG.md` — new at the repo root. Added, Changed, Removed for `0.1.2`.
 - `docs/PROJECT.md` — one Features row for this release, and `## Next` item 1
   moved to v0.1.2.
-- `docs/specs/release-v0-1-2.md` and `docs/tasks/release-v0-1-2.md` — this spec
-  and its plan.
+- `docs/specs/release-v0-1-2.md` — this spec, and the task file that shipped it.
 - `README.md` — only if the install command must name the tag.
 - `evals/run.sh` and `evals/README.md` — contract evals for the four Define
   skills, and the live rubric a human runs.
