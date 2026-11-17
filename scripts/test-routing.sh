@@ -15,7 +15,7 @@ route() { # <regex of a request a human would type> <the one skill that answers 
   hits=""
   for d in "$root"/skills/*/; do
     name=$(basename "$d")
-    if desc_of "$name" | grep -qE "$req"; then hits="$hits $name"; fi
+    if desc_of "$name" | grep -qiE "$req"; then hits="$hits $name"; fi
   done
   [ "$hits" = " $want" ] && return 0
   echo "FAIL routing '$req': expected $want, matched:${hits:- nothing}"
@@ -35,6 +35,8 @@ route 'no bar written down|weakened'                  constraint-driven-developm
 # Neighbours that must not be swallowed by the new four.
 route 'ordered tasks|spec is accepted'                plan-work
 route 'failing test first'                            build
+route 'cut a version'                                 release
+route 'verdict passed'                                ship
 
 [ "$fail" -eq 0 ] && echo "routing passed"
 exit "$fail"

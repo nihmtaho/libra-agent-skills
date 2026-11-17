@@ -9,13 +9,14 @@ bash evals/run.sh
 ```
 
 Silence on success except `evals passed`; one `FAIL <skill>: <rule>` per problem
-and exit 1. It checks that **the rule that does the work is written down**
-(`interview-me` has a stopping rule and a cap, `idea-refine` forces 5 to 7
-options, `spec-driven-development` requires all six parts, and
-`constraint-driven-development` names the four ways a check gets lowered), that
-**one owner per artifact** holds for `docs/specs/`, `docs/ideas/` and
-`docs/CONSTRAINTS.md`, that the wiring between skills is intact, that no skill
-names a dead skill, and that every behavior case below can fail.
+and exit 1. It checks that **the rule that does the work is written down** (`interview-me` has
+a stopping rule and a cap, `idea-refine` forces 5 to 7 options,
+`spec-driven-development` requires all six parts,
+`constraint-driven-development` names the four ways a check gets lowered, and
+`release` gates on the four git commands), that **one owner per artifact** holds
+for `docs/specs/`, `docs/ideas/` and `docs/CONSTRAINTS.md`, that the wiring
+between skills is intact, that no skill names a dead skill, and that every
+behavior case below can fail.
 
 ## 2. Behavior evals
 

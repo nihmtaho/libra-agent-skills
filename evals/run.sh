@@ -8,6 +8,7 @@ root=$(cd "$(dirname "$0")/.." && pwd)
 fail=0
 
 write_body() { awk '/^## Write$/{f=1;next} /^## /{f=0} f' "$1"; }
+steps_body() { awk '/^## Steps$/{f=1;next} /^## /{f=0} f' "$1" | tr '\n' ' ' | tr -s ' '; }
 
 # Prose reflows, so match against a flattened copy: a rule split across two
 # lines is still the rule.
@@ -80,6 +81,15 @@ for s in idea-refine spec-driven-development constraint-driven-development; do
   ls "$root/skills/$s/templates/"*.md >/dev/null 2>&1 ||
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
+
+# --- release: the gates are commands in the steps, not advice ---------------
+for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
+            'git status -sb' 'git tag -l'; do
+  steps_body "$root/skills/release/SKILL.md" | grep -qiF -- "$gate" ||
+    { echo "FAIL release: gate '$gate' is not in the steps"; fail=1; }
+done
+steps_body "$root/skills/release/SKILL.md" | grep -qiF 'gh release view' ||
+  { echo "FAIL release: never verifies the release exists"; fail=1; }
 
 # --- a dead skill name is a routing bug -------------------------------------
 for f in "$root"/skills/*/SKILL.md; do

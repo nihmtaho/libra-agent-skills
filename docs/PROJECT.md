@@ -2,7 +2,7 @@
 title: libra-agent-skills
 updated: 2026-11-16
 ---
-# 17 skills for coding agents, built around one state file so a project can be reopened six months later
+# 18 skills for coding agents, built around one state file so a project can be reopened six months later
 
 ## Run & verify
 - `bash scripts/test.sh` — the skill contract, the markdown fixtures, the routing fixtures, the skill evals, then the install tests.
@@ -17,7 +17,7 @@ updated: 2026-11-16
 ## Module map
 - `skills/<name>/SKILL.md` — the single source of the skill set; ≤80 lines, five fixed sections; renaming the file means renaming `name`.
 - `install.sh` — symlinks into the destination; the fragile parts are overwriting and paths with spaces.
-- `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 17 skills.
+- `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 18 skills.
 - `scripts/check-docs.sh` — the document rules; the copy in `scripts/` and the one shipped in `skills/bootstrap-project/scripts/` must stay byte-identical.
 - `scripts/test-check-docs.sh` — one broken fixture per rule, plus every shipped template and this repo's own documents must stay clean.
 - `scripts/test-install.sh` — symlink, run twice, refuse to overwrite, the Office-reading script must run from the installed destination.
@@ -30,6 +30,7 @@ updated: 2026-11-16
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | the Define pipeline (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) | done | | [readme](../README.md) |
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
+| the release skill | in progress | | [spec](specs/release-skill.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |

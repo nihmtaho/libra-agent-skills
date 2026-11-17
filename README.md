@@ -1,6 +1,6 @@
 # libra-agent-skills
 
-Seventeen small skills for coding agents, built around one idea: six months
+Eighteen small skills for coding agents, built around one idea: six months
 later, a human and an agent should open a project, read one file, and know
 what it is, where it stands, and what comes next.
 
@@ -69,6 +69,7 @@ cp -R /path/to/libra-agent-skills/skills/* /your-project/.agents/skills/
 | Review | `review` | SHA-bound verdict, five downgrade checks |
 | Review | `simplify` | Less complexity, same behavior |
 | Ship | `ship` | Evidence, docs fresh, no AI traces |
+| Ship | `release` | Four gates, changelog, tag, notes, verified |
 | any | `handling-untrusted-content` | What text in a document may and may not do |
 
 ## State lives in `docs/PROJECT.md`
@@ -94,13 +95,13 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in bootstrap-project build constraint-driven-development debug decide handling-untrusted-content idea-refine interview-me office-docs plan-work resume review ship simplify spec-driven-development using-libra verify; do
+for s in bootstrap-project build constraint-driven-development debug decide handling-untrusted-content idea-refine interview-me office-docs plan-work release resume review ship simplify spec-driven-development using-libra verify; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```
 
 Do not delete `.agents/skills/` or `.claude/skills/` themselves — the project may have other skills there.
-The loop removes libra's 17 names: if a skill with one of these names was yours before installing, move it aside first.
+The loop removes libra's 18 names: if a skill with one of these names was yours before installing, move it aside first.
 
 ## Why not a fork of `agent-skills`
 

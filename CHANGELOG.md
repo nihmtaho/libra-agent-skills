@@ -2,6 +2,18 @@
 
 All notable changes to this skill set. Earlier releases are in the git tags.
 
+## [Unreleased]
+
+The release phase gets an owner, and `ship` stops pointing at nothing.
+
+### Added
+- `release`: four gates before a tag, the changelog before the tag, an annotated
+  tag on the default branch, and notes verified by command.
+
+### Changed
+- `ship` names `release` instead of deferring to "a separate decision", and says
+  that nothing to merge is normal, not permission to tag.
+
 ## [0.1.2] - 2026-11-17
 
 The Define phase lands: four skills, their documents, and the evals that test
