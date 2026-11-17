@@ -30,7 +30,7 @@ updated: 2026-11-17
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | the Define pipeline (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) | done | | [readme](../README.md) |
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
-| the release skill | in progress | | [spec](specs/release-skill.md) |
+| the release skill | done | | [spec](specs/release-skill.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
