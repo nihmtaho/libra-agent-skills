@@ -12,7 +12,7 @@ symptom, and that the same defect cannot come back quietly.
 
 Use when something that should work does not: a failing test, a broken build, an
 error in a log, a wrong result.
-Not when the behavior is merely undesigned; that is `write-spec`.
+Not when the behavior is merely undesigned; that is `spec-driven-development`.
 
 ## Read first
 

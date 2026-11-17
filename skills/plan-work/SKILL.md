@@ -13,8 +13,8 @@ deleted when the feature ships.
 
 Use when a spec exists and someone is about to write code, or when a task feels
 too large to start.
-Not when there is no spec: run `write-spec` first. A plan without acceptance
-criteria is a wish list.
+Not when there is no spec: run `spec-driven-development` first. A plan without
+acceptance criteria is a wish list.
 
 ## Read first
 
@@ -25,7 +25,7 @@ criteria is a wish list.
 ## Steps
 
 1. Check the spec has acceptance criteria. If it does not, send it back to
-   `write-spec`; do not invent criteria here.
+   `spec-driven-development`; do not invent criteria here.
 2. Draw dependencies: which task must finish before another can start. A cycle
    means the split is wrong; split by outcome instead.
 3. Cut vertical slices: each task crosses the layers it needs and leaves the

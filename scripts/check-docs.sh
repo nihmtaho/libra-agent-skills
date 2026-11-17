@@ -118,16 +118,22 @@ for f in "$@"; do
     */docs/adr/*.md|docs/adr/*.md) type=adr ;;
     */docs/tasks/*.md|docs/tasks/*.md) type=task ;;
     */docs/imports/*.md|docs/imports/*.md) type=import ;;
+    */docs/constraints.md|docs/constraints.md) type=constraints ;;
+    */docs/ideas/*.md|docs/ideas/*.md) type=idea ;;
     */templates/project.md) type=project ;;
     */templates/spec.md) type=spec ;;
     */templates/adr.md) type=adr ;;
     */templates/task.md) type=task ;;
+    */templates/idea.md) type=idea ;;
+    */templates/constraints.md) type=constraints ;;
   esac
   case "$type" in
     project) need="Run & verify|Module map|Features|Decisions|Next" ;;
     spec) need="Problem|Use cases|Acceptance criteria|Out of scope" ;;
     adr) need="Context|Decision|Rejected options|Consequences" ;;
     task) need="Checkpoint" ;;
+    idea) need="Problem|Options considered|Chosen direction|Riskiest assumption|Cheapest test" ;;
+    constraints) need="Quality bar|Never|When a check is red" ;;
     *) need="" ;;
   esac
   # required headings must be real headings: outside frontmatter and outside fences,

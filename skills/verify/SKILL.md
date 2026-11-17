@@ -34,8 +34,10 @@ Not for exploration; exploring has no claim to prove.
    `debug`.
 
 The quality floor: do not delete a test, add a skip, loosen a threshold, or drop
-a lint rule to get green. If the floor itself is wrong, say so and ask; lowering
-it silently is the one failure this set cannot detect from the outside.
+a lint rule to get green. The project's own floor is `docs/CONSTRAINTS.md` when it
+exists; compare the numbers to that file, not to yesterday's run. If the floor
+itself is wrong, say so and ask; lowering it silently is the one failure this set
+cannot detect from the outside.
 
 ## Write
 

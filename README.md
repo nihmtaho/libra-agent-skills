@@ -1,6 +1,6 @@
 # libra-agent-skills
 
-Fourteen small skills for coding agents, built around one idea: six months
+Seventeen small skills for coding agents, built around one idea: six months
 later, a human and an agent should open a project, read one file, and know
 what it is, where it stands, and what comes next.
 
@@ -47,7 +47,7 @@ cp -R /path/to/libra-agent-skills/skills/* /your-project/.agents/skills/
 
 4. **Test resume:** open a new agent session and ask: *"where are we?"* It should answer in four lines: what the project is, where it stands, what is half-done, what is next.
 
-5. **Write your first spec:** say: *"write a spec for <feature name>"*. It asks five questions, then creates `docs/specs/<feature>.md`.
+5. **Write your first spec:** say: *"write a spec for <feature name>"*. It asks one question at a time, then creates `docs/specs/<feature>.md` with the goal, structure, code style, test plan and scope limit.
 
 ## The flow
 
@@ -56,7 +56,10 @@ cp -R /path/to/libra-agent-skills/skills/* /your-project/.agents/skills/
 | meta | `using-libra` | Reads state first; says which skill applies |
 | Define | `resume` | Four lines: what this is, where it stands, what is half-done, what is next |
 | Define | `bootstrap-project` | Builds `docs/PROJECT.md` for a new or an old repo |
-| Define | `write-spec` | Five questions into a short or full spec |
+| Define | `interview-me` | One question at a time until the request is clear |
+| Define | `idea-refine` | Widen a vague idea, then cut it to one direction |
+| Define | `spec-driven-development` | Goal, structure, code style, test plan, scope limit |
+| Define | `constraint-driven-development` | The quality bar in `CONSTRAINTS.md`, and proof it did not move |
 | Define | `decide` | An ADR with rejected options and consequences |
 | Plan | `plan-work` | One task file per feature, with checkable acceptance |
 | Build | `build` | One thin slice: failing test first, small commit |
@@ -91,13 +94,13 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in bootstrap-project build debug decide handling-untrusted-content office-docs plan-work resume review ship simplify using-libra verify write-spec; do
+for s in bootstrap-project build constraint-driven-development debug decide handling-untrusted-content idea-refine interview-me office-docs plan-work resume review ship simplify spec-driven-development using-libra verify; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```
 
 Do not delete `.agents/skills/` or `.claude/skills/` themselves — the project may have other skills there.
-The loop removes libra's 14 names: if a skill with one of these names was yours before installing, move it aside first.
+The loop removes libra's 17 names: if a skill with one of these names was yours before installing, move it aside first.
 
 ## Why not a fork of `agent-skills`
 

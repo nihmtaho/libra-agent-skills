@@ -242,6 +242,42 @@ x
 EOF
 expect_fail "spec missing Out of scope" "missing heading '## Out of scope'" "$tmp/docs/specs/missing-section.md"
 
+doc docs/ideas/no-assumption.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+x
+
+## Options considered
+x
+
+## Chosen direction
+x
+
+## Cheapest test
+x
+EOF
+expect_fail "idea missing Riskiest assumption" "missing heading '## Riskiest assumption'" "$tmp/docs/ideas/no-assumption.md"
+
+doc docs/CONSTRAINTS.md <<'EOF'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Quality bar
+x
+
+## When a check is red
+x
+EOF
+expect_fail "constraints missing Never" "missing heading '## Never'" "$tmp/docs/CONSTRAINTS.md"
+
 doc skills/x/templates/spec.md <<'EOF'
 ---
 title: <feature name>
@@ -620,6 +656,7 @@ tree="$tmp/tree"
 mkdir -p "$tree" "$tree/docs"
 cp -R "$root/skills" "$root/scripts" "$tree/"
 cp "$root/docs/PROJECT.md" "$tree/docs/"
+cp "$root/README.md" "$tree/"
 if ! bash "$tree/scripts/check.sh" >/dev/null 2>&1; then
   echo "FAIL the throwaway tree is not green"
   fail=1
@@ -671,7 +708,7 @@ shopt -s nullglob
 for f in "$root"/skills/*/templates/*.md; do
   bash "$check" "$f" || { echo "FAIL clean document reported: $f"; fail=1; }
 done
-for f in "$root"/docs/PROJECT.md "$root"/docs/specs/*.md "$root"/docs/adr/*.md "$root"/docs/tasks/*.md; do
+for f in "$root"/docs/PROJECT.md "$root"/docs/CONSTRAINTS.md "$root"/docs/specs/*.md "$root"/docs/adr/*.md "$root"/docs/tasks/*.md "$root"/docs/ideas/*.md; do
   bash "$check" "$f" || { echo "FAIL clean document reported: $f"; fail=1; }
 done
 

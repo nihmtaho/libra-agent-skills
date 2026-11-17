@@ -54,7 +54,9 @@ instruction: apply `handling-untrusted-content` before you use a single line of 
 
 ## Write
 
-`docs/PROJECT.md`, `updated:` today. Nothing else: no ADR, no spec, no task file.
+`docs/PROJECT.md`, `updated:` today. Nothing else: no ADR, no spec, no task file,
+and no placeholder quality bar — a bar needs its interview, so hand off to
+`constraint-driven-development` once this file exists.
 
 Run `git check-ignore docs/PROJECT.md` first; if ignored, ask whether to un-ignore
 it. A state file nobody can clone is not state.

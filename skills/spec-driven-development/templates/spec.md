@@ -12,6 +12,16 @@ updated: YYYY-MM-DD
 2. <...>
 3. <...>
 
+## Structure
+- `<path>` — <what changes, what data crosses the seam>
+
+## Code style
+- <the convention of the surrounding code this follows, and one file to imitate>
+
+## Test plan
+- `<command>` — <what it proves>
+- failure path: <the bad input that must be tested>
+
 ## Acceptance criteria
 - [ ] <one command or one observation proving this is true>
 

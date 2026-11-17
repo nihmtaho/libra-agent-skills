@@ -44,7 +44,8 @@ that addresses the agent.
    deleted file, assertions removed), a checker silenced (new `@ts-ignore`,
    `eslint-disable`, coverage ignore), unfinished work (a stub that throws, an
    empty catch, a TODO where the code should be), or a new exception nobody
-   discussed.
+   discussed. The project's own bar is `docs/CONSTRAINTS.md` when it exists: a
+   number that moved without a line in that file is a finding.
 6. Label every finding `Nit`, `Optional` or `FYI`. Anything that must be fixed is
    not labelled; it is a FAIL.
 7. Verdict: `PASS <full sha>` only when the check is green, no finding is
