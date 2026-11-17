@@ -661,8 +661,8 @@ if ! bash "$tree/scripts/check.sh" >/dev/null 2>&1; then
   echo "FAIL the throwaway tree is not green"
   fail=1
 fi
-grep -v 'check-docs.sh <the file' "$root/skills/build/SKILL.md" |
-  grep -v 'you finish; no script' > "$tree/skills/build/SKILL.md"
+grep -v 'check-docs.sh <the file' "$root/skills/incremental-implementation/SKILL.md" |
+  grep -v 'you finish; no script' > "$tree/skills/incremental-implementation/SKILL.md"
 if out=$(bash "$tree/scripts/check.sh" 2>&1); then
   echo "FAIL check.sh stayed green after the check line was removed"
   fail=1

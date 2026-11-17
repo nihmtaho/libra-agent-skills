@@ -34,9 +34,15 @@ route 'no bar written down|weakened'                  constraint-driven-developm
 
 # Neighbours that must not be swallowed by the new four.
 route 'ordered tasks|spec is accepted'                plan-work
-route 'failing test first'                            build
+route 'failing test first'                            test-driven-development
+route 'too big|too risky'                             incremental-implementation
+route 'no command can check|re-derive'                doubt-driven-development
 route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
+
+# Two pairs that name nearly the same moment, and must stay apart.
+route 'claim a pass'                                  verify
+route 'bound to one commit'                           review
 
 [ "$fail" -eq 0 ] && echo "routing passed"
 exit "$fail"

@@ -82,9 +82,38 @@ for s in idea-refine spec-driven-development constraint-driven-development; do
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
 
-# --- build: a commit knows its branch ---------------------------------------
-steps_body "$root/skills/build/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
-  { echo "FAIL build: may commit without knowing the branch"; fail=1; }
+# --- build: the dispatcher orders the two discipline skills ------------------
+for step in 'test-driven-development' 'incremental-implementation'; do
+  steps_body "$root/skills/build/SKILL.md" | grep -qiF -- "$step" ||
+    { echo "FAIL build: the dispatcher does not route to $step"; fail=1; }
+done
+has build 'Spike mode' 'a throwaway would have to pass the tests'
+write_body "$root/skills/build/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL build: Write must be none, it dispatches"; fail=1; }
+
+# --- incremental-implementation: a commit knows its branch ------------------
+steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
+  { echo "FAIL incremental-implementation: may commit without knowing the branch"; fail=1; }
+has incremental-implementation 'One slice, one commit' 'a slice is not tied to a commit'
+has incremental-implementation 'Conventional Commits'  'the commit convention is gone'
+has incremental-implementation 'co-author'             'an AI signature is allowed'
+has incremental-implementation 'Delete the flag'        'a flag nobody removes'
+write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
+  { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }
+
+# --- test-driven-development: the order, and the trap ----------------------
+has test-driven-development 'A test that passes before any change' 'a test of nothing is allowed'
+has test-driven-development 'DAMP'                                  'tests may hide their data behind a helper'
+has test-driven-development '80/15/5'                               'the test pyramid is gone'
+write_body "$root/skills/test-driven-development/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL test-driven-development: Write must be none, it writes code"; fail=1; }
+
+# --- doubt-driven-development: the five rungs ------------------------------
+for rung in CLAIM EXTRACT DOUBT RECONCILE STOP; do
+  steps_body "$root/skills/doubt-driven-development/SKILL.md" | grep -qF -- "**$rung**" ||
+    { echo "FAIL doubt-driven-development: missing the $rung rung"; fail=1; }
+done
+has doubt-driven-development 'Never hand it your conclusion' 'the doubter may be told the answer'
 
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \

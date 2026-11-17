@@ -1,6 +1,6 @@
 ---
 title: libra-agent-skills
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 # 18 skills for coding agents, built around one state file so a project can be reopened six months later
 
@@ -31,6 +31,7 @@ updated: 2026-11-17
 | the Define pipeline (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) | done | | [readme](../README.md) |
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
 | the release skill | done | | [spec](specs/release-skill.md) |
+| the Build phase skills (eight behind one dispatcher) | in progress | | [task](tasks/build-phase-skills.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |

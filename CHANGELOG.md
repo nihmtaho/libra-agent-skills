@@ -9,12 +9,19 @@ The release phase gets an owner, and `ship` stops pointing at nothing.
 ### Added
 - `release`: four gates before a tag, the changelog before the tag, an annotated
   tag on the default branch, and notes verified by command.
+- `test-driven-development`: red, green, refactor, with the 80/15/5 pyramid and
+  DAMP over DRY in tests.
+- `incremental-implementation`: thin slices, a flag for a risky one, one slice per
+  commit, and the branch check the commit needs.
+- `doubt-driven-development`: an important claim re-derived in a fresh context
+  through CLAIM, EXTRACT, DOUBT, RECONCILE and STOP.
 
 ### Changed
 - `ship` names `release` instead of deferring to "a separate decision", and says
   that nothing to merge is normal, not permission to tag.
-- `build` names the branch before the first commit and stops when it is not the
-  one it said.
+- `build` becomes the Build dispatcher: it names which skill runs, in what order,
+  and `test-driven-development` plus `incremental-implementation` are never
+  skipped. Spike mode stays, as the one exception.
 
 ## [0.1.2] - 2026-11-17
 

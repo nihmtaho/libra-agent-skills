@@ -1,18 +1,20 @@
 ---
 name: build
-description: Write code for one unchecked task, failing test first. Use when a task file has a task ready, or when fixing one item from a review.
+description: Start one ready task and name which build skill runs, in what order. Use when a task in `docs/tasks/` is ready to implement.
 ---
 
 # build
 
-One task, one slice, one commit. The test comes first because a test written
-after the code proves only that the code does what it does.
+One task at a time, and the order is not yours to choose. This skill is the
+dispatcher for the Build phase: it says which skill runs next, so the discipline
+is a rule rather than a preference.
 
 ## When to use
 
-Use when `docs/tasks/` has an unchecked task with acceptance criteria, or when
+Use when `docs/tasks/` has an unchecked task with a `Done means:` line, or when
 picking up one finding from `review`.
-Not for throwaway exploration; that is the spike mode at the end of this file.
+Not when there is no acceptance line (that is `plan-work`), and not when
+something already fails and the cause is unknown (that is `debug`).
 
 ## Read first
 
@@ -22,39 +24,36 @@ Not for throwaway exploration; that is the spike mode at the end of this file.
 
 ## Steps
 
-1. State the task in one line, then write the failing test for its acceptance
-   line. Run it and read the failure. A test that passes before any change is a
-   test of nothing: fix the test first.
-2. Write the smallest code that makes it pass. Run the whole check command, not
-   only the new test.
-3. Refactor only with the suite green, in its own commit.
-4. Tick the box, and if you stop mid-task write the exact position in
-   `Stopped at:`, for example `T2, retry not on yet`. A position someone can
-   resume from, not a mood.
-5. Before the first commit, say which branch you are on and which one the task
-   expects: `git rev-parse --abbrev-ref HEAD`. A commit on a branch you did not
-   choose is a merge nobody planned, and the mistake is invisible until release
-   time.
-6. Commit small, Conventional Commits, and never include a co-author line or an
-   AI signature.
-7. New dependency or framework decision? Stop and run `decide`; do not bury it
-   in this commit.
+1. State the task in one line. If you cannot, the task is not ready.
+2. `test-driven-development` — always, before the first line of code.
+3. `incremental-implementation` — always, for how much lands in one commit.
+   Steps 2 and 3 are the reason this skill exists: a task that skips them is not
+   done, whatever the suite says.
+4. `context-engineering` when the task's `Read first` does not reach the code you
+   must change.
+5. `source-driven-development` when the work rests on a framework, library or API
+   fact you cannot prove from the repository.
+6. `frontend-ui-engineering` when the work changes a user interface, or
+   `api-and-interface-design` when it changes an API, a response shape or an
+   error format.
+7. `subagent-driven-development` when two tasks touch disjoint files. The parent
+   still commits.
+8. `doubt-driven-development` before saying the task is done, when the decision
+   rests on reasoning no command can check.
 
-**Spike mode**, when the human wants to learn rather than ship: build the
-throwaway, skip tests, keep it off the main branch, then write the one thing you
-learned into `## Decisions` or `## Next`. No other document comes out of a
-spike; if it produced documents, it was not a spike.
+**Spike mode**, when the human wants to learn rather than ship: none of the
+above applies. Build the throwaway, skip the tests, keep it off the main branch,
+then write the one thing you learned into `## Decisions` or `## Next`. No other
+document comes out of a spike; if it produced documents, it was not a spike.
 
 ## Write
 
-`docs/tasks/<feature>.md` — the checkbox and `Stopped at` — and `docs/PROJECT.md`
-when the feature row changes.
-
-Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
-you finish; no script in the project: say so in one line and continue.
+`none` — this skill dispatches. `incremental-implementation` writes the task
+file, and `doubt-driven-development` writes `## Next` when a claim fails.
 
 ## Stop
 
 Stop when the acceptance line cannot be checked, when the task needs a decision
-the spec does not make, when making the test pass would require disabling a
-check, or when the branch you are on is not the one you said. Report which one.
+the spec does not make, when making a test pass would require disabling a check,
+or when a skill named above is not installed. Report which one. A spike that
+produced a document has stopped being a spike: say so.
