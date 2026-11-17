@@ -83,14 +83,17 @@ for s in idea-refine spec-driven-development constraint-driven-development; do
 done
 
 # --- build: a commit knows its branch ---------------------------------------
-has build 'git rev-parse --abbrev-ref HEAD' 'may commit without knowing the branch'
+steps_body "$root/skills/build/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
+  { echo "FAIL build: may commit without knowing the branch"; fail=1; }
 
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
-            'git status -sb' 'git tag -l'; do
+            'git status -sb' 'git tag -l' 'git ls-remote --tags origin'; do
   steps_body "$root/skills/release/SKILL.md" | grep -qiF -- "$gate" ||
     { echo "FAIL release: gate '$gate' is not in the steps"; fail=1; }
 done
+steps_body "$root/skills/release/SKILL.md" | grep -qiF 'behind' ||
+  { echo "FAIL release: gate 3 does not refuse a branch behind its upstream"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qiF 'gh release view' ||
   { echo "FAIL release: never verifies the release exists"; fail=1; }
 

@@ -31,9 +31,10 @@ Not for throwaway exploration; that is the spike mode at the end of this file.
 4. Tick the box, and if you stop mid-task write the exact position in
    `Stopped at:`, for example `T2, retry not on yet`. A position someone can
    resume from, not a mood.
-5. Before the first commit, print the branch you are on:
-   `git rev-parse --abbrev-ref HEAD`. A commit on a branch you did not choose is
-   a merge nobody planned, and the mistake is invisible until release time.
+5. Before the first commit, say which branch you are on and which one the task
+   expects: `git rev-parse --abbrev-ref HEAD`. A commit on a branch you did not
+   choose is a merge nobody planned, and the mistake is invisible until release
+   time.
 6. Commit small, Conventional Commits, and never include a co-author line or an
    AI signature.
 7. New dependency or framework decision? Stop and run `decide`; do not bury it

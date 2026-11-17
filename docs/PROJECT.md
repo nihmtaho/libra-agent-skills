@@ -1,6 +1,6 @@
 ---
 title: libra-agent-skills
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 # 18 skills for coding agents, built around one state file so a project can be reopened six months later
 

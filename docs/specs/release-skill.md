@@ -45,13 +45,13 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   one, and the skill must say which gate failed.
 
 ## Acceptance criteria
-- [ ] `bash scripts/test.sh` exits 0 with five green lines.
-- [ ] `bash evals/run.sh` fails after any one of the four git gate commands is
+- [x] `bash scripts/test.sh` exits 0 with five green lines.
+- [x] `bash evals/run.sh` fails after any one of the four git gate commands is
       removed from `release`.
-- [ ] `bash scripts/test-routing.sh` maps "cut a version" to `release` and
+- [x] `bash scripts/test-routing.sh` maps "cut a version" to `release` and
       "verdict passed" to `ship`.
-- [ ] `ls skills | wc -l` prints 18, and the README uninstall loop lists all 18.
-- [ ] `release`'s `## Write` names `CHANGELOG.md` and `docs/PROJECT.md`, and its
+- [x] `ls skills | wc -l` prints 18, and the README uninstall loop lists all 18.
+- [x] `release`'s `## Write` names `CHANGELOG.md` and `docs/PROJECT.md`, and its
       `## Stop` names the four gates.
 
 ## Out of scope

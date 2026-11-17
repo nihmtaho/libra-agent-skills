@@ -13,7 +13,7 @@ exists so that claim is checkable by someone who was not in the room.
 Use when the work is already on the default branch and the human asks for a
 version, a tag or a publish.
 Not for merging a change: that is `ship`. Not for a feature branch, a dirty tree,
-or a changelog nobody has written yet.
+or a release with nothing to record.
 
 ## Read first
 
@@ -30,8 +30,10 @@ or a changelog nobody has written yet.
    - `git rev-parse --abbrev-ref HEAD` prints the default branch, never a feature
      branch.
    - `git status --short` prints nothing.
-   - `git status -sb` does not say `ahead of`.
-   - `git tag -l v<version>` prints nothing.
+   - `git status -sb` says neither `ahead of` nor `behind`, and names an upstream:
+     a branch that cannot be pushed leaves a tag nothing can delete for you.
+   - `git tag -l v<version>` and `git ls-remote --tags origin refs/tags/v<version>`
+     both print nothing.
 
    A tag cut from a feature branch is public before anyone can review it, and
    moving it afterwards is a lie about what shipped.
@@ -46,9 +48,10 @@ or a changelog nobody has written yet.
 5. Tag annotated on the default branch tip, then push the branch, then the tag:
    `git tag -a v<version> -m "<one line>"`, `git push origin <branch>`,
    `git push origin v<version>`.
-6. Publish the notes by copying the changelog section, never rewriting it:
-   `gh release create v<version> --title "v<version>" --notes-file <section>`.
-   No `gh`, or it errors: stop and say the release is tagged but unpublished.
+6. Publish the notes by copying the changelog section into a file, never
+   rewriting it: `gh release create v<version> --title "v<version>" --notes-file
+   /tmp/<version>-notes.md`. No `gh`, or it errors: stop and say the release is
+   tagged but unpublished.
 7. Verify by command, not by memory: `git ls-tree --name-only v<version>` and
    `gh release view v<version>`. A tag is not a release.
 8. Record the next version's first item in `docs/PROJECT.md` `## Next`, so the
@@ -63,6 +66,7 @@ you finish; no script in the project: say so in one line and continue.
 
 ## Stop
 
-Stop when any of the four gates fails, the changelog section is empty, the suite
-is red, the tag already exists, or the human asks to tag a branch that is not the
-default one. Report which gate failed and the command output that shows it.
+Stop when the branch is not the default one, the tree is dirty, the branch is
+ahead of or behind its upstream, the tag exists locally or on the remote, the
+changelog section is empty, or the suite is red. Report which gate failed and the
+command output that shows it.
