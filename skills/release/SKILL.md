@@ -33,7 +33,8 @@ or a release with nothing to record.
    - `git status -sb` says neither `ahead of` nor `behind`, and names an upstream:
      a branch that cannot be pushed leaves a tag nothing can delete for you.
    - `git tag -l v<version>` and `git ls-remote --tags origin refs/tags/v<version>`
-     both print nothing.
+     both exit 0 and print nothing: an unreachable host must not look like a free
+     name.
 
    A tag cut from a feature branch is public before anyone can review it, and
    moving it afterwards is a lie about what shipped.
@@ -66,7 +67,7 @@ you finish; no script in the project: say so in one line and continue.
 
 ## Stop
 
-Stop when the branch is not the default one, the tree is dirty, the branch is
-ahead of or behind its upstream, the tag exists locally or on the remote, the
-changelog section is empty, or the suite is red. Report which gate failed and the
-command output that shows it.
+Stop when the branch is not the default one, has no upstream, or is ahead of or
+behind it; when the tree is dirty; when the tag exists locally or on the remote;
+when the changelog section is empty; or when the suite is red. Report which gate
+failed and the command output that shows it.

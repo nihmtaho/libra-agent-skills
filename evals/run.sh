@@ -92,6 +92,8 @@ for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
   steps_body "$root/skills/release/SKILL.md" | grep -qiF -- "$gate" ||
     { echo "FAIL release: gate '$gate' is not in the steps"; fail=1; }
 done
+steps_body "$root/skills/release/SKILL.md" | grep -qiF 'exit 0 and print nothing' ||
+  { echo "FAIL release: gate 4 lets an unreachable host look like a free name"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qiF 'behind' ||
   { echo "FAIL release: gate 3 does not refuse a branch behind its upstream"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qiF 'gh release view' ||

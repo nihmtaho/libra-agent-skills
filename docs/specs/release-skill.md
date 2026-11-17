@@ -46,7 +46,7 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 
 ## Acceptance criteria
 - [x] `bash scripts/test.sh` exits 0 with five green lines.
-- [x] `bash evals/run.sh` fails after any one of the four git gate commands is
+- [x] `bash evals/run.sh` fails after any one of the five gate commands is
       removed from `release`.
 - [x] `bash scripts/test-routing.sh` maps "cut a version" to `release` and
       "verdict passed" to `ship`.
