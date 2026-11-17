@@ -147,19 +147,22 @@ without a test as unfinished.
 
 ## Acceptance criteria
 
-- [ ] `bash scripts/test.sh` exits 0 with five green lines.
-- [ ] `ls skills | wc -l` prints 26, the README loop lists 26 names, and the
+- [x] `bash scripts/test.sh` exits 0 with five green lines.
+- [x] `ls skills | wc -l` prints 26, the README loop lists 26 names, and the
       README prose says twenty-six.
-- [ ] Deleting the `test-driven-development` step from `build`'s `## Steps` fails
+- [x] Deleting the `test-driven-development` step from `build`'s `## Steps` fails
       `evals/run.sh`.
-- [ ] Deleting the tick-the-box and `Stopped at:` rules from
+- [x] Deleting the tick-the-box and `Stopped at:` rules from
       `incremental-implementation`'s `## Steps` fails `evals/run.sh`.
-- [ ] `bash scripts/test-routing.sh` passes with the eight new names and fails
+- [x] `bash scripts/test-routing.sh` passes with the eight new names and fails
       when two of them are given the same trigger words; `verify`/`doubt` and
       `review`/`incremental` each have a case that separates them.
-- [ ] Every new skill is ≤80 lines with the five headings, and `## Write` is
+- [x] Every new skill is ≤80 lines with the five headings, and `## Write` is
       either a `docs/` path with `check-docs.sh` or the word `none`.
-- [ ] No skill outside this change gains or loses a rule.
+- [x] No skill outside the eight, `build` and `using-libra` gains or loses a
+      rule. The one fixture retargeted, `scripts/test-check-docs.sh`'s check-line
+      case, moved from `build` to `incremental-implementation` because that is
+      where the check line now lives.
 
 ## Limits
 

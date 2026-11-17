@@ -1,6 +1,6 @@
 # libra-agent-skills
 
-Eighteen small skills for coding agents, built around one idea: six months
+Twenty-six small skills for coding agents, built around one idea: six months
 later, a human and an agent should open a project, read one file, and know
 what it is, where it stands, and what comes next.
 
@@ -101,7 +101,7 @@ done
 ```
 
 Do not delete `.agents/skills/` or `.claude/skills/` themselves — the project may have other skills there.
-The loop removes libra's 18 names: if a skill with one of these names was yours before installing, move it aside first.
+The loop removes libra's 26 names: if a skill with one of these names was yours before installing, move it aside first.
 
 ## Why not a fork of `agent-skills`
 

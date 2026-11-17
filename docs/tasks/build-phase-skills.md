@@ -5,7 +5,7 @@ spec: ../specs/build-phase-skills.md
 ---
 # The Build phase becomes eight skills behind one dispatcher
 
-Stopped at: T4, not started
+Stopped at: done
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 21.
@@ -56,7 +56,7 @@ stop: T2 and T3 only add more of the same.
       change to `scripts/check-docs.sh` and `docs/specs/markdown-check.md`
       together, with the two copies kept byte-identical — out of this task.
 
-- [ ] **T4 — the documents tell the truth**
+- [x] **T4 — the documents tell the truth**
       Done means: `bash scripts/test.sh` is green and `grep -rn 'Eighteen\|18 skill' README.md docs/PROJECT.md` prints nothing
       Touches: `README.md`, `docs/PROJECT.md`, `skills/using-libra/SKILL.md`,
       `CHANGELOG.md`, `docs/specs/build-phase-skills.md`

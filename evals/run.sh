@@ -100,6 +100,8 @@ has incremental-implementation 'co-author'             'an AI signature is allow
 has incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
   { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }
+steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Stopped at:' ||
+  { echo "FAIL incremental-implementation: a stop position is a mood, not a line"; fail=1; }
 
 # --- test-driven-development: the order, and the trap ----------------------
 has test-driven-development 'A test that passes before any change' 'a test of nothing is allowed'
