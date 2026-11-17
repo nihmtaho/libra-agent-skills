@@ -1,6 +1,6 @@
 ---
 name: incremental-implementation
-description: Land work in thin slices that each leave the project working, behind a flag when a slice is risky. Use when a task is too big or too risky to land safely, or when a change must be reversible, with a rollback path.
+description: Land work in thin slices that each leave the project working, behind a flag when a slice is risky. Use when a task is too big or too risky to land safely, or when a change needs a rollback path.
 ---
 
 # incremental-implementation

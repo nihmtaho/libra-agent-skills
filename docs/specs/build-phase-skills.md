@@ -125,7 +125,7 @@ without a test as unfinished.
 
 - `using-libra` keeps its three Build rows (`build`, `debug`, `office-docs`) and
   gains one sentence: within Build, `build` names the order of the eight skills it
-  dispatches. The file is 77 of 80 lines; adding eight rows makes it 85 and fails
+  dispatches. The file is 79 of 80 lines; adding eight rows makes it 85 and fails
   `check.sh`, and deleting rows to fit would be the "delete a heading to make
   `check.sh` pass" that `docs/CONSTRAINTS.md` forbids. Routing is by phase, and
   the Build entry point is `build`.
@@ -142,8 +142,9 @@ without a test as unfinished.
   `incremental-implementation`; and the spike exception is asserted in `build`.
   No new one-owner check for `docs/tasks/`, because it has four writers today and
   a check that is red on day one teaches people to delete checks.
-- `scripts/test-routing.sh`: nine new `route` lines, and the existing
-  `failing test first` case moves from `build` to `test-driven-development`.
+- `scripts/test-routing.sh`: the new `route` lines, the existing
+  `failing test first` case moved from `build` to `test-driven-development`, and a
+  guard that fails when any OR-ed alternative matches no description.
 - `docs/CONSTRAINTS.md`: no change. If a rule here weakens one of its lines, the
   change is wrong.
 

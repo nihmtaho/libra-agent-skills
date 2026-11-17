@@ -23,7 +23,7 @@ route() { # <regex of a request a human would type> <the one skill that answers 
 }
 
 # The Define ladder: unclear request, then hunch, then chosen direction, then bar.
-route 'ambiguous request|two readings'                interview-me
+route 'request is ambiguous'                       interview-me
 route 'one question per turn|you know what I mean'    interview-me
 route 'vague idea'                                    idea-refine
 route 'hunch|no shape yet'                            idea-refine
@@ -35,16 +35,23 @@ route 'no bar written down|weakened'                  constraint-driven-developm
 # Neighbours that must not be swallowed by the new four.
 route 'ordered tasks|spec is accepted'                plan-work
 route 'no failing test'                               test-driven-development
+route 'failing test first'                            test-driven-development
 route 'too big'                                       incremental-implementation
+route 'too risky'                                     incremental-implementation
 route 'rollback'                                      incremental-implementation
 route 'no command can check'                          doubt-driven-development
 route 'missing context'                               context-engineering
 route 'has too much to read'                          context-engineering
 route 'rules file'                                    context-engineering
 route 'which library'                                 source-driven-development
+route 'cite the docs'                                 source-driven-development
 route 'in parallel'                                   subagent-driven-development
+route 'independent tasks'                             subagent-driven-development
 route 'a11y'                                          frontend-ui-engineering
+route 'component'                                     frontend-ui-engineering
 route 'adding an endpoint'                            api-and-interface-design
+route 'response shape'                                api-and-interface-design
+route 'error format'                                  api-and-interface-design
 route 'ready to implement'                            build
 route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
@@ -52,6 +59,21 @@ route 'verdict passed'                                ship
 # Two pairs that name nearly the same moment, and must stay apart.
 route 'claim a pass'                                  verify
 route 'bound to one commit'                           review
+
+# An OR-ed case hides a dead branch: one live alternative makes the whole line
+# green while the other matches no description at all. Every alternative must
+# match something.
+dead=$(sed -n "s/^route '\([^']*\)'[[:space:]].*/\1/p" "$0" | tr '|' '\n')
+while IFS= read -r alt; do
+  [ -z "$alt" ] && continue
+  live=0
+  for d in "$root"/skills/*/; do
+    desc_of "$(basename "$d")" | grep -qE "$alt" && live=1
+  done
+  [ "$live" -eq 1 ] || { echo "FAIL routing: dead alternative '$alt'"; fail=1; }
+done <<EOF
+$dead
+EOF
 
 [ "$fail" -eq 0 ] && echo "routing passed"
 exit "$fail"
