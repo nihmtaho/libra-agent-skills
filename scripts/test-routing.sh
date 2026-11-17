@@ -23,7 +23,7 @@ route() { # <regex of a request a human would type> <the one skill that answers 
 }
 
 # The Define ladder: unclear request, then hunch, then chosen direction, then bar.
-route 'request is ambiguous'                         interview-me
+route 'request is ambiguous'                          interview-me
 route 'one question per turn|you know what I mean'    interview-me
 route 'vague idea'                                    idea-refine
 route 'hunch|no shape yet'                            idea-refine
@@ -63,7 +63,7 @@ route 'bound to one commit'                           review
 # An OR-ed case hides a dead branch: one live alternative makes the whole line
 # green while the other matches no description at all. Every alternative must
 # match something.
-dead=$(sed -n "s/^route '\([^']*\)'[[:space:]].*/\1/p" "$0" | tr '|' '\n')
+dead=$(sed -n "s/^[[:space:]]*route '\([^']*\)'[[:space:]].*/\1/p" "$0" | tr '|' '\n')
 [ -n "$dead" ] || { echo "FAIL routing: the guard extracted no route lines"; fail=1; }
 while IFS= read -r alt; do
   [ -z "$alt" ] && continue
