@@ -4,9 +4,9 @@ updated: YYYY-MM-DD
 ---
 # v<version> — <one line: what this version makes possible>
 
-<!-- The frontmatter is for the checker: drop it from the note. Fill only from
-the CHANGELOG.md section for this version, and drop a section it does not have
-rather than padding it. -->
+<!-- Delete this comment with the frontmatter: both are for the checker, not the
+note. Fill only from the CHANGELOG.md section for this version, and drop a
+section it does not have rather than padding it. -->
 
 <who should read this, and what changes for them, in two sentences at most>
 

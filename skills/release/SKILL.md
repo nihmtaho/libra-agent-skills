@@ -55,10 +55,10 @@ or a release with nothing to record.
    `git tag -a v<version> -m "<one line>"`, `git push origin <branch>`,
    `git push origin v<version>`.
 6. Notes: copy `templates/release-notes.md` to `/tmp/<version>-notes.md`, drop
-   its frontmatter, and fill every entry from the changelog section, claiming
-   nothing the changelog does not. Publish with `gh release create v<version>
-   --title "v<version>" --notes-file /tmp/<version>-notes.md`. No `gh`, or it
-   errors: stop and say the release is tagged but unpublished.
+   its frontmatter and comment, and fill every entry from the changelog
+   section, claiming nothing the changelog does not. Publish with `gh release
+   create v<version> --title "v<version>" --notes-file /tmp/<version>-notes.md`.
+   No `gh`, or it errors: stop and say the release is tagged but unpublished.
 7. Verify by command, not by memory: `git ls-tree --name-only v<version>` and
    `gh release view v<version>` shows no `<` placeholder. A tag is not a release.
 8. Record the next version's first item in `docs/PROJECT.md` `## Next`, so the

@@ -220,8 +220,8 @@ for h in '## Highlights' '## Added' '## Changed' '## Removed' '## Upgrade' \
 done
 steps_body "$root/skills/release/SKILL.md" | grep -qF 'copy `templates/release-notes.md` to `/tmp/<version>-notes.md`' ||
   { echo "FAIL release: the template is edited in place instead of copied out"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'drop its frontmatter' ||
-  { echo "FAIL release: the template's frontmatter is published as part of the note"; fail=1; }
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'drop its frontmatter and comment' ||
+  { echo "FAIL release: the template's frontmatter or comment is published in the note"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qF 'fill every entry from the changelog section' ||
   { echo "FAIL release: an entry the changelog has may be dropped from the note"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qF 'claiming nothing the changelog does not' ||

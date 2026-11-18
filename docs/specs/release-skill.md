@@ -27,8 +27,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   changelog first, annotated tag, pushed, notes filled from the template, verified
   by command.
 - `skills/release/templates/release-notes.md` — the note's shape: summary,
-  Highlights, Added, Changed, Removed, Upgrade, full changelog. Its frontmatter is
-  for `check-docs.sh` and is dropped from the note; the body is filled from the
+  Highlights, Added, Changed, Removed, Upgrade, full changelog. Its frontmatter and comment
+  are for `check-docs.sh` and are dropped from the note; the body is filled from the
   changelog section, never from memory.
 - `skills/ship/SKILL.md` — names `release` instead of "a separate decision", and
   says what to do when a project commits directly on the default branch.
@@ -52,7 +52,7 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 - Failure path: a release attempted on a feature branch must be refused by gate
   one, and the skill must say which gate failed.
 - `bash evals/run.sh` fails when any of the six template sections is deleted, when
-  the step stops naming the template, stops saying the frontmatter is dropped,
+  the step stops naming the template, stops saying the frontmatter and comment are dropped,
   stops requiring every changelog entry, stops forbidding a claim the changelog
   does not support, or stops checking that no `<` placeholder shipped.
 
