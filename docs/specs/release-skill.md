@@ -14,8 +14,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 ## Use cases
 1. A maintainer cuts v0.1.3 three weeks later; the skill refuses until the default
    branch is clean, pushed and free of that tag.
-2. A user upgrading reads the changelog section the release wrote, not a rewritten
-   summary of it.
+2. A user upgrading reads the note, which adds a summary and an upgrade line but
+   no claim the changelog section does not make, and drops no entry it has.
 3. A reader asks why release is not part of `ship`, and finds the answer in one
    line in both skills.
 4. Someone reads the v0.1.3 release without the changelog open and still knows
@@ -49,8 +49,9 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   passed" still reaches `ship`.
 - Failure path: a release attempted on a feature branch must be refused by gate
   one, and the skill must say which gate failed.
-- `bash evals/run.sh` fails when a template section is deleted, when the step
-  stops naming the template, or when it stops forbidding a claim the changelog
+- `bash evals/run.sh` fails when any of the six template sections is deleted, when
+  the step stops naming the template, stops saying the frontmatter is dropped,
+  stops requiring every changelog entry, or stops forbidding a claim the changelog
   does not support.
 
 ## Acceptance criteria
@@ -62,7 +63,7 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 - [x] `ls skills | wc -l` prints 18, and the README uninstall loop lists all 18.
 - [x] `release`'s `## Write` names `CHANGELOG.md` and `docs/PROJECT.md`, and its
       `## Stop` names the four gates.
-- [x] The note template ships with the skill, carries the five sections, and
+- [x] The note template ships with the skill, carries the six sections, and
       `evals/run.sh` fails when one is deleted.
 
 ## Out of scope

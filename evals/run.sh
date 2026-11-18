@@ -213,13 +213,18 @@ steps_body "$root/skills/release/SKILL.md" | grep -qiF 'gh release view' ||
 
 # --- release: the note is filled from a template, and claims no more ---------
 tpl="$root/skills/release/templates/release-notes.md"
-for h in '## Highlights' '## Added' '## Changed' '## Removed' '## Upgrade'; do
+for h in '## Highlights' '## Added' '## Changed' '## Removed' '## Upgrade' \
+         '## Full changelog'; do
   grep -qxF -- "$h" "$tpl" 2>/dev/null ||
     { echo "FAIL release: the note template has no '$h' section"; fail=1; }
 done
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'copy `templates/release-notes.md` to `/tmp/' ||
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'copy `templates/release-notes.md` to `/tmp/<version>-notes.md`' ||
   { echo "FAIL release: the template is edited in place instead of copied out"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'claim nothing the changelog does not' ||
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'drop its frontmatter' ||
+  { echo "FAIL release: the template's frontmatter is published as part of the note"; fail=1; }
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'fill every entry from the changelog section' ||
+  { echo "FAIL release: an entry the changelog has may be dropped from the note"; fail=1; }
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'claiming nothing the changelog does not' ||
   { echo "FAIL release: the note may claim more than the changelog"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qF -- '--notes-file /tmp/<version>-notes.md' ||
   { echo "FAIL release: publishes a file other than the note that was filled"; fail=1; }
