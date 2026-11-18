@@ -1,6 +1,6 @@
 ---
 title: Constraints for libra-agent-skills
-updated: 2026-11-16
+updated: 2026-11-18
 ---
 # Constraints
 
