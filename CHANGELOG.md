@@ -2,10 +2,10 @@
 
 All notable changes to this skill set. Earlier releases are in the git tags.
 
-## [Unreleased]
+## [0.2.0] - 2026-11-18
 
-The Build phase splits into eight skills behind one dispatcher, and the release
-phase gets an owner.
+The Build phase splits into eight skills behind one dispatcher, git decisions get
+an owner, and a release note gets a template that checks itself.
 
 ### Added
 - `release`: four gates before a tag, the changelog before the tag, an annotated
