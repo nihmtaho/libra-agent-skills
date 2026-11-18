@@ -21,11 +21,16 @@ every behavior case below can fail.
 The `has` checks are literal and case-sensitive: a fragment must appear exactly
 as written. A fragment that is only a noun or a path proves the noun is mentioned,
 not that the rule holds, because an appended `unless` or `except` is invisible to
-it. So the fragment carries the clause that states the consequence
+it. So a new or changed assertion carries the clause that states the consequence
 (`is idempotent: a key the caller supplies`, not `idempotent`), and where the rule
 is a negation, the negation travels with it (`never infer it`, `not permission to
-tag`). A rewrite that keeps every word and changes only the meaning can still
-pass; that is the boundary of a contract eval, and the reason `review` exists.
+tag`).
+
+Some older fragments are still nouns or paths — `Spike mode`, `DAMP`, `WCAG 2.1
+AA`, `count of tests` — and can be withdrawn with one appended word. They are
+known, not forgotten: tighten one when you touch the rule it guards. A rewrite
+that keeps every word and changes only the meaning can still pass; that is the
+boundary of a contract eval, and the reason `review` exists.
 
 ## 2. Behavior evals
 

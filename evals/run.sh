@@ -148,7 +148,7 @@ write_body "$root/skills/source-driven-development/SKILL.md" | grep -q 'none' ||
 
 # --- subagent-driven-development: the parent keeps the commit -------------
 has subagent-driven-development 'overlap table'      'parallel work is dispatched without checking paths'
-has subagent-driven-development 'A subagent never commits, never'      'a subagent can commit'
+has subagent-driven-development 'A subagent never commits, never pushes, and never ticks a box'      'a subagent can commit'
 steps_body "$root/skills/subagent-driven-development/SKILL.md" | grep -qF 'Run the suite yourself' ||
   { echo "FAIL subagent-driven-development: the parent may trust a subagent green"; fail=1; }
 write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' ||
