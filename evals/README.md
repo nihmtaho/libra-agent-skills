@@ -14,9 +14,16 @@ a stopping rule and a cap, `idea-refine` forces 5 to 7 options,
 `spec-driven-development` requires all six parts,
 `constraint-driven-development` names the four ways a check gets lowered, and
 `release` gates on the four git commands), that **one owner per artifact** holds
-for `docs/specs/`, `docs/ideas/` and `docs/CONSTRAINTS.md`, that the wiring
-between skills is intact, that no skill names a dead skill, and that every
-behavior case below can fail.
+for `docs/specs/`, `docs/ideas/`, `docs/CONSTRAINTS.md` and `docs/GIT.md`, that
+the wiring between skills is intact, that no skill names a dead skill, and that
+every behavior case below can fail.
+
+Presence checks are literal and case-sensitive: a fragment must appear exactly as
+written. Where a rule carries a negation, the assertion includes the word that
+carries it (`never infer it`, `not permission to tag`), because a sentence that
+keeps the other words and withdraws the rule would otherwise pass. A coherent
+rewrite that keeps both the words and the meaning can still pass; that is the
+boundary of a contract eval, and the reason `review` exists.
 
 ## 2. Behavior evals
 
