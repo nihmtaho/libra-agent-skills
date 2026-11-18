@@ -65,3 +65,11 @@ stop: T2 and T3 only add more of the same.
       `using-libra` gains one sentence and no new row. `## Module map` gains
       `docs/api/` and `docs/design-system.md`. The spec's acceptance boxes are
       ticked only where the evidence exists.
+
+## Evidence
+
+- 2026-11-18 — `routing`, 18 requests: 3 of 3 runs matched 18 of 18, each in a
+  fresh sandbox with the descriptions generated from the skills. Recorded in
+  `evals/README.md`.
+- No behavior case exists for the eight Build skills yet. The next one worth
+  building is a TDD case that reverts the code and proves the new test goes red.
