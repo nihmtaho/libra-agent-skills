@@ -30,6 +30,7 @@ updated: 2026-11-18
 
 ## Features
 | Feature | Status | Stopped at | Docs |
+|---|---|---|---|
 | the 14-skill set | done | | [plan](plans/2026-11-15-libra-agent-skills-plan.md) |
 | the Define pipeline (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) | done | | [readme](../README.md) |
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
