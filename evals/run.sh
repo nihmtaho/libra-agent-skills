@@ -71,7 +71,7 @@ owners() {
     write_body "$d/SKILL.md" | grep -qF -- "$1" && printf '%s\n' "$n"
   done
 }
-for artifact in 'docs/specs/' 'docs/ideas/' 'docs/CONSTRAINTS.md'; do
+for artifact in 'docs/specs/' 'docs/ideas/' 'docs/CONSTRAINTS.md' 'docs/GIT.md'; do
   names=$(owners "$artifact")
   count=$(printf '%s' "$names" | grep -c .)
   [ "$count" -eq 1 ] ||
@@ -165,6 +165,14 @@ has api-and-interface-design 'boundary, once'  'validation may be spread through
 has api-and-interface-design 'idempotent'      'a retryable write may double'
 write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
   { echo "FAIL api-and-interface-design: Write does not name docs/api/"; fail=1; }
+
+# --- git-workflow-and-versioning: the merge rule and the review order ------
+steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'each one builds and passes the suite' ||
+  { echo "FAIL git-workflow-and-versioning: the merge policy lost its first row"; fail=1; }
+has git-workflow-and-versioning 'never after a verdict' 'history may be cleaned after a review, voiding it'
+has git-workflow-and-versioning 'only when this file says' 'a direct commit is allowed without a recorded exception'
+write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
+  { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \

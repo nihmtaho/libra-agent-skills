@@ -53,6 +53,8 @@ route 'adding an endpoint'                            api-and-interface-design
 route 'response shape'                                api-and-interface-design
 route 'error format'                                  api-and-interface-design
 route 'ready to implement'                            build
+route 'squash or keep the commits'                    git-workflow-and-versioning
+route 'branching model'                               git-workflow-and-versioning
 route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
 
@@ -62,7 +64,8 @@ route 'bound to one commit'                           review
 
 # An OR-ed case hides a dead branch: one live alternative makes the whole line
 # green while the other matches no description at all. Every alternative must
-# match something.
+# match something. Matching is case-sensitive, so a phrase that only appears at
+# the start of a description sentence will never match: pick mid-sentence words.
 dead=$(sed -n "s/^[[:space:]]*route '\([^']*\)'[[:space:]].*/\1/p" "$0" | tr '|' '\n')
 [ -n "$dead" ] || { echo "FAIL routing: the guard extracted no route lines"; fail=1; }
 while IFS= read -r alt; do

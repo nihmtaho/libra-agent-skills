@@ -5,7 +5,7 @@ spec: ../specs/git-workflow-skill.md
 ---
 # The git workflow skill and the recorded exception
 
-Stopped at: not started
+Stopped at: T2, not started
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 27.
@@ -13,7 +13,7 @@ Stopped at: not started
 80 lines, or `docs/GIT.md` is not the only artifact it claims, stop: T2 and T3
 only point at it.
 
-- [ ] **T1 — the skill, its artifact and the counts**
+- [x] **T1 — the skill, its artifact and the counts**
       Done means: `bash scripts/test.sh && ls skills | wc -l` exits 0 and prints 27
       Touches: `skills/git-workflow-and-versioning/SKILL.md`, `docs/GIT.md`,
       `README.md`, `docs/PROJECT.md`, `skills/using-libra/SKILL.md`,

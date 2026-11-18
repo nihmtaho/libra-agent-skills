@@ -1,6 +1,6 @@
 # libra-agent-skills
 
-Twenty-six small skills for coding agents, built around one idea: six months
+Twenty-seven small skills for coding agents, built around one idea: six months
 later, a human and an agent should open a project, read one file, and know
 what it is, where it stands, and what comes next.
 
@@ -103,13 +103,13 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in api-and-interface-design bootstrap-project build constraint-driven-development context-engineering debug decide doubt-driven-development frontend-ui-engineering handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work release resume review ship simplify source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify; do
+for s in api-and-interface-design bootstrap-project build constraint-driven-development context-engineering debug decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work release resume review ship simplify source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```
 
 Do not delete `.agents/skills/` or `.claude/skills/` themselves — the project may have other skills there.
-The loop removes libra's 26 names: if a skill with one of these names was yours before installing, move it aside first.
+The loop removes libra's 27 names: if a skill with one of these names was yours before installing, move it aside first.
 
 ## Why not a fork of `agent-skills`
 

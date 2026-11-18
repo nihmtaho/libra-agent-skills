@@ -2,7 +2,7 @@
 title: libra-agent-skills
 updated: 2026-11-18
 ---
-# 26 skills for coding agents, built around one state file so a project can be reopened six months later
+# 27 skills for coding agents, built around one state file so a project can be reopened six months later
 
 ## Run & verify
 - `bash scripts/test.sh` — the skill contract, the markdown fixtures, the routing fixtures, the skill evals, then the install tests.
@@ -17,7 +17,7 @@ updated: 2026-11-18
 ## Module map
 - `skills/<name>/SKILL.md` — the single source of the skill set; ≤80 lines, five fixed sections; renaming the file means renaming `name`.
 - `install.sh` — symlinks into the destination; the fragile parts are overwriting and paths with spaces.
-- `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 26 skills.
+- `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 27 skills.
 - `scripts/check-docs.sh` — the document rules; the copy in `scripts/` and the one shipped in `skills/bootstrap-project/scripts/` must stay byte-identical.
 - `scripts/test-check-docs.sh` — one broken fixture per rule, plus every shipped template and this repo's own documents must stay clean.
 - `scripts/test-install.sh` — symlink, run twice, refuse to overwrite, the Office-reading script must run from the installed destination.
@@ -25,6 +25,7 @@ updated: 2026-11-18
 - `docs/CONSTRAINTS.md` — this repo's own quality bar; `constraint-driven-development` is dogfooded here first.
 - `docs/api/` — the document type this set writes into a project, one file per interface; owner `api-and-interface-design`. Not used in this repo.
 - `docs/design-system.md` — the document type for tokens, components and where state lives; owner `frontend-ui-engineering`. Not used in this repo.
+- `docs/GIT.md` — this repository's branching model, merge policy, version scheme and commit format; owner `git-workflow-and-versioning`.
 - `evals/` — contract evals for the Define and Build skills, plus the live rubric a human runs by hand.
 
 ## Features

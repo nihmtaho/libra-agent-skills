@@ -26,6 +26,8 @@ phase gets an owner.
   component, an explicit state model, three widths, and WCAG 2.1 AA.
 - `api-and-interface-design`: the contract in `docs/api/` before the handler, one
   error format, validation at the boundary, and Hyrum's Law.
+- `git-workflow-and-versioning`: the branching model, the merge policy, the version
+  scheme and the commit format, in `docs/GIT.md`.
 
 ### Changed
 - `ship` names `release` instead of deferring to "a separate decision", and says
