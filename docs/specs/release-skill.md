@@ -14,8 +14,9 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 ## Use cases
 1. A maintainer cuts v0.1.3 three weeks later; the skill refuses until the default
    branch is clean, pushed and free of that tag.
-2. A user upgrading reads the note, which adds a summary and an upgrade line but
-   no claim the changelog section does not make, and drops no entry it has.
+2. A user upgrading reads the note, which adds a summary and, when an install
+   breaks, an upgrade line — no claim the changelog section does not make, and no
+   entry it has dropped.
 3. A reader asks why release is not part of `ship`, and finds the answer in one
    line in both skills.
 4. Someone reads the v0.1.3 release without the changelog open and still knows
@@ -26,7 +27,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   changelog first, annotated tag, pushed, notes filled from the template, verified
   by command.
 - `skills/release/templates/release-notes.md` — the note's shape: summary,
-  Highlights, Added, Changed, Removed, Upgrade, full changelog. Filled from the
+  Highlights, Added, Changed, Removed, Upgrade, full changelog. Its frontmatter is
+  for `check-docs.sh` and is dropped from the note; the body is filled from the
   changelog section, never from memory.
 - `skills/ship/SKILL.md` — names `release` instead of "a separate decision", and
   says what to do when a project commits directly on the default branch.
