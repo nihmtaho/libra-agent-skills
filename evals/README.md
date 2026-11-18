@@ -27,8 +27,9 @@ is a negation, the negation travels with it (`never infer it`, `not permission t
 tag`).
 
 Some older fragments are still nouns or paths — `Spike mode`, `DAMP`, `WCAG 2.1
-AA`, `count of tests` — and can be withdrawn with one appended word. They are
-known, not forgotten: tighten one when you touch the rule it guards. A rewrite
+AA`, `count of tests` — and can be withdrawn with one appended word. The ones
+named here are known; the same weakness remains wherever a fragment is a bare
+noun, and tightening one is part of touching the rule it guards. A rewrite
 that keeps every word and changes only the meaning can still pass; that is the
 boundary of a contract eval, and the reason `review` exists.
 

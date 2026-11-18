@@ -45,7 +45,7 @@ has spec-driven-development 'one line per use case, checkable by a command' \
 has spec-driven-development '## Open questions'  'has nowhere to park an unanswered question'
 has spec-driven-development 'Never guess one'    'may guess an answer into the spec'
 has spec-driven-development 'plan-work'          'does not hand off to plan-work'
-steps_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'gets its ADR before the spec is called done' ||
+steps_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'with a rejected alternative, gets its ADR before the spec is called done' ||
   { echo "FAIL spec-driven-development: a decided choice may leave no ADR behind"; fail=1; }
 write_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'docs/specs/' ||
   { echo "FAIL spec-driven-development: Write does not name docs/specs/"; fail=1; }
@@ -171,7 +171,7 @@ write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api
 # --- git-workflow-and-versioning: the merge rule and the review order ------
 steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'each one builds and passes the suite' ||
   { echo "FAIL git-workflow-and-versioning: the merge policy lost its first row"; fail=1; }
-steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'Clean the history before review' ||
+steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'Clean the history before review, never after a verdict' ||
   { echo "FAIL git-workflow-and-versioning: history may be cleaned after a review, voiding it"; fail=1; }
 has git-workflow-and-versioning 'may go straight to the default branch only when this file says so' 'a direct commit is allowed without a recorded exception'
 write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
@@ -185,7 +185,7 @@ grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/r
   { echo "FAIL release: the version scheme is inferred, not read"; fail=1; }
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL incremental-implementation: the default-branch clause is gone"; fail=1; }
-steps_body "$root/skills/build/SKILL.md" | grep -qF 'in every case state branch-or-direct' ||
+steps_body "$root/skills/build/SKILL.md" | grep -qF 'state branch-or-direct before the first commit: which branch' ||
   { echo "FAIL build: the commit destination is never stated"; fail=1; }
 
 # --- bootstrap asks about git before it writes the state file ---------------
