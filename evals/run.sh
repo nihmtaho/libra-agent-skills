@@ -14,8 +14,8 @@ steps_body() { awk '/^## Steps$/{f=1;next} /^## /{f=0} f' "$1" | tr '\n' ' ' | t
 # lines is still the rule.
 flat() { tr '\n' ' ' < "$1" | tr -s ' '; }
 
-has() { # <skill> <fixed string> <rule label>
-  flat "$root/skills/$1/SKILL.md" | grep -qiF -- "$2" ||
+has() { # <skill> <fixed string> <rule label>; case-sensitive on purpose
+  flat "$root/skills/$1/SKILL.md" | grep -qF -- "$2" ||
     { echo "FAIL $1: $3"; fail=1; }
 }
 
@@ -32,7 +32,7 @@ has interview-me 'idea-refine'                  'does not hand off to idea-refin
 has idea-refine '5 to 7 different answers'      'does not force more than one option'
 has idea-refine 'One line per death'            'does not record why an option died'
 has idea-refine 'riskiest assumption'           'names no assumption that could kill the direction'
-has idea-refine 'Cheapest test'                 'has no cheap test before code'
+has idea-refine 'cheapest test'                  'has no cheap test before code'
 write_body "$root/skills/idea-refine/SKILL.md" | grep -qF 'docs/ideas/' ||
   { echo "FAIL idea-refine: Write does not name docs/ideas/"; fail=1; }
 
@@ -45,7 +45,7 @@ has spec-driven-development 'checkable by a command or an observation' \
 has spec-driven-development '## Open questions'  'has nowhere to park an unanswered question'
 has spec-driven-development 'Never guess one'    'may guess an answer into the spec'
 has spec-driven-development 'plan-work'          'does not hand off to plan-work'
-steps_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'before the spec is called done' ||
+steps_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'gets its ADR before the spec is called done' ||
   { echo "FAIL spec-driven-development: a decided choice may leave no ADR behind"; fail=1; }
 write_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'docs/specs/' ||
   { echo "FAIL spec-driven-development: Write does not name docs/specs/"; fail=1; }
@@ -118,7 +118,7 @@ steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Tick t
   { echo "FAIL incremental-implementation: a landed slice is never reported"; fail=1; }
 
 # --- test-driven-development: the order, and the trap ----------------------
-has test-driven-development 'A test that passes before any change' 'a test of nothing is allowed'
+has test-driven-development 'A test that passes before any change is a test of nothing' 'a test of nothing is allowed'
 has test-driven-development 'DAMP'                                  'tests may hide their data behind a helper'
 has test-driven-development '80/15/5'                               'the test pyramid is gone'
 write_body "$root/skills/test-driven-development/SKILL.md" | grep -q 'none' ||
@@ -173,7 +173,7 @@ steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'each 
   { echo "FAIL git-workflow-and-versioning: the merge policy lost its first row"; fail=1; }
 steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'Clean the history before review' ||
   { echo "FAIL git-workflow-and-versioning: history may be cleaned after a review, voiding it"; fail=1; }
-has git-workflow-and-versioning 'only when this file says' 'a direct commit is allowed without a recorded exception'
+has git-workflow-and-versioning 'may go straight to the default branch only when this file says so' 'a direct commit is allowed without a recorded exception'
 write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
   { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
@@ -185,7 +185,7 @@ grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/r
   { echo "FAIL release: the version scheme is inferred, not read"; fail=1; }
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL incremental-implementation: the default-branch clause is gone"; fail=1; }
-steps_body "$root/skills/build/SKILL.md" | grep -qF 'branch-or-direct' ||
+steps_body "$root/skills/build/SKILL.md" | grep -qF 'in every case state branch-or-direct' ||
   { echo "FAIL build: the commit destination is never stated"; fail=1; }
 
 # --- bootstrap asks about git before it writes the state file ---------------
