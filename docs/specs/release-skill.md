@@ -27,9 +27,10 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   changelog first, annotated tag, pushed, notes filled from the template, verified
   by command.
 - `skills/release/templates/release-notes.md` — the note's shape: summary,
-  Highlights, Added, Changed, Removed, Upgrade, full changelog. Its frontmatter and comment
-  are for `check-docs.sh` and are dropped from the note; the body is filled from the
-  changelog section, never from memory.
+  Highlights, Added, Changed, Removed, Upgrade, full changelog. Its frontmatter is for
+  `check-docs.sh` and its comment is an instruction to the fill; both are dropped
+  from the note, and the body is filled from the changelog section, never from
+  memory.
 - `skills/ship/SKILL.md` — names `release` instead of "a separate decision", and
   says what to do when a project commits directly on the default branch.
 - `skills/using-libra/SKILL.md` — one row, so the phase is reachable.
