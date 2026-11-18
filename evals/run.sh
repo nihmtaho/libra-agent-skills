@@ -230,6 +230,10 @@ steps_body "$root/skills/release/SKILL.md" | grep -qF -- '--notes-file /tmp/<ver
   { echo "FAIL release: publishes a file other than the note that was filled"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qF '`gh release view v<version>` shows no `<` placeholder' ||
   { echo "FAIL release: a template placeholder can ship inside the published note"; fail=1; }
+flat "$tpl" | grep -qF 'The filled note must pass `check-docs.sh`' ||
+  { echo "FAIL release: an empty section ships because nothing checks the note"; fail=1; }
+flat "$tpl" | grep -qF 'delete this whole section when nothing breaks' ||
+  { echo "FAIL release: nothing tells the filler to drop an empty upgrade section"; fail=1; }
 
 # --- a dead skill name is a routing bug -------------------------------------
 for f in "$root"/skills/*/SKILL.md; do

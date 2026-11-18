@@ -30,7 +30,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   Highlights, Added, Changed, Removed, Upgrade, full changelog. Its frontmatter is for
   `check-docs.sh` and its comment is an instruction to the fill; both are dropped
   from the note, and the body is filled from the changelog section, never from
-  memory.
+  memory. The filled note must pass `check-docs.sh`, so an empty upgrade section
+  fails instead of shipping.
 - `skills/ship/SKILL.md` — names `release` instead of "a separate decision", and
   says what to do when a project commits directly on the default branch.
 - `skills/using-libra/SKILL.md` — one row, so the phase is reachable.
@@ -55,7 +56,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 - `bash evals/run.sh` fails when any of the six template sections is deleted, when
   the step stops naming the template, stops saying the frontmatter and comment are dropped,
   stops requiring every changelog entry, stops forbidding a claim the changelog
-  does not support, or stops checking that no `<` placeholder shipped.
+  does not support, stops checking that no `<` placeholder shipped, or when the
+  template stops requiring the filled note to pass `check-docs.sh`.
 
 ## Acceptance criteria
 - [x] `bash scripts/test.sh` exits 0 with five green lines.
