@@ -60,7 +60,7 @@ or a release with nothing to record.
    --title "v<version>" --notes-file /tmp/<version>-notes.md`. No `gh`, or it
    errors: stop and say the release is tagged but unpublished.
 7. Verify by command, not by memory: `git ls-tree --name-only v<version>` and
-   `gh release view v<version>`. A tag is not a release.
+   `gh release view v<version>` shows no `<` placeholder. A tag is not a release.
 8. Record the next version's first item in `docs/PROJECT.md` `## Next`, so the
    state file points at work that exists.
 

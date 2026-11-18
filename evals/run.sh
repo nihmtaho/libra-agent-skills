@@ -228,6 +228,8 @@ steps_body "$root/skills/release/SKILL.md" | grep -qF 'claiming nothing the chan
   { echo "FAIL release: the note may claim more than the changelog"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qF -- '--notes-file /tmp/<version>-notes.md' ||
   { echo "FAIL release: publishes a file other than the note that was filled"; fail=1; }
+steps_body "$root/skills/release/SKILL.md" | grep -qF '`gh release view v<version>` shows no `<` placeholder' ||
+  { echo "FAIL release: a template placeholder can ship inside the published note"; fail=1; }
 
 # --- a dead skill name is a routing bug -------------------------------------
 for f in "$root"/skills/*/SKILL.md; do

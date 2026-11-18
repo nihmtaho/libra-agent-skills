@@ -53,8 +53,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   one, and the skill must say which gate failed.
 - `bash evals/run.sh` fails when any of the six template sections is deleted, when
   the step stops naming the template, stops saying the frontmatter is dropped,
-  stops requiring every changelog entry, or stops forbidding a claim the changelog
-  does not support.
+  stops requiring every changelog entry, stops forbidding a claim the changelog
+  does not support, or stops checking that no `<` placeholder shipped.
 
 ## Acceptance criteria
 - [x] `bash scripts/test.sh` exits 0 with five green lines.
