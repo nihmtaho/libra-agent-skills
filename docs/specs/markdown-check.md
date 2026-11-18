@@ -37,9 +37,10 @@ Generic, every file under `docs/`:
    means it is content.
 7. Every `](path)` that is not `http(s)`, `mailto` or `#anchor` resolves to a file
    that exists, relative to the document.
-8. A row that starts with `|` is followed by a separator row (`|---|`); a header
-   row without one renders as one paragraph of pipes, not a table. A row inside a
-   code fence is text and is not checked.
+8. A row that starts with `|` is followed by a separator row whose cells are all
+   `:?-+:?`; without one the pipes render as one paragraph of text. A fence
+   indented up to three spaces, and a four-space-indented code block, are code,
+   not table rows.
 
 Per type, by path, in this order of match:
 
@@ -87,6 +88,8 @@ existing `scripts/check-docs.sh`: keep the project's file and say so in one line
 - Fixing the file: report only; the skill that wrote it does the fixing.
 - Sweeping every document in the project: this version checks the file the skill
   just wrote, plus whatever a human points it at.
+- Column counts agreeing between the header and the separator row: counting cells
+  that may hold escaped or code-span pipes is a rule of its own.
 - External links, images, spelling, prose quality.
 - Rejecting an `updated:` date that is not today: timezone-dependent, and
   `build` may backfill an older date on purpose.

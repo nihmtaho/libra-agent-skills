@@ -244,7 +244,7 @@ x
 ## Out of scope
 x
 FIX
-expect_fail "table without a separator" "table has no separator row" \
+expect_fail "table without a separator" "table has no valid separator row" \
   "$tmp/docs/specs/table-no-separator.md"
 
 doc docs/specs/table-separated.md <<'FIX'
@@ -293,6 +293,76 @@ x
 x
 FIX
 expect_clean "table inside a fence" "$tmp/docs/specs/table-in-fence.md"
+
+doc docs/specs/table-in-indented-fence.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+  ```text
+  | Feature | Status |
+  | one | done |
+  ```
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_clean "table inside a fence indented two spaces" \
+  "$tmp/docs/specs/table-in-indented-fence.md"
+
+doc docs/specs/table-in-code-block.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+    | Feature | Status |
+    | one | done |
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_clean "table inside a four-space code block" "$tmp/docs/specs/table-in-code-block.md"
+
+doc docs/specs/table-bad-separator.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+| Feature | Status |
+| - - - | --- |
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_fail "separator with spaces inside a cell" "table has no valid separator row" \
+  "$tmp/docs/specs/table-bad-separator.md"
 
 doc docs/specs/missing-section.md <<'EOF'
 ---

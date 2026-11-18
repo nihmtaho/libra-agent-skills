@@ -9,8 +9,8 @@ caught.
 
 ### Fixed
 - the `## Features` table in `docs/PROJECT.md` renders as a table again: the
-  separator row was missing, and `check-docs.sh` now fails a table row with no
-  separator row under it.
+  separator row was missing, and `check-docs.sh` now fails a table whose separator
+  row is missing or invalid.
 
 ## [0.2.0] - 2026-11-18
 

@@ -110,26 +110,41 @@ for f in "$@"; do
       { echo "FAIL $f:$line: link target not found: $target"; fail=1; }
   done <<< "$links"
 
-  # 8. a table row is a table only when the row under it separates the header from
-  #    the body; otherwise the pipes render as one paragraph of text
+  # 8. a table row is a table only when the row under it is a valid separator row;
+  #    otherwise the pipes render as one paragraph of text. A fence may be indented
+  #    up to three spaces and a four-space indent is a code block, so neither is a
+  #    table row.
   tables=$(awk -v f="$f" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
-    NR <= fm { next }
-    match($0, /^(`{3,}|~{3,})/) {
-      ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
-      if (fence == "") { fence = ch; fw = w }
-      else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
-      head = 0; next }
-    fence { next }
-    /^[ \t]*\|/ {
-      if (!head) { head = NR; next }
-      if (head > 0) {
-        if ($0 !~ /^[ \t]*\|[-: |]*-[-: |]*$/)
-          bad(head, "table has no separator row, so it renders as text")
-        head = -1
+    function sep(line,   n, i, cells, c) {
+      sub(/^\|/, "", line); sub(/\|[ \t]*$/, "", line)
+      n = split(line, cells, "|")
+      for (i = 1; i <= n; i++) {
+        c = cells[i]; gsub(/^[ \t]+|[ \t]+$/, "", c)
+        if (c !~ /^:?-+:?$/) return 0
       }
-      next }
-    { head = 0 }' "$f")
+      return 1 }
+    NR <= fm { next }
+    {
+      if ($0 ~ /^ {4,}/) { head = 0; next }
+      line = $0; sub(/^ {0,3}/, "", line)
+      if (match(line, /^(`{3,}|~{3,})/)) {
+        ch = substr(line, 1, 1); w = RLENGTH; rest = substr(line, RLENGTH + 1)
+        if (fence == "") { fence = ch; fw = w }
+        else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
+        head = 0; next
+      }
+      if (fence != "") next
+      if (line ~ /^\|/) {
+        if (!head) { head = NR; next }
+        if (head > 0) {
+          if (!sep(line)) bad(head, "table has no valid separator row, so it renders as text")
+          head = -1
+        }
+        next
+      }
+      head = 0
+    }' "$f")
   [ -z "$tables" ] || { printf '%s\n' "$tables"; fail=1; }
 
   # 9. headings required by document type
