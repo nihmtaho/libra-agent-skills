@@ -37,10 +37,10 @@ Generic, every file under `docs/`:
    means it is content.
 7. Every `](path)` that is not `http(s)`, `mailto` or `#anchor` resolves to a file
    that exists, relative to the document.
-8. A row that starts with `|` is followed by a separator row whose cells are all
-   `:?-+:?`; without one the pipes render as one paragraph of text. A fence
-   indented up to three spaces, and a four-space-indented code block, are code,
-   not table rows.
+8. When two consecutive rows start with `|`, the second must be a separator row
+   whose cells are all `:?-+:?`; without one the pipes render as one paragraph of
+   text. Leading spaces up to three are ignored, and a fence indented that far, or
+   a line indented four or more spaces, is code, so its rows are not checked.
 
 Per type, by path, in this order of match:
 

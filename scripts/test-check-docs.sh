@@ -319,6 +319,54 @@ FIX
 expect_clean "table inside a fence indented two spaces" \
   "$tmp/docs/specs/table-in-indented-fence.md"
 
+doc docs/specs/table-in-indented-fence-col0.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+  ```text
+| Feature | Status |
+| one | done |
+  ```
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_clean "column-0 rows inside a fence indented two spaces" \
+  "$tmp/docs/specs/table-in-indented-fence-col0.md"
+
+doc docs/specs/table-pipe-separator.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+| Feature | Status |
+|
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_fail "a row of pipes is not a separator" "table has no valid separator row" \
+  "$tmp/docs/specs/table-pipe-separator.md"
+
 doc docs/specs/table-in-code-block.md <<'FIX'
 ---
 title: t

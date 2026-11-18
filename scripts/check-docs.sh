@@ -118,6 +118,7 @@ for f in "$@"; do
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     function sep(line,   n, i, cells, c) {
       sub(/^\|/, "", line); sub(/\|[ \t]*$/, "", line)
+      if (line ~ /^[ \t]*$/) return 0
       n = split(line, cells, "|")
       for (i = 1; i <= n; i++) {
         c = cells[i]; gsub(/^[ \t]+|[ \t]+$/, "", c)
@@ -126,7 +127,6 @@ for f in "$@"; do
       return 1 }
     NR <= fm { next }
     {
-      if ($0 ~ /^ {4,}/) { head = 0; next }
       line = $0; sub(/^ {0,3}/, "", line)
       if (match(line, /^(`{3,}|~{3,})/)) {
         ch = substr(line, 1, 1); w = RLENGTH; rest = substr(line, RLENGTH + 1)
