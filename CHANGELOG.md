@@ -32,6 +32,8 @@ phase gets an owner.
 ### Changed
 - `ship` names `release` instead of deferring to "a separate decision", and says
   that nothing to merge is normal, not permission to tag.
+- `release`: the note is filled from a shipped template — a summary, the
+  changelog's sections, and an upgrade line only when an install breaks.
 - `build` becomes the Build dispatcher: it names which skill runs, in what order,
   and `test-driven-development` plus `incremental-implementation` are never
   skipped. Spike mode stays, as the one exception.

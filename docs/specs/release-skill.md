@@ -1,6 +1,6 @@
 ---
 title: Release is its own skill, after ship
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 # Release is its own skill, after ship
 
@@ -18,10 +18,16 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
    summary of it.
 3. A reader asks why release is not part of `ship`, and finds the answer in one
    line in both skills.
+4. Someone reads the v0.1.3 release without the changelog open and still knows
+   what changed, what breaks an install, and which command fixes it.
 
 ## Structure
 - `skills/release/SKILL.md` — the new skill: four git gates, version rule,
-  changelog first, annotated tag, pushed, notes copied, verified by command.
+  changelog first, annotated tag, pushed, notes filled from the template, verified
+  by command.
+- `skills/release/templates/release-notes.md` — the note's shape: summary,
+  Highlights, Added, Changed, Removed, Upgrade, full changelog. Filled from the
+  changelog section, never from memory.
 - `skills/ship/SKILL.md` — names `release` instead of "a separate decision", and
   says what to do when a project commits directly on the default branch.
 - `skills/using-libra/SKILL.md` — one row, so the phase is reachable.
@@ -43,6 +49,9 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
   passed" still reaches `ship`.
 - Failure path: a release attempted on a feature branch must be refused by gate
   one, and the skill must say which gate failed.
+- `bash evals/run.sh` fails when a template section is deleted, when the step
+  stops naming the template, or when it stops forbidding a claim the changelog
+  does not support.
 
 ## Acceptance criteria
 - [x] `bash scripts/test.sh` exits 0 with five green lines.
@@ -53,6 +62,8 @@ or a pushed commit, because there was nothing to run. A dangling pointer is how
 - [x] `ls skills | wc -l` prints 18, and the README uninstall loop lists all 18.
 - [x] `release`'s `## Write` names `CHANGELOG.md` and `docs/PROJECT.md`, and its
       `## Stop` names the four gates.
+- [x] The note template ships with the skill, carries the five sections, and
+      `evals/run.sh` fails when one is deleted.
 
 ## Out of scope
 - A version bump command or a release automation workflow: the gates are commands

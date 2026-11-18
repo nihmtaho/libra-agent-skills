@@ -87,7 +87,7 @@ has verify 'docs/CONSTRAINTS.md' 'the floor is checked without the project bar'
 has review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
 
 # --- templates ship with the skills that write them -------------------------
-for s in idea-refine spec-driven-development constraint-driven-development; do
+for s in idea-refine spec-driven-development constraint-driven-development release; do
   ls "$root/skills/$s/templates/"*.md >/dev/null 2>&1 ||
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
@@ -210,6 +210,19 @@ steps_body "$root/skills/release/SKILL.md" | grep -qiF 'behind' ||
   { echo "FAIL release: gate 3 does not refuse a branch behind its upstream"; fail=1; }
 steps_body "$root/skills/release/SKILL.md" | grep -qiF 'gh release view' ||
   { echo "FAIL release: never verifies the release exists"; fail=1; }
+
+# --- release: the note is filled from a template, and claims no more ---------
+tpl="$root/skills/release/templates/release-notes.md"
+for h in '## Highlights' '## Added' '## Changed' '## Removed' '## Upgrade'; do
+  grep -qxF -- "$h" "$tpl" 2>/dev/null ||
+    { echo "FAIL release: the note template has no '$h' section"; fail=1; }
+done
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'copy `templates/release-notes.md` to `/tmp/' ||
+  { echo "FAIL release: the template is edited in place instead of copied out"; fail=1; }
+steps_body "$root/skills/release/SKILL.md" | grep -qF 'claim nothing the changelog does not' ||
+  { echo "FAIL release: the note may claim more than the changelog"; fail=1; }
+steps_body "$root/skills/release/SKILL.md" | grep -qF -- '--notes-file /tmp/<version>-notes.md' ||
+  { echo "FAIL release: publishes a file other than the note that was filled"; fail=1; }
 
 # --- a dead skill name is a routing bug -------------------------------------
 for f in "$root"/skills/*/SKILL.md; do

@@ -54,10 +54,11 @@ or a release with nothing to record.
 5. Tag annotated on the default branch tip, then push the branch, then the tag:
    `git tag -a v<version> -m "<one line>"`, `git push origin <branch>`,
    `git push origin v<version>`.
-6. Publish the notes by copying the changelog section into a file, never
-   rewriting it: `gh release create v<version> --title "v<version>" --notes-file
-   /tmp/<version>-notes.md`. No `gh`, or it errors: stop and say the release is
-   tagged but unpublished.
+6. Notes: copy `templates/release-notes.md` to `/tmp/<version>-notes.md`, fill
+   every section from the changelog section, and claim nothing the changelog
+   does not. Publish with `gh release create v<version> --title "v<version>"
+   --notes-file /tmp/<version>-notes.md`. No `gh`, or it errors: stop and say
+   the release is tagged but unpublished.
 7. Verify by command, not by memory: `git ls-tree --name-only v<version>` and
    `gh release view v<version>`. A tag is not a release.
 8. Record the next version's first item in `docs/PROJECT.md` `## Next`, so the
@@ -65,7 +66,7 @@ or a release with nothing to record.
 
 ## Write
 
-`CHANGELOG.md`, `docs/PROJECT.md` `## Next`, and the tag itself.
+`CHANGELOG.md`, `docs/PROJECT.md` `## Next`, the tag, and the release note.
 
 Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
 you finish; no script in the project: say so in one line and continue.
