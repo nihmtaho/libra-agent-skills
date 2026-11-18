@@ -35,8 +35,8 @@ only point at it.
       Depends on: T1
 
       Each skill keeps its own rule and gains a pointer. `ship` keeps its
-      direct-commit sentence word for word and names `docs/GIT.md` as what makes
-      it true. `release` reads the scheme: `semver` or no file keeps
+      direct-commit sentence, word for word, and adds the clause naming
+      `docs/GIT.md` as what makes it true. `release` reads the scheme: `semver` or no file keeps
       patch/minor/major and says it assumed SemVer; `none` stops before the
       changelog; anything else stops and reports it. `incremental` keeps the
       literal words "Conventional Commits" — an eval asserts them — and adds the

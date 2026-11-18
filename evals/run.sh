@@ -61,7 +61,8 @@ write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'doc
   { echo "FAIL constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
 
 # --- decide: a decision is recorded when it is made, not when work lands ----
-has decide 'not when the code lands' 'the ADR may wait until the code lands'
+grep -qF 'Write it when the decision is made, not when the code lands' "$root/skills/decide/SKILL.md" ||
+  { echo "FAIL decide: the ADR may wait until the code lands"; fail=1; }
 write_body "$root/skills/decide/SKILL.md" | grep -qF 'docs/adr/' ||
   { echo "FAIL decide: Write does not name docs/adr/"; fail=1; }
 
@@ -180,7 +181,8 @@ write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/
 has ship 'not permission to tag'                 'an unmerged project may be tagged after all'
 steps_body "$root/skills/ship/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL ship: the direct-commit exception does not name the file that allows it"; fail=1; }
-has release 'Read the scheme from `docs/GIT.md`' 'the version scheme is inferred, not read'
+grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/release/SKILL.md" ||
+  { echo "FAIL release: the version scheme is inferred, not read"; fail=1; }
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL incremental-implementation: the default-branch clause is gone"; fail=1; }
 steps_body "$root/skills/build/SKILL.md" | grep -qF 'branch-or-direct' ||
