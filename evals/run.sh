@@ -45,6 +45,8 @@ has spec-driven-development 'checkable by a command or an observation' \
 has spec-driven-development '## Open questions'  'has nowhere to park an unanswered question'
 has spec-driven-development 'Never guess one'    'may guess an answer into the spec'
 has spec-driven-development 'plan-work'          'does not hand off to plan-work'
+steps_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'before the spec is called done' ||
+  { echo "FAIL spec-driven-development: a decided choice may leave no ADR behind"; fail=1; }
 write_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'docs/specs/' ||
   { echo "FAIL spec-driven-development: Write does not name docs/specs/"; fail=1; }
 
@@ -57,6 +59,10 @@ has constraint-driven-development "human's name"   'a lowered bar needs no name'
 has constraint-driven-development 'count of tests' 'does not compare numbers to the file'
 write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'docs/CONSTRAINTS.md' ||
   { echo "FAIL constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
+
+# --- decide: a decision is recorded when it is made, not when work lands ----
+has decide 'when the decision is made' 'the ADR may wait until the code lands'
+has decide 'docs/adr/'                 'an ADR has no home'
 
 # --- one owner per artifact --------------------------------------------------
 owners() {

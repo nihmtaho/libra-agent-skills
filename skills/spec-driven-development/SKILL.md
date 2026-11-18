@@ -48,6 +48,10 @@ Not for a request with two readings (`interview-me`), an idea still being shaped
 4. Unanswered questions go under `## Open questions`. Never guess one into the
    body.
 5. Keep it to half a page plus the acceptance list. Longer means two specs.
+6. A choice the spec records as made, with a rejected alternative, gets its ADR
+   before the spec is called done: hand to `decide` in the same session. A spec
+   that cites an ADR is fine; one that cites a decision nobody wrote down is a
+   promise the next reader will trust and cannot check.
 
 ## Write
 

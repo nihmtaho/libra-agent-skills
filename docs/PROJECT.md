@@ -41,6 +41,7 @@ updated: 2026-11-18
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
 - [ADR-0002](adr/0002-four-define-skills-and-constraints-md.md) — `spec-driven-development` replaces `write-spec`; the quality bar lives in `docs/CONSTRAINTS.md`.
+- [ADR-0003](adr/0003-direct-commits-need-a-recorded-exception.md) — a direct commit to the default branch needs a recorded exception in `docs/GIT.md`; a single commit is judged, and the merge policy follows the commits.
 
 ## Next
 1. Install `v0.1.2` into a third project and watch the checker on the first document it writes; record the report here.

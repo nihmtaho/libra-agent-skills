@@ -14,6 +14,9 @@ from the code.
 Use when at least two real approaches exist and choosing wrong would cost a
 rewrite, when a convention is set that later work must follow, or when the human
 asks why something is the way it is.
+Write it when the decision is made, not when the code lands: the reasons are
+freshest in the conversation that produced them, and a spec or a task list that
+cites a missing ADR carries a decision nobody can check.
 Not for reversible choices inside one task; those belong in the commit message.
 
 ## Read first
