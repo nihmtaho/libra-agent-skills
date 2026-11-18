@@ -2,6 +2,16 @@
 
 All notable changes to this skill set. Earlier releases are in the git tags.
 
+## [Unreleased]
+
+Waiting for the next version: a checker rule for markdown tables, and the table it
+caught.
+
+### Fixed
+- the `## Features` table in `docs/PROJECT.md` renders as a table again: the
+  separator row was missing, and `check-docs.sh` now fails a table row with no
+  separator row under it.
+
 ## [0.2.0] - 2026-11-18
 
 The Build phase splits into eight skills behind one dispatcher, git decisions get

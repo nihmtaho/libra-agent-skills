@@ -1,6 +1,6 @@
 ---
 title: Check a markdown file whenever a skill writes one
-updated: 2026-11-16
+updated: 2026-11-18
 ---
 # markdown check after every write
 
@@ -37,6 +37,9 @@ Generic, every file under `docs/`:
    means it is content.
 7. Every `](path)` that is not `http(s)`, `mailto` or `#anchor` resolves to a file
    that exists, relative to the document.
+8. A row that starts with `|` is followed by a separator row (`|---|`); a header
+   row without one renders as one paragraph of pipes, not a table. A row inside a
+   code fence is text and is not checked.
 
 Per type, by path, in this order of match:
 
@@ -72,6 +75,9 @@ existing `scripts/check-docs.sh`: keep the project's file and say so in one line
 - [x] From an installed destination (`./install.sh --dest DIR`), `DIR/.agents/skills/bootstrap-project/scripts/check-docs.sh` runs and exits 0 on a good document.
 - [x] Observation: a spec with `## Out of scope` deleted is caught on the next run and comes back fixed in the same turn (this repo, 2026-11-16).
 - [x] Dropping `## Never` from a `CONSTRAINTS.md`, or `## Riskiest assumption` from an idea, is caught with the rule named (this repo, 2026-11-16).
+- [x] Observation: the `## Features` table in this repo's `docs/PROJECT.md` shipped
+      without a separator row and rendered as text; rule 8 caught it on the next
+      run (this repo, 2026-11-18).
 
 ## Out of scope
 

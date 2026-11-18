@@ -224,6 +224,76 @@ x
 EOF
 expect_fail "broken link" "link target not found: nope.md" "$tmp/docs/specs/broken-link.md"
 
+doc docs/specs/table-no-separator.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+| Feature | Status |
+| one | done |
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_fail "table without a separator" "table has no separator row" \
+  "$tmp/docs/specs/table-no-separator.md"
+
+doc docs/specs/table-separated.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+| Feature | Status |
+|---|---|
+| one | done |
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_clean "table with a separator" "$tmp/docs/specs/table-separated.md"
+
+doc docs/specs/table-in-fence.md <<'FIX'
+---
+title: t
+updated: 2026-11-16
+---
+# t
+
+## Problem
+```text
+| Feature | Status |
+| one | done |
+```
+
+## Use cases
+x
+
+## Acceptance criteria
+x
+
+## Out of scope
+x
+FIX
+expect_clean "table inside a fence" "$tmp/docs/specs/table-in-fence.md"
+
 doc docs/specs/missing-section.md <<'EOF'
 ---
 title: t

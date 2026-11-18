@@ -110,7 +110,29 @@ for f in "$@"; do
       { echo "FAIL $f:$line: link target not found: $target"; fail=1; }
   done <<< "$links"
 
-  # 8. headings required by document type
+  # 8. a table row is a table only when the row under it separates the header from
+  #    the body; otherwise the pipes render as one paragraph of text
+  tables=$(awk -v f="$f" '
+    function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
+    NR <= fm { next }
+    match($0, /^(`{3,}|~{3,})/) {
+      ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
+      if (fence == "") { fence = ch; fw = w }
+      else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
+      head = 0; next }
+    fence { next }
+    /^[ \t]*\|/ {
+      if (!head) { head = NR; next }
+      if (head > 0) {
+        if ($0 !~ /^[ \t]*\|[-: |]*-[-: |]*$/)
+          bad(head, "table has no separator row, so it renders as text")
+        head = -1
+      }
+      next }
+    { head = 0 }' "$f")
+  [ -z "$tables" ] || { printf '%s\n' "$tables"; fail=1; }
+
+  # 9. headings required by document type
   type=""
   case "$fl" in
     */docs/project.md|docs/project.md) type=project ;;
