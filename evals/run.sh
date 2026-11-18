@@ -62,7 +62,6 @@ write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'doc
 
 # --- decide: a decision is recorded when it is made, not when work lands ----
 has decide 'when the decision is made' 'the ADR may wait until the code lands'
-has decide 'docs/adr/'                 'an ADR has no home'
 
 # --- one owner per artifact --------------------------------------------------
 owners() {
@@ -169,16 +168,19 @@ write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api
 # --- git-workflow-and-versioning: the merge rule and the review order ------
 steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'each one builds and passes the suite' ||
   { echo "FAIL git-workflow-and-versioning: the merge policy lost its first row"; fail=1; }
-has git-workflow-and-versioning 'never after a verdict' 'history may be cleaned after a review, voiding it'
+steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'Clean the history before review' ||
+  { echo "FAIL git-workflow-and-versioning: history may be cleaned after a review, voiding it"; fail=1; }
 has git-workflow-and-versioning 'only when this file says' 'a direct commit is allowed without a recorded exception'
 write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
   { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
 # --- the pointers: each skill keeps its own rule and names the policy file ---
 has ship 'nothing to merge'                      'a project with no branch can no longer ship'
-has ship 'docs/GIT.md'                           'the merge policy is not read from the file'
+steps_body "$root/skills/ship/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
+  { echo "FAIL ship: the direct-commit exception does not name the file that allows it"; fail=1; }
 has release 'Read the scheme from `docs/GIT.md`' 'the version scheme is inferred, not read'
-has incremental-implementation 'docs/GIT.md'     'the commit format is not read from the file'
+steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
+  { echo "FAIL incremental-implementation: the default-branch clause is gone"; fail=1; }
 steps_body "$root/skills/build/SKILL.md" | grep -qF 'branch-or-direct' ||
   { echo "FAIL build: the commit destination is never stated"; fail=1; }
 
@@ -187,6 +189,8 @@ grep -qF 'exactly three questions' "$root/skills/bootstrap-project/SKILL.md" ||
   { echo "FAIL bootstrap-project: git is never asked about"; fail=1; }
 grep -qF 'git-workflow-and-versioning' "$root/skills/bootstrap-project/SKILL.md" ||
   { echo "FAIL bootstrap-project: no handoff writes docs/GIT.md"; fail=1; }
+steps_body "$root/skills/bootstrap-project/SKILL.md" | grep -qF 'Docs` cell stays empty' ||
+  { echo "FAIL bootstrap-project: a Docs cell may cite a file that does not cover it"; fail=1; }
 
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \

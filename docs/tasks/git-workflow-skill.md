@@ -5,7 +5,7 @@ spec: ../specs/git-workflow-skill.md
 ---
 # The git workflow skill and the recorded exception
 
-Stopped at: done
+Stopped at: T4 done, not merged
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 27.
@@ -68,8 +68,6 @@ only point at it.
 
 - 2026-11-18 — ADR-0003 written at decision time, before the plan, in `8d88b97`.
   It records both rejected extremes and that the rule moved twice.
-
-## Evidence
 
 - 2026-11-18 — `routing`, 19 requests: 3 of 3 runs matched 19 of 19, each in a
   fresh sandbox with the descriptions generated from the skills. `r19` chose

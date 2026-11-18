@@ -30,8 +30,9 @@ third move has to argue with this file rather than with a memory.
   branch: a branch costs one merge, a commit on `main` costs a revert.
 - `ship` keeps its sentence that nothing to merge is normal, and names
   `docs/GIT.md` as what makes it true for a project.
-- `release` is unchanged: a tag still comes from the default branch, and the
-  "ahead of" gate still asks for a push first.
+- `release`'s tag rule is unchanged: a tag still comes from the default branch,
+  and the "ahead of" gate still asks for a push first. It does read the scheme
+  from `docs/GIT.md`, and stops on `none`.
 
 ## Rejected options
 - **Nothing is ever committed to the default branch.** Cheapest to enforce, but it
@@ -49,8 +50,8 @@ third move has to argue with this file rather than with a memory.
   The policy is a property of the commits, so it is decided once.
 
 ## Consequences
-- Every project must write `docs/GIT.md` before its first commit, or say in one
-  line that it has none and use its own mechanism. `bootstrap-project` asks the
+- A project should write `docs/GIT.md` before its first commit. Without it, `ship`
+  and `release` fall back, say what they assumed, and do not block. `bootstrap-project` asks the
   question; `git-workflow-and-versioning` writes the file.
 - A project with no file is not blocked: `ship` and `release` fall back and say
   what they assumed.

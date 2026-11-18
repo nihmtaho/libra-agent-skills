@@ -46,7 +46,8 @@ change that passed review: that is `ship`.
    that reviews a commit, that voids the review. Clean the history before review,
    never after a verdict.
 4. Too many commits is two diseases. A dirty history is `git rebase -i` into three
-   or four coherent commits before review. A branch that lived too long is a slice
+   or four coherent commits before review — only on your own unpushed branch, never
+   on one someone else has. A branch that lived too long is a slice
    problem: hand back to `incremental-implementation`. Count days since the branch
    last landed anything, and commits that are not green — never the commit count,
    which would punish one-slice-per-commit work.
@@ -58,13 +59,12 @@ change that passed review: that is `ship`.
    a `BREAKING CHANGE:` footer for a break; an imperative, lower-case subject with
    no trailing period; a body only when the why is not obvious. Never a co-author
    line or an AI signature.
-7. Write `docs/GIT.md`, one page. Then add one line under `## Decisions` in
-   `docs/PROJECT.md` linking it.
+7. Write `docs/GIT.md`, one page. `bootstrap-project` records the one-line
+   decision in `## Decisions`; a project past bootstrap lets `decide` do it.
 
 ## Write
 
-`docs/GIT.md` — the four decisions, one page — and one line under `## Decisions`
-in `docs/PROJECT.md`.
+`docs/GIT.md` — the four decisions, one page. This skill writes nothing else.
 
 Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before
 you finish; no script in the project: say so in one line and continue.

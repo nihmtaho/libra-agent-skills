@@ -34,7 +34,7 @@ updated: 2026-11-18
 | the Define pipeline (`interview-me`, `idea-refine`, `spec-driven-development`, `constraint-driven-development`) | done | | [readme](../README.md) |
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
 | the release skill | done | | [spec](specs/release-skill.md) |
-| the Build phase skills (eight behind one dispatcher) | done | | [spec](specs/build-phase-skills.md) · [task](tasks/build-phase-skills.md) |
+| the Build phase skills (nine behind one dispatcher) | done | | [spec](specs/build-phase-skills.md) · [task](tasks/build-phase-skills.md) |
 | the git workflow skill and the recorded exception | in progress | | [task](tasks/git-workflow-skill.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |

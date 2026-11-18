@@ -193,31 +193,31 @@ line or an AI signature.
 
 ## Acceptance criteria
 
-- [ ] `bash scripts/test.sh` exits 0 with five green lines, and
+- [x] `bash scripts/test.sh` exits 0 with five green lines, and
       `ls skills | wc -l` prints 27.
-- [ ] The README loop lists 27 names and the prose says twenty-seven.
-- [ ] `docs/GIT.md` is the only artifact this skill writes, it is in the
+- [x] The README loop lists 27 names and the prose says twenty-seven.
+- [x] `docs/GIT.md` is the only artifact this skill writes, it is in the
       one-owner loop, and this repository has one.
-- [ ] Deleting the merge table's "each one builds" row fails `evals/run.sh`.
-- [ ] Deleting "clean the history before review, never after a verdict" fails
+- [x] Deleting the merge table's "each one builds" row fails `evals/run.sh`.
+- [x] Deleting "clean the history before review, never after a verdict" fails
       `evals/run.sh`.
-- [ ] A routing case sends "squash or keep the commits" to this skill and
+- [x] A routing case sends "squash or keep the commits" to this skill and
       "too big for one change" to `incremental-implementation`.
-- [ ] `incremental-implementation`, `ship` and `release` each lose no rule; each
+- [x] `incremental-implementation`, `ship` and `release` each lose no rule; each
       gains a pointer that still reads as its own rule, and `ship` still lands
       work in a project with no `docs/GIT.md`.
-- [ ] `release` with `scheme: none` stops before the changelog, and with no
+- [x] `release` with `scheme: none` stops before the changelog, and with no
       `docs/GIT.md` says it assumed SemVer.
-- [ ] `using-libra` is still at most 80 lines and its sentence says nine.
-- [ ] `ship` still says a project that commits directly on the default branch has
+- [x] `using-libra` is still at most 80 lines and its sentence says nine.
+- [x] `ship` still says a project that commits directly on the default branch has
       nothing to merge, and names `docs/GIT.md` as what allows it.
-- [ ] `build` and `incremental-implementation` each state branch-or-direct before
+- [x] `build` and `incremental-implementation` each state branch-or-direct before
       a commit, and name `docs/GIT.md` as the record that decides it.
-- [ ] `bootstrap-project` asks three questions, not two, and hands off to
+- [x] `bootstrap-project` asks three questions, not two, and hands off to
       `git-workflow-and-versioning`.
-- [ ] `docs/adr/0003-*.md` exists before any task is cut, is linked from
+- [x] `docs/adr/0003-*.md` exists before any task is cut, is linked from
       `docs/PROJECT.md` `## Decisions`, and names both rejected extremes.
-- [ ] `decide` says it writes the ADR when the decision is made, and
+- [x] `decide` says it writes the ADR when the decision is made, and
       `spec-driven-development` hands to it before the spec is called done; both
       assertions fail when the sentence is removed.
 
