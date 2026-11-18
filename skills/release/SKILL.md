@@ -39,9 +39,13 @@ or a release with nothing to record.
    A tag cut from a feature branch is public before anyone can review it, and
    moving it afterwards is a lie about what shipped. Ahead means push the branch
    and start again; behind means pull; no upstream means set one.
-2. Version gate: patch for a fix, minor for a new skill, document type or removal
-   before 1.0, major after 1.0. When a rename or removal breaks an install, the
-   changelog says so in one line, with the command that fixes it.
+2. Version gate. Read the scheme from `docs/GIT.md` and never infer it. `none`:
+   stop here, before the changelog; a project that does not version does not want
+   a tag. `semver`, or no file at all: patch for a fix, minor for a new skill,
+   document type or removal before 1.0, major after 1.0, and say in one line that
+   SemVer was assumed. Any other scheme: stop and report it. When a rename or
+   removal breaks an install, the changelog says so in one line, with the command
+   that fixes it.
 3. Changelog before the tag: `## [<version>] - <date>` with Added, Changed and
    Removed, one line per skill, never per file. An empty section means there is no
    release: stop.
@@ -70,5 +74,6 @@ you finish; no script in the project: say so in one line and continue.
 
 Stop when the branch is not the default one, has no upstream, or is ahead of or
 behind its upstream; when the tree is dirty; when the tag exists locally or on
-the remote; when the changelog section is empty; or when the suite is red. Report
-which gate failed and the command output that shows it.
+the remote; when the changelog section is empty; when the scheme is `none` or one
+this skill does not know; or when the suite is red. Report which gate failed and
+the command output that shows it.

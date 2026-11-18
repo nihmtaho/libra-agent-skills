@@ -29,16 +29,19 @@ something already fails and the cause is unknown (that is `debug`).
 3. `incremental-implementation` — always, for how much lands in one commit.
    Steps 2 and 3 are the reason this skill exists: a task that skips them is not
    done, whatever the suite says.
-4. `context-engineering` when the task's `Read first` does not reach the code you
+4. `git-workflow-and-versioning` when the project has no `docs/GIT.md`, and in
+   every case state branch-or-direct before the first commit: which branch, and
+   whether this commit belongs on the default one.
+5. `context-engineering` when the task's `Read first` does not reach the code you
    must change.
-5. `source-driven-development` when the work rests on a framework, library or API
+6. `source-driven-development` when the work rests on a framework, library or API
    fact you cannot prove from the repository.
-6. `frontend-ui-engineering` when the work changes a user interface, or
+7. `frontend-ui-engineering` when the work changes a user interface, or
    `api-and-interface-design` when it changes an API, a response shape or an
    error format.
-7. `subagent-driven-development` when two tasks touch disjoint files. The parent
+8. `subagent-driven-development` when two tasks touch disjoint files. The parent
    still commits.
-8. `doubt-driven-development` before saying the task is done, when the decision
+9. `doubt-driven-development` before saying the task is done, when the decision
    rests on reasoning no command can check.
 
 **Spike mode**, when the human wants to learn rather than ship: none of the

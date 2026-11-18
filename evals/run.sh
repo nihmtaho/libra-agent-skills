@@ -174,6 +174,14 @@ has git-workflow-and-versioning 'only when this file says' 'a direct commit is a
 write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
   { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
+# --- the pointers: each skill keeps its own rule and names the policy file ---
+has ship 'nothing to merge'                      'a project with no branch can no longer ship'
+has ship 'docs/GIT.md'                           'the merge policy is not read from the file'
+has release 'Read the scheme from `docs/GIT.md`' 'the version scheme is inferred, not read'
+has incremental-implementation 'docs/GIT.md'     'the commit format is not read from the file'
+steps_body "$root/skills/build/SKILL.md" | grep -qF 'branch-or-direct' ||
+  { echo "FAIL build: the commit destination is never stated"; fail=1; }
+
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
             'git status -sb' 'git tag -l' 'git ls-remote --tags origin'; do

@@ -35,12 +35,13 @@ it.
 3. Put a slice behind a flag when it is user-visible and incomplete. Default off,
    named for the feature, read in one place. The flag is part of the slice, not a
    follow-up.
-4. One slice, one commit. Conventional Commits, English, and never a co-author
-   line or an AI signature.
+4. One slice, one commit, in the format `docs/GIT.md` names: Conventional
+   Commits, English, and never a co-author line or an AI signature.
 5. Before the first commit, say which branch you are on and which one the task
    expects: `git rev-parse --abbrev-ref HEAD`. A commit on a branch you did not
    choose is a merge nobody planned, and the mistake is invisible until release
-   time.
+   time. On the default branch, `docs/GIT.md` must allow the commit and the reply
+   must say so; without that file, do not guess.
 6. Tick the box in `docs/tasks/<feature>.md` as each slice lands. When you stop
    mid-task write the exact position in `Stopped at:`, for example
    `T2, retry not on yet`. A position someone can resume from, not a mood.

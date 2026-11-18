@@ -5,7 +5,7 @@ spec: ../specs/git-workflow-skill.md
 ---
 # The git workflow skill and the recorded exception
 
-Stopped at: T2, not started
+Stopped at: T3, not started
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 27.
@@ -28,7 +28,7 @@ only point at it.
       changes behaviour. Add `docs/GIT.md` to the one-owner loop in
       `evals/run.sh`. `using-libra` gains no row; only "eight" becomes "nine".
 
-- [ ] **T2 — the three pointers and the two stops**
+- [x] **T2 — the three pointers and the two stops**
       Done means: `bash scripts/test.sh` exits 0, and `grep -c 'docs/GIT.md' skills/ship/SKILL.md skills/release/SKILL.md` prints a number above zero for each
       Touches: `skills/incremental-implementation/SKILL.md`, `skills/ship/SKILL.md`,
       `skills/release/SKILL.md`, `skills/build/SKILL.md`, `evals/run.sh`
