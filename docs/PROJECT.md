@@ -34,6 +34,7 @@ updated: 2026-11-18
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
 | the release skill | done | | [spec](specs/release-skill.md) |
 | the Build phase skills (eight behind one dispatcher) | done | | [spec](specs/build-phase-skills.md) · [task](tasks/build-phase-skills.md) |
+| the git workflow skill and the recorded exception | in progress | | [task](tasks/git-workflow-skill.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
