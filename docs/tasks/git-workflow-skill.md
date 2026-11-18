@@ -5,7 +5,7 @@ spec: ../specs/git-workflow-skill.md
 ---
 # The git workflow skill and the recorded exception
 
-Stopped at: T3, not started
+Stopped at: T4, not started
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 27.
@@ -43,7 +43,7 @@ only point at it.
       default-branch clause. `build` gains one step: state branch-or-direct before
       the first commit.
 
-- [ ] **T3 — bootstrap asks about git**
+- [x] **T3 — bootstrap asks about git**
       Done means: `grep -c 'three questions' skills/bootstrap-project/SKILL.md` prints 2
       Touches: `skills/bootstrap-project/SKILL.md`, `evals/run.sh`
       Depends on: T2

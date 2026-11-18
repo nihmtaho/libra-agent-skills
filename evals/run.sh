@@ -182,6 +182,12 @@ has incremental-implementation 'docs/GIT.md'     'the commit format is not read 
 steps_body "$root/skills/build/SKILL.md" | grep -qF 'branch-or-direct' ||
   { echo "FAIL build: the commit destination is never stated"; fail=1; }
 
+# --- bootstrap asks about git before it writes the state file ---------------
+grep -qF 'exactly three questions' "$root/skills/bootstrap-project/SKILL.md" ||
+  { echo "FAIL bootstrap-project: git is never asked about"; fail=1; }
+grep -qF 'git-workflow-and-versioning' "$root/skills/bootstrap-project/SKILL.md" ||
+  { echo "FAIL bootstrap-project: no handoff writes docs/GIT.md"; fail=1; }
+
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
             'git status -sb' 'git tag -l' 'git ls-remote --tags origin'; do
