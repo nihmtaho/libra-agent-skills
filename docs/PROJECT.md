@@ -11,7 +11,7 @@ updated: 2026-11-18
 - `bash scripts/test-routing.sh` — a request a human would type must match exactly one skill description; two skills answering the same words fail.
 - `bash evals/run.sh` — contract evals for the Define and Build skills, one owner per artifact, and every behavior case's grader self-test.
 - `bash evals/behavior/run.sh <case>` — prepares a sandbox and prints the prompt; `--verify <dir>` grades it, `--self-test` proves the grader can fail.
-- `bash evals/routing/run.sh` — eighteen requests a model must route to the right skill; `--verify <dir>` grades the answers, `--self-test` proves the grader can fail.
+- `bash evals/routing/run.sh` — nineteen requests a model must route to the right skill; `--verify <dir>` grades the answers, `--self-test` proves the grader can fail.
 - Sign of success: exit 0, and five lines `all checks passed`, `fixtures passed`, `routing passed`, `evals passed`, `install tests passed`.
 
 ## Module map

@@ -5,7 +5,7 @@ spec: ../specs/git-workflow-skill.md
 ---
 # The git workflow skill and the recorded exception
 
-Stopped at: T4, not started
+Stopped at: done
 
 ## Checkpoint — after T1
 `bash scripts/test.sh` prints five green lines and `ls skills | wc -l` prints 27.
@@ -54,7 +54,7 @@ only point at it.
       writes `docs/GIT.md`, because one artifact has one owner. A project with no
       repository is told how to start one.
 
-- [ ] **T4 — three live routing passes**
+- [x] **T4 — three live routing passes**
       Done means: the `Runs` table in `evals/README.md` has a row dated today with `3 of 3`
       Touches: `evals/README.md`, `docs/tasks/git-workflow-skill.md`
       Depends on: T3
@@ -68,3 +68,10 @@ only point at it.
 
 - 2026-11-18 — ADR-0003 written at decision time, before the plan, in `8d88b97`.
   It records both rejected extremes and that the rule moved twice.
+
+## Evidence
+
+- 2026-11-18 — `routing`, 19 requests: 3 of 3 runs matched 19 of 19, each in a
+  fresh sandbox with the descriptions generated from the skills. `r19` chose
+  `git-workflow-and-versioning` every time, never `ship`. Recorded in
+  `evals/README.md`.
