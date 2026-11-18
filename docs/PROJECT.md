@@ -35,7 +35,7 @@ updated: 2026-11-18
 | v0.1.2 release | done | | [changelog](../CHANGELOG.md) |
 | the release skill | done | | [spec](specs/release-skill.md) |
 | the Build phase skills (nine behind one dispatcher) | done | | [spec](specs/build-phase-skills.md) · [task](tasks/build-phase-skills.md) |
-| the git workflow skill and the recorded exception | in progress | | [task](tasks/git-workflow-skill.md) |
+| the git workflow skill and the recorded exception | done | | [spec](specs/git-workflow-skill.md) · [adr](adr/0003-direct-commits-need-a-recorded-exception.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
@@ -46,6 +46,6 @@ updated: 2026-11-18
 - [ADR-0003](adr/0003-direct-commits-need-a-recorded-exception.md) — a direct commit to the default branch needs a recorded exception in `docs/GIT.md`; a single commit is judged, and the merge policy follows the commits.
 
 ## Next
-1. Install `v0.1.2` into a third project and watch the checker on the first document it writes; record the report here.
+1. Install the 27-skill set into a third project and watch `docs/GIT.md` and the first spec it writes; record the report here.
 2. Use the set for a week on real work; write down what snags, with the exact words that were said.
 3. Then pick up [the deferred list](plans/2026-11-15-next-phases-plan.md).
