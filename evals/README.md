@@ -18,12 +18,14 @@ for `docs/specs/`, `docs/ideas/`, `docs/CONSTRAINTS.md` and `docs/GIT.md`, that
 the wiring between skills is intact, that no skill names a dead skill, and that
 every behavior case below can fail.
 
-Presence checks are literal and case-sensitive: a fragment must appear exactly as
-written. Where a rule carries a negation, the assertion includes the word that
-carries it (`never infer it`, `not permission to tag`), because a sentence that
-keeps the other words and withdraws the rule would otherwise pass. A coherent
-rewrite that keeps both the words and the meaning can still pass; that is the
-boundary of a contract eval, and the reason `review` exists.
+The `has` checks are literal and case-sensitive: a fragment must appear exactly
+as written. A fragment that is only a noun or a path proves the noun is mentioned,
+not that the rule holds, because an appended `unless` or `except` is invisible to
+it. So the fragment carries the clause that states the consequence
+(`is idempotent: a key the caller supplies`, not `idempotent`), and where the rule
+is a negation, the negation travels with it (`never infer it`, `not permission to
+tag`). A rewrite that keeps every word and changes only the meaning can still
+pass; that is the boundary of a contract eval, and the reason `review` exists.
 
 ## 2. Behavior evals
 

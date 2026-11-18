@@ -31,8 +31,8 @@ has interview-me 'idea-refine'                  'does not hand off to idea-refin
 # --- idea-refine: widens before it narrows ----------------------------------
 has idea-refine '5 to 7 different answers'      'does not force more than one option'
 has idea-refine 'One line per death'            'does not record why an option died'
-has idea-refine 'riskiest assumption'           'names no assumption that could kill the direction'
-has idea-refine 'cheapest test'                  'has no cheap test before code'
+has idea-refine 'Name the riskiest assumption'   'names no assumption that could kill the direction'
+has idea-refine 'and the cheapest test that would show it false' 'has no cheap test before code'
 write_body "$root/skills/idea-refine/SKILL.md" | grep -qF 'docs/ideas/' ||
   { echo "FAIL idea-refine: Write does not name docs/ideas/"; fail=1; }
 
@@ -40,7 +40,7 @@ write_body "$root/skills/idea-refine/SKILL.md" | grep -qF 'docs/ideas/' ||
 for part in 'Goal:' 'Structure:' 'Code style:' 'Test plan:' 'Limits:'; do
   has spec-driven-development "$part" "does not require the $part part"
 done
-has spec-driven-development 'checkable by a command or an observation' \
+has spec-driven-development 'one line per use case, checkable by a command' \
   'acceptance criteria may be unverifiable'
 has spec-driven-development '## Open questions'  'has nowhere to park an unanswered question'
 has spec-driven-development 'Never guess one'    'may guess an answer into the spec'
@@ -51,11 +51,11 @@ write_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'docs/spec
   { echo "FAIL spec-driven-development: Write does not name docs/specs/"; fail=1; }
 
 # --- constraint-driven-development: the bar, and the ways it is lowered -----
-for way in 'deleting or commenting a test' 'a new skip' 'a looser threshold' \
+for way in 'These are not fixes: deleting or commenting a test' 'a new skip' 'a looser threshold' \
            'a new ignore comment'; do
   has constraint-driven-development "$way" "does not name '$way' as a non-fix"
 done
-has constraint-driven-development "human's name"   'a lowered bar needs no name'
+has constraint-driven-development "with the human's name and today's" 'a lowered bar needs no name'
 has constraint-driven-development 'count of tests' 'does not compare numbers to the file'
 write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'docs/CONSTRAINTS.md' ||
   { echo "FAIL constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
@@ -108,7 +108,7 @@ steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git r
   { echo "FAIL incremental-implementation: may commit without knowing the branch"; fail=1; }
 has incremental-implementation 'One slice, one commit' 'a slice is not tied to a commit'
 has incremental-implementation 'Conventional Commits'  'the commit convention is gone'
-has incremental-implementation 'never a co-author'      'an AI signature is allowed'
+has incremental-implementation 'and never a co-author line or an AI signature'      'an AI signature is allowed'
 has incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
   { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }
@@ -148,7 +148,7 @@ write_body "$root/skills/source-driven-development/SKILL.md" | grep -q 'none' ||
 
 # --- subagent-driven-development: the parent keeps the commit -------------
 has subagent-driven-development 'overlap table'      'parallel work is dispatched without checking paths'
-has subagent-driven-development 'never commits'      'a subagent can commit'
+has subagent-driven-development 'A subagent never commits, never'      'a subagent can commit'
 steps_body "$root/skills/subagent-driven-development/SKILL.md" | grep -qF 'Run the suite yourself' ||
   { echo "FAIL subagent-driven-development: the parent may trust a subagent green"; fail=1; }
 write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' ||
@@ -156,7 +156,7 @@ write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' 
 
 # --- frontend-ui-engineering: the system, the widths, the keyboard ---------
 has frontend-ui-engineering 'WCAG 2.1 AA'   'accessibility is a preference, not a rule'
-has frontend-ui-engineering 'keyboard only' 'a screen can be done without the keyboard'
+has frontend-ui-engineering 'works with the keyboard only and at the narrowest' 'a screen can be done without the keyboard'
 has frontend-ui-engineering 'Tokens before literals' 'a hex value may live in a component'
 write_body "$root/skills/frontend-ui-engineering/SKILL.md" | grep -qF 'docs/design-system.md' ||
   { echo "FAIL frontend-ui-engineering: Write does not name docs/design-system.md"; fail=1; }
@@ -164,7 +164,7 @@ write_body "$root/skills/frontend-ui-engineering/SKILL.md" | grep -qF 'docs/desi
 # --- api-and-interface-design: the contract comes first --------------------
 has api-and-interface-design "Hyrum's Law"     'an observable behaviour is not treated as a contract'
 has api-and-interface-design 'boundary, once'  'validation may be spread through the logic'
-has api-and-interface-design 'idempotent'      'a retryable write may double'
+has api-and-interface-design 'is idempotent: a key the caller supplies' 'a retryable write may double'
 write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
   { echo "FAIL api-and-interface-design: Write does not name docs/api/"; fail=1; }
 
