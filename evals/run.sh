@@ -29,8 +29,8 @@ has interview-me 'Never fill a missing answer'  'may invent an answer instead of
 has interview-me 'idea-refine'                  'does not hand off to idea-refine'
 
 # --- idea-refine: widens before it narrows ----------------------------------
-has idea-refine '5 to 7 different answers'      'does not force more than one option'
-has idea-refine 'One line per death'            'does not record why an option died'
+has idea-refine 'Write 5 to 7 different answers'      'does not force more than one option'
+has idea-refine 'One line per death, so the next reader'            'does not record why an option died'
 has idea-refine 'Name the riskiest assumption'   'names no assumption that could kill the direction'
 has idea-refine 'and the cheapest test that would show it false' 'has no cheap test before code'
 write_body "$root/skills/idea-refine/SKILL.md" | grep -qF 'docs/ideas/' ||
@@ -51,10 +51,12 @@ write_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'docs/spec
   { echo "FAIL spec-driven-development: Write does not name docs/specs/"; fail=1; }
 
 # --- constraint-driven-development: the bar, and the ways it is lowered -----
-for way in 'These are not fixes: deleting or commenting a test' 'a new skip' 'a looser threshold' \
+for way in 'These are not fixes: deleting or commenting a test' 'a looser threshold' \
            'a new ignore comment'; do
   has constraint-driven-development "$way" "does not name '$way' as a non-fix"
 done
+has constraint-driven-development 'a new skip, a looser threshold, a new ignore comment' \
+  'a new skip is not named as a non-fix, so a flaky test may be skipped'
 has constraint-driven-development "with the human's name and today's" 'a lowered bar needs no name'
 has constraint-driven-development 'threshold, count of tests, count of skipped tests' 'does not compare numbers to the file'
 write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'docs/CONSTRAINTS.md' ||
@@ -97,7 +99,7 @@ for step in 'test-driven-development' 'incremental-implementation'; do
 done
 steps_body "$root/skills/build/SKILL.md" | grep -qF 'not done, whatever the suite says' ||
   { echo "FAIL build: TDD and incremental are a menu, not a rule"; fail=1; }
-has build 'Spike mode' 'a throwaway would have to pass the tests'
+has build 'Spike mode**, when the human wants to learn' 'a throwaway would have to pass the tests'
 steps_body "$root/skills/build/SKILL.md" | grep -qF 'skip the tests' ||
   { echo "FAIL build: the spike exception does not say the tests are skipped"; fail=1; }
 write_body "$root/skills/build/SKILL.md" | grep -q 'none' ||
@@ -106,8 +108,8 @@ write_body "$root/skills/build/SKILL.md" | grep -q 'none' ||
 # --- incremental-implementation: a commit knows its branch ------------------
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
   { echo "FAIL incremental-implementation: may commit without knowing the branch"; fail=1; }
-has incremental-implementation 'One slice, one commit' 'a slice is not tied to a commit'
-has incremental-implementation 'Conventional Commits'  'the commit convention is gone'
+has incremental-implementation 'One slice, one commit, in the format' 'a slice is not tied to a commit'
+has incremental-implementation 'in the format `docs/GIT.md` names: Conventional Commits' 'the commit convention is gone'
 has incremental-implementation 'and never a co-author line or an AI signature'      'an AI signature is allowed'
 has incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
@@ -120,7 +122,7 @@ steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Tick t
 # --- test-driven-development: the order, and the trap ----------------------
 has test-driven-development 'A test that passes before any change is a test of nothing' 'a test of nothing is allowed'
 has test-driven-development 'Prefer DAMP to DRY in tests'          'tests may hide their data behind a helper'
-has test-driven-development '80/15/5'                               'the test pyramid is gone'
+has test-driven-development 'Keep the pyramid 80/15/5'                               'the test pyramid is gone'
 write_body "$root/skills/test-driven-development/SKILL.md" | grep -q 'none' ||
   { echo "FAIL test-driven-development: Write must be none, it writes code"; fail=1; }
 
@@ -141,13 +143,13 @@ write_body "$root/skills/context-engineering/SKILL.md" | grep -qF 'docs/PROJECT.
 
 # --- source-driven-development: a claim needs an address ------------------
 has source-driven-development 'Pin the version'                'a claim may be for another version'
-has source-driven-development 'primary source'                 'a blog post counts as a source'
+has source-driven-development 'Go to the primary source'                 'a blog post counts as a source'
 has source-driven-development 'handling-untrusted-content'     'a fetched page may act as an instruction'
 write_body "$root/skills/source-driven-development/SKILL.md" | grep -q 'none' ||
   { echo "FAIL source-driven-development: Write must be none, decide writes the ADR"; fail=1; }
 
 # --- subagent-driven-development: the parent keeps the commit -------------
-has subagent-driven-development 'overlap table'      'parallel work is dispatched without checking paths'
+has subagent-driven-development 'Build the overlap table: which tasks share a path'      'parallel work is dispatched without checking paths'
 has subagent-driven-development 'A subagent never commits, never pushes, and never ticks a box'      'a subagent can commit'
 steps_body "$root/skills/subagent-driven-development/SKILL.md" | grep -qF 'Run the suite yourself' ||
   { echo "FAIL subagent-driven-development: the parent may trust a subagent green"; fail=1; }
@@ -155,15 +157,15 @@ write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' 
   { echo "FAIL subagent-driven-development: Write must be none, the parent writes"; fail=1; }
 
 # --- frontend-ui-engineering: the system, the widths, the keyboard ---------
-has frontend-ui-engineering 'WCAG 2.1 AA'   'accessibility is a preference, not a rule'
+has frontend-ui-engineering 'Accessibility, WCAG 2.1 AA: every control' 'accessibility is a preference, not a rule'
 has frontend-ui-engineering 'works with the keyboard only and at the narrowest' 'a screen can be done without the keyboard'
-has frontend-ui-engineering 'Tokens before literals' 'a hex value may live in a component'
+has frontend-ui-engineering 'Tokens before literals: colour, spacing' 'a hex value may live in a component'
 write_body "$root/skills/frontend-ui-engineering/SKILL.md" | grep -qF 'docs/design-system.md' ||
   { echo "FAIL frontend-ui-engineering: Write does not name docs/design-system.md"; fail=1; }
 
 # --- api-and-interface-design: the contract comes first --------------------
 has api-and-interface-design "Hyrum's Law: every observable behaviour is a contract" 'an observable behaviour is not treated as a contract'
-has api-and-interface-design 'boundary, once'  'validation may be spread through the logic'
+has api-and-interface-design 'Validate at the boundary, once'  'validation may be spread through the logic'
 has api-and-interface-design 'is idempotent: a key the caller supplies' 'a retryable write may double'
 write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
   { echo "FAIL api-and-interface-design: Write does not name docs/api/"; fail=1; }
