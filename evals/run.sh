@@ -111,6 +111,12 @@ steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git r
 has incremental-implementation 'One slice, one commit, in the format' 'a slice is not tied to a commit'
 has incremental-implementation 'in the format `docs/GIT.md` names: Conventional Commits' 'the commit convention is gone'
 has incremental-implementation 'and never a co-author line or an AI signature'      'an AI signature is allowed'
+# The rule reads as concealment unless it says what it is and when it gives way:
+# Snyk's build E004 called it hidden authorship. Every skill that states the rule
+# carries both halves.
+has incremental-implementation 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
+has git-workflow-and-versioning 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
+has ship 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
   { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }

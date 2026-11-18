@@ -4,13 +4,18 @@ All notable changes to this skill set. Earlier releases are in the git tags.
 
 ## [Unreleased]
 
-Waiting for the next version: a checker rule for markdown tables, and the table it
-caught.
+Waiting for the next version: a checker rule for markdown tables, the table it
+caught, and an authorship rule that no longer reads as concealment.
 
 ### Fixed
 - the `## Features` table in `docs/PROJECT.md` renders as a table again: the
   separator row was missing, and `check-docs.sh` now fails a table whose separator
   row is missing or invalid.
+
+### Changed
+- "never a co-author line or an AI signature" now says what it is: a format
+  convention, with a way out when the project or the platform requires a
+  disclosure trailer. This is what Snyk's `build` E004 called hidden authorship.
 
 ## [0.2.0] - 2026-11-18
 

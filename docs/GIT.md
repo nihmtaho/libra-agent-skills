@@ -48,5 +48,8 @@ Conventional Commits: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`
 `BREAKING CHANGE:` footer for a break. The subject is imperative, lower case, and
 has no trailing period. A body is allowed only when the why is not obvious.
 
-Never a co-author line or an AI signature. This matches the global `git-commit`
-convention, so an agent obeying either one satisfies both.
+Never a co-author line or an AI signature unless this repository or the platform
+requires one. That is a format convention, not a claim about who wrote what, and
+the human who commits is the author of record. It matches the global `git-commit`
+convention, so an agent obeying either one satisfies both — except where a
+platform requires a trailer, where the platform's rule wins.

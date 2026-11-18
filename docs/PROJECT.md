@@ -52,3 +52,4 @@ updated: 2026-11-18
 1. Install the 27-skill set into a third project and watch `docs/GIT.md` and the first spec it writes; record the report here.
 2. Use the set for a week on real work; write down what snags, with the exact words that were said.
 3. Then pick up [the deferred list](plans/2026-11-15-next-phases-plan.md).
+4. Re-read the Snyk audit after the next skills.sh sync and confirm `build` leaves CRITICAL; the flagged copy was the pre-0.2.0 skill, and the rule it named now says what it is.

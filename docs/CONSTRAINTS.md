@@ -17,7 +17,9 @@ updated: 2026-11-16
 - delete a fixture, a skill section or a heading to make `check.sh` pass
 - raise the 80-line limit, drop a forbidden token, or remove a rule without a line
   here saying why
-- add a co-author line or an AI signature to a commit
+- add a co-author line or an AI signature to a commit, unless the project or the
+  platform requires a disclosure trailer. That exception is why the rule is a
+  format convention and not forced concealment; `docs/GIT.md` records it.
 - copy `check-docs.sh` into a second place instead of keeping one rule set
 
 ## When a check is red

@@ -58,7 +58,8 @@ change that passed review: that is `ship`.
    `perf`, `test`, `build`, `ci`, `chore`, `revert`; an optional `(scope)`; `!` or
    a `BREAKING CHANGE:` footer for a break; an imperative, lower-case subject with
    no trailing period; a body only when the why is not obvious. Never a co-author
-   line or an AI signature.
+   line or an AI signature unless the project or the platform requires one —
+   format, not concealment.
 7. Write `docs/GIT.md`, one page. `bootstrap-project` records the one-line
    decision in `## Decisions`; a project past bootstrap lets `decide` do it.
 

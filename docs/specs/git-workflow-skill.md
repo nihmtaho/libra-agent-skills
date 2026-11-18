@@ -140,7 +140,8 @@ Conventional Commits, defined once: `feat`, `fix`, `docs`, `style`, `refactor`,
 `perf`, `test`, `build`, `ci`, `chore`, `revert`; an optional `(scope)`; `!` or a
 `BREAKING CHANGE:` footer for a break; the subject in the imperative, lower case,
 no trailing period; a body only when the why is not obvious. Never a co-author
-line or an AI signature.
+line or an AI signature unless the project or the platform requires one: format,
+not concealment.
 
 ## What changes around them
 
