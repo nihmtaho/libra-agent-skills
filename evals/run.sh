@@ -61,7 +61,9 @@ write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'doc
   { echo "FAIL constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
 
 # --- decide: a decision is recorded when it is made, not when work lands ----
-has decide 'when the decision is made' 'the ADR may wait until the code lands'
+has decide 'not when the code lands' 'the ADR may wait until the code lands'
+write_body "$root/skills/decide/SKILL.md" | grep -qF 'docs/adr/' ||
+  { echo "FAIL decide: Write does not name docs/adr/"; fail=1; }
 
 # --- one owner per artifact --------------------------------------------------
 owners() {
@@ -175,7 +177,7 @@ write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/
   { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
 # --- the pointers: each skill keeps its own rule and names the policy file ---
-has ship 'nothing to merge'                      'a project with no branch can no longer ship'
+has ship 'not permission to tag'                 'an unmerged project may be tagged after all'
 steps_body "$root/skills/ship/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL ship: the direct-commit exception does not name the file that allows it"; fail=1; }
 has release 'Read the scheme from `docs/GIT.md`' 'the version scheme is inferred, not read'

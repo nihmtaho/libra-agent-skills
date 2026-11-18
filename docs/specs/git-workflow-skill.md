@@ -76,7 +76,8 @@ costs a revert.
   why, and whether this commit belongs on the default one.
 - `incremental-implementation`'s branch check gains one clause: on the default
   branch, `docs/GIT.md` must allow it and the reply must say so.
-- `ship` keeps its direct-commit sentence as it is. Landing still means merging a
+- `ship` keeps its direct-commit sentence, with one clause added naming the file
+  that allows it. Landing still means merging a
   branch, or, when the project allows it, committing on the default branch — and
   `ship` says which case it is in.
 - `release` is unchanged. A tag still comes from the default branch, and the
