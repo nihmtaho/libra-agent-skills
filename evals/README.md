@@ -26,12 +26,14 @@ it. So a new or changed assertion carries the clause that states the consequence
 is a negation, the negation travels with it (`never infer it`, `not permission to
 tag`).
 
-Some older fragments are still nouns or paths — `Spike mode`, `DAMP`, `WCAG 2.1
-AA`, `count of tests` — and can be withdrawn with one appended word. The ones
-named here are known; the same weakness remains wherever a fragment is a bare
-noun, and tightening one is part of touching the rule it guards. A rewrite
-that keeps every word and changes only the meaning can still pass; that is the
-boundary of a contract eval, and the reason `review` exists.
+The remaining weakness is structural, not a list of known cases: every check is
+a contiguous run of text, so a rule can be softened by **appending a qualifier
+after** the fragment — `Accessibility, WCAG 2.1 AA: every control that matters`,
+`Keep the pyramid 80/15/5 in spirit`, `Validate at the boundary, once per layer`.
+Nothing anchors the end of the sentence, so the qualifier is invisible. Closing
+that needs a different mechanism (an end-of-sentence anchor, or a semantic eval),
+which is a redesign of the contract-eval style, not another fragment. Until then:
+a contract eval proves a rule is written down; `review` is what proves it holds.
 
 ## 2. Behavior evals
 

@@ -36,6 +36,7 @@ updated: 2026-11-18
 | the release skill | done | | [spec](specs/release-skill.md) |
 | the Build phase skills (nine behind one dispatcher) | done | | [spec](specs/build-phase-skills.md) · [task](tasks/build-phase-skills.md) |
 | the git workflow skill and the recorded exception | done | | [spec](specs/git-workflow-skill.md) · [adr](adr/0003-direct-commits-need-a-recorded-exception.md) |
+| the evals stop passing on an inverted rule | done | | [evals](../evals/README.md) |
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
