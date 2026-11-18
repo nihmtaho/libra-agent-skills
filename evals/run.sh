@@ -56,7 +56,7 @@ for way in 'These are not fixes: deleting or commenting a test' 'a new skip' 'a 
   has constraint-driven-development "$way" "does not name '$way' as a non-fix"
 done
 has constraint-driven-development "with the human's name and today's" 'a lowered bar needs no name'
-has constraint-driven-development 'count of tests' 'does not compare numbers to the file'
+has constraint-driven-development 'threshold, count of tests, count of skipped tests' 'does not compare numbers to the file'
 write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'docs/CONSTRAINTS.md' ||
   { echo "FAIL constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
 
@@ -119,7 +119,7 @@ steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Tick t
 
 # --- test-driven-development: the order, and the trap ----------------------
 has test-driven-development 'A test that passes before any change is a test of nothing' 'a test of nothing is allowed'
-has test-driven-development 'DAMP'                                  'tests may hide their data behind a helper'
+has test-driven-development 'Prefer DAMP to DRY in tests'          'tests may hide their data behind a helper'
 has test-driven-development '80/15/5'                               'the test pyramid is gone'
 write_body "$root/skills/test-driven-development/SKILL.md" | grep -q 'none' ||
   { echo "FAIL test-driven-development: Write must be none, it writes code"; fail=1; }
@@ -162,7 +162,7 @@ write_body "$root/skills/frontend-ui-engineering/SKILL.md" | grep -qF 'docs/desi
   { echo "FAIL frontend-ui-engineering: Write does not name docs/design-system.md"; fail=1; }
 
 # --- api-and-interface-design: the contract comes first --------------------
-has api-and-interface-design "Hyrum's Law"     'an observable behaviour is not treated as a contract'
+has api-and-interface-design "Hyrum's Law: every observable behaviour is a contract" 'an observable behaviour is not treated as a contract'
 has api-and-interface-design 'boundary, once'  'validation may be spread through the logic'
 has api-and-interface-design 'is idempotent: a key the caller supplies' 'a retryable write may double'
 write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
