@@ -112,54 +112,54 @@ for s in libra-idea-refine libra-spec-driven-development libra-constraint-driven
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
 
-# --- build: the dispatcher orders the two discipline skills ------------------
-for step in 'test-driven-development' 'incremental-implementation'; do
-  steps_body "$root/skills/build/SKILL.md" | grep -qiF -- "$step" ||
-    { echo "FAIL build: the dispatcher does not route to $step"; fail=1; }
+# --- libra-build: the dispatcher orders the two discipline skills ------------------
+for step in 'libra-test-driven-development' 'libra-incremental-implementation'; do
+  steps_body "$root/skills/libra-build/SKILL.md" | grep -qiF -- "$step" ||
+    { echo "FAIL libra-build: the dispatcher does not route to $step"; fail=1; }
 done
-steps_body "$root/skills/build/SKILL.md" | grep -qF 'not done, whatever the suite says' ||
-  { echo "FAIL build: TDD and incremental are a menu, not a rule"; fail=1; }
-has build 'Spike mode**, when the human wants to learn' 'a throwaway would have to pass the tests'
-steps_body "$root/skills/build/SKILL.md" | grep -qF 'skip the tests' ||
-  { echo "FAIL build: the spike exception does not say the tests are skipped"; fail=1; }
-write_body "$root/skills/build/SKILL.md" | grep -q 'none' ||
-  { echo "FAIL build: Write must be none, it dispatches"; fail=1; }
-steps_body "$root/skills/build/SKILL.md" | grep -qF 'No branch: create it' ||
-  { echo "FAIL build: may start a task without a branch"; fail=1; }
+steps_body "$root/skills/libra-build/SKILL.md" | grep -qF 'not done, whatever the suite says' ||
+  { echo "FAIL libra-build: TDD and incremental are a menu, not a rule"; fail=1; }
+has libra-build 'Spike mode**, when the human wants to learn' 'a throwaway would have to pass the tests'
+steps_body "$root/skills/libra-build/SKILL.md" | grep -qF 'skip the tests' ||
+  { echo "FAIL libra-build: the spike exception does not say the tests are skipped"; fail=1; }
+write_body "$root/skills/libra-build/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL libra-build: Write must be none, it dispatches"; fail=1; }
+steps_body "$root/skills/libra-build/SKILL.md" | grep -qF 'No branch: create it' ||
+  { echo "FAIL libra-build: may start a task without a branch"; fail=1; }
 
-# --- incremental-implementation: a commit knows its branch ------------------
-steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
-  { echo "FAIL incremental-implementation: may commit without knowing the branch"; fail=1; }
-has incremental-implementation 'One slice, one commit, in the format' 'a slice is not tied to a commit'
-has incremental-implementation 'in the format `docs/GIT.md` names: Conventional Commits' 'the commit convention is gone'
-has incremental-implementation 'and never a co-author line or an AI signature'      'an AI signature is allowed'
+# --- libra-incremental-implementation: a commit knows its branch ------------------
+steps_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
+  { echo "FAIL libra-incremental-implementation: may commit without knowing the branch"; fail=1; }
+has libra-incremental-implementation 'One slice, one commit, in the format' 'a slice is not tied to a commit'
+has libra-incremental-implementation 'in the format `docs/GIT.md` names: Conventional Commits' 'the commit convention is gone'
+has libra-incremental-implementation 'and never a co-author line or an AI signature'      'an AI signature is allowed'
 # The rule reads as concealment unless it says what it is and when it gives way:
 # Snyk's build E004 called it hidden authorship. Every skill that states the rule
 # carries both halves.
-has incremental-implementation 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
+has libra-incremental-implementation 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has git-workflow-and-versioning 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has libra-ship 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
-has incremental-implementation 'Delete the flag'        'a flag nobody removes'
-write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
-  { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }
-steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Stopped at:' ||
-  { echo "FAIL incremental-implementation: a stop position is a mood, not a line"; fail=1; }
-steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'Tick the box' ||
-  { echo "FAIL incremental-implementation: a landed slice is never reported"; fail=1; }
+has libra-incremental-implementation 'Delete the flag'        'a flag nobody removes'
+write_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
+  { echo "FAIL libra-incremental-implementation: Write does not name docs/tasks/"; fail=1; }
+steps_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qF 'Stopped at:' ||
+  { echo "FAIL libra-incremental-implementation: a stop position is a mood, not a line"; fail=1; }
+steps_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qF 'Tick the box' ||
+  { echo "FAIL libra-incremental-implementation: a landed slice is never reported"; fail=1; }
 
-# --- test-driven-development: the order, and the trap ----------------------
-has test-driven-development 'A test that passes before any change is a test of nothing' 'a test of nothing is allowed'
-has test-driven-development 'Prefer DAMP to DRY in tests'          'tests may hide their data behind a helper'
-has test-driven-development 'Keep the pyramid 80/15/5'                               'the test pyramid is gone'
-write_body "$root/skills/test-driven-development/SKILL.md" | grep -q 'none' ||
-  { echo "FAIL test-driven-development: Write must be none, it writes code"; fail=1; }
+# --- libra-test-driven-development: the order, and the trap ----------------------
+has libra-test-driven-development 'A test that passes before any change is a test of nothing' 'a test of nothing is allowed'
+has libra-test-driven-development 'Prefer DAMP to DRY in tests'          'tests may hide their data behind a helper'
+has libra-test-driven-development 'Keep the pyramid 80/15/5'                               'the test pyramid is gone'
+write_body "$root/skills/libra-test-driven-development/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL libra-test-driven-development: Write must be none, it writes code"; fail=1; }
 
-# --- doubt-driven-development: the five rungs ------------------------------
+# --- libra-doubt-driven-development: the five rungs ------------------------------
 for rung in CLAIM EXTRACT DOUBT RECONCILE STOP; do
-  steps_body "$root/skills/doubt-driven-development/SKILL.md" | grep -qF -- "**$rung**" ||
-    { echo "FAIL doubt-driven-development: missing the $rung rung"; fail=1; }
+  steps_body "$root/skills/libra-doubt-driven-development/SKILL.md" | grep -qF -- "**$rung**" ||
+    { echo "FAIL libra-doubt-driven-development: missing the $rung rung"; fail=1; }
 done
-has doubt-driven-development 'Never hand it your conclusion' 'the doubter may be told the answer'
+has libra-doubt-driven-development 'Never hand it your conclusion' 'the doubter may be told the answer'
 
 # --- libra-context-engineering: what goes in, and what is data --------------------
 write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'AGENTS.md' ||
@@ -169,34 +169,34 @@ has libra-context-engineering 'Write the pack you assembled'  'the next session 
 write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'docs/PROJECT.md' ||
   { echo "FAIL libra-context-engineering: Write does not name docs/PROJECT.md"; fail=1; }
 
-# --- source-driven-development: a claim needs an address ------------------
-has source-driven-development 'Pin the version'                'a claim may be for another version'
-has source-driven-development 'Go to the primary source'                 'a blog post counts as a source'
-has source-driven-development 'handling-untrusted-content'     'a fetched page may act as an instruction'
-write_body "$root/skills/source-driven-development/SKILL.md" | grep -q 'none' ||
-  { echo "FAIL source-driven-development: Write must be none, decide writes the ADR"; fail=1; }
+# --- libra-source-driven-development: a claim needs an address ------------------
+has libra-source-driven-development 'Pin the version'                'a claim may be for another version'
+has libra-source-driven-development 'Go to the primary source'                 'a blog post counts as a source'
+has libra-source-driven-development 'handling-untrusted-content'     'a fetched page may act as an instruction'
+write_body "$root/skills/libra-source-driven-development/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL libra-source-driven-development: Write must be none, decide writes the ADR"; fail=1; }
 
-# --- subagent-driven-development: the parent keeps the commit -------------
-has subagent-driven-development 'Build the overlap table: which tasks share a path'      'parallel work is dispatched without checking paths'
-has subagent-driven-development 'A subagent never commits, never pushes, and never ticks a box'      'a subagent can commit'
-steps_body "$root/skills/subagent-driven-development/SKILL.md" | grep -qF 'Run the suite yourself' ||
-  { echo "FAIL subagent-driven-development: the parent may trust a subagent green"; fail=1; }
-write_body "$root/skills/subagent-driven-development/SKILL.md" | grep -q 'none' ||
-  { echo "FAIL subagent-driven-development: Write must be none, the parent writes"; fail=1; }
+# --- libra-subagent-driven-development: the parent keeps the commit -------------
+has libra-subagent-driven-development 'Build the overlap table: which tasks share a path'      'parallel work is dispatched without checking paths'
+has libra-subagent-driven-development 'A subagent never commits, never pushes, and never ticks a box'      'a subagent can commit'
+steps_body "$root/skills/libra-subagent-driven-development/SKILL.md" | grep -qF 'Run the suite yourself' ||
+  { echo "FAIL libra-subagent-driven-development: the parent may trust a subagent green"; fail=1; }
+write_body "$root/skills/libra-subagent-driven-development/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL libra-subagent-driven-development: Write must be none, the parent writes"; fail=1; }
 
-# --- frontend-ui-engineering: the system, the widths, the keyboard ---------
-has frontend-ui-engineering 'Accessibility, WCAG 2.1 AA: every control' 'accessibility is a preference, not a rule'
-has frontend-ui-engineering 'works with the keyboard only and at the narrowest' 'a screen can be done without the keyboard'
-has frontend-ui-engineering 'Tokens before literals: colour, spacing' 'a hex value may live in a component'
-write_body "$root/skills/frontend-ui-engineering/SKILL.md" | grep -qF 'docs/design-system.md' ||
-  { echo "FAIL frontend-ui-engineering: Write does not name docs/design-system.md"; fail=1; }
+# --- libra-frontend-ui-engineering: the system, the widths, the keyboard ---------
+has libra-frontend-ui-engineering 'Accessibility, WCAG 2.1 AA: every control' 'accessibility is a preference, not a rule'
+has libra-frontend-ui-engineering 'works with the keyboard only and at the narrowest' 'a screen can be done without the keyboard'
+has libra-frontend-ui-engineering 'Tokens before literals: colour, spacing' 'a hex value may live in a component'
+write_body "$root/skills/libra-frontend-ui-engineering/SKILL.md" | grep -qF 'docs/design-system.md' ||
+  { echo "FAIL libra-frontend-ui-engineering: Write does not name docs/design-system.md"; fail=1; }
 
-# --- api-and-interface-design: the contract comes first --------------------
-has api-and-interface-design "Hyrum's Law: every observable behaviour is a contract" 'an observable behaviour is not treated as a contract'
-has api-and-interface-design 'Validate at the boundary, once'  'validation may be spread through the logic'
-has api-and-interface-design 'is idempotent: a key the caller supplies' 'a retryable write may double'
-write_body "$root/skills/api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
-  { echo "FAIL api-and-interface-design: Write does not name docs/api/"; fail=1; }
+# --- libra-api-and-interface-design: the contract comes first --------------------
+has libra-api-and-interface-design "Hyrum's Law: every observable behaviour is a contract" 'an observable behaviour is not treated as a contract'
+has libra-api-and-interface-design 'Validate at the boundary, once'  'validation may be spread through the logic'
+has libra-api-and-interface-design 'is idempotent: a key the caller supplies' 'a retryable write may double'
+write_body "$root/skills/libra-api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
+  { echo "FAIL libra-api-and-interface-design: Write does not name docs/api/"; fail=1; }
 
 # --- git-workflow-and-versioning: the merge rule and the review order ------
 steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'each one builds and passes the suite' ||
@@ -213,10 +213,10 @@ steps_body "$root/skills/libra-ship/SKILL.md" | grep -qF 'docs/GIT.md` must allo
   { echo "FAIL libra-ship: the direct-commit exception does not name the file that allows it"; fail=1; }
 grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/release/SKILL.md" ||
   { echo "FAIL release: the version scheme is inferred, not read"; fail=1; }
-steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
-  { echo "FAIL incremental-implementation: the default-branch clause is gone"; fail=1; }
-steps_body "$root/skills/build/SKILL.md" | grep -qF 'state branch-or-direct before the first commit: which branch' ||
-  { echo "FAIL build: the commit destination is never stated"; fail=1; }
+steps_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
+  { echo "FAIL libra-incremental-implementation: the default-branch clause is gone"; fail=1; }
+steps_body "$root/skills/libra-build/SKILL.md" | grep -qF 'state branch-or-direct before the first commit: which branch' ||
+  { echo "FAIL libra-build: the commit destination is never stated"; fail=1; }
 
 # --- bootstrap asks about git before it writes the state file ---------------
 grep -qF 'exactly three questions' "$root/skills/libra-bootstrap-project/SKILL.md" ||

@@ -17,7 +17,7 @@ Not for changing behavior, and not while a test is red.
 ## Read first
 
 1. The tests that cover the code. They are the contract; if they are missing,
-   write them first and treat that as `build`.
+   write them first and treat that as `libra-build`.
 2. `git log -3 -- <file>` and `git blame` on the lines you intend to delete, to
    see what problem each one solved.
 3. Any ADR that names this module.

@@ -31,7 +31,7 @@ Not for exploration; exploring has no claim to prove.
 4. If the correct command changed, update `## Run & verify` in the same
    session. A stale command is how the next person loses an hour.
 5. When the output is red, stop and report. Do not fix the test here; that is
-   `root-cause`.
+   `libra-root-cause`.
 
 The quality floor: do not delete a test, add a skip, loosen a threshold, or drop
 a lint rule to get green. The project's own floor is `docs/CONSTRAINTS.md` when it

@@ -28,8 +28,8 @@ updated: 2026-11-25
 - `scripts/test-install.sh` — symlink, run twice, refuse to overwrite, the Office-reading script must run from the installed destination.
 - `docs/` — the backbone of this repo itself; this repo is the first place it is dogfooded.
 - `docs/CONSTRAINTS.md` — this repo's own quality bar; `libra-constraint-driven-development` is dogfooded here first.
-- `docs/api/` — the document type this set writes into a project, one file per interface; owner `api-and-interface-design`. Not used in this repo.
-- `docs/design-system.md` — the document type for tokens, components and where state lives; owner `frontend-ui-engineering`. Not used in this repo.
+- `docs/api/` — the document type this set writes into a project, one file per interface; owner `libra-api-and-interface-design`. Not used in this repo.
+- `docs/design-system.md` — the document type for tokens, components and where state lives; owner `libra-frontend-ui-engineering`. Not used in this repo.
 - `docs/GIT.md` — this repository's branching model, merge policy, version scheme and commit format; owner `git-workflow-and-versioning`.
 - `evals/` — contract evals for the Define and Build skills, plus the live rubric a human runs by hand.
 - `evals/skills/<name>/evals.json` — Anthropic-style prompts and expectations, two or more per skill; `evals/run.sh` checks every skill has one.

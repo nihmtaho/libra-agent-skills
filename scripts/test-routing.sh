@@ -36,25 +36,25 @@ route 'no bar written down|weakened'                  libra-constraint-driven-de
 
 # Neighbours that must not be swallowed by the new four.
 route 'ordered tasks|spec is accepted'                libra-plan-work
-route 'no failing test'                               test-driven-development
-route 'failing test first'                            test-driven-development
-route 'too big'                                       incremental-implementation
-route 'too risky'                                     incremental-implementation
-route 'rollback'                                      incremental-implementation
-route 'no command can check'                          doubt-driven-development
+route 'no failing test'                               libra-test-driven-development
+route 'failing test first'                            libra-test-driven-development
+route 'too big'                                       libra-incremental-implementation
+route 'too risky'                                     libra-incremental-implementation
+route 'rollback'                                      libra-incremental-implementation
+route 'no command can check'                          libra-doubt-driven-development
 route 'missing context'                               libra-context-engineering
 route 'has too much to read'                          libra-context-engineering
 route 'rules file'                                    libra-context-engineering
-route 'which library'                                 source-driven-development
-route 'cite the docs'                                 source-driven-development
-route 'in parallel'                                   subagent-driven-development
-route 'independent tasks'                             subagent-driven-development
-route 'a11y'                                          frontend-ui-engineering
-route 'component'                                     frontend-ui-engineering
-route 'adding an endpoint'                            api-and-interface-design
-route 'response shape'                                api-and-interface-design
-route 'error format'                                  api-and-interface-design
-route 'ready to implement'                            build
+route 'which library'                                 libra-source-driven-development
+route 'cite the docs'                                 libra-source-driven-development
+route 'in parallel'                                   libra-subagent-driven-development
+route 'independent tasks'                             libra-subagent-driven-development
+route 'a11y'                                          libra-frontend-ui-engineering
+route 'component'                                     libra-frontend-ui-engineering
+route 'adding an endpoint'                            libra-api-and-interface-design
+route 'response shape'                                libra-api-and-interface-design
+route 'error format'                                  libra-api-and-interface-design
+route 'ready to implement'                            libra-build
 route 'squash or keep the commits'                    git-workflow-and-versioning
 route 'branching model'                               git-workflow-and-versioning
 route '[Cc]ut a version'                              release

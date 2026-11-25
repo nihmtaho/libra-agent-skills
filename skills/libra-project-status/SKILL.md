@@ -13,7 +13,7 @@ changes nothing.
 
 Use at the start of a session in a project that has `docs/PROJECT.md`, after a
 long break, or when the human asks "where were we".
-Not for continuing work you are already inside; that is `build`.
+Not for continuing work you are already inside; that is `libra-build`.
 
 ## Read first
 

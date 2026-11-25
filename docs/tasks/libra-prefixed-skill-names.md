@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: T2 done; T3 next
+Stopped at: T3 done; T4 next
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -53,7 +53,7 @@ skills should be re-planned before T4.
       `decide`, `idea-refine`, `interview-me` and `spec-driven-development`, so
       its `cp` and `sed` lines follow.
 
-- [ ] **T3 — the nine build skills**
+- [x] **T3 — the nine build skills**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;
       `ls skills | grep -c '^libra-'` prints 20; and the sweep for `build`,
       `test-driven-development`, `incremental-implementation`,

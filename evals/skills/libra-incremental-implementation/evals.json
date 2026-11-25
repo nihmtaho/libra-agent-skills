@@ -1,0 +1,27 @@
+{
+  "skill_name": "libra-incremental-implementation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Build CSV import, the import status screen and the API endpoint in one go. It is one feature.",
+      "expected_output": "The work is cut into slices that each leave the suite green, the incomplete UI is behind a default-off flag, and each slice is one commit on a stated branch.",
+      "expectations": [
+        "The plan has at least two slices that each leave the suite green.",
+        "Any user-visible incomplete slice is behind a default-off flag; a complete slice may land without one.",
+        "The branch is stated before the first commit.",
+        "One slice lands per commit."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This database migration is risky and touches production data. A verified backup exists and the rollback path is agreed. Land it.",
+      "expected_output": "The reply chooses the smallest reversible slice, names a rollback path, and keeps the suite green before the next slice.",
+      "expectations": [
+        "The first slice is reversible and small.",
+        "A rollback path is named before the risky change.",
+        "The suite is green after the slice.",
+        "The reply does not land the whole migration in one commit."
+      ]
+    }
+  ]
+}

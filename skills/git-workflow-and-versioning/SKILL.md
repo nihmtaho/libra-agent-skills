@@ -13,7 +13,7 @@ down once, they stop being a discussion at every merge.
 Use when a project has no `docs/GIT.md`, when a branch is about to be merged and
 nobody knows whether to squash it, when a version is about to be cut and the
 scheme was never named, or when the human asks which workflow this project uses.
-Not for making a commit: that is `incremental-implementation`. Not for merging a
+Not for making a commit: that is `libra-incremental-implementation`. Not for merging a
 change that passed review: that is `libra-ship`.
 
 ## Read first
@@ -48,14 +48,14 @@ change that passed review: that is `libra-ship`.
 4. Too many commits is two diseases. A dirty history is `git rebase -i` into three
    or four coherent commits before review — only on your own unpushed branch, never
    on one someone else has. A branch that lived too long is a slice
-   problem: hand back to `incremental-implementation`. Count days since the branch
+   problem: hand back to `libra-incremental-implementation`. Count days since the branch
    last landed anything, and commits that are not green — never the commit count,
    which would punish one-slice-per-commit work.
 5. Version scheme. `semver` or `none`, and where the version lives. SemVer is the
    default; `none` is honest for a project that ships continuously and never tags.
    `release` reads this and never infers it.
 6. Commit format. Conventional Commits: `feat`, `fix`, `docs`, `style`, `refactor`,
-   `perf`, `test`, `build`, `ci`, `chore`, `revert`; an optional `(scope)`; `!` or
+   `perf`, `test`, `libra-build`, `ci`, `chore`, `revert`; an optional `(scope)`; `!` or
    a `BREAKING CHANGE:` footer for a break; an imperative, lower-case subject with
    no trailing period; a body only when the why is not obvious. Never a co-author
    line or an AI signature unless the project or the platform requires one —

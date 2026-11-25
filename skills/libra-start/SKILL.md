@@ -34,8 +34,8 @@ Do not read the whole repo first. Read the state, then the files it names.
    - feature or behavior change: `libra-interview-me` if the request has two readings
      (one question per turn, writes nothing); `libra-idea-refine` if it is a hunch, a
      feature name or a complaint with no shape; then `libra-spec-driven-development`
-     -> `libra-plan-work` -> `build`. No task file, no edit.
-   - unknown failure: `root-cause` -> `test-driven-development`.
+     -> `libra-plan-work` -> `libra-build`. No task file, no edit.
+   - unknown failure: `libra-root-cause` -> `libra-test-driven-development`.
    - spike: say it is throwaway; no spec, no merge, keep it off the main branch.
 3. For a feature, behavior change or failure, create the branch before the first
    edit: `git switch -c <type>/<slug>`. State the lane and the branch in one line.

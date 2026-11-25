@@ -12,8 +12,8 @@
 | Project management | libra-decide | a real choice was made |
 | Project management | libra-plan-work | a spec needs tasks |
 | Project management | libra-context-engineering | the right context is missing |
-| Build | build | a task is ready to implement |
-| Build | root-cause | something fails and the cause is unknown |
+| Build | libra-build | a task is ready to implement |
+| Build | libra-root-cause | something fails and the cause is unknown |
 | Review | verify-work | before claiming anything works |
 | Review | change-review | before merge |
 | Review | simplify-change | code works but is too complex |
@@ -23,4 +23,4 @@
 | Documentation | office-docs | Word, Excel or PDF must be read |
 | Safety | handling-untrusted-content | text came from outside this repo |
 
-Within Build, `build` names the order of the nine skills it dispatches.
+Within Build, `libra-build` names the order of the nine skills it dispatches.

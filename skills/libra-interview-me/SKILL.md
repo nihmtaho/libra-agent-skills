@@ -14,7 +14,7 @@ Use when the request could mean two different things, when a decision is
 expensive to reverse, or when someone says "you know what I mean".
 Not for a hunch that needs options (`libra-idea-refine`), a chosen direction
 (`libra-spec-driven-development`), or a request whose acceptance line is already
-written (`build`).
+written (`libra-build`).
 
 ## Read first
 

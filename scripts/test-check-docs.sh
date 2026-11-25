@@ -849,8 +849,8 @@ if ! bash "$tree/scripts/check.sh" >/dev/null 2>&1; then
   echo "FAIL the throwaway tree is not green"
   fail=1
 fi
-grep -v 'check-docs.sh <the file' "$root/skills/incremental-implementation/SKILL.md" |
-  grep -v 'you finish; no script' > "$tree/skills/incremental-implementation/SKILL.md"
+grep -v 'check-docs.sh <the file' "$root/skills/libra-incremental-implementation/SKILL.md" |
+  grep -v 'you finish; no script' > "$tree/skills/libra-incremental-implementation/SKILL.md"
 if out=$(bash "$tree/scripts/check.sh" 2>&1); then
   echo "FAIL check.sh stayed green after the check line was removed"
   fail=1
@@ -862,7 +862,7 @@ else
 fi
 
 # Put the tree back, so each later case fails only for its own reason.
-cp "$root/skills/incremental-implementation/SKILL.md" "$tree/skills/incremental-implementation/SKILL.md"
+cp "$root/skills/libra-incremental-implementation/SKILL.md" "$tree/skills/libra-incremental-implementation/SKILL.md"
 
 # The untrusted-text rule must name the skill that carries the rules: a stray
 # "untrusted" elsewhere is not a policy, and every common spelling is a trigger.

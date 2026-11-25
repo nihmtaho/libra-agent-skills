@@ -93,7 +93,7 @@ existing `scripts/check-docs.sh`: keep the project's file and say so in one line
   that may hold escaped or code-span pipes is a rule of its own.
 - External links, images, spelling, prose quality.
 - Rejecting an `updated:` date that is not today: timezone-dependent, and
-  `build` may backfill an older date on purpose.
+  `libra-build` may backfill an older date on purpose.
 
 ## Open questions
 

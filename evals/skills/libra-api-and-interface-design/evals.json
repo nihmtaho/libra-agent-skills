@@ -1,0 +1,27 @@
+{
+  "skill_name": "libra-api-and-interface-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We need to change the invite endpoint response shape and error format. The new success shape adds \"email\" to {\"invite_id\",\"status\"}, and every error must use {\"error\":{\"code\",\"message\"}}. Update it.",
+      "expected_output": "The contract is written first in docs/api with request, success, every error shape, auth and version. Validation happens at the boundary, and the change is classified as additive or breaking.",
+      "expectations": [
+        "The contract is written before the handler.",
+        "Every error shape has a status and a stable code.",
+        "The reply validates at the boundary before business logic.",
+        "The reply says whether the change is additive or breaking."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add a retry to the payment endpoint so a timeout does not charge twice.",
+      "expected_output": "The contract adds an idempotency key, one error envelope, and no raw exception; a retry is safe by a documented rule.",
+      "expectations": [
+        "The reply adds an idempotency key or a documented safe-retry rule.",
+        "The error format is one stable envelope, not a raw exception.",
+        "The reply does not return 200 with a failure inside.",
+        "The contract and code change together."
+      ]
+    }
+  ]
+}

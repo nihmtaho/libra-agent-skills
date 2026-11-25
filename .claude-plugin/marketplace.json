@@ -32,15 +32,15 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/build",
-        "./skills/test-driven-development",
-        "./skills/incremental-implementation",
-        "./skills/doubt-driven-development",
-        "./skills/source-driven-development",
-        "./skills/subagent-driven-development",
-        "./skills/frontend-ui-engineering",
-        "./skills/api-and-interface-design",
-        "./skills/root-cause"
+        "./skills/libra-build",
+        "./skills/libra-test-driven-development",
+        "./skills/libra-incremental-implementation",
+        "./skills/libra-doubt-driven-development",
+        "./skills/libra-source-driven-development",
+        "./skills/libra-subagent-driven-development",
+        "./skills/libra-frontend-ui-engineering",
+        "./skills/libra-api-and-interface-design",
+        "./skills/libra-root-cause"
       ]
     },
     {

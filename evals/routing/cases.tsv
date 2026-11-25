@@ -7,13 +7,13 @@ r6	Turn this into a spec with structure, code style and a test plan.	libra-spec-
 r7	CI is red and someone lowered a threshold to get there.	libra-constraint-driven-development
 r8	This project has no quality bar written down.	libra-constraint-driven-development
 r9	Turn the approved spec into ordered tasks.	libra-plan-work
-r10	The task file has a task ready; write the code.	build
-r11	This task is too big to land in one change and needs a rollback path.	incremental-implementation
-r12	I am about to claim the retry logic is correct and no command can check it.	doubt-driven-development
-r13	Two tasks touch different files and can run at the same time.	subagent-driven-development
-r14	The endpoint's response shape and error format have to change.	api-and-interface-design
-r15	The component must work at every width and with a keyboard only.	frontend-ui-engineering
-r16	Which library version does this call need, and cite the docs.	source-driven-development
+r10	The task file has a task ready; write the code.	libra-build
+r11	This task is too big to land in one change and needs a rollback path.	libra-incremental-implementation
+r12	I am about to claim the retry logic is correct and no command can check it.	libra-doubt-driven-development
+r13	Two tasks touch different files and can run at the same time.	libra-subagent-driven-development
+r14	The endpoint's response shape and error format have to change.	libra-api-and-interface-design
+r15	The component must work at every width and with a keyboard only.	libra-frontend-ui-engineering
+r16	Which library version does this call need, and cite the docs.	libra-source-driven-development
 r17	The agent has too much to read and the rules file is out of date.	libra-context-engineering
-r18	There is no failing test yet, so write the test first.	test-driven-development
+r18	There is no failing test yet, so write the test first.	libra-test-driven-development
 r19	Should we squash this branch or keep the commits when we merge?	git-workflow-and-versioning

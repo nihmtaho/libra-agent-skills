@@ -64,15 +64,15 @@ The installer shows six groups; this list follows the order of the work.
 
 | Skill | What it does |
 |---|---|
-| `build` | Dispatch one ready task to the skill that runs next |
-| `test-driven-development` | Red, green, refactor; 80/15/5; DAMP over DRY |
-| `incremental-implementation` | Thin slices, a flag when risky, one slice per commit |
-| `doubt-driven-development` | CLAIM, EXTRACT, DOUBT, RECONCILE, STOP in a fresh context |
-| `source-driven-development` | The version pinned, the primary source cited |
-| `subagent-driven-development` | Parallel tasks, parent keeps the commit |
-| `frontend-ui-engineering` | Tokens, components, state, three widths, WCAG 2.1 AA |
-| `api-and-interface-design` | The contract before the handler |
-| `root-cause` | Five steps to a root-cause fix |
+| `libra-build` | Dispatch one ready task to the skill that runs next |
+| `libra-test-driven-development` | Red, green, refactor; 80/15/5; DAMP over DRY |
+| `libra-incremental-implementation` | Thin slices, a flag when risky, one slice per commit |
+| `libra-doubt-driven-development` | CLAIM, EXTRACT, DOUBT, RECONCILE, STOP in a fresh context |
+| `libra-source-driven-development` | The version pinned, the primary source cited |
+| `libra-subagent-driven-development` | Parallel tasks, parent keeps the commit |
+| `libra-frontend-ui-engineering` | Tokens, components, state, three widths, WCAG 2.1 AA |
+| `libra-api-and-interface-design` | The contract before the handler |
+| `libra-root-cause` | Five steps to a root-cause fix |
 
 ### Review
 
@@ -125,7 +125,7 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in api-and-interface-design libra-bootstrap-project build change-review libra-constraint-driven-development libra-context-engineering libra-decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content libra-idea-refine incremental-implementation libra-interview-me office-docs libra-plan-work libra-project-status release root-cause libra-ship simplify-change source-driven-development libra-spec-driven-development subagent-driven-development test-driven-development libra-start verify-work; do
+for s in libra-api-and-interface-design libra-bootstrap-project libra-build change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me office-docs libra-plan-work libra-project-status release libra-root-cause libra-ship simplify-change libra-source-driven-development libra-spec-driven-development libra-subagent-driven-development libra-test-driven-development libra-start verify-work; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

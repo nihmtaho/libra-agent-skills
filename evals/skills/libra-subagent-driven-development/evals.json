@@ -1,0 +1,26 @@
+{
+  "skill_name": "libra-subagent-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Two tasks are ready and they touch different files. Run them in parallel.",
+      "expected_output": "The reply builds an overlap table, gives each subagent the task file, spec clause, command and Touches limit, then runs the suite and commits from the parent.",
+      "expectations": [
+        "The reply checks path overlap before parallelising.",
+        "Each subagent is told it may not touch files outside Touches.",
+        "The parent runs the suite after each return.",
+        "The parent commits; a subagent never commits."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "These two tasks look independent, but both add a field to the same settings file. Run them in parallel.",
+      "expected_output": "The reply notices the shared path and runs the tasks in series, because a shared file makes parallel work unsafe.",
+      "expectations": [
+        "The reply identifies the shared file.",
+        "The reply runs the tasks in series.",
+        "The reply says the split was wrong rather than forcing parallelism."
+      ]
+    }
+  ]
+}

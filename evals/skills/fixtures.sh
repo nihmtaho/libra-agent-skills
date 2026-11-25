@@ -833,9 +833,9 @@ write_empty() {
 case "$skill" in
   libra-bootstrap-project) if [ "$id" = "2" ]; then write_bootstrap_old; else write_empty; fi ;;
   libra-project-status) if [ "$id" = "2" ]; then write_empty; else write_project; fi ;;
-  build) if [ "$id" = "2" ]; then write_build_none; else write_build; fi ;;
-  api-and-interface-design) write_api ;;
-  subagent-driven-development) write_subagent ;;
+  libra-build) if [ "$id" = "2" ]; then write_build_none; else write_build; fi ;;
+  libra-api-and-interface-design) write_api ;;
+  libra-subagent-driven-development) write_subagent ;;
   change-review) write_review ;;
   libra-ship) write_ship ;;
   release) write_release ;;
@@ -843,11 +843,11 @@ case "$skill" in
   handling-untrusted-content) write_hostile ;;
   libra-plan-work) write_docs; write_invite_spec ;;
   libra-start) write_docs ;;
-  root-cause) write_rootcause ;;
-  frontend-ui-engineering) if [ "$id" = "2" ]; then write_frontend_button; else write_project; fi ;;
-  incremental-implementation) if [ "$id" = "2" ]; then write_migration; else write_project; fi ;;
-  source-driven-development) if [ "$id" = "2" ]; then write_source_callback; else write_project; fi ;;
-  test-driven-development) if [ "$id" = "1" ]; then write_tdd; else write_transfer; fi ;;
+  libra-root-cause) write_rootcause ;;
+  libra-frontend-ui-engineering) if [ "$id" = "2" ]; then write_frontend_button; else write_project; fi ;;
+  libra-incremental-implementation) if [ "$id" = "2" ]; then write_migration; else write_project; fi ;;
+  libra-source-driven-development) if [ "$id" = "2" ]; then write_source_callback; else write_project; fi ;;
+  libra-test-driven-development) if [ "$id" = "1" ]; then write_tdd; else write_transfer; fi ;;
   verify-work) if [ "$id" = "2" ]; then write_verify; else write_project; fi ;;
   git-workflow-and-versioning) if [ "$id" = "1" ]; then write_gitless; else write_project; fi ;;
   libra-constraint-driven-development) if [ "$id" = "1" ]; then write_constraint_fail; else write_no_bar; fi ;;
@@ -855,6 +855,6 @@ case "$skill" in
   # No fixture is written for these three yet: the generic project is a
   # placeholder, not a test of the skill. Listed on purpose, so a new skill
   # cannot land here by falling through.
-  libra-context-engineering|doubt-driven-development|simplify-change) write_project ;;
+  libra-context-engineering|libra-doubt-driven-development|simplify-change) write_project ;;
   *) echo "no fixture for $skill" >&2; exit 2 ;;
 esac
