@@ -852,5 +852,9 @@ case "$skill" in
   git-workflow-and-versioning) if [ "$id" = "1" ]; then write_gitless; else write_project; fi ;;
   constraint-driven-development) if [ "$id" = "1" ]; then write_constraint_fail; else write_no_bar; fi ;;
   spec-driven-development|idea-refine|decide|interview-me) write_docs ;;
-  *) write_project ;;
+  # No fixture is written for these three yet: the generic project is a
+  # placeholder, not a test of the skill. Listed on purpose, so a new skill
+  # cannot land here by falling through.
+  context-engineering|doubt-driven-development|simplify-change) write_project ;;
+  *) echo "no fixture for $skill" >&2; exit 2 ;;
 esac

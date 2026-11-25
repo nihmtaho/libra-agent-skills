@@ -28,8 +28,11 @@ if not want:
     raise SystemExit(1)
 got = grade.get('expectations', [])
 bad = 0
+# The grader reflows a sentence; comparing exact text turned that into
+# "missing grade". Whitespace is not part of an expectation.
+norm = lambda s: ' '.join(str(s).split())
 for item in want:
-    row = next((r for r in got if r.get('text') == item), None)
+    row = next((r for r in got if norm(r.get('text')) == norm(item)), None)
     if row is None:
         print(f"FAIL missing grade: {item}")
         bad = 1

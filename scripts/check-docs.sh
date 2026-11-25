@@ -59,48 +59,54 @@ for f in "$@"; do
       { echo "FAIL $f:1: updated is not YYYY-MM-DD"; fail=1; }
   fi
 
+  # CommonMark: a fence may be indented up to three spaces, so whether a line is
+  # prose depends on that indent. Strip it once here; every rule below reads the
+  # same prose, and a rule can no longer disagree with another about a fence.
+  # An unclosed fence is reported as a marker record, so it is detected once too.
+  prose() { # <frontmatter-end> <file>; prints "<line number>\t<text>"
+    awk -v fm="$1" '
+      NR <= fm { next }
+      { line = $0; sub(/^ {0,3}/, "", line)
+        if (match(line, /^(`{3,}|~{3,})/)) {
+          ch = substr(line, 1, 1); w = RLENGTH; rest = substr(line, RLENGTH + 1)
+          if (fence == "") { fence = ch; fw = w; opened = 1; print NR "\t__FENCE__" }
+          else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) { fence = ""; opened = 0 }
+          next }
+        if (fence != "") next
+        print NR "\t" line }
+      END { if (opened) print NR "\t__UNCLOSED_FENCE__" }' "$2"; }
+
   # 3-6. one H1 first, no empty heading, no empty section, fences balanced
-  body=$(awk -v f="$f" -v fm="$fmend" -v imp="$imp" '
+  body=$(prose "$fmend" "$f" | awk -F'\t' -v f="$f" -v fm="$fmend" -v imp="$imp" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
-    NR <= fm { next }
-    match($0, /^(`{3,}|~{3,})/) {
-                 ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
-                 if (fence == "") { pend = ""; fence = ch; fw = w; nfence = 1 }
-                 else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) { fence = ""; nfence = 0 }
-                 next }
-    fence { next }
-    /[^ \t]/ {
-      if (!first) { first = NR; firstline = $0 }
-      if ($0 ~ /^#+[ \t]*$/) { bad(NR, "heading with no text"); pend = ""; next }
-      if ($0 ~ /^# /) { h1 += 1; pend = ""; next }   # the title section is the whole document
-      if ($0 ~ /^#/) {
-        if (pend != "") bad(NR, "empty section under " pend " (line " pendline ")")
-        pend = $0; pendline = NR
+    { n = $1; line = substr($0, index($0, "\t") + 1)
+      if (line == "__UNCLOSED_FENCE__") { bad(n, "unclosed code fence"); next }
+      if (line !~ /[^ \t]/) next
+      if (!first) { first = n; firstline = line }
+      if (line ~ /^#+[ \t]*$/) { bad(n, "heading with no text"); pend = ""; next }
+      if (line ~ /^# /) { h1 += 1; pend = ""; next }   # the title section is the whole document
+      if (line ~ /^#/) {
+        if (pend != "") bad(n, "empty section under " pend " (line " pendline ")")
+        pend = line; pendline = n
       } else pend = ""
     }
     END {
       if (pend != "") bad(pendline, "empty section under " pend)
-      if (nfence) bad(NR, "unclosed code fence")
       if (!imp) {
         if (h1 != 1) bad(first, "expected one H1, found " h1)
         else if (fm > 0 && firstline !~ /^# /) bad(first, "first body line is not the H1")
       }
-    }' "$f")
+    }' )
   [ -z "$body" ] || { printf '%s\n' "$body"; fail=1; }
 
   # 7. internal links resolve, relative to the document
-  links=$(awk '
-    match($0, /^(`{3,}|~{3,})/) {
-      ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
-      if (fence == "") { fence = ch; fw = w }
-      else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
-      next }
-    fence { next }
-    { gsub(/`[^`]*`/, "")
-      while (match($0, /\]\([^)]*\)/)) {
-        print NR "\t" substr($0, RSTART+2, RLENGTH-3)
-        $0 = substr($0, RSTART+RLENGTH)
-      } }' "$f")
+  links=$(prose "$fmend" "$f" | awk -F'\t' '
+    { n = $1; line = substr($0, index($0, "\t") + 1)
+      gsub(/`[^`]*`/, "", line)
+      while (match(line, /\]\([^)]*\)/)) {
+        print n "\t" substr(line, RSTART + 2, RLENGTH - 3)
+        line = substr(line, RSTART + RLENGTH)
+      } }')
   while IFS=$'\t' read -r line target; do
     [ -n "${target:-}" ] || continue
     target=${target%%\"*}; target=${target%" "}; target=${target%%#*}
@@ -111,10 +117,8 @@ for f in "$@"; do
   done <<< "$links"
 
   # 8. a table row is a table only when the row under it is a valid separator row;
-  #    otherwise the pipes render as one paragraph of text. A fence may be indented
-  #    up to three spaces and a four-space indent is a code block, so neither is a
-  #    table row.
-  tables=$(awk -v f="$f" '
+  #    otherwise the pipes render as one paragraph of text.
+  tables=$(prose "$fmend" "$f" | awk -F'\t' -v f="$f" '
     function bad(n, msg) { printf "FAIL %s:%d: %s\n", f, n, msg }
     function sep(line,   n, i, cells, c) {
       sub(/^\|/, "", line); sub(/\|[ \t]*$/, "", line)
@@ -125,18 +129,9 @@ for f in "$@"; do
         if (c !~ /^:?-+:?$/) return 0
       }
       return 1 }
-    NR <= fm { next }
-    {
-      line = $0; sub(/^ {0,3}/, "", line)
-      if (match(line, /^(`{3,}|~{3,})/)) {
-        ch = substr(line, 1, 1); w = RLENGTH; rest = substr(line, RLENGTH + 1)
-        if (fence == "") { fence = ch; fw = w }
-        else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
-        head = 0; next
-      }
-      if (fence != "") next
+    { n = $1; line = substr($0, index($0, "\t") + 1)
       if (line ~ /^\|/) {
-        if (!head) { head = NR; next }
+        if (head == 0) { head = n; next }
         if (head > 0) {
           if (!sep(line)) bad(head, "table has no valid separator row, so it renders as text")
           head = -1
@@ -144,7 +139,7 @@ for f in "$@"; do
         next
       }
       head = 0
-    }' "$f")
+    }' )
   [ -z "$tables" ] || { printf '%s\n' "$tables"; fail=1; }
 
   # 9. headings required by document type
@@ -175,15 +170,8 @@ for f in "$@"; do
   esac
   # required headings must be real headings: outside frontmatter and outside fences,
   # so a heading quoted in a code block cannot satisfy the rule
-  heads=$(awk -v fm="$fmend" '
-    NR <= fm { next }
-    match($0, /^(`{3,}|~{3,})/) {
-      ch = substr($0, 1, 1); w = RLENGTH; rest = substr($0, RLENGTH + 1)
-      if (fence == "") { fence = ch; fw = w }
-      else if (ch == fence && w >= fw && rest ~ /^[ \t]*$/) fence = ""
-      next }
-    fence { next }
-    /^#/ { print }' "$f")
+  heads=$(prose "$fmend" "$f" | awk -F'\t' '
+    { line = substr($0, index($0, "\t") + 1); if (line ~ /^#/) print line }')
   while IFS= read -r h; do
     [ -n "$h" ] || continue
     printf '%s\n' "$heads" | awk -v h="## $h" '

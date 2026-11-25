@@ -33,14 +33,15 @@ Generic, every file under `docs/`:
 5. No empty section: a heading immediately followed by another heading or by EOF.
 6. Code fences balance: a line of three or more ` ``` ` or `~~~` opens one, and a
    line of the same marker, at least as long and followed only by spaces or tabs,
-   closes it. Text after an opening run is an info string; text after a closing run
-   means it is content.
+   closes it. A fence may be indented up to three spaces, and every rule below
+   reads a line with that indent stripped. Text after an opening run is an info
+   string; text after a closing run means it is content.
 7. Every `](path)` that is not `http(s)`, `mailto` or `#anchor` resolves to a file
    that exists, relative to the document.
 8. When two consecutive rows start with `|`, the second must be a separator row
    whose cells are all `:?-+:?`; without one the pipes render as one paragraph of
-   text. Leading spaces up to three are ignored, and a fence indented that far, or
-   a line indented four or more spaces, is code, so its rows are not checked.
+   text. A line indented four or more spaces is a code block, so its rows are not
+   checked.
 
 Per type, by path, in this order of match:
 

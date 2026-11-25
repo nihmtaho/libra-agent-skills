@@ -9,10 +9,10 @@ updated: 2026-11-25
 - `bash scripts/check.sh` — the skill contract: frontmatter, length, headings, forbidden tokens, the `check-docs.sh` line in every `## Write`, byte-identical checker copies, the README uninstall loop, and the empty sections of `PROJECT.md`.
 - `bash scripts/check-docs.sh <file>` — one document against the rules in `docs/specs/markdown-check.md`.
 - `bash scripts/test-routing.sh` — a request a human would type must match exactly one skill description; two skills answering the same words fail.
-- `bash evals/run.sh` — contract evals for the Define and Build skills, one owner per artifact, and every behavior case's grader self-test.
+- `bash evals/run.sh` — contract evals for the Define and Build skills, one owner per artifact, and a mutation self-test that proves the suite can go red.
 - `bash evals/skills/run.sh --inventory` — build every per-skill eval sandbox; `run.sh <skill> <id> with|without` prepares one.
 - `bash evals/behavior/run.sh <case>` — prepares a sandbox and prints the prompt; `--verify <dir>` grades it, `--self-test` proves the grader can fail.
-- `bash evals/routing/run.sh` — nineteen requests a model must route to the right skill; `--verify <dir>` grades the answers, `--self-test` proves the grader can fail.
+- `bash evals/routing/run.sh` — the requests a model must route to the right skill; `--verify <dir>` grades the answers, `--self-test` proves the grader can fail.
 - Sign of success: exit 0, and five lines `all checks passed`, `fixtures passed`, `routing passed`, `evals passed`, `install tests passed`.
 
 ## Module map
@@ -34,8 +34,10 @@ updated: 2026-11-25
 - `evals/` — contract evals for the Define and Build skills, plus the live rubric a human runs by hand.
 - `evals/skills/<name>/evals.json` — Anthropic-style prompts and expectations, two or more per skill; `evals/run.sh` checks every skill has one.
 - `evals/skills/fixtures.sh` — builds a runnable sandbox for each case.
-- `evals/skills/run.sh` — prepares one case, or `--inventory` to build all 63.
+- `evals/skills/run.sh` — prepares one case, or `--inventory` to build one sandbox per case.
 - `evals/skills/verify.sh` — grades a run's `grading.json` against the case expectations.
+- `evals/self-test.sh` — five mutations (negated rule, missing path, missing template, second owner, missing eval file) that must turn the contract suite red.
+- `evals/routing/cases.tsv` — one row per request: its id, the request, and the one skill that answers it.
 
 ## Features
 | Feature | Status | Stopped at | Docs |

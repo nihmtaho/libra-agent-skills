@@ -41,7 +41,8 @@ case "${1:-}" in
       fi
       rm -rf "$sandbox" "${sandbox}-remote.git"
     done <<< "$cases"
-    [ "$seen" -eq 63 ] || { echo "FAIL expected 63 cases, got $seen"; fail=1; }
+    [ "$seen" -ge $(($(ls -1 "$root/skills" | wc -l | tr -d ' ') * 2)) ] ||
+      { echo "FAIL expected at least two cases per skill, got $seen"; fail=1; }
     [ "$fail" -eq 0 ] && echo "inventory passed"
     exit "$fail"
     ;;

@@ -26,12 +26,12 @@ grade() { # <sandbox>; returns 1 when any line is wrong
     echo "FAIL no answers.tsv was written"
     return 1
   fi
-  while IFS=$'\t' read -r id want; do
+  while IFS=$'\t' read -r id request want; do
     [ -n "$id" ] || continue
     g=$(awk -F'\t' -v i="$id" '$1==i {print $2; exit}' "$s/answers.tsv")
     [ "$g" = "$want" ] ||
       { echo "FAIL $id: expected $want, got ${g:-nothing}"; gbad=1; }
-  done < "$here/expected.tsv"
+  done < "$here/cases.tsv"
   return "$gbad"
 }
 
@@ -46,18 +46,19 @@ case "${1:-}" in
   --self-test)
     t=$(mktemp -d)
     trap 'rm -rf "$t"' EXIT
-    try() { # <answers file or ""> <expected exit> <label>
+    try() { # <answers file path or ""> <expected exit> <label>
       s="$t/$3"
       mkdir -p "$s"
-      if [ -n "$1" ]; then cp "$here/$1" "$s/answers.tsv"; fi
+      if [ -n "$1" ]; then cp "$1" "$s/answers.tsv"; fi
       rc=0
       grade "$s" >/dev/null 2>&1 || rc=1
       [ "$rc" = "$2" ] ||
         { echo "FAIL self-test routing/$3: expected exit $2, got $rc"; bad=1; }
     }
     try "" 1 fixture
-    try fix/answers.tsv 0 fix
-    try wrong/answers.tsv 1 wrong
+    cut -f1,3 "$here/cases.tsv" > "$t/fix.tsv"
+    try "$t/fix.tsv" 0 fix
+    try "$here/wrong/answers.tsv" 1 wrong
     [ "$bad" -eq 0 ] && echo "self-test passed"
     exit "$bad"
     ;;
@@ -65,8 +66,10 @@ case "${1:-}" in
     sandbox="${TMPDIR:-/tmp}/libra-eval-routing"
     [ -e "$sandbox" ] &&
       { echo "refusing: $sandbox exists; move it aside first" >&2; exit 1; }
+    awk -F'\t' 'NF != 3 { print "FAIL cases.tsv row " NR " does not have 3 fields"; bad=1 }
+                END { exit bad }' "$here/cases.tsv" || exit 1
     mkdir -p "$sandbox"
-    cp "$here/requests.tsv" "$sandbox/requests.tsv"
+    cut -f1,2 "$here/cases.tsv" > "$sandbox/requests.tsv"
     descriptions > "$sandbox/descriptions.txt"
     echo "sandbox: $sandbox"
     echo "Work only in this directory; a run that edits the repo is a failed run."

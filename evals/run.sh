@@ -15,8 +15,22 @@ steps_body() { awk '/^## Steps$/{f=1;next} /^## /{f=0} f' "$1" | tr '\n' ' ' | t
 flat() { tr '\n' ' ' < "$1" | tr -s ' '; }
 
 has() { # <skill> <fixed string> <rule label>; case-sensitive on purpose
-  flat "$root/skills/$1/SKILL.md" | grep -qF -- "$2" ||
-    { echo "FAIL $1: $3"; fail=1; }
+  text=$(flat "$root/skills/$1/SKILL.md")
+  printf '%s' "$text" | grep -qF -- "$2" ||
+    { echo "FAIL $1: $3"; fail=1; return; }
+  # A substring match survives a policy flip: "Never ask one question per turn"
+  # still contains "One question per turn". A pinned rule that carries no
+  # negation of its own must not appear only inside negated sentences.
+  case "$2" in *' '*) ;; *) return ;; esac
+  case "$2" in *[Nn]ever*|*'not '*|*'no '*|*cannot*|*"can't"*) return ;; esac
+  printf '%s' "$text" | awk -v p="$2" '
+    { n = split($0, s, /[.!?][")]* /)
+      for (i = 1; i <= n; i++) if (index(s[i], p)) {
+        seen++
+        if (index(s[i], p) > 1 && tolower(s[i]) ~ /^[ \t>*_`]*(do not|don.t|never|no longer|no |not |stop|skip|drop|remove|ignore|cannot|can.t)[ \t]/) neg++
+      } }
+    END { exit (seen > 0 && neg == seen) }' ||
+    { echo "FAIL $1: $3 (stated, then negated)"; fail=1; }
 }
 
 # --- using-libra: classify before editing, branch before editing ------------
@@ -267,16 +281,29 @@ out=$(bash "$root/evals/routing/run.sh" --self-test 2>&1) ||
   { echo "FAIL routing eval: $out"; fail=1; }
 
 # --- every skill carries an Anthropic-style eval file ----------------------
+skills=0
+cases=0
 for d in "$root"/skills/*/; do
   n=$(basename "$d")
   f="$root/evals/skills/$n/evals.json"
+  skills=$((skills + 1))
   [ -f "$f" ] || { echo "FAIL $n: no evals/skills/$n/evals.json"; fail=1; continue; }
   grep -q "\"skill_name\": \"$n\"" "$f" ||
     { echo "FAIL $n: eval file names another skill"; fail=1; }
-  [ "$(grep -c '"id":' "$f")" -ge 2 ] ||
+  ncases=$(grep -c '"id":' "$f")
+  [ "$ncases" -ge 2 ] ||
     { echo "FAIL $n: fewer than two evals"; fail=1; }
+  cases=$((cases + ncases))
 done
-total=$(grep -h '"id":' "$root"/evals/skills/*/evals.json | wc -l | tr -d ' ')
-[ "$total" -eq 63 ] || { echo "FAIL evals: expected 63 cases, got $total"; fail=1; }
+# The count is derived, not pinned: two per skill is the rule, so adding a skill
+# cannot leave the total stale.
+[ "$cases" -ge $((skills * 2)) ] ||
+  { echo "FAIL evals: $cases cases for $skills skills (need two each)"; fail=1; }
+# --- the contract suite must be able to fail --------------------------------
+if [ -z "${LIBRA_EVAL_SELF_TEST:-}" ]; then
+  out=$(LIBRA_EVAL_SELF_TEST=1 bash "$root/evals/self-test.sh" 2>&1) ||
+    { echo "FAIL evals/self-test.sh: $out"; fail=1; }
+fi
+
 [ "$fail" -eq 0 ] && echo "evals passed"
 exit "$fail"
