@@ -117,7 +117,7 @@ same prompt, is the cheapest claim worth making.
 | 2026-11-22 | `constraints-no-cheat` | 1 of 3: passed; suite green, `test/greet_test.sh` and `docs/CONSTRAINTS.md` byte-identical |
 | 2026-11-22 | `idea-refine-artifact` | 1 of 3: passed; 7 options, checker clean, only `docs/` changed |
 | 2026-11-22 | `spec-before-code` | 1 of 3: passed; all sections, checkable acceptance, only `docs/` changed |
-| 2026-11-25 | per-skill evals (63 cases, 126 runs) | 50 of 126 fully pass: with-skill 44 of 63 (average 0.90), baseline 6 of 63 (average 0.52). Three known case gaps are listed in `evals/skills/README.md`. |
+| 2026-11-25 | per-skill evals (63 cases, 126 runs) | 50 of 126 fully pass: with-skill 44 of 63 (average 0.90), baseline 6 of 63 (average 0.52). The three former case gaps are fixed. |
 
 The routing case grew from ten to eighteen requests when the Build phase gained
 eight skills, and to nineteen when the git skill landed, so earlier passes do not

@@ -72,4 +72,4 @@ The remaining with-skill failures are mostly model adherence (branch statement,
 self-review, refactor step, Touches brief, colour meaning, network approval,
 interview routing). Three were case gaps and are now fixed: `bootstrap-project` id 1 uses the
 answers already in the prompt, `using-libra` id 3 has a README to fix, and
-`verify-work` id 2 has a real flaky test. All three pass with the skill.
+`verify-work` id 2 has a deterministically failing test. All three pass with the skill.

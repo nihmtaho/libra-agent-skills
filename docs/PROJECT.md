@@ -51,8 +51,8 @@ updated: 2026-11-25
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
-| Phase A: collision renames, installer groups, trust hierarchy, intake gate, `AGENTS.md` bootstrap, branch protection | done | | [spec](specs/phase-a-skill-hardening.md) · [task](tasks/phase-a-skill-hardening.md) |
-| per-skill evals and a runnable sandbox per case | done | | [spec](specs/phase-a-skill-hardening.md) · [task](tasks/phase-a-skill-hardening.md) · [evals](../evals/skills/README.md) |
+| Phase A: collision renames, installer groups, trust hierarchy, intake gate, `AGENTS.md` bootstrap, branch protection | done | | [spec](specs/phase-a-skill-hardening.md) |
+| per-skill evals and a runnable sandbox per case | done | | [spec](specs/phase-a-skill-hardening.md) · [evals](../evals/skills/README.md) |
 | the two-week field test on three projects | running | clock started 2026-11-21; waiting for the first log line | [plan](plans/2026-11-21-field-test.md) |
 
 ## Decisions
