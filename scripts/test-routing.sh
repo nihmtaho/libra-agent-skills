@@ -23,28 +23,28 @@ route() { # <regex of a request a human would type> <the one skill that answers 
 }
 
 # A new idea enters through the classifier, not straight into an editor.
-route 'new idea|behavior change'                      using-libra
+route 'new idea|behavior change'                      libra-start
 # The Define ladder: unclear request, then hunch, then chosen direction, then bar.
-route 'request is ambiguous'                          interview-me
-route 'one question per turn|you know what I mean'    interview-me
-route 'vague idea'                                    idea-refine
-route 'hunch|no shape yet'                            idea-refine
-route 'spec before the code|code style'               spec-driven-development
-route 'direction is chosen'                           spec-driven-development
-route 'lint rule|quality bar'                         constraint-driven-development
-route 'no bar written down|weakened'                  constraint-driven-development
+route 'request is ambiguous'                          libra-interview-me
+route 'one question per turn|you know what I mean'    libra-interview-me
+route 'vague idea'                                    libra-idea-refine
+route 'hunch|no shape yet'                            libra-idea-refine
+route 'spec before the code|code style'               libra-spec-driven-development
+route 'direction is chosen'                           libra-spec-driven-development
+route 'lint rule|quality bar'                         libra-constraint-driven-development
+route 'no bar written down|weakened'                  libra-constraint-driven-development
 
 # Neighbours that must not be swallowed by the new four.
-route 'ordered tasks|spec is accepted'                plan-work
+route 'ordered tasks|spec is accepted'                libra-plan-work
 route 'no failing test'                               test-driven-development
 route 'failing test first'                            test-driven-development
 route 'too big'                                       incremental-implementation
 route 'too risky'                                     incremental-implementation
 route 'rollback'                                      incremental-implementation
 route 'no command can check'                          doubt-driven-development
-route 'missing context'                               context-engineering
-route 'has too much to read'                          context-engineering
-route 'rules file'                                    context-engineering
+route 'missing context'                               libra-context-engineering
+route 'has too much to read'                          libra-context-engineering
+route 'rules file'                                    libra-context-engineering
 route 'which library'                                 source-driven-development
 route 'cite the docs'                                 source-driven-development
 route 'in parallel'                                   subagent-driven-development

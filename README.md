@@ -35,9 +35,9 @@ cp -R /path/to/libra-agent-skills/skills/* /your-project/.agents/skills/
 
 1. **Install the skills** (see above).
 
-2. **Run bootstrap-project:** say to your agent: *"run bootstrap-project for this repo"*. It creates `docs/PROJECT.md` with your project's state, and a short `AGENTS.md` that points at it. For Claude Code it adds a `CLAUDE.md` that imports `AGENTS.md`.
+2. **Run `libra-bootstrap-project`:** say to your agent: *"run libra-bootstrap-project for this repo"*. It creates `docs/PROJECT.md` with your project's state, and a short `AGENTS.md` that points at it. For Claude Code it adds a `CLAUDE.md` that imports `AGENTS.md`.
 
-3. **Test project-status:** open a new agent session and ask: *"where are we?"* It should answer in four lines: what the project is, where it stands, what is half-done, what is next.
+3. **Test `libra-project-status`:** open a new agent session and ask: *"where are we?"* It should answer in four lines: what the project is, where it stands, what is half-done, what is next.
 
 4. **Write your first spec:** say: *"write a spec for <feature name>"*. It asks one question at a time, then creates `docs/specs/<feature>.md` with the goal, structure, code style, test plan and scope limit.
 
@@ -49,16 +49,16 @@ The installer shows six groups; this list follows the order of the work.
 
 | Skill | What it does |
 |---|---|
-| `using-libra` | Classifies a new idea before any edit; says which skill applies |
-| `project-status` | Four lines: what this is, where it stands, what is half-done, what is next |
-| `bootstrap-project` | Builds `docs/PROJECT.md` and `AGENTS.md` for a new or an old repo |
-| `interview-me` | One question at a time until the request is clear |
-| `idea-refine` | Widen a vague idea, then cut it to one direction |
-| `spec-driven-development` | Goal, structure, code style, test plan, scope limit |
-| `constraint-driven-development` | The quality bar in `CONSTRAINTS.md`, and proof it did not move |
-| `decide` | An ADR with rejected options and consequences |
-| `plan-work` | One task file per feature, with checkable acceptance |
-| `context-engineering` | The smallest reading that answers the question |
+| `libra-start` | Classifies a new idea before any edit; says which skill applies |
+| `libra-project-status` | Four lines: what this is, where it stands, what is half-done, what is next |
+| `libra-bootstrap-project` | Builds `docs/PROJECT.md` and `AGENTS.md` for a new or an old repo |
+| `libra-interview-me` | One question at a time until the request is clear |
+| `libra-idea-refine` | Widen a vague idea, then cut it to one direction |
+| `libra-spec-driven-development` | Goal, structure, code style, test plan, scope limit |
+| `libra-constraint-driven-development` | The quality bar in `CONSTRAINTS.md`, and proof it did not move |
+| `libra-decide` | An ADR with rejected options and consequences |
+| `libra-plan-work` | One task file per feature, with checkable acceptance |
+| `libra-context-engineering` | The smallest reading that answers the question |
 
 ### Build
 
@@ -111,7 +111,7 @@ files hang off it and are deleted when done. See
 
 ## The check that comes with it
 
-`bootstrap-project` copies `scripts/check-docs.sh` into your project and lists it
+`libra-bootstrap-project` copies `scripts/check-docs.sh` into your project and lists it
 in `## Run & verify`. Every skill that writes a document runs it on what it just
 wrote: frontmatter, one H1, no empty section, balanced code fences, internal
 links that resolve, and the sections that document type requires. One
@@ -125,7 +125,7 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in api-and-interface-design bootstrap-project build change-review constraint-driven-development context-engineering decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work project-status release root-cause libra-ship simplify-change source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify-work; do
+for s in api-and-interface-design libra-bootstrap-project build change-review libra-constraint-driven-development libra-context-engineering libra-decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content libra-idea-refine incremental-implementation libra-interview-me office-docs libra-plan-work libra-project-status release root-cause libra-ship simplify-change source-driven-development libra-spec-driven-development subagent-driven-development test-driven-development libra-start verify-work; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

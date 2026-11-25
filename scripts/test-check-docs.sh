@@ -657,7 +657,7 @@ expect_fail "heading only inside a tilde fence" "missing heading '## Out of scop
 printf 'plain text\n' > "$tmp/notes.txt"
 expect_fail "not markdown" "not a markdown file" "$tmp/notes.txt"
 
-# The shape bootstrap-project writes for a new repo: one honest line per section.
+# The shape libra-bootstrap-project writes for a new repo: one honest line per section.
 doc docs/PROJECT.md <<'EOF'
 ---
 title: my project

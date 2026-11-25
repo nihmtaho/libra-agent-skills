@@ -1,0 +1,28 @@
+{
+  "skill_name": "libra-idea-refine",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We should do something about onboarding drop-off. Turn this into a proposal.",
+      "expected_output": "An idea document with five to seven options, one line per death, one chosen direction plus a runner-up, the riskiest assumption, and the cheapest test. Only docs/ideas changes.",
+      "expectations": [
+        "The document lists at least five different options with a cost and an assumption each.",
+        "Every rejected option has a one-line reason it died.",
+        "The chosen direction names the runner-up and the condition under which it wins.",
+        "The document names the riskiest assumption and the cheapest test that would falsify it.",
+        "Only docs/ideas changes."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add a dark mode toggle to the settings. The solution is obvious, just do it.",
+      "expected_output": "The reply widens the problem before narrowing: it names who is hurt, includes a remove/do-nothing option and an opposite option, and writes an idea document rather than code.",
+      "expectations": [
+        "The reply states the problem before the solution.",
+        "The options include one that removes something and one that does the opposite of the obvious move.",
+        "The reply writes docs/ideas and no code.",
+        "The reply names the assumption that would kill the dark-mode direction."
+      ]
+    }
+  ]
+}

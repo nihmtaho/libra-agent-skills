@@ -13,8 +13,8 @@ is a rule rather than a preference.
 
 Use when `docs/tasks/` has an unchecked task with a `Done means:` line, or when
 picking up one finding from `change-review`.
-Not when there is no task or acceptance line (`plan-work`), no spec behind the
-task (`spec-driven-development`), or something already fails and the cause is
+Not when there is no task or acceptance line (`libra-plan-work`), no spec behind the
+task (`libra-spec-driven-development`), or something already fails and the cause is
 unknown (`root-cause`).
 Not for a question about the code or the task: answer it and stop; a question is
 not a change request.
@@ -30,8 +30,8 @@ not a change request.
 
 1. State the task, its lane and its branch in one line. If you cannot, the task
    is not ready. A question is not a task: answer it and stop; do not implement.
-   No task file: stop, name `plan-work`, ask for the acceptance line, and write
-   nothing. No spec behind the task: stop and name `spec-driven-development`.
+   No task file: stop, name `libra-plan-work`, ask for the acceptance line, and write
+   nothing. No spec behind the task: stop and name `libra-spec-driven-development`.
    Work only inside the task's `Done means:` and `Touches:`; anything else is a
    new task. No branch: create it before touching a file.
 2. `test-driven-development` — always, before the first line of code.
@@ -42,7 +42,7 @@ not a change request.
 4. `git-workflow-and-versioning` when the project has no `docs/GIT.md`, and in
    every case state branch-or-direct before the first commit: which branch, and
    whether this commit belongs on the default one.
-5. `context-engineering` when the task's `Read first` does not reach the code you
+5. `libra-context-engineering` when the task's `Read first` does not reach the code you
    must change.
 6. `source-driven-development` when the work rests on a framework, library or API
    fact you cannot prove from the repository.
@@ -62,7 +62,7 @@ document comes out of a spike; if it produced documents, it was not a spike.
 ## Write
 
 `none` — this skill dispatches. `incremental-implementation` ticks the task file
-and records the stop, `context-engineering` fills its `Read first`, and
+and records the stop, `libra-context-engineering` fills its `Read first`, and
 `doubt-driven-development` writes `## Next` when a claim fails.
 
 ## Stop

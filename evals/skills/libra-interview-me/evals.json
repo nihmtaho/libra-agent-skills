@@ -1,0 +1,26 @@
+{
+  "skill_name": "libra-interview-me",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Make onboarding better. I know it is bad but I cannot say exactly how.",
+      "expected_output": "One question per turn, starting by restating the request in the skill's own words. No file is opened or written, and the interview stops at 95% or eight questions.",
+      "expectations": [
+        "The reply asks exactly one question, not a list.",
+        "The reply restates its current understanding and asks for correction.",
+        "No project document is written; reading PROJECT.md and an existing idea file is allowed.",
+        "The reply names the biggest unknown that would change the work."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "You know what I mean by the export flow. Just make it work the usual way.",
+      "expected_output": "The reply treats the request as ambiguous, names the two readings, and asks which one is meant. It writes nothing.",
+      "expectations": [
+        "The reply names at least two concrete readings of the request.",
+        "The reply asks one question to choose between them.",
+        "The reply writes no code or document."
+      ]
+    }
+  ]
+}

@@ -40,7 +40,7 @@ Not for taste, naming or style.
 ## Write
 
 `docs/PROJECT.md` `## Next` when a failed claim becomes work, and its `## Decisions`
-line only through `decide`. Otherwise `none`: a claim that survived leaves no
+line only through `libra-decide`. Otherwise `none`: a claim that survived leaves no
 document, only a commit that no longer rests on a guess.
 
 Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before

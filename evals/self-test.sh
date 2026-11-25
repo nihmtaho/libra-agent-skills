@@ -37,19 +37,19 @@ breaks() { # <label> <shell run inside the copy>
 }
 
 breaks "negated rule" \
-  "sed 's/^One question per turn/Never ask one question per turn/' skills/interview-me/SKILL.md > x && mv x skills/interview-me/SKILL.md"
+  "sed 's/^One question per turn/Never ask one question per turn/' skills/libra-interview-me/SKILL.md > x && mv x skills/libra-interview-me/SKILL.md"
 
 breaks "Write names no docs path" \
-  "sed 's|docs/specs/|docs/notes/|g' skills/spec-driven-development/SKILL.md > x && mv x skills/spec-driven-development/SKILL.md"
+  "sed 's|docs/specs/|docs/notes/|g' skills/libra-spec-driven-development/SKILL.md > x && mv x skills/libra-spec-driven-development/SKILL.md"
 
 breaks "template missing" \
-  "rm -f skills/idea-refine/templates/*.md"
+  "rm -f skills/libra-idea-refine/templates/*.md"
 
 breaks "second owner" \
-  "awk '/^## Write\$/{print; print \"docs/specs/\"; next} {print}' skills/interview-me/SKILL.md > x && mv x skills/interview-me/SKILL.md"
+  "awk '/^## Write\$/{print; print \"docs/specs/\"; next} {print}' skills/libra-interview-me/SKILL.md > x && mv x skills/libra-interview-me/SKILL.md"
 
 breaks "eval file missing" \
-  "rm -f evals/skills/decide/evals.json"
+  "rm -f evals/skills/libra-decide/evals.json"
 
 [ "$bad" -eq 0 ] && echo "self-test passed"
 exit "$bad"

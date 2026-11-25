@@ -14,16 +14,16 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/using-libra",
-        "./skills/project-status",
-        "./skills/bootstrap-project",
-        "./skills/interview-me",
-        "./skills/idea-refine",
-        "./skills/spec-driven-development",
-        "./skills/constraint-driven-development",
-        "./skills/decide",
-        "./skills/plan-work",
-        "./skills/context-engineering"
+        "./skills/libra-start",
+        "./skills/libra-project-status",
+        "./skills/libra-bootstrap-project",
+        "./skills/libra-interview-me",
+        "./skills/libra-idea-refine",
+        "./skills/libra-spec-driven-development",
+        "./skills/libra-constraint-driven-development",
+        "./skills/libra-decide",
+        "./skills/libra-plan-work",
+        "./skills/libra-context-engineering"
       ]
     },
     {

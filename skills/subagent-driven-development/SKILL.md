@@ -14,7 +14,7 @@ reviewed.
 Use when two or more tasks in `docs/tasks/` touch disjoint paths and can run at
 the same time.
 Not for a task that needs another's output first, and not when the tasks share a
-file. A read-only search is `context-engineering`; a second opinion is
+file. A read-only search is `libra-context-engineering`; a second opinion is
 `doubt-driven-development`'s question, and it uses this skill to run the fresh
 context.
 

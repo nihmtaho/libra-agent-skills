@@ -1,12 +1,12 @@
-r1	This request is ambiguous, it could mean two different things.	interview-me
-r2	Two people could read this request differently.	interview-me
-r3	I have a hunch about onboarding but no shape yet.	idea-refine
-r4	We should do something about onboarding drop-off.	idea-refine
-r5	The direction is chosen; write it down before anyone opens an editor.	spec-driven-development
-r6	Turn this into a spec with structure, code style and a test plan.	spec-driven-development
-r7	CI is red and someone lowered a threshold to get there.	constraint-driven-development
-r8	This project has no quality bar written down.	constraint-driven-development
-r9	Turn the approved spec into ordered tasks.	plan-work
+r1	This request is ambiguous, it could mean two different things.	libra-interview-me
+r2	Two people could read this request differently.	libra-interview-me
+r3	I have a hunch about onboarding but no shape yet.	libra-idea-refine
+r4	We should do something about onboarding drop-off.	libra-idea-refine
+r5	The direction is chosen; write it down before anyone opens an editor.	libra-spec-driven-development
+r6	Turn this into a spec with structure, code style and a test plan.	libra-spec-driven-development
+r7	CI is red and someone lowered a threshold to get there.	libra-constraint-driven-development
+r8	This project has no quality bar written down.	libra-constraint-driven-development
+r9	Turn the approved spec into ordered tasks.	libra-plan-work
 r10	The task file has a task ready; write the code.	build
 r11	This task is too big to land in one change and needs a rollback path.	incremental-implementation
 r12	I am about to claim the retry logic is correct and no command can check it.	doubt-driven-development
@@ -14,6 +14,6 @@ r13	Two tasks touch different files and can run at the same time.	subagent-drive
 r14	The endpoint's response shape and error format have to change.	api-and-interface-design
 r15	The component must work at every width and with a keyboard only.	frontend-ui-engineering
 r16	Which library version does this call need, and cite the docs.	source-driven-development
-r17	The agent has too much to read and the rules file is out of date.	context-engineering
+r17	The agent has too much to read and the rules file is out of date.	libra-context-engineering
 r18	There is no failing test yet, so write the test first.	test-driven-development
 r19	Should we squash this branch or keep the commits when we merge?	git-workflow-and-versioning

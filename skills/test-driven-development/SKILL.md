@@ -49,7 +49,7 @@ covers: run the suite, see green, then change shape.
 
 `none` — this skill writes code and tests. The task file belongs to
 `incremental-implementation`, and a weakened check belongs to
-`constraint-driven-development`.
+`libra-constraint-driven-development`.
 
 ## Stop
 

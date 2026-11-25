@@ -60,8 +60,8 @@ change that passed review: that is `libra-ship`.
    no trailing period; a body only when the why is not obvious. Never a co-author
    line or an AI signature unless the project or the platform requires one —
    format, not concealment.
-7. Write `docs/GIT.md`, one page. `bootstrap-project` records the one-line
-   decision in `## Decisions`; a project past bootstrap lets `decide` do it.
+7. Write `docs/GIT.md`, one page. `libra-bootstrap-project` records the one-line
+   decision in `## Decisions`; a project past bootstrap lets `libra-decide` do it.
    For the GitHub side — required checks, reviews, rulesets, auto-merge — follow
    `references/branch-protection.md`. Apply a policy only after the human approves
    it, and never bypass it with `--admin`.

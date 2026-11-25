@@ -1,0 +1,58 @@
+{
+  "skill_name": "libra-start",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We should add dark mode to the settings page. Can you start on it?",
+      "expected_output": "The request is classified as a feature or behavior change. The reply routes to interview-me if the request is ambiguous, then names spec-driven-development and plan-work before any feature edit, and names the branch it will use. It writes no feature code, spec or task file.",
+      "expectations": [
+        "The reply classifies the request as a feature or behavior change, not a docs-only change.",
+        "The reply names spec-driven-development and plan-work (or a task file) before any feature edit.",
+        "The reply names the branch it will use before the first feature edit.",
+        "The reply writes no feature code, spec or task file."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The login test started failing after the last merge. I have no idea why. Fix it.",
+      "expected_output": "The failure is routed to root-cause, not to a guessed fix. A branch is created before the first edit, and reproduction comes before any code change.",
+      "expectations": [
+        "The reply routes to root-cause and asks for a reproduction before changing code.",
+        "The reply creates or names a branch before the first edit.",
+        "The reply does not claim a spec is needed for a single fix.",
+        "No fix is applied before the failure is reproduced."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Fix the typo in the README: 'recieve' should be 'receive'.",
+      "expected_output": "The request is classified as docs-only. It is edited directly, and the git policy decides branch or direct; no spec or task file is created.",
+      "expectations": [
+        "The reply classifies the request as docs-only.",
+        "The reply does not create a spec or a task file.",
+        "The reply uses docs/GIT.md to decide branch or direct."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I have a hunch about onboarding but no shape yet. I think we should improve it. What next?",
+      "expected_output": "The request is classified as a hunch or vague idea. It routes to idea-refine before a spec, writes no spec/task/code, and names no branch before an artifact exists.",
+      "expectations": [
+        "The reply classifies the request as a hunch or vague idea, not a ready feature.",
+        "The reply routes to idea-refine before spec-driven-development.",
+        "The reply writes no spec, task or code.",
+        "The reply does not start a branch before an artifact exists."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Make the export flow work the usual way. You know what I mean.",
+      "expected_output": "The request has two readings, so it routes to interview-me. The reply asks one question and writes no spec or code.",
+      "expectations": [
+        "The reply routes to interview-me because the request has more than one reading.",
+        "The reply writes no spec, task or code.",
+        "The reply does not implement or start a spec before the request has one reading."
+      ]
+    }
+  ]
+}

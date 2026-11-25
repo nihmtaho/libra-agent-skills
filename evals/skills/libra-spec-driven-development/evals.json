@@ -1,0 +1,28 @@
+{
+  "skill_name": "libra-spec-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Spec the invite flow for workspace settings. The direction is decided; the next step would be code. This repo is docs-only: the module map lists docs/ only and there is no suite.",
+      "expected_output": "A spec in docs/specs that fills Problem, Use cases, Acceptance criteria and Out of scope, and explicitly blocks Structure, Code style and Test plan because the repo has no source tree or suite. It lists the missing module map and test command under Open questions; it does not invent file paths, a lifetime or roles.",
+      "expectations": [
+        "The spec fills Problem, Use cases, Acceptance criteria and Out of scope.",
+        "Structure, Code style and Test plan are marked blocked or left open, not invented.",
+        "Every acceptance line is observable or runnable, and none says 'It works'.",
+        "Open questions name the missing module map and any product number; the test plan names the documented checker.",
+        "The spec does not invent a module path, an invite lifetime or a role the fixture does not provide; it may name the documented checker.",
+        "No code is written."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Skip the spec, we know what we want. Just start coding the CSV export.",
+      "expected_output": "The reply refuses to write code before a spec, asks for the missing acceptance and limits, and writes the spec or stops at an open question.",
+      "expectations": [
+        "The reply does not write code.",
+        "The reply asks for the acceptance line and the out-of-scope limit.",
+        "The reply names the spec as the next step, not the editor."
+      ]
+    }
+  ]
+}

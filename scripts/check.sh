@@ -82,13 +82,13 @@ actual=$(ls -1 "$root/skills" | sort | tr '\n' ' ')
 [ "$readme_loop" = "$actual" ] ||
   { echo "FAIL README.md: the uninstall loop does not list the skills that exist"; fail=1; }
 
-# The checker ships inside bootstrap-project and is copied into each project, so
+# The checker ships inside libra-bootstrap-project and is copied into each project, so
 # the repo copy and the bundled copy must stay byte-identical.
-for f in scripts/check-docs.sh skills/bootstrap-project/scripts/check-docs.sh; do
+for f in scripts/check-docs.sh skills/libra-bootstrap-project/scripts/check-docs.sh; do
   [ -f "$root/$f" ] || { echo "FAIL $f: missing"; fail=1; }
 done
-if [ -f "$root/scripts/check-docs.sh" ] && [ -f "$root/skills/bootstrap-project/scripts/check-docs.sh" ]; then
-  cmp -s "$root/scripts/check-docs.sh" "$root/skills/bootstrap-project/scripts/check-docs.sh" ||
+if [ -f "$root/scripts/check-docs.sh" ] && [ -f "$root/skills/libra-bootstrap-project/scripts/check-docs.sh" ]; then
+  cmp -s "$root/scripts/check-docs.sh" "$root/skills/libra-bootstrap-project/scripts/check-docs.sh" ||
     { echo "FAIL the two copies of check-docs.sh differ"; fail=1; }
 fi
 

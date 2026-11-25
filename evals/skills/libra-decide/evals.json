@@ -1,0 +1,26 @@
+{
+  "skill_name": "libra-decide",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We chose Postgres over SQLite for the queue because we need concurrent writers. Write the decision down.",
+      "expected_output": "An ADR with context, the rejected option and its concrete reason, the consequences including a downside, and the next number.",
+      "expectations": [
+        "The ADR is written under docs/adr with the next zero-padded number.",
+        "The rejected option has a concrete reason, not 'more complex'.",
+        "The consequences include at least one bad consequence.",
+        "The ADR records the context as events, not feelings."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should we use Redis or Memcached for the session store? I have not decided.",
+      "expected_output": "The reply treats this as an open decision, asks for the constraint that would decide it, and does not write an ADR for a choice nobody made.",
+      "expectations": [
+        "The reply asks for the constraint or cost of being wrong.",
+        "The reply names both options and what each assumes.",
+        "No ADR is written before a choice is made."
+      ]
+    }
+  ]
+}

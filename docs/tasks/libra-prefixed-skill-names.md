@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: T1 done; T2 next
+Stopped at: T2 done; T3 next
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -33,7 +33,7 @@ skills should be re-planned before T4.
       the next task. Backticked `ship` in other skills becomes `libra-ship`; the
       verb "ship it" does not.
 
-- [ ] **T2 — the ten project-management skills**
+- [x] **T2 — the ten project-management skills**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;
       `ls skills | grep -c '^libra-'` prints 11; and the same `grep -rInE` sweep
       for `using-libra`, `project-status`, `bootstrap-project`, `interview-me`,

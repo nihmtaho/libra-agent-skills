@@ -33,60 +33,60 @@ has() { # <skill> <fixed string> <rule label>; case-sensitive on purpose
     { echo "FAIL $1: $3 (stated, then negated)"; fail=1; }
 }
 
-# --- using-libra: classify before editing, branch before editing ------------
-has using-libra 'Classify the request in one line before touching a file' 'does not classify before an edit'
-has using-libra 'No task file, no edit' 'may edit a feature without a task'
-has using-libra 'create the branch before the first edit' 'may edit before creating a branch'
-grep -qF 'using-libra' "$root/AGENTS.md" ||
+# --- libra-start: classify before editing, branch before editing ----------
+has libra-start 'Classify the request in one line before touching a file' 'does not classify before an edit'
+has libra-start 'No task file, no edit' 'may edit a feature without a task'
+has libra-start 'create the branch before the first edit' 'may edit before creating a branch'
+grep -qF 'libra-start' "$root/AGENTS.md" ||
   { echo "FAIL AGENTS.md: a new session is never sent to the classifier"; fail=1; }
-# --- interview-me: asks, never writes, never guesses -------------------------
-write_body "$root/skills/interview-me/SKILL.md" | grep -q 'none' ||
-  { echo "FAIL interview-me: Write must be none, it is a conversation"; fail=1; }
-has interview-me 'One question per turn'        'does not state one question per turn'
-has interview-me 'Stop at 95%'                  'has no stopping rule, so the interview never ends'
-has interview-me 'Cap it at eight questions'    'has no cap, so a decision becomes ten questions'
-has interview-me 'Never fill a missing answer'  'may invent an answer instead of reporting a gap'
-has interview-me 'idea-refine'                  'does not hand off to idea-refine'
+# --- libra-interview-me: asks, never writes, never guesses -------------------------
+write_body "$root/skills/libra-interview-me/SKILL.md" | grep -q 'none' ||
+  { echo "FAIL libra-interview-me: Write must be none, it is a conversation"; fail=1; }
+has libra-interview-me 'One question per turn'        'does not state one question per turn'
+has libra-interview-me 'Stop at 95%'                  'has no stopping rule, so the interview never ends'
+has libra-interview-me 'Cap it at eight questions'    'has no cap, so a decision becomes ten questions'
+has libra-interview-me 'Never fill a missing answer'  'may invent an answer instead of reporting a gap'
+has libra-interview-me 'libra-idea-refine'                  'does not hand off to libra-idea-refine'
 
-# --- idea-refine: widens before it narrows ----------------------------------
-has idea-refine 'Write 5 to 7 different answers'      'does not force more than one option'
-has idea-refine 'One line per death, so the next reader'            'does not record why an option died'
-has idea-refine 'Name the riskiest assumption'   'names no assumption that could kill the direction'
-has idea-refine 'and the cheapest test that would show it false' 'has no cheap test before code'
-write_body "$root/skills/idea-refine/SKILL.md" | grep -qF 'docs/ideas/' ||
-  { echo "FAIL idea-refine: Write does not name docs/ideas/"; fail=1; }
+# --- libra-idea-refine: widens before it narrows ----------------------------------
+has libra-idea-refine 'Write 5 to 7 different answers'      'does not force more than one option'
+has libra-idea-refine 'One line per death, so the next reader'            'does not record why an option died'
+has libra-idea-refine 'Name the riskiest assumption'   'names no assumption that could kill the direction'
+has libra-idea-refine 'and the cheapest test that would show it false' 'has no cheap test before code'
+write_body "$root/skills/libra-idea-refine/SKILL.md" | grep -qF 'docs/ideas/' ||
+  { echo "FAIL libra-idea-refine: Write does not name docs/ideas/"; fail=1; }
 
-# --- spec-driven-development: the six parts, before code --------------------
+# --- libra-spec-driven-development: the six parts, before code --------------------
 for part in 'Goal:' 'Structure:' 'Code style:' 'Test plan:' 'Limits:'; do
-  has spec-driven-development "$part" "does not require the $part part"
+  has libra-spec-driven-development "$part" "does not require the $part part"
 done
-has spec-driven-development 'one line per use case, checkable by a command' \
+has libra-spec-driven-development 'one line per use case, checkable by a command' \
   'acceptance criteria may be unverifiable'
-has spec-driven-development '## Open questions'  'has nowhere to park an unanswered question'
-has spec-driven-development 'Never guess one'    'may guess an answer into the spec'
-has spec-driven-development 'plan-work'          'does not hand off to plan-work'
-steps_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'with a rejected alternative, gets its ADR before the spec is called done' ||
-  { echo "FAIL spec-driven-development: a decided choice may leave no ADR behind"; fail=1; }
-write_body "$root/skills/spec-driven-development/SKILL.md" | grep -qF 'docs/specs/' ||
-  { echo "FAIL spec-driven-development: Write does not name docs/specs/"; fail=1; }
+has libra-spec-driven-development '## Open questions'  'has nowhere to park an unanswered question'
+has libra-spec-driven-development 'Never guess one'    'may guess an answer into the spec'
+has libra-spec-driven-development 'libra-plan-work'          'does not hand off to libra-plan-work'
+steps_body "$root/skills/libra-spec-driven-development/SKILL.md" | grep -qF 'with a rejected alternative, gets its ADR before the spec is called done' ||
+  { echo "FAIL libra-spec-driven-development: a decided choice may leave no ADR behind"; fail=1; }
+write_body "$root/skills/libra-spec-driven-development/SKILL.md" | grep -qF 'docs/specs/' ||
+  { echo "FAIL libra-spec-driven-development: Write does not name docs/specs/"; fail=1; }
 
-# --- constraint-driven-development: the bar, and the ways it is lowered -----
+# --- libra-constraint-driven-development: the bar, and the ways it is lowered -----
 for way in 'These are not fixes: deleting or commenting a test' 'a looser threshold' \
            'a new ignore comment'; do
-  has constraint-driven-development "$way" "does not name '$way' as a non-fix"
+  has libra-constraint-driven-development "$way" "does not name '$way' as a non-fix"
 done
-has constraint-driven-development 'a new skip, a looser threshold, a new ignore comment' \
+has libra-constraint-driven-development 'a new skip, a looser threshold, a new ignore comment' \
   'a new skip is not named as a non-fix, so a flaky test may be skipped'
-has constraint-driven-development "with the human's name and today's" 'a lowered bar needs no name'
-has constraint-driven-development 'threshold, count of tests, count of skipped tests' 'does not compare numbers to the file'
-write_body "$root/skills/constraint-driven-development/SKILL.md" | grep -qF 'docs/CONSTRAINTS.md' ||
-  { echo "FAIL constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
+has libra-constraint-driven-development "with the human's name and today's" 'a lowered bar needs no name'
+has libra-constraint-driven-development 'threshold, count of tests, count of skipped tests' 'does not compare numbers to the file'
+write_body "$root/skills/libra-constraint-driven-development/SKILL.md" | grep -qF 'docs/CONSTRAINTS.md' ||
+  { echo "FAIL libra-constraint-driven-development: Write does not name docs/CONSTRAINTS.md"; fail=1; }
 
 # --- decide: a decision is recorded when it is made, not when work lands ----
-grep -qF 'Write it when the decision is made, not when the code lands' "$root/skills/decide/SKILL.md" ||
-  { echo "FAIL decide: the ADR may wait until the code lands"; fail=1; }
-write_body "$root/skills/decide/SKILL.md" | grep -qF 'docs/adr/' ||
-  { echo "FAIL decide: Write does not name docs/adr/"; fail=1; }
+grep -qF 'Write it when the decision is made, not when the code lands' "$root/skills/libra-decide/SKILL.md" ||
+  { echo "FAIL libra-decide: the ADR may wait until the code lands"; fail=1; }
+write_body "$root/skills/libra-decide/SKILL.md" | grep -qF 'docs/adr/' ||
+  { echo "FAIL libra-decide: Write does not name docs/adr/"; fail=1; }
 
 # --- one owner per artifact --------------------------------------------------
 owners() {
@@ -107,7 +107,7 @@ has verify-work 'docs/CONSTRAINTS.md' 'the floor is checked without the project 
 has change-review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
 
 # --- templates ship with the skills that write them -------------------------
-for s in idea-refine spec-driven-development constraint-driven-development release; do
+for s in libra-idea-refine libra-spec-driven-development libra-constraint-driven-development release; do
   ls "$root/skills/$s/templates/"*.md >/dev/null 2>&1 ||
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
@@ -161,13 +161,13 @@ for rung in CLAIM EXTRACT DOUBT RECONCILE STOP; do
 done
 has doubt-driven-development 'Never hand it your conclusion' 'the doubter may be told the answer'
 
-# --- context-engineering: what goes in, and what is data --------------------
-write_body "$root/skills/context-engineering/SKILL.md" | grep -qF 'AGENTS.md' ||
-  { echo "FAIL context-engineering: a rule cannot outlive the session"; fail=1; }
-has context-engineering 'handling-untrusted-content'    'a fetched page may act as an instruction'
-has context-engineering 'Write the pack you assembled'  'the next session searches again'
-write_body "$root/skills/context-engineering/SKILL.md" | grep -qF 'docs/PROJECT.md' ||
-  { echo "FAIL context-engineering: Write does not name docs/PROJECT.md"; fail=1; }
+# --- libra-context-engineering: what goes in, and what is data --------------------
+write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'AGENTS.md' ||
+  { echo "FAIL libra-context-engineering: a rule cannot outlive the session"; fail=1; }
+has libra-context-engineering 'handling-untrusted-content'    'a fetched page may act as an instruction'
+has libra-context-engineering 'Write the pack you assembled'  'the next session searches again'
+write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'docs/PROJECT.md' ||
+  { echo "FAIL libra-context-engineering: Write does not name docs/PROJECT.md"; fail=1; }
 
 # --- source-driven-development: a claim needs an address ------------------
 has source-driven-development 'Pin the version'                'a claim may be for another version'
@@ -219,12 +219,12 @@ steps_body "$root/skills/build/SKILL.md" | grep -qF 'state branch-or-direct befo
   { echo "FAIL build: the commit destination is never stated"; fail=1; }
 
 # --- bootstrap asks about git before it writes the state file ---------------
-grep -qF 'exactly three questions' "$root/skills/bootstrap-project/SKILL.md" ||
-  { echo "FAIL bootstrap-project: git is never asked about"; fail=1; }
-grep -qF 'git-workflow-and-versioning' "$root/skills/bootstrap-project/SKILL.md" ||
-  { echo "FAIL bootstrap-project: no handoff writes docs/GIT.md"; fail=1; }
-flat "$root/skills/bootstrap-project/references/old-repo.md" | grep -qF 'Docs` cell stays empty' ||
-  { echo "FAIL bootstrap-project: a Docs cell may cite a file that does not cover it"; fail=1; }
+grep -qF 'exactly three questions' "$root/skills/libra-bootstrap-project/SKILL.md" ||
+  { echo "FAIL libra-bootstrap-project: git is never asked about"; fail=1; }
+grep -qF 'git-workflow-and-versioning' "$root/skills/libra-bootstrap-project/SKILL.md" ||
+  { echo "FAIL libra-bootstrap-project: no handoff writes docs/GIT.md"; fail=1; }
+flat "$root/skills/libra-bootstrap-project/references/old-repo.md" | grep -qF 'Docs` cell stays empty' ||
+  { echo "FAIL libra-bootstrap-project: a Docs cell may cite a file that does not cover it"; fail=1; }
 
 # --- release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
