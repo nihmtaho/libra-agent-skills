@@ -49,9 +49,9 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/verify-work",
-        "./skills/change-review",
-        "./skills/simplify-change"
+        "./skills/libra-verify-work",
+        "./skills/libra-change-review",
+        "./skills/libra-simplify-change"
       ]
     },
     {
@@ -71,7 +71,7 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/office-docs"
+        "./skills/libra-office-docs"
       ]
     },
     {
@@ -80,7 +80,7 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/handling-untrusted-content"
+        "./skills/libra-handling-untrusted-content"
       ]
     }
   ]

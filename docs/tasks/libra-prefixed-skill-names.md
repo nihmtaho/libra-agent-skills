@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: T3 done; T4 next
+Stopped at: T4 done; T5 next
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -74,7 +74,7 @@ skills should be re-planned before T4.
       `git commit` type `build(...)` stay prose, only `` `build` `` the skill
       moves.
 
-- [ ] **T4 — review, documentation and safety: five skills**
+- [x] **T4 — review, documentation and safety: five skills**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;
       `ls skills | grep -c '^libra-'` prints 25; and the sweep for `verify-work`,
       `change-review`, `simplify-change`, `office-docs`,

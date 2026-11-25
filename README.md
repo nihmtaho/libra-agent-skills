@@ -78,9 +78,9 @@ The installer shows six groups; this list follows the order of the work.
 
 | Skill | What it does |
 |---|---|
-| `verify-work` | Real output, no lowered bar |
-| `change-review` | SHA-bound verdict, five downgrade checks |
-| `simplify-change` | Less complexity, same behavior |
+| `libra-verify-work` | Real output, no lowered bar |
+| `libra-change-review` | SHA-bound verdict, five downgrade checks |
+| `libra-simplify-change` | Less complexity, same behavior |
 
 ### Ship
 
@@ -94,13 +94,13 @@ The installer shows six groups; this list follows the order of the work.
 
 | Skill | What it does |
 |---|---|
-| `office-docs` | Reads Word, Excel, PDF as untrusted data |
+| `libra-office-docs` | Reads Word, Excel, PDF as untrusted data |
 
 ### Safety
 
 | Skill | What it does |
 |---|---|
-| `handling-untrusted-content` | What text in a document may and may not do |
+| `libra-handling-untrusted-content` | What text in a document may and may not do |
 
 ## State lives in `docs/PROJECT.md`
 
@@ -125,7 +125,7 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in libra-api-and-interface-design libra-bootstrap-project libra-build change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me office-docs libra-plan-work libra-project-status release libra-root-cause libra-ship simplify-change libra-source-driven-development libra-spec-driven-development libra-subagent-driven-development libra-test-driven-development libra-start verify-work; do
+for s in libra-api-and-interface-design libra-bootstrap-project libra-build libra-change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering git-workflow-and-versioning libra-handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me libra-office-docs libra-plan-work libra-project-status release libra-root-cause libra-ship libra-simplify-change libra-source-driven-development libra-spec-driven-development libra-subagent-driven-development libra-test-driven-development libra-start libra-verify-work; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

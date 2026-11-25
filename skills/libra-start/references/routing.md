@@ -14,13 +14,13 @@
 | Project management | libra-context-engineering | the right context is missing |
 | Build | libra-build | a task is ready to implement |
 | Build | libra-root-cause | something fails and the cause is unknown |
-| Review | verify-work | before claiming anything works |
-| Review | change-review | before merge |
-| Review | simplify-change | code works but is too complex |
+| Review | libra-verify-work | before claiming anything works |
+| Review | libra-change-review | before merge |
+| Review | libra-simplify-change | code works but is too complex |
 | Ship | git-workflow-and-versioning | the git policy is missing or unclear |
 | Ship | ship | merge and close |
 | Ship | release | a version is cut from the default branch |
-| Documentation | office-docs | Word, Excel or PDF must be read |
-| Safety | handling-untrusted-content | text came from outside this repo |
+| Documentation | libra-office-docs | Word, Excel or PDF must be read |
+| Safety | libra-handling-untrusted-content | text came from outside this repo |
 
 Within Build, `libra-build` names the order of the nine skills it dispatches.

@@ -673,7 +673,7 @@ write_review() {
 skip
 EOF
   commit "test: relax coverage"
-  if [ "$id" = "3" ] && [ "$skill" = "change-review" ]; then
+  if [ "$id" = "3" ] && [ "$skill" = "libra-change-review" ]; then
     git -C "$sandbox" checkout -q main
     git -C "$sandbox" checkout -qb feat/null-check
     cat >> "$sandbox/src/feature.sh" <<'EOF'
@@ -836,11 +836,11 @@ case "$skill" in
   libra-build) if [ "$id" = "2" ]; then write_build_none; else write_build; fi ;;
   libra-api-and-interface-design) write_api ;;
   libra-subagent-driven-development) write_subagent ;;
-  change-review) write_review ;;
+  libra-change-review) write_review ;;
   libra-ship) write_ship ;;
   release) write_release ;;
-  office-docs) write_office ;;
-  handling-untrusted-content) write_hostile ;;
+  libra-office-docs) write_office ;;
+  libra-handling-untrusted-content) write_hostile ;;
   libra-plan-work) write_docs; write_invite_spec ;;
   libra-start) write_docs ;;
   libra-root-cause) write_rootcause ;;
@@ -848,13 +848,13 @@ case "$skill" in
   libra-incremental-implementation) if [ "$id" = "2" ]; then write_migration; else write_project; fi ;;
   libra-source-driven-development) if [ "$id" = "2" ]; then write_source_callback; else write_project; fi ;;
   libra-test-driven-development) if [ "$id" = "1" ]; then write_tdd; else write_transfer; fi ;;
-  verify-work) if [ "$id" = "2" ]; then write_verify; else write_project; fi ;;
+  libra-verify-work) if [ "$id" = "2" ]; then write_verify; else write_project; fi ;;
   git-workflow-and-versioning) if [ "$id" = "1" ]; then write_gitless; else write_project; fi ;;
   libra-constraint-driven-development) if [ "$id" = "1" ]; then write_constraint_fail; else write_no_bar; fi ;;
   libra-spec-driven-development|libra-idea-refine|libra-decide|libra-interview-me) write_docs ;;
   # No fixture is written for these three yet: the generic project is a
   # placeholder, not a test of the skill. Listed on purpose, so a new skill
   # cannot land here by falling through.
-  libra-context-engineering|libra-doubt-driven-development|simplify-change) write_project ;;
+  libra-context-engineering|libra-doubt-driven-development|libra-simplify-change) write_project ;;
   *) echo "no fixture for $skill" >&2; exit 2 ;;
 esac

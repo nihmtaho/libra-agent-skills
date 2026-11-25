@@ -12,7 +12,7 @@ is a rule rather than a preference.
 ## When to use
 
 Use when `docs/tasks/` has an unchecked task with a `Done means:` line, or when
-picking up one finding from `change-review`.
+picking up one finding from `libra-change-review`.
 Not when there is no task or acceptance line (`libra-plan-work`), no spec behind the
 task (`libra-spec-driven-development`), or something already fails and the cause is
 unknown (`libra-root-cause`).

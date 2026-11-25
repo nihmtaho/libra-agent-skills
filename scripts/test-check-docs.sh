@@ -610,7 +610,7 @@ EOF
 expect_clean "fenced block is content" "$tmp/docs/adr/0003-fenced.md"
 
 # An imported document is machine-extracted: its first line names the source, so
-# the one-H1 rules do not apply to it. This is the shape office-docs writes.
+# the one-H1 rules do not apply to it. This is the shape libra-office-docs writes.
 doc docs/imports/report.md <<'EOF'
 ---
 title: report
@@ -884,7 +884,7 @@ for trigger in \
     fail=1
   else
     case "$out" in
-      *"FAIL $name: outside text is read but handling-untrusted-content is never named"*) ;;
+      *"FAIL $name: outside text is read but libra-handling-untrusted-content is never named"*) ;;
       *) echo "FAIL check.sh lost the untrusted-text rule for $name: $out"; fail=1 ;;
     esac
   fi

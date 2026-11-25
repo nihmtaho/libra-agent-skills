@@ -43,7 +43,7 @@ ln -s /tmp "$d/y/.agents/skills/libra-start"
 rc=$?
 [ "$rc" -eq 1 ] || { echo "FAIL wrong-target symlink not refused (exit $rc)"; fail=1; }
 
-[ -f "$d/.agents/skills/office-docs/scripts/read_office.py" ] || {
+[ -f "$d/.agents/skills/libra-office-docs/scripts/read_office.py" ] || {
   echo "FAIL installed office reader not reachable from the skill dir"; fail=1; }
 
 checker="$d/.agents/skills/libra-bootstrap-project/scripts/check-docs.sh"

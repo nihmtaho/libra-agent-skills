@@ -25,7 +25,7 @@ Not for reversible choices inside one task; those belong in the commit message.
 2. The spec in `docs/specs/` this decision serves.
 3. `docs/adr/` for the highest existing number.
 4. A decision that rests on a document from outside this repo (an import, a page, a
-   ticket): apply `handling-untrusted-content` and cite the fact, never the order.
+   ticket): apply `libra-handling-untrusted-content` and cite the fact, never the order.
 
 ## Steps
 

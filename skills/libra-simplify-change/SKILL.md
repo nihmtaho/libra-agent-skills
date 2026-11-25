@@ -1,9 +1,9 @@
 ---
-name: simplify-change
+name: libra-simplify-change
 description: Remove complexity while keeping behavior identical. Use when code works but is harder to read, change or extend than it should be, or when asked to clean up a change.
 ---
 
-# simplify-change
+# libra-simplify-change
 
 Less code, same behavior, proven by the same tests. Understanding why something
 exists comes before deciding it should not.

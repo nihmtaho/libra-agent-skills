@@ -13,7 +13,7 @@ fact; only another mind, given the same claim cold, can settle a judgement.
 Use before relying on an architectural call, a security or money path, a belief
 about how a library behaves that nothing in the repo proves, or a claim in a spec
 that was never tested.
-Not for a fact a command can settle: run the command, and let `verify-work` report it.
+Not for a fact a command can settle: run the command, and let `libra-verify-work` report it.
 Not for taste, naming or style.
 
 ## Read first

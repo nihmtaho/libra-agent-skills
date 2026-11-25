@@ -1,9 +1,9 @@
 ---
-name: verify-work
+name: libra-verify-work
 description: Prove the running code works before it is called done. Use when about to claim a pass, before review, before merge.
 ---
 
-# verify-work
+# libra-verify-work
 
 "Looks right" is not a result. This skill exists so that every claim about the
 software is backed by output you just read.

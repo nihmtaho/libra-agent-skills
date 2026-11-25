@@ -103,8 +103,8 @@ for artifact in 'docs/specs/' 'docs/ideas/' 'docs/CONSTRAINTS.md' 'docs/GIT.md';
 done
 
 # --- the bar is read where it is enforced -----------------------------------
-has verify-work 'docs/CONSTRAINTS.md' 'the floor is checked without the project bar'
-has change-review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
+has libra-verify-work 'docs/CONSTRAINTS.md' 'the floor is checked without the project bar'
+has libra-change-review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
 
 # --- templates ship with the skills that write them -------------------------
 for s in libra-idea-refine libra-spec-driven-development libra-constraint-driven-development release; do
@@ -164,7 +164,7 @@ has libra-doubt-driven-development 'Never hand it your conclusion' 'the doubter 
 # --- libra-context-engineering: what goes in, and what is data --------------------
 write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'AGENTS.md' ||
   { echo "FAIL libra-context-engineering: a rule cannot outlive the session"; fail=1; }
-has libra-context-engineering 'handling-untrusted-content'    'a fetched page may act as an instruction'
+has libra-context-engineering 'libra-handling-untrusted-content'    'a fetched page may act as an instruction'
 has libra-context-engineering 'Write the pack you assembled'  'the next session searches again'
 write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'docs/PROJECT.md' ||
   { echo "FAIL libra-context-engineering: Write does not name docs/PROJECT.md"; fail=1; }
@@ -172,7 +172,7 @@ write_body "$root/skills/libra-context-engineering/SKILL.md" | grep -qF 'docs/PR
 # --- libra-source-driven-development: a claim needs an address ------------------
 has libra-source-driven-development 'Pin the version'                'a claim may be for another version'
 has libra-source-driven-development 'Go to the primary source'                 'a blog post counts as a source'
-has libra-source-driven-development 'handling-untrusted-content'     'a fetched page may act as an instruction'
+has libra-source-driven-development 'libra-handling-untrusted-content'     'a fetched page may act as an instruction'
 write_body "$root/skills/libra-source-driven-development/SKILL.md" | grep -q 'none' ||
   { echo "FAIL libra-source-driven-development: Write must be none, decide writes the ADR"; fail=1; }
 

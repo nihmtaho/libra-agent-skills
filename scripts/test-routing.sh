@@ -61,8 +61,8 @@ route '[Cc]ut a version'                              release
 route 'verdict passed'                                libra-ship
 
 # Two pairs that name nearly the same moment, and must stay apart.
-route 'claim a pass'                                  verify-work
-route 'bound to one commit'                           change-review
+route 'claim a pass'                                  libra-verify-work
+route 'bound to one commit'                           libra-change-review
 
 # An OR-ed case hides a dead branch: one live alternative makes the whole line
 # green while the other matches no description at all. Every alternative must
