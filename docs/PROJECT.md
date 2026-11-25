@@ -56,20 +56,17 @@ updated: 2026-11-25
 | Phase A: collision renames, installer groups, trust hierarchy, intake gate, `AGENTS.md` bootstrap, branch protection | done | | [spec](specs/phase-a-skill-hardening.md) |
 | per-skill evals and a runnable sandbox per case | done | | [spec](specs/phase-a-skill-hardening.md) · [evals](../evals/skills/README.md) |
 | the two-week field test on three projects | running | first lines in: 2 of 3 `libra-project-status` runs were wrong | [plan](plans/2026-11-21-field-test.md) |
-| `libra-` prefixed skill names | spec | spec and task written; branch `feat/libra-prefixed-names` open | [spec](specs/libra-prefixed-skill-names.md) · [task](tasks/libra-prefixed-skill-names.md) · [adr](adr/0004-prefix-every-skill-name.md) |
+| `libra-` prefixed skill names | done | | [spec](specs/libra-prefixed-skill-names.md) · [task](tasks/libra-prefixed-skill-names.md) · [adr](adr/0004-prefix-every-skill-name.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
 - [ADR-0002](adr/0002-four-define-skills-and-constraints-md.md) — `libra-spec-driven-development` replaces `write-spec`; the quality bar lives in `docs/CONSTRAINTS.md`.
 - [ADR-0003](adr/0003-direct-commits-need-a-recorded-exception.md) — a direct commit to the default branch needs a recorded exception in `docs/GIT.md`; a single commit is judged, and the merge policy follows the commits.
 - [ADR-0004](adr/0004-prefix-every-skill-name.md) — every skill name carries the `libra-` prefix, and a check enforces it; a per-tool reserved-name list is rejected because it goes stale.
-- Renamed `resume`, `review`, `verify`, `simplify` and `debug` to stop replacing built-in slash commands; that name-by-name method failed again on `ship`, and the prefix replaced it.
+- Renamed `resume`, `review`, `verify`, `simplify` and `debug` to stop replacing built-in slash commands; that name-by-name method failed again, and the prefix replaced it.
 - A new idea is classified by `libra-start` before any edit; a feature or behavior change gets a spec and a task first, and the branch is created before the first edit.
 
 ## Next
-1. Prefix every skill name with `libra-` (breaking) following
-   [the task](tasks/libra-prefixed-skill-names.md); start with the collision
-   that forced it (`ship`), and keep each group green.
-2. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; the first lines are in and 2 of 3 `libra-project-status` runs are wrong.
-3. Cut `0.3.0` as the prune release after the 2026-12-05 review; do not add a skill to it.
-4. Phase B starts in `0.4.0` with `failure-guardrails`, `documentation-and-adrs`, and the GitHub suite; each addition needs evidence from two projects.
+1. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; the first lines are in and 2 of 3 `libra-project-status` runs are wrong.
+2. Cut `0.3.0` as the prune release after the 2026-12-05 review; do not add a skill to it.
+3. Phase B starts in `0.4.0` with `failure-guardrails`, `documentation-and-adrs`, and the GitHub suite; each addition needs evidence from two projects.

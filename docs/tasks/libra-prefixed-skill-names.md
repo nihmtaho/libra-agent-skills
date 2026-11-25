@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: T6 done; T7 next
+Stopped at: done
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -118,11 +118,11 @@ skills should be re-planned before T4.
       builds; the tree is green before the mutation, so it cannot pass for the
       wrong reason.
 
-- [ ] **T7 — the record: README upgrade path, changelog, state file**
+- [x] **T7 — the record: README upgrade path, changelog, state file**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;
       `bash scripts/check-docs.sh docs/PROJECT.md docs/specs/libra-prefixed-skill-names.md docs/tasks/libra-prefixed-skill-names.md docs/adr/0004-prefix-every-skill-name.md`
       prints nothing; `grep -nE 'skills/(using-libra|bootstrap-project|incremental-implementation)' README.md AGENTS.md docs/PROJECT.md docs/specs/markdown-check.md`
-      prints nothing; and the `Next` list names this task first.
+      prints nothing; and the `Next` list no longer names the rename, which is done.
       Touches: `README.md`, `AGENTS.md`, `CHANGELOG.md`, `docs/PROJECT.md`,
       `docs/specs/markdown-check.md`,
       `docs/specs/libra-prefixed-skill-names.md` (acceptance boxes),

@@ -10,18 +10,23 @@ caught, and an authorship rule that no longer reads as concealment.
 ### Added
 - per-skill evals: 63 cases across the 27 skills, a sandbox runner and fixtures,
   and a verifier. The full run scored 44/63 with-skill against 6/63 baseline.
-- an intake gate and a question guard: a hunch goes through `idea-refine`, two
-  readings through `interview-me`, and a question is answered, not implemented.
+- an intake gate and a question guard: a hunch goes through `libra-idea-refine`,
+  two readings through `libra-interview-me`, and a question is answered, not
+  implemented.
+
+### Changed
+- **Breaking:** every skill name starts with `libra-`, and `using-libra` is now
+  `libra-start`. A tool's own `/ship` or `/release` no longer collides with the
+  set. Remove the 27 unprefixed links before reinstalling; the README carries the
+  loop. `scripts/check.sh` refuses a name without the prefix.
+- "never a co-author line or an AI signature" now says what it is: a format
+  convention, with a way out when the project or the platform requires a
+  disclosure trailer. This is what Snyk's `build` E004 called hidden authorship.
 
 ### Fixed
 - the `## Features` table in `docs/PROJECT.md` renders as a table again: the
   separator row was missing, and `check-docs.sh` now fails a table whose separator
   row is missing or invalid.
-
-### Changed
-- "never a co-author line or an AI signature" now says what it is: a format
-  convention, with a way out when the project or the platform requires a
-  disclosure trailer. This is what Snyk's `build` E004 called hidden authorship.
 
 ## [0.2.0] - 2026-11-18
 

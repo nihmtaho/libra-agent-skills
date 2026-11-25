@@ -121,11 +121,28 @@ links that resolve, and the sections that document type requires. One
 bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 ```
 
+## Upgrading from 0.2
+
+Every skill name now starts with `libra-`, so it cannot shadow a command a tool
+ships. The links 0.2 installed carry the old names; remove them before
+installing, or both sets sit in the same flat directory and two skills answer one
+request.
+
+```bash
+cd /path/to/your/project
+for name in api-and-interface-design bootstrap-project build change-review constraint-driven-development context-engineering decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work project-status release root-cause ship simplify-change source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify-work; do
+  rm -rf ".agents/skills/$name" ".claude/skills/$name"
+done
+```
+
+Then install again. `using-libra` is `libra-start`; every other new name is the
+old one with the prefix.
+
 ## Uninstall
 
 ```bash
 cd /path/to/your/project
-for s in libra-api-and-interface-design libra-bootstrap-project libra-build libra-change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering libra-git-workflow-and-versioning libra-handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me libra-office-docs libra-plan-work libra-project-status libra-release libra-root-cause libra-ship libra-simplify-change libra-source-driven-development libra-spec-driven-development libra-subagent-driven-development libra-test-driven-development libra-start libra-verify-work; do
+for s in libra-api-and-interface-design libra-bootstrap-project libra-build libra-change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering libra-git-workflow-and-versioning libra-handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me libra-office-docs libra-plan-work libra-project-status libra-release libra-root-cause libra-ship libra-simplify-change libra-source-driven-development libra-spec-driven-development libra-start libra-subagent-driven-development libra-test-driven-development libra-verify-work; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

@@ -63,20 +63,20 @@ No check can know every tool's command list at author time. One prefix can.
   `docs/specs/markdown-check.md`, `scripts/`, `evals/`, `skills/`,
   `.claude-plugin/`) must print nothing. Historical files are not rewritten.
 ## Acceptance criteria
-- [ ] All 27 directories and all 27 `name` fields start with `libra-`, and
+- [x] All 27 directories and all 27 `name` fields start with `libra-`, and
       `ls skills | wc -l` still prints 27.
-- [ ] `bash scripts/check.sh` fails an unprefixed directory name, and
+- [x] `bash scripts/check.sh` fails an unprefixed directory name, and
       `test-check-docs.sh` proves it on a tree that was green first.
-- [ ] A rename that misses `marketplace.json` fails the suite: `test-install.sh`
+- [x] A rename that misses `marketplace.json` fails the suite: `test-install.sh`
       already compares the manifest with `skills/`, so no second check is added.
-- [ ] `bash scripts/test.sh` prints its five green lines, and
+- [x] `bash scripts/test.sh` prints its five green lines, and
       `evals/skills/run.sh --inventory` prints `inventory passed`.
-- [ ] No current-truth file names a retired identifier as a skill; the sweep in
+- [x] No current-truth file names a retired identifier as a skill; the sweep in
       the test plan is empty.
-- [ ] The README uninstall loop lists exactly the 27 new names, and an upgrade
+- [x] The README uninstall loop lists exactly the 27 new names, and an upgrade
       note tells a 0.2 user to remove the 27 old links first.
-- [ ] `CHANGELOG.md` records the rename as a breaking change under `Unreleased`.
-- [ ] A fresh install into a temp destination contains no unprefixed libra skill
+- [x] `CHANGELOG.md` records the rename as a breaking change under `Unreleased`.
+- [x] A fresh install into a temp destination contains no unprefixed libra skill
       and `libra-ship` runs as a skill while the tool's own command is untouched.
 ## Out of scope
 - The six `marketplace.json` group names (`build`, `ship`, `review`, ...). They
