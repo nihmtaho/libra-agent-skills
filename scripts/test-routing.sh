@@ -55,9 +55,9 @@ route 'adding an endpoint'                            libra-api-and-interface-de
 route 'response shape'                                libra-api-and-interface-design
 route 'error format'                                  libra-api-and-interface-design
 route 'ready to implement'                            libra-build
-route 'squash or keep the commits'                    git-workflow-and-versioning
-route 'branching model'                               git-workflow-and-versioning
-route '[Cc]ut a version'                              release
+route 'squash or keep the commits'                    libra-git-workflow-and-versioning
+route 'branching model'                               libra-git-workflow-and-versioning
+route '[Cc]ut a version'                              libra-release
 route 'verdict passed'                                libra-ship
 
 # Two pairs that name nearly the same moment, and must stay apart.

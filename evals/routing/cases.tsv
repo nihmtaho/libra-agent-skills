@@ -16,4 +16,4 @@ r15	The component must work at every width and with a keyboard only.	libra-front
 r16	Which library version does this call need, and cite the docs.	libra-source-driven-development
 r17	The agent has too much to read and the rules file is out of date.	libra-context-engineering
 r18	There is no failing test yet, so write the test first.	libra-test-driven-development
-r19	Should we squash this branch or keep the commits when we merge?	git-workflow-and-versioning
+r19	Should we squash this branch or keep the commits when we merge?	libra-git-workflow-and-versioning

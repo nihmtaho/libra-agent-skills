@@ -1,9 +1,9 @@
 ---
-name: git-workflow-and-versioning
+name: libra-git-workflow-and-versioning
 description: Decide the branching model, the merge policy, the version scheme and the commit format before they are needed. Use when a project has no git policy written down, or when asking whether to squash or keep the commits.
 ---
 
-# git-workflow-and-versioning
+# libra-git-workflow-and-versioning
 
 Four decisions every project makes anyway, and most make by accident. Written
 down once, they stop being a discussion at every merge.
@@ -53,7 +53,7 @@ change that passed review: that is `libra-ship`.
    which would punish one-slice-per-commit work.
 5. Version scheme. `semver` or `none`, and where the version lives. SemVer is the
    default; `none` is honest for a project that ships continuously and never tags.
-   `release` reads this and never infers it.
+   `libra-release` reads this and never infers it.
 6. Commit format. Conventional Commits: `feat`, `fix`, `docs`, `style`, `refactor`,
    `perf`, `test`, `libra-build`, `ci`, `chore`, `revert`; an optional `(scope)`; `!` or
    a `BREAKING CHANGE:` footer for a break; an imperative, lower-case subject with

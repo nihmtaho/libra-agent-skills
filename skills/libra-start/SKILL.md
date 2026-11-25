@@ -39,7 +39,7 @@ Do not read the whole repo first. Read the state, then the files it names.
    - spike: say it is throwaway; no spec, no merge, keep it off the main branch.
 3. For a feature, behavior change or failure, create the branch before the first
    edit: `git switch -c <type>/<slug>`. State the lane and the branch in one line.
-   No `docs/GIT.md`: run `git-workflow-and-versioning` first.
+   No `docs/GIT.md`: run `libra-git-workflow-and-versioning` first.
 4. Pick one skill from `references/routing.md`; do not run two phase skills at once.
 5. If code and a spec disagree, fix the spec in the same session. A stale spec is
    worse than no spec, because the next reader trusts it.

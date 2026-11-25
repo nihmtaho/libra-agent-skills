@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: T4 done; T5 next
+Stopped at: T5 done; T6 next
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -90,7 +90,7 @@ skills should be re-planned before T4.
       `scripts/test-install.sh` runs from an installed destination; T2 moved
       `using-libra`, this task moves `office-docs` and its assertion.
 
-- [ ] **T5 — the last two: `git-workflow-and-versioning` and `release`**
+- [x] **T5 — the last two: `git-workflow-and-versioning` and `release`**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;
       `ls skills | wc -l` prints 27 and `ls skills | grep -vc '^libra-'` prints 0;
       and the sweep for the two names prints nothing.

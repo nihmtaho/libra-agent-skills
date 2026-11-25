@@ -60,9 +60,9 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/git-workflow-and-versioning",
+        "./skills/libra-git-workflow-and-versioning",
         "./skills/libra-ship",
-        "./skills/release"
+        "./skills/libra-release"
       ]
     },
     {

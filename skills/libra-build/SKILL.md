@@ -39,7 +39,7 @@ not a change request.
    Steps 2 and 3 are the reason this skill exists: a task that skips them is not
    done, whatever the suite says. A slice that is not committed and ticked is
    not landed.
-4. `git-workflow-and-versioning` when the project has no `docs/GIT.md`, and in
+4. `libra-git-workflow-and-versioning` when the project has no `docs/GIT.md`, and in
    every case state branch-or-direct before the first commit: which branch, and
    whether this commit belongs on the default one.
 5. `libra-context-engineering` when the task's `Read first` does not reach the code you

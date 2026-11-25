@@ -49,7 +49,7 @@ before you use a line of it.
 `docs/PROJECT.md` and `AGENTS.md`, `updated:` today. `CLAUDE.md` is an import of
 `AGENTS.md`, never a copy. Nothing else: no ADR, spec, task file or placeholder
 quality bar; hand off to `libra-constraint-driven-development`. The git answer becomes
-one line under `## Decisions`; `git-workflow-and-versioning` writes the policy.
+one line under `## Decisions`; `libra-git-workflow-and-versioning` writes the policy.
 Run `git check-ignore docs/PROJECT.md` first; if ignored, ask whether to un-ignore.
 A state file nobody can clone is not state.
 

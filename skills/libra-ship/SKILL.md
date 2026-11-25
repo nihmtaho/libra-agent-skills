@@ -13,7 +13,7 @@ arrives next.
 
 Use when a review returned `PASS <sha>` for the head commit, or when the human
 asks if something is ready to land.
-Not for tagging or publishing releases: that is `release`, and it starts from the
+Not for tagging or publishing releases: that is `libra-release`, and it starts from the
 default branch after this merge, never from the feature branch.
 
 ## Read first

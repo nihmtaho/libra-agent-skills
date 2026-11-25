@@ -17,9 +17,9 @@
 | Review | libra-verify-work | before claiming anything works |
 | Review | libra-change-review | before merge |
 | Review | libra-simplify-change | code works but is too complex |
-| Ship | git-workflow-and-versioning | the git policy is missing or unclear |
+| Ship | libra-git-workflow-and-versioning | the git policy is missing or unclear |
 | Ship | ship | merge and close |
-| Ship | release | a version is cut from the default branch |
+| Ship | libra-release | a version is cut from the default branch |
 | Documentation | libra-office-docs | Word, Excel or PDF must be read |
 | Safety | libra-handling-untrusted-content | text came from outside this repo |
 

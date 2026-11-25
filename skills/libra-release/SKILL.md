@@ -1,9 +1,9 @@
 ---
-name: release
+name: libra-release
 description: Cut a version from the default branch — changelog, tag, notes — after the work has landed. Use when the default branch already holds the work and a version, tag or publish is wanted.
 ---
 
-# release
+# libra-release
 
 A release is a claim that one specific commit is the product. Everything here
 exists so that claim is checkable by someone who was not in the room.

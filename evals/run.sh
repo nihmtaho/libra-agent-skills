@@ -107,7 +107,7 @@ has libra-verify-work 'docs/CONSTRAINTS.md' 'the floor is checked without the pr
 has libra-change-review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
 
 # --- templates ship with the skills that write them -------------------------
-for s in libra-idea-refine libra-spec-driven-development libra-constraint-driven-development release; do
+for s in libra-idea-refine libra-spec-driven-development libra-constraint-driven-development libra-release; do
   ls "$root/skills/$s/templates/"*.md >/dev/null 2>&1 ||
     { echo "FAIL $s: writes a document but ships no template"; fail=1; }
 done
@@ -137,7 +137,7 @@ has libra-incremental-implementation 'and never a co-author line or an AI signat
 # Snyk's build E004 called it hidden authorship. Every skill that states the rule
 # carries both halves.
 has libra-incremental-implementation 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
-has git-workflow-and-versioning 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
+has libra-git-workflow-and-versioning 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has libra-ship 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has libra-incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
@@ -198,21 +198,21 @@ has libra-api-and-interface-design 'is idempotent: a key the caller supplies' 'a
 write_body "$root/skills/libra-api-and-interface-design/SKILL.md" | grep -qF 'docs/api/' ||
   { echo "FAIL libra-api-and-interface-design: Write does not name docs/api/"; fail=1; }
 
-# --- git-workflow-and-versioning: the merge rule and the review order ------
-steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'each one builds and passes the suite' ||
-  { echo "FAIL git-workflow-and-versioning: the merge policy lost its first row"; fail=1; }
-steps_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'Clean the history before review, never after a verdict' ||
-  { echo "FAIL git-workflow-and-versioning: history may be cleaned after a review, voiding it"; fail=1; }
-has git-workflow-and-versioning 'may go straight to the default branch only when this file says so' 'a direct commit is allowed without a recorded exception'
-write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
-  { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
+# --- libra-git-workflow-and-versioning: the merge rule and the review order ---
+steps_body "$root/skills/libra-git-workflow-and-versioning/SKILL.md" | grep -qF 'each one builds and passes the suite' ||
+  { echo "FAIL libra-git-workflow-and-versioning: the merge policy lost its first row"; fail=1; }
+steps_body "$root/skills/libra-git-workflow-and-versioning/SKILL.md" | grep -qF 'Clean the history before review, never after a verdict' ||
+  { echo "FAIL libra-git-workflow-and-versioning: history may be cleaned after a review, voiding it"; fail=1; }
+has libra-git-workflow-and-versioning 'may go straight to the default branch only when this file says so' 'a direct commit is allowed without a recorded exception'
+write_body "$root/skills/libra-git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/GIT.md' ||
+  { echo "FAIL libra-git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
 # --- the pointers: each skill keeps its own rule and names the policy file ---
 has libra-ship 'not permission to tag'                 'an unmerged project may be tagged after all'
 steps_body "$root/skills/libra-ship/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL libra-ship: the direct-commit exception does not name the file that allows it"; fail=1; }
-grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/release/SKILL.md" ||
-  { echo "FAIL release: the version scheme is inferred, not read"; fail=1; }
+grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/libra-release/SKILL.md" ||
+  { echo "FAIL libra-release: the version scheme is inferred, not read"; fail=1; }
 steps_body "$root/skills/libra-incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
   { echo "FAIL libra-incremental-implementation: the default-branch clause is gone"; fail=1; }
 steps_body "$root/skills/libra-build/SKILL.md" | grep -qF 'state branch-or-direct before the first commit: which branch' ||
@@ -221,47 +221,47 @@ steps_body "$root/skills/libra-build/SKILL.md" | grep -qF 'state branch-or-direc
 # --- bootstrap asks about git before it writes the state file ---------------
 grep -qF 'exactly three questions' "$root/skills/libra-bootstrap-project/SKILL.md" ||
   { echo "FAIL libra-bootstrap-project: git is never asked about"; fail=1; }
-grep -qF 'git-workflow-and-versioning' "$root/skills/libra-bootstrap-project/SKILL.md" ||
+grep -qF 'libra-git-workflow-and-versioning' "$root/skills/libra-bootstrap-project/SKILL.md" ||
   { echo "FAIL libra-bootstrap-project: no handoff writes docs/GIT.md"; fail=1; }
 flat "$root/skills/libra-bootstrap-project/references/old-repo.md" | grep -qF 'Docs` cell stays empty' ||
   { echo "FAIL libra-bootstrap-project: a Docs cell may cite a file that does not cover it"; fail=1; }
 
-# --- release: the gates are commands in the steps, not advice ---------------
+# --- libra-release: the gates are commands in the steps, not advice ---------------
 for gate in 'git rev-parse --abbrev-ref HEAD' 'git status --short' \
             'git status -sb' 'git tag -l' 'git ls-remote --tags origin'; do
-  steps_body "$root/skills/release/SKILL.md" | grep -qiF -- "$gate" ||
-    { echo "FAIL release: gate '$gate' is not in the steps"; fail=1; }
+  steps_body "$root/skills/libra-release/SKILL.md" | grep -qiF -- "$gate" ||
+    { echo "FAIL libra-release: gate '$gate' is not in the steps"; fail=1; }
 done
-steps_body "$root/skills/release/SKILL.md" | grep -qiF 'exit 0 and print nothing' ||
-  { echo "FAIL release: gate 4 lets an unreachable host look like a free name"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qiF 'behind' ||
-  { echo "FAIL release: gate 3 does not refuse a branch behind its upstream"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qiF 'gh release view' ||
-  { echo "FAIL release: never verifies the release exists"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qiF 'exit 0 and print nothing' ||
+  { echo "FAIL libra-release: gate 4 lets an unreachable host look like a free name"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qiF 'behind' ||
+  { echo "FAIL libra-release: gate 3 does not refuse a branch behind its upstream"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qiF 'gh release view' ||
+  { echo "FAIL libra-release: never verifies the release exists"; fail=1; }
 
-# --- release: the note is filled from a template, and claims no more ---------
-tpl="$root/skills/release/templates/release-notes.md"
+# --- libra-release: the note is filled from a template, and claims no more ---------
+tpl="$root/skills/libra-release/templates/release-notes.md"
 for h in '## Highlights' '## Added' '## Changed' '## Removed' '## Upgrade' \
          '## Full changelog'; do
   grep -qxF -- "$h" "$tpl" 2>/dev/null ||
-    { echo "FAIL release: the note template has no '$h' section"; fail=1; }
+    { echo "FAIL libra-release: the note template has no '$h' section"; fail=1; }
 done
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'copy `templates/release-notes.md` to `/tmp/<version>-notes.md`' ||
-  { echo "FAIL release: the template is edited in place instead of copied out"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'drop its frontmatter and comment' ||
-  { echo "FAIL release: the template's frontmatter or comment is published in the note"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'fill every entry from the changelog section' ||
-  { echo "FAIL release: an entry the changelog has may be dropped from the note"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF 'claiming nothing the changelog does not' ||
-  { echo "FAIL release: the note may claim more than the changelog"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF -- '--notes-file /tmp/<version>-notes.md' ||
-  { echo "FAIL release: publishes a file other than the note that was filled"; fail=1; }
-steps_body "$root/skills/release/SKILL.md" | grep -qF '`gh release view v<version>` shows no `<` placeholder' ||
-  { echo "FAIL release: a template placeholder can ship inside the published note"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qF 'copy `templates/release-notes.md` to `/tmp/<version>-notes.md`' ||
+  { echo "FAIL libra-release: the template is edited in place instead of copied out"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qF 'drop its frontmatter and comment' ||
+  { echo "FAIL libra-release: the template's frontmatter or comment is published in the note"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qF 'fill every entry from the changelog section' ||
+  { echo "FAIL libra-release: an entry the changelog has may be dropped from the note"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qF 'claiming nothing the changelog does not' ||
+  { echo "FAIL libra-release: the note may claim more than the changelog"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qF -- '--notes-file /tmp/<version>-notes.md' ||
+  { echo "FAIL libra-release: publishes a file other than the note that was filled"; fail=1; }
+steps_body "$root/skills/libra-release/SKILL.md" | grep -qF '`gh release view v<version>` shows no `<` placeholder' ||
+  { echo "FAIL libra-release: a template placeholder can ship inside the published note"; fail=1; }
 flat "$tpl" | grep -qF 'The filled note must pass `check-docs.sh`' ||
-  { echo "FAIL release: an empty section ships because nothing checks the note"; fail=1; }
+  { echo "FAIL libra-release: an empty section ships because nothing checks the note"; fail=1; }
 flat "$tpl" | grep -qF 'delete this whole section when nothing breaks' ||
-  { echo "FAIL release: nothing tells the filler to drop an empty upgrade section"; fail=1; }
+  { echo "FAIL libra-release: nothing tells the filler to drop an empty upgrade section"; fail=1; }
 
 # --- a dead skill name is a routing bug -------------------------------------
 for f in "$root"/skills/*/SKILL.md; do

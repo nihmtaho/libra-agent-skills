@@ -20,7 +20,7 @@ updated: 2026-11-25
 - `.claude-plugin/marketplace.json` — groups the 27 skills for `npx skills add`; every skill appears exactly once.
 - `skills/libra-bootstrap-project/references/` — the `AGENTS.md` template and the old-repo rebuild steps.
 - `skills/libra-start/references/routing.md` — the full routing table behind the classifier.
-- `skills/git-workflow-and-versioning/references/branch-protection.md` — checks, reviews, rulesets and auto-merge.
+- `skills/libra-git-workflow-and-versioning/references/branch-protection.md` — checks, reviews, rulesets and auto-merge.
 - `install.sh` — symlinks into the destination; the fragile parts are overwriting and paths with spaces.
 - `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 27 skills.
 - `scripts/check-docs.sh` — the document rules; the copy in `scripts/` and the one shipped in `skills/libra-bootstrap-project/scripts/` must stay byte-identical.
@@ -30,7 +30,7 @@ updated: 2026-11-25
 - `docs/CONSTRAINTS.md` — this repo's own quality bar; `libra-constraint-driven-development` is dogfooded here first.
 - `docs/api/` — the document type this set writes into a project, one file per interface; owner `libra-api-and-interface-design`. Not used in this repo.
 - `docs/design-system.md` — the document type for tokens, components and where state lives; owner `libra-frontend-ui-engineering`. Not used in this repo.
-- `docs/GIT.md` — this repository's branching model, merge policy, version scheme and commit format; owner `git-workflow-and-versioning`.
+- `docs/GIT.md` — this repository's branching model, merge policy, version scheme and commit format; owner `libra-git-workflow-and-versioning`.
 - `evals/` — contract evals for the Define and Build skills, plus the live rubric a human runs by hand.
 - `evals/skills/<name>/evals.json` — Anthropic-style prompts and expectations, two or more per skill; `evals/run.sh` checks every skill has one.
 - `evals/skills/fixtures.sh` — builds a runnable sandbox for each case.

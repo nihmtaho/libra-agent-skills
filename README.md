@@ -86,9 +86,9 @@ The installer shows six groups; this list follows the order of the work.
 
 | Skill | What it does |
 |---|---|
-| `git-workflow-and-versioning` | Branching model, merge policy, version scheme, commit format |
+| `libra-git-workflow-and-versioning` | Branching model, merge policy, version scheme, commit format |
 | `libra-ship` | Evidence, docs fresh, no AI traces |
-| `release` | Four gates, changelog, tag, notes, verified |
+| `libra-release` | Four gates, changelog, tag, notes, verified |
 
 ### Documentation
 
@@ -125,7 +125,7 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in libra-api-and-interface-design libra-bootstrap-project libra-build libra-change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering git-workflow-and-versioning libra-handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me libra-office-docs libra-plan-work libra-project-status release libra-root-cause libra-ship libra-simplify-change libra-source-driven-development libra-spec-driven-development libra-subagent-driven-development libra-test-driven-development libra-start libra-verify-work; do
+for s in libra-api-and-interface-design libra-bootstrap-project libra-build libra-change-review libra-constraint-driven-development libra-context-engineering libra-decide libra-doubt-driven-development libra-frontend-ui-engineering libra-git-workflow-and-versioning libra-handling-untrusted-content libra-idea-refine libra-incremental-implementation libra-interview-me libra-office-docs libra-plan-work libra-project-status libra-release libra-root-cause libra-ship libra-simplify-change libra-source-driven-development libra-spec-driven-development libra-subagent-driven-development libra-test-driven-development libra-start libra-verify-work; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

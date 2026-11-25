@@ -838,7 +838,7 @@ case "$skill" in
   libra-subagent-driven-development) write_subagent ;;
   libra-change-review) write_review ;;
   libra-ship) write_ship ;;
-  release) write_release ;;
+  libra-release) write_release ;;
   libra-office-docs) write_office ;;
   libra-handling-untrusted-content) write_hostile ;;
   libra-plan-work) write_docs; write_invite_spec ;;
@@ -849,7 +849,7 @@ case "$skill" in
   libra-source-driven-development) if [ "$id" = "2" ]; then write_source_callback; else write_project; fi ;;
   libra-test-driven-development) if [ "$id" = "1" ]; then write_tdd; else write_transfer; fi ;;
   libra-verify-work) if [ "$id" = "2" ]; then write_verify; else write_project; fi ;;
-  git-workflow-and-versioning) if [ "$id" = "1" ]; then write_gitless; else write_project; fi ;;
+  libra-git-workflow-and-versioning) if [ "$id" = "1" ]; then write_gitless; else write_project; fi ;;
   libra-constraint-driven-development) if [ "$id" = "1" ]; then write_constraint_fail; else write_no_bar; fi ;;
   libra-spec-driven-development|libra-idea-refine|libra-decide|libra-interview-me) write_docs ;;
   # No fixture is written for these three yet: the generic project is a
