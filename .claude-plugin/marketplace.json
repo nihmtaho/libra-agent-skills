@@ -61,7 +61,7 @@
       "strict": false,
       "skills": [
         "./skills/git-workflow-and-versioning",
-        "./skills/ship",
+        "./skills/libra-ship",
         "./skills/release"
       ]
     },

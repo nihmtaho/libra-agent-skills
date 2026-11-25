@@ -87,7 +87,7 @@ The installer shows six groups; this list follows the order of the work.
 | Skill | What it does |
 |---|---|
 | `git-workflow-and-versioning` | Branching model, merge policy, version scheme, commit format |
-| `ship` | Evidence, docs fresh, no AI traces |
+| `libra-ship` | Evidence, docs fresh, no AI traces |
 | `release` | Four gates, changelog, tag, notes, verified |
 
 ### Documentation
@@ -125,7 +125,7 @@ bash scripts/check-docs.sh docs/PROJECT.md docs/specs/<feature>.md
 
 ```bash
 cd /path/to/your/project
-for s in api-and-interface-design bootstrap-project build change-review constraint-driven-development context-engineering decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work project-status release root-cause ship simplify-change source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify-work; do
+for s in api-and-interface-design bootstrap-project build change-review constraint-driven-development context-engineering decide doubt-driven-development frontend-ui-engineering git-workflow-and-versioning handling-untrusted-content idea-refine incremental-implementation interview-me office-docs plan-work project-status release root-cause libra-ship simplify-change source-driven-development spec-driven-development subagent-driven-development test-driven-development using-libra verify-work; do
   rm -rf ".agents/skills/$s" ".claude/skills/$s"
 done
 ```

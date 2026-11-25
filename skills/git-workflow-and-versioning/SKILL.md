@@ -14,7 +14,7 @@ Use when a project has no `docs/GIT.md`, when a branch is about to be merged and
 nobody knows whether to squash it, when a version is about to be cut and the
 scheme was never named, or when the human asks which workflow this project uses.
 Not for making a commit: that is `incremental-implementation`. Not for merging a
-change that passed review: that is `ship`.
+change that passed review: that is `libra-ship`.
 
 ## Read first
 

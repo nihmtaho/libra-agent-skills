@@ -12,7 +12,7 @@ exists so that claim is checkable by someone who was not in the room.
 
 Use when the work is already on the default branch and the human asks for a
 version, a tag or a publish.
-Not for merging a change: that is `ship`. Not for a feature branch, a dirty tree,
+Not for merging a change: that is `libra-ship`. Not for a feature branch, a dirty tree,
 or a release with nothing to record.
 
 ## Read first

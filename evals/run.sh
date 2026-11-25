@@ -138,7 +138,7 @@ has incremental-implementation 'and never a co-author line or an AI signature'  
 # carries both halves.
 has incremental-implementation 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has git-workflow-and-versioning 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
-has ship 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
+has libra-ship 'unless the project or the platform requires one — format, not concealment' 'the no-signature rule reads as hidden authorship'
 has incremental-implementation 'Delete the flag'        'a flag nobody removes'
 write_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/tasks/' ||
   { echo "FAIL incremental-implementation: Write does not name docs/tasks/"; fail=1; }
@@ -208,9 +208,9 @@ write_body "$root/skills/git-workflow-and-versioning/SKILL.md" | grep -qF 'docs/
   { echo "FAIL git-workflow-and-versioning: Write does not name docs/GIT.md"; fail=1; }
 
 # --- the pointers: each skill keeps its own rule and names the policy file ---
-has ship 'not permission to tag'                 'an unmerged project may be tagged after all'
-steps_body "$root/skills/ship/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
-  { echo "FAIL ship: the direct-commit exception does not name the file that allows it"; fail=1; }
+has libra-ship 'not permission to tag'                 'an unmerged project may be tagged after all'
+steps_body "$root/skills/libra-ship/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||
+  { echo "FAIL libra-ship: the direct-commit exception does not name the file that allows it"; fail=1; }
 grep -qF 'Read the scheme from `docs/GIT.md` and never infer it' "$root/skills/release/SKILL.md" ||
   { echo "FAIL release: the version scheme is inferred, not read"; fail=1; }
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qF 'docs/GIT.md` must allow' ||

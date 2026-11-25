@@ -57,7 +57,7 @@ the plan.
 Every other change belongs to the skill named in the table; a docs-only lane may
 edit its named document directly, but this skill writes only the state file. Set
 `issues: on` in its frontmatter only if the human wants GitHub issues used;
-`plan-work` and `ship` follow that switch and never guess from the repository
+`plan-work` and `libra-ship` follow that switch and never guess from the repository
 settings.
 
 Run `bash scripts/check-docs.sh <the file you wrote>` and fix every FAIL before

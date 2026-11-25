@@ -58,7 +58,7 @@ route 'ready to implement'                            build
 route 'squash or keep the commits'                    git-workflow-and-versioning
 route 'branching model'                               git-workflow-and-versioning
 route '[Cc]ut a version'                              release
-route 'verdict passed'                                ship
+route 'verdict passed'                                libra-ship
 
 # Two pairs that name nearly the same moment, and must stay apart.
 route 'claim a pass'                                  verify-work

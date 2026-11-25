@@ -837,7 +837,7 @@ case "$skill" in
   api-and-interface-design) write_api ;;
   subagent-driven-development) write_subagent ;;
   change-review) write_review ;;
-  ship) write_ship ;;
+  libra-ship) write_ship ;;
   release) write_release ;;
   office-docs) write_office ;;
   handling-untrusted-content) write_hostile ;;

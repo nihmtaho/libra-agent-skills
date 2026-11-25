@@ -68,8 +68,8 @@ updated: 2026-11-25
 
 ## Next
 1. Prefix every skill name with `libra-` (breaking) following
-   [the task](tasks/libra-prefixed-skill-names.md); start with `ship` and keep
-   each group green.
+   [the task](tasks/libra-prefixed-skill-names.md); start with the collision
+   that forced it (`ship`), and keep each group green.
 2. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; the first lines are in and 2 of 3 `project-status` runs are wrong.
 3. Cut `0.3.0` as the prune release after the 2026-12-05 review; do not add a skill to it.
 4. Phase B starts in `0.4.0` with `failure-guardrails`, `documentation-and-adrs`, and the GitHub suite; each addition needs evidence from two projects.

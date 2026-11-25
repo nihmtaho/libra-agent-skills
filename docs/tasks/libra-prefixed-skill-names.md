@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: spec written; T1 not started
+Stopped at: T1 done; T2 next
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -13,7 +13,7 @@ prints 20, and no rename has needed a change outside the files a task lists. If
 one does, stop: the mapping stopped being mechanical, and the remaining eight
 skills should be re-planned before T4.
 
-- [ ] **T1 — the collision that started it: `ship` becomes `libra-ship`**
+- [x] **T1 — the collision that started it: `ship` becomes `libra-ship`**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;
       `ls skills | grep -c '^libra-'` prints 1; and
       `grep -rInE 'skills/ship([^-a-z0-9]|$)' README.md scripts evals skills docs/PROJECT.md .claude-plugin`

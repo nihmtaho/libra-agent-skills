@@ -1,9 +1,9 @@
 ---
-name: ship
+name: libra-ship
 description: Merge and close a change whose verdict passed, keeping the docs true. Use when a review passed and the work should land.
 ---
 
-# ship
+# libra-ship
 
 The last gate. Everything before this argued; this checks the argument still
 holds at the commit being merged, and leaves the project readable for whoever
