@@ -1,0 +1,26 @@
+{
+  "skill_name": "root-cause",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The upload test fails every run. I do not know why.",
+      "expected_output": "The reply reproduces with the smallest command and pastes the output, narrows with evidence, shrinks the case, fixes the shared cause once, and adds a regression test that fails before and passes after.",
+      "expectations": [
+        "The reply reproduces the failure before proposing a fix.",
+        "The reply pastes the exact output and states what the evidence rules out.",
+        "The fix lands once, in the shared code path or in the test that is the cause.",
+        "A regression test fails before the fix and passes after."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The build is broken. Just try changing the dependency version.",
+      "expected_output": "The reply refuses to guess, reproduces the build failure, and stops if it cannot reproduce it.",
+      "expectations": [
+        "The reply does not change the dependency before reproducing.",
+        "The reply pastes the failing command and output.",
+        "The reply stops and says so when the failure cannot be reproduced."
+      ]
+    }
+  ]
+}

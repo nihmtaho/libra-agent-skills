@@ -1,0 +1,37 @@
+{
+  "skill_name": "release",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Cut v1.2.0 from main. The changelog is ready to write.",
+      "expected_output": "The reply checks the four gates, reads the version scheme from docs/GIT.md, writes the changelog before tagging, runs the suite on the exact commit, creates an annotated tag, and pushes branch then tag.",
+      "expectations": [
+        "The reply checks that the branch is the default, the tree is clean, the upstream is set and the tag is free before writing the changelog.",
+        "The version scheme is read from docs/GIT.md, not inferred.",
+        "The changelog has a 1.2.0 section with at least one of Added, Changed or Removed before the tag.",
+        "The suite is run on the exact commit being tagged.",
+        "The tag is annotated, and both the branch and the tag are pushed."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tag v2.0.0 from this feature branch. The working tree has one uncommitted fix, but it is small.",
+      "expected_output": "The reply stops at the first gate: not the default branch and a dirty tree. No tag or changelog is produced.",
+      "expectations": [
+        "The reply stops because the current branch is not the default branch.",
+        "The reply stops because the working tree is dirty.",
+        "No tag is created."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Release this project. docs/GIT.md says the version scheme is none.",
+      "expected_output": "The reply reads the scheme, stops before the changelog, and does not tag or publish.",
+      "expectations": [
+        "The reply reads the scheme from docs/GIT.md.",
+        "The reply stops because the scheme is none.",
+        "No changelog, tag or publish is produced."
+      ]
+    }
+  ]
+}

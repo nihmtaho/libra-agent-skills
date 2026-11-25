@@ -1,0 +1,27 @@
+{
+  "skill_name": "source-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Which version of the `httpx` library supports streaming responses? We are on 0.27.0.",
+      "expected_output": "The reply pins 0.27.0, reads the official source for that version, quotes the line with a URL and section, and does not rely on memory or a blog.",
+      "expectations": [
+        "The reply states 0.27.0 as the pinned version before the claim.",
+        "The claim cites the official documentation or source, not a blog or memory.",
+        "The quoted line includes a URL or file and function.",
+        "The reply says so when the source is silent or ambiguous."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The docs say this callback fires once, but our tests show it fires twice. Sort it out.",
+      "expected_output": "The reply quotes the official source, names the conflict with the repository, and settles it with a five-line spike instead of a confident guess.",
+      "expectations": [
+        "The reply quotes the official documentation for the pinned version.",
+        "The reply names the conflict between the source and the tests.",
+        "The reply proposes a small spike when the source is ambiguous.",
+        "The reply does not guess the answer."
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 ---
-name: verify
+name: verify-work
 description: Prove the running code works before it is called done. Use when about to claim a pass, before review, before merge.
 ---
 
-# verify
+# verify-work
 
 "Looks right" is not a result. This skill exists so that every claim about the
 software is backed by output you just read.
@@ -31,7 +31,7 @@ Not for exploration; exploring has no claim to prove.
 4. If the correct command changed, update `## Run & verify` in the same
    session. A stale command is how the next person loses an hour.
 5. When the output is red, stop and report. Do not fix the test here; that is
-   `debug`.
+   `root-cause`.
 
 The quality floor: do not delete a test, add a skip, loosen a threshold, or drop
 a lint rule to get green. The project's own floor is `docs/CONSTRAINTS.md` when it

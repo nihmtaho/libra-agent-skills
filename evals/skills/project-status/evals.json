@@ -1,0 +1,26 @@
+{
+  "skill_name": "project-status",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Where are we? I am returning to this project after two weeks away. Use the four-line status format only, no preamble or closing note.",
+      "expected_output": "Exactly four lines: What it is, Where it stands, Half-done, Next. The half-done line names the in-progress file and the unchecked box; Next copies the first item of the project's Next list.",
+      "expectations": [
+        "The reply prints exactly the four labels What it is, Where it stands, Half-done and Next.",
+        "Half-done names the in-progress file and the unchecked task.",
+        "Next copies the first item from docs/PROJECT.md.",
+        "The reply changes no files."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Where are we? This repository has no docs/PROJECT.md.",
+      "expected_output": "The reply stops and says to run bootstrap-project. It does not create the state file or fall back to reading the whole repo.",
+      "expectations": [
+        "The reply names bootstrap-project as the next step.",
+        "The reply does not create docs/PROJECT.md.",
+        "The reply does not read the whole repository instead."
+      ]
+    }
+  ]
+}

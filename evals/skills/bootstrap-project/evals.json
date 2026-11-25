@@ -1,0 +1,27 @@
+{
+  "skill_name": "bootstrap-project",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This is a new repo for a CLI that tracks the books I read. It is for me, one user. Use git with trunk-based branching. These are the answers to your three questions; write the files now.",
+      "expected_output": "The reply uses the three answers already in the request, writes docs/PROJECT.md and AGENTS.md from the template, and creates a CLAUDE.md that imports AGENTS.md.",
+      "expectations": [
+        "The reply uses the three answers already in the request and does not ask for them again.",
+        "The reply creates docs/PROJECT.md and AGENTS.md from the template.",
+        "CLAUDE.md imports AGENTS.md rather than duplicating it.",
+        "No feature is marked done without code, a test and a path into it."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This old repository already has a README and a 180-line AGENTS.md. Rebuild the project state and review the agent rules.",
+      "expected_output": "The skill rebuilds docs/PROJECT.md from evidence, reviews AGENTS.md against the template, and improves it in a diff without overwriting a rule the human wrote.",
+      "expectations": [
+        "The reply reads git history and the existing files before writing.",
+        "The reply reviews AGENTS.md for stale commands, duplication, secrets and length.",
+        "The reply does not overwrite an existing rule the human wrote.",
+        "The reply creates docs/PROJECT.md from evidence, not invented features."
+      ]
+    }
+  ]
+}

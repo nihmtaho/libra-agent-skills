@@ -1,0 +1,36 @@
+{
+  "skill_name": "ship",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The review passed on the head commit. The checks are green. Merge the change.",
+      "expected_output": "The reply matches the verdict SHA to HEAD, runs the check on that exact commit, makes the docs true, merges per docs/GIT.md, and never tags or bypasses a gate.",
+      "expectations": [
+        "The verdict SHA is compared with HEAD before merging.",
+        "The check is run again on the exact commit.",
+        "The feature row and task file are updated before merge.",
+        "No tag is created and no --admin bypass is used."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The review passed on abc123, but I pushed a fixup commit after that. Merge it; the change is the same.",
+      "expected_output": "The reply stops because the PASS is bound to another SHA and asks for a review of the new head.",
+      "expectations": [
+        "The reply detects that the verdict SHA and HEAD differ.",
+        "The reply does not merge.",
+        "The reply asks for a fresh review of the new SHA."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The merge is blocked by the required `ci/lint` check. Use the admin bypass; it is only a lint job.",
+      "expected_output": "The reply refuses the admin bypass and reports the blocking check verbatim.",
+      "expectations": [
+        "The reply refuses --admin or any bypass.",
+        "The reply quotes the blocking check or error.",
+        "The reply does not merge."
+      ]
+    }
+  ]
+}

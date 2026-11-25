@@ -1,0 +1,39 @@
+{
+  "skill_name": "git-workflow-and-versioning",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This project has no docs/GIT.md. We merge to main daily and release from tags. Set the git policy.",
+      "expected_output": "A one-page docs/GIT.md with the branching model, merge policy, version scheme and commit format, and a branch stated before the first edit.",
+      "expectations": [
+        "The policy names trunk-based branching with the daily-merge reason.",
+        "The merge policy follows the commits, not taste.",
+        "The version scheme is semver or none, and where the version lives.",
+        "The commit format is Conventional Commits.",
+        "The branch is stated before the first edit."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should we squash this branch? Every commit passes the suite and was reviewed as a unit.",
+      "expected_output": "The reply keeps the commits, because squashing would destroy save points and void a review bound to a SHA.",
+      "expectations": [
+        "The reply reads the commits before deciding.",
+        "The reply keeps the commits because each one passes.",
+        "The reply explains that a squash after review voids the verdict.",
+        "The reply does not rewrite shared history."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Set up branch protection for main: one review, CI required, no force push, and auto-merge only when both pass.",
+      "expected_output": "The reply writes the policy into docs/GIT.md, chooses rulesets or classic protection, shows the config before applying it, and never uses --admin to bypass it.",
+      "expectations": [
+        "The policy names the required review and required CI check.",
+        "The reply chooses rulesets or classic protection based on what is available.",
+        "The config is shown and approved before it is applied.",
+        "The reply never uses --admin to bypass protection."
+      ]
+    }
+  ]
+}

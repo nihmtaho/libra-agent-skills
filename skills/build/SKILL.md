@@ -12,23 +12,33 @@ is a rule rather than a preference.
 ## When to use
 
 Use when `docs/tasks/` has an unchecked task with a `Done means:` line, or when
-picking up one finding from `review`.
-Not when there is no acceptance line (that is `plan-work`), and not when
-something already fails and the cause is unknown (that is `debug`).
+picking up one finding from `change-review`.
+Not when there is no task or acceptance line (`plan-work`), no spec behind the
+task (`spec-driven-development`), or something already fails and the cause is
+unknown (`root-cause`).
+Not for a question about the code or the task: answer it and stop; a question is
+not a change request.
 
 ## Read first
 
 1. The task file, especially the unchecked task's `Done means:` and `Touches:`.
 2. `docs/PROJECT.md` `## Run & verify` for the commands.
 3. The spec section this task implements, if the acceptance line is not enough.
+4. The task's `Depends on:` line; an unchecked dependency means it is not ready.
 
 ## Steps
 
-1. State the task in one line. If you cannot, the task is not ready.
+1. State the task, its lane and its branch in one line. If you cannot, the task
+   is not ready. A question is not a task: answer it and stop; do not implement.
+   No task file: stop, name `plan-work`, ask for the acceptance line, and write
+   nothing. No spec behind the task: stop and name `spec-driven-development`.
+   Work only inside the task's `Done means:` and `Touches:`; anything else is a
+   new task. No branch: create it before touching a file.
 2. `test-driven-development` — always, before the first line of code.
 3. `incremental-implementation` — always, for how much lands in one commit.
    Steps 2 and 3 are the reason this skill exists: a task that skips them is not
-   done, whatever the suite says.
+   done, whatever the suite says. A slice that is not committed and ticked is
+   not landed.
 4. `git-workflow-and-versioning` when the project has no `docs/GIT.md`, and in
    every case state branch-or-direct before the first commit: which branch, and
    whether this commit belongs on the default one.
@@ -59,5 +69,6 @@ and records the stop, `context-engineering` fills its `Read first`, and
 
 Stop when the acceptance line cannot be checked, when the task needs a decision
 the spec does not make, when making a test pass would require disabling a check,
-or when a skill named above is not installed. Report which one. A spike that
-produced a document has stopped being a spike: say so.
+or when a skill named above is not installed. Report which one. Stop also when
+the acceptance line already passes, a dependency is unchecked, or the work leaves
+`Touches:`. A spike that produced a document has stopped being a spike: say so.

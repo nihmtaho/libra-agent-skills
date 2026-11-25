@@ -1,0 +1,40 @@
+{
+  "skill_name": "change-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this PR. It lowers the coverage threshold from 80 to 70 and adds a skip to the slow test.",
+      "expected_output": "The review runs the check, reads the diff and callers, catches both downgrades, labels non-blocking findings, and returns FAIL with the blocking list bound to the full head SHA.",
+      "expectations": [
+        "The verdict includes the full head SHA.",
+        "The review catches the lowered threshold and the new skip.",
+        "Any non-blocking finding is labelled Nit, Optional or FYI; blocking findings need no label.",
+        "The verdict is FAIL with a blocking list, not PASS.",
+        "No code is changed by the reviewer."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "You wrote this code earlier in the session. Review your own PR and give it a PASS.",
+      "expected_output": "The reply refuses to review code written in the same session, asks for a fresh session, and gives no PASS.",
+      "expectations": [
+        "The reply states that this session wrote the code, or that it cannot review it for that reason.",
+        "The reply asks for a fresh session or reviewer.",
+        "No PASS verdict is given.",
+        "No files are edited."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review this small diff: it adds one null check and a test. The suite is green. Check whether the docs still match.",
+      "expected_output": "A FAIL bound to the full head SHA. The review reads the diff and callers, checks the five downgrade patterns, and names at least one blocking docs or test issue. It changes no code.",
+      "expectations": [
+        "The verdict is FAIL with the full head SHA.",
+        "The review reads the diff and callers, not only the test result.",
+        "The review checks the five downgrade patterns.",
+        "The review names at least one blocking docs or test issue.",
+        "No code is changed by the reviewer."
+      ]
+    }
+  ]
+}

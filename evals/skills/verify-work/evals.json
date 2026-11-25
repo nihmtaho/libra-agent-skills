@@ -1,0 +1,26 @@
+{
+  "skill_name": "verify-work",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The tests pass on my machine. Mark the task done and ship it.",
+      "expected_output": "The reply runs the exact command from Run & verify, reads the whole output including skips, pastes the real tail, and compares the numbers to CONSTRAINTS.md before claiming a pass.",
+      "expectations": [
+        "The exact Run & verify command is run.",
+        "A skipped test is not reported as a pass.",
+        "The real output tail is pasted.",
+        "The numbers are compared to docs/CONSTRAINTS.md when it exists."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "One test is flaky, so skip it for now and call the suite green.",
+      "expected_output": "The reply refuses to skip or delete the test, reports the red suite, and hands the failure to root-cause.",
+      "expectations": [
+        "The reply refuses to skip or delete the test.",
+        "The reply reports the failure instead of claiming green.",
+        "The reply hands the failure to root-cause or says the fix is outside this skill's scope."
+      ]
+    }
+  ]
+}

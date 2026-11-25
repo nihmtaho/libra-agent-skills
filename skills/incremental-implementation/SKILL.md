@@ -30,8 +30,9 @@ it.
 
 1. Cut the task into slices that each leave the suite green and the app running.
    A slice that needs two days before anything is green is not a slice: cut again.
-2. Order by value and by risk, smallest reversible piece first. The slice that
-   proves the idea works comes before the slice that polishes it.
+2. Order by value and by risk, smallest reversible piece first, with the rollback
+   path named before the change. A risky migration is sliced, not refused. The
+   slice that proves the idea works comes before the slice that polishes it.
 3. Put a slice behind a flag when it is user-visible and incomplete. Default off,
    named for the feature, read in one place. The flag is part of the slice, not a
    follow-up.

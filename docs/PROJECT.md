@@ -1,6 +1,6 @@
 ---
 title: libra-agent-skills
-updated: 2026-11-18
+updated: 2026-11-25
 ---
 # 27 skills for coding agents, built around one state file so a project can be reopened six months later
 
@@ -10,12 +10,17 @@ updated: 2026-11-18
 - `bash scripts/check-docs.sh <file>` — one document against the rules in `docs/specs/markdown-check.md`.
 - `bash scripts/test-routing.sh` — a request a human would type must match exactly one skill description; two skills answering the same words fail.
 - `bash evals/run.sh` — contract evals for the Define and Build skills, one owner per artifact, and every behavior case's grader self-test.
+- `bash evals/skills/run.sh --inventory` — build every per-skill eval sandbox; `run.sh <skill> <id> with|without` prepares one.
 - `bash evals/behavior/run.sh <case>` — prepares a sandbox and prints the prompt; `--verify <dir>` grades it, `--self-test` proves the grader can fail.
 - `bash evals/routing/run.sh` — nineteen requests a model must route to the right skill; `--verify <dir>` grades the answers, `--self-test` proves the grader can fail.
 - Sign of success: exit 0, and five lines `all checks passed`, `fixtures passed`, `routing passed`, `evals passed`, `install tests passed`.
 
 ## Module map
 - `skills/<name>/SKILL.md` — the single source of the skill set; ≤80 lines, five fixed sections; renaming the file means renaming `name`.
+- `.claude-plugin/marketplace.json` — groups the 27 skills for `npx skills add`; every skill appears exactly once.
+- `skills/bootstrap-project/references/` — the `AGENTS.md` template and the old-repo rebuild steps.
+- `skills/using-libra/references/routing.md` — the full routing table behind the classifier.
+- `skills/git-workflow-and-versioning/references/branch-protection.md` — checks, reviews, rulesets and auto-merge.
 - `install.sh` — symlinks into the destination; the fragile parts are overwriting and paths with spaces.
 - `scripts/check.sh` — the skill contract (frontmatter, length, headings, forbidden tokens, empty sections); changing a rule here changes it for all 27 skills.
 - `scripts/check-docs.sh` — the document rules; the copy in `scripts/` and the one shipped in `skills/bootstrap-project/scripts/` must stay byte-identical.
@@ -27,6 +32,10 @@ updated: 2026-11-18
 - `docs/design-system.md` — the document type for tokens, components and where state lives; owner `frontend-ui-engineering`. Not used in this repo.
 - `docs/GIT.md` — this repository's branching model, merge policy, version scheme and commit format; owner `git-workflow-and-versioning`.
 - `evals/` — contract evals for the Define and Build skills, plus the live rubric a human runs by hand.
+- `evals/skills/<name>/evals.json` — Anthropic-style prompts and expectations, two or more per skill; `evals/run.sh` checks every skill has one.
+- `evals/skills/fixtures.sh` — builds a runnable sandbox for each case.
+- `evals/skills/run.sh` — prepares one case, or `--inventory` to build all 63.
+- `evals/skills/verify.sh` — grades a run's `grading.json` against the case expectations.
 
 ## Features
 | Feature | Status | Stopped at | Docs |
@@ -42,14 +51,18 @@ updated: 2026-11-18
 | reading Office documents | done | | [spec](specs/office-docs.md) |
 | github distribution | done | | [readme](../README.md) |
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
+| Phase A: collision renames, installer groups, trust hierarchy, intake gate, `AGENTS.md` bootstrap, branch protection | done | | [spec](specs/phase-a-skill-hardening.md) · [task](tasks/phase-a-skill-hardening.md) |
+| per-skill evals and a runnable sandbox per case | done | | [spec](specs/phase-a-skill-hardening.md) · [task](tasks/phase-a-skill-hardening.md) · [evals](../evals/skills/README.md) |
+| the two-week field test on three projects | running | clock started 2026-11-21; waiting for the first log line | [plan](plans/2026-11-21-field-test.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
 - [ADR-0002](adr/0002-four-define-skills-and-constraints-md.md) — `spec-driven-development` replaces `write-spec`; the quality bar lives in `docs/CONSTRAINTS.md`.
 - [ADR-0003](adr/0003-direct-commits-need-a-recorded-exception.md) — a direct commit to the default branch needs a recorded exception in `docs/GIT.md`; a single commit is judged, and the merge policy follows the commits.
+- Renamed `resume`, `review`, `verify`, `simplify` and `debug` to stop replacing built-in slash commands; the new names describe the moment and collide with none.
+- A new idea is classified by `using-libra` before any edit; a feature or behavior change gets a spec and a task first, and the branch is created before the first edit.
 
 ## Next
-1. Install the 27-skill set into a third project and watch `docs/GIT.md` and the first spec it writes; record the report here.
-2. Use the set for a week on real work; write down what snags, with the exact words that were said.
-3. Then pick up [the deferred list](plans/2026-11-15-next-phases-plan.md).
-4. Re-read the Snyk audit after the next skills.sh sync and confirm `build` leaves CRITICAL; the flagged copy was the pre-0.2.0 skill, and the rule it named now says what it is.
+1. Update the three field-test projects to the shipped branch and log the first line.
+2. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; `0.3.0` is the prune release.
+3. Phase B starts in `0.4.0` with `failure-guardrails`, `documentation-and-adrs`, and the GitHub suite; each addition needs evidence from two projects.

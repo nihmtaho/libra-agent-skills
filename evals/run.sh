@@ -19,6 +19,12 @@ has() { # <skill> <fixed string> <rule label>; case-sensitive on purpose
     { echo "FAIL $1: $3"; fail=1; }
 }
 
+# --- using-libra: classify before editing, branch before editing ------------
+has using-libra 'Classify the request in one line before touching a file' 'does not classify before an edit'
+has using-libra 'No task file, no edit' 'may edit a feature without a task'
+has using-libra 'create the branch before the first edit' 'may edit before creating a branch'
+grep -qF 'using-libra' "$root/AGENTS.md" ||
+  { echo "FAIL AGENTS.md: a new session is never sent to the classifier"; fail=1; }
 # --- interview-me: asks, never writes, never guesses -------------------------
 write_body "$root/skills/interview-me/SKILL.md" | grep -q 'none' ||
   { echo "FAIL interview-me: Write must be none, it is a conversation"; fail=1; }
@@ -83,8 +89,8 @@ for artifact in 'docs/specs/' 'docs/ideas/' 'docs/CONSTRAINTS.md' 'docs/GIT.md';
 done
 
 # --- the bar is read where it is enforced -----------------------------------
-has verify 'docs/CONSTRAINTS.md' 'the floor is checked without the project bar'
-has review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
+has verify-work 'docs/CONSTRAINTS.md' 'the floor is checked without the project bar'
+has change-review 'docs/CONSTRAINTS.md' 'the downgrade check ignores the project bar'
 
 # --- templates ship with the skills that write them -------------------------
 for s in idea-refine spec-driven-development constraint-driven-development release; do
@@ -104,6 +110,8 @@ steps_body "$root/skills/build/SKILL.md" | grep -qF 'skip the tests' ||
   { echo "FAIL build: the spike exception does not say the tests are skipped"; fail=1; }
 write_body "$root/skills/build/SKILL.md" | grep -q 'none' ||
   { echo "FAIL build: Write must be none, it dispatches"; fail=1; }
+steps_body "$root/skills/build/SKILL.md" | grep -qF 'No branch: create it' ||
+  { echo "FAIL build: may start a task without a branch"; fail=1; }
 
 # --- incremental-implementation: a commit knows its branch ------------------
 steps_body "$root/skills/incremental-implementation/SKILL.md" | grep -qiF 'git rev-parse --abbrev-ref HEAD' ||
@@ -201,7 +209,7 @@ grep -qF 'exactly three questions' "$root/skills/bootstrap-project/SKILL.md" ||
   { echo "FAIL bootstrap-project: git is never asked about"; fail=1; }
 grep -qF 'git-workflow-and-versioning' "$root/skills/bootstrap-project/SKILL.md" ||
   { echo "FAIL bootstrap-project: no handoff writes docs/GIT.md"; fail=1; }
-steps_body "$root/skills/bootstrap-project/SKILL.md" | grep -qF 'Docs` cell stays empty' ||
+flat "$root/skills/bootstrap-project/references/old-repo.md" | grep -qF 'Docs` cell stays empty' ||
   { echo "FAIL bootstrap-project: a Docs cell may cite a file that does not cover it"; fail=1; }
 
 # --- release: the gates are commands in the steps, not advice ---------------
@@ -258,5 +266,17 @@ done
 out=$(bash "$root/evals/routing/run.sh" --self-test 2>&1) ||
   { echo "FAIL routing eval: $out"; fail=1; }
 
+# --- every skill carries an Anthropic-style eval file ----------------------
+for d in "$root"/skills/*/; do
+  n=$(basename "$d")
+  f="$root/evals/skills/$n/evals.json"
+  [ -f "$f" ] || { echo "FAIL $n: no evals/skills/$n/evals.json"; fail=1; continue; }
+  grep -q "\"skill_name\": \"$n\"" "$f" ||
+    { echo "FAIL $n: eval file names another skill"; fail=1; }
+  [ "$(grep -c '"id":' "$f")" -ge 2 ] ||
+    { echo "FAIL $n: fewer than two evals"; fail=1; }
+done
+total=$(grep -h '"id":' "$root"/evals/skills/*/evals.json | wc -l | tr -d ' ')
+[ "$total" -eq 63 ] || { echo "FAIL evals: expected 63 cases, got $total"; fail=1; }
 [ "$fail" -eq 0 ] && echo "evals passed"
 exit "$fail"

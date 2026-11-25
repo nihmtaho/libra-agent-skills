@@ -16,6 +16,12 @@ count=$(ls "$d/.agents/skills" | wc -l | tr -d ' ')
 expected=$(ls -d "$root"/skills/*/ | wc -l | tr -d ' ')
 [ "$count" = "$expected" ] || { echo "FAIL linked $count of $expected"; fail=1; }
 
+# The installer groups every skill exactly once. A skill missing from the
+# manifest is invisible in `npx skills add` and nobody notices.
+listed=$(sed -n 's|.*"\./skills/\([a-z0-9-]*\)".*|\1|p' "$root/.claude-plugin/marketplace.json" | sort | tr '\n' ' ')
+actual=$(for dir in "$root"/skills/*/; do basename "$dir"; done | sort | tr '\n' ' ')
+[ "$listed" = "$actual" ] || { echo "FAIL marketplace groups do not match skills/"; fail=1; }
+
 before=$(readlink "$d/.agents/skills/using-libra")
 "$root/install.sh" --to agents,claude --dest "$d" >/dev/null || {
   echo "FAIL second run failed"; fail=1; }

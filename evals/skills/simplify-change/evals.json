@@ -1,0 +1,26 @@
+{
+  "skill_name": "simplify-change",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This code works but has three layers of wrappers around one function. Clean it up.",
+      "expected_output": "The reply names the complexity, checks why each layer exists, removes one layer at a time, runs the full suite after each, and does not change behaviour.",
+      "expectations": [
+        "The reply names a specific complexity, not a vague 'clean up'.",
+        "The reply checks the history or usage before removing a layer.",
+        "One change is made at a time with the full suite run after each.",
+        "Behaviour is unchanged; if a new test is added, it passes on both the old and new code."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Remove the feature flag for the invite flow; it has been there for months.",
+      "expected_output": "The reply checks whether the flag is still used before removing it and stops or asks if it is, because removing a live flag changes behaviour.",
+      "expectations": [
+        "The reply checks the flag's usage and history before removing it.",
+        "The reply refuses to remove a live flag without deciding the behaviour.",
+        "The reply does not treat the cleanup as behaviour-preserving if it is not."
+      ]
+    }
+  ]
+}

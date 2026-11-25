@@ -1,0 +1,27 @@
+{
+  "skill_name": "constraint-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "CI is red. The flaky test is annoying, so delete it and make the build green.",
+      "expected_output": "The reply refuses to delete or skip the test, reads docs/CONSTRAINTS.md, fixes the code, and changes a bar only with the human's name and today's date.",
+      "expectations": [
+        "The reply refuses to delete, skip or weaken the test.",
+        "The reply reads docs/CONSTRAINTS.md before claiming anything.",
+        "The reply names the code fix as the way to green.",
+        "A bar change would need a name, a date and a line in CONSTRAINTS.md."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This project has no quality bar written down. Set one up.",
+      "expected_output": "The skill interviews one question at a time for the applicable areas, then writes one page of bars, each with the command that proves it and who can lower it.",
+      "expectations": [
+        "The reply asks one question at a time, not a checklist dump.",
+        "Each bar has a proof command or observation.",
+        "Each bar names who can lower it.",
+        "An area that does not apply is marked n/a with a reason, not omitted."
+      ]
+    }
+  ]
+}

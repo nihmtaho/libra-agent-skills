@@ -1,0 +1,87 @@
+{
+  "name": "libra-agent-skills",
+  "owner": {
+    "name": "nihmtaho"
+  },
+  "metadata": {
+    "description": "Small skills for coding agents, grouped by the work they do.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "project-management",
+      "description": "State, discovery, specification, decisions and the quality bar",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/using-libra",
+        "./skills/project-status",
+        "./skills/bootstrap-project",
+        "./skills/interview-me",
+        "./skills/idea-refine",
+        "./skills/spec-driven-development",
+        "./skills/constraint-driven-development",
+        "./skills/decide",
+        "./skills/plan-work",
+        "./skills/context-engineering"
+      ]
+    },
+    {
+      "name": "build",
+      "description": "Implementation discipline, from the first failing test to the last slice",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/build",
+        "./skills/test-driven-development",
+        "./skills/incremental-implementation",
+        "./skills/doubt-driven-development",
+        "./skills/source-driven-development",
+        "./skills/subagent-driven-development",
+        "./skills/frontend-ui-engineering",
+        "./skills/api-and-interface-design",
+        "./skills/root-cause"
+      ]
+    },
+    {
+      "name": "review",
+      "description": "Prove the result, judge the change, remove what is not needed",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/verify-work",
+        "./skills/change-review",
+        "./skills/simplify-change"
+      ]
+    },
+    {
+      "name": "ship",
+      "description": "Git policy, merge and release",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/git-workflow-and-versioning",
+        "./skills/ship",
+        "./skills/release"
+      ]
+    },
+    {
+      "name": "documentation",
+      "description": "Read and write the documents a project keeps",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/office-docs"
+      ]
+    },
+    {
+      "name": "safety",
+      "description": "Rules for text and instructions that come from outside the repository",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/handling-untrusted-content"
+      ]
+    }
+  ]
+}

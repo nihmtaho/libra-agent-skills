@@ -1,6 +1,6 @@
 # evals
 
-Three layers, because a script can prove only some of it.
+Four layers, because a script can prove only some of it.
 
 ## 1. Contract evals
 
@@ -33,7 +33,7 @@ after** the fragment — `Accessibility, WCAG 2.1 AA: every control that matters
 Nothing anchors the end of the sentence, so the qualifier is invisible. Closing
 that needs a different mechanism (an end-of-sentence anchor, or a semantic eval),
 which is a redesign of the contract-eval style, not another fragment. Until then:
-a contract eval proves a rule is written down; `review` is what proves it holds.
+a contract eval proves a rule is written down; `change-review` is what proves it holds.
 
 ## 2. Behavior evals
 
@@ -80,7 +80,14 @@ descriptions is generated from the skills that exist, so it cannot drift from th
 set. `--self-test` proves the grader: no answer fails, the known answer passes,
 one wrong answer fails.
 
-## 4. What a human runs
+## 4. Per-skill evals
+`evals/skills/<name>/evals.json` holds two or more prompt cases per skill in
+Anthropic's `evals.json` schema: `skill_name`, `prompt`, `expected_output` and
+verifiable `expectations`. These are data for the skill-creator workflow; the
+automatic suite above still owns the contract, behavior and routing checks.
+`evals/run.sh` fails when a skill has no file or fewer than two cases.
+
+## 5. What a human runs
 
 Give the agent the prompt, then judge the reply against the two columns. One
 failing case is enough to reopen the skill.
@@ -106,6 +113,11 @@ same prompt, is the cheapest claim worth making.
 |---|---|---|
 | 2026-11-17 | `constraints-no-cheat` | 1 of 3: passed, only `src/greet.sh` changed, suite green, test file and bar byte-identical |
 | 2026-11-18 | `routing` (19 requests) | 3 of 3: 19 of 19 matched on every run, one for each skill across all phases. `r19`, "squash or keep the commits", went to `git-workflow-and-versioning` in all three runs, never to `ship` |
+| 2026-11-22 | `routing` (19 requests) | 1 of 3: 19 of 19 matched in one fresh sandbox; two more runs are needed before this counts |
+| 2026-11-22 | `constraints-no-cheat` | 1 of 3: passed; suite green, `test/greet_test.sh` and `docs/CONSTRAINTS.md` byte-identical |
+| 2026-11-22 | `idea-refine-artifact` | 1 of 3: passed; 7 options, checker clean, only `docs/` changed |
+| 2026-11-22 | `spec-before-code` | 1 of 3: passed; all sections, checkable acceptance, only `docs/` changed |
+| 2026-11-25 | per-skill evals (63 cases, 126 runs) | 50 of 126 fully pass: with-skill 44 of 63 (average 0.90), baseline 6 of 63 (average 0.52). Three known case gaps are listed in `evals/skills/README.md`. |
 
 The routing case grew from ten to eighteen requests when the Build phase gained
 eight skills, and to nineteen when the git skill landed, so earlier passes do not

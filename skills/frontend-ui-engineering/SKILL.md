@@ -44,6 +44,9 @@ Not for a copy change or a colour tweak that the design system already names.
    never carried by colour alone, and `prefers-reduced-motion` is respected.
 7. A screen is done when it works with the keyboard only and at the narrowest
    width. Not before.
+8. A focus ring alone is not accessible: check the keyboard path, the accessible
+   name, contrast and colour-independent meaning before calling a control done,
+   and say which checks passed.
 
 ## Write
 

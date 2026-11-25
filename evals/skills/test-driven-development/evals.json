@@ -1,0 +1,27 @@
+{
+  "skill_name": "test-driven-development",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a retry limit to the uploader. It currently retries forever.",
+      "expected_output": "A failing test is written first and watched failing for the right reason, then the smallest code makes it pass, the full suite runs, and refactoring is a separate commit.",
+      "expectations": [
+        "The test is written before the implementation.",
+        "The reply shows the test failing for the intended reason before the fix.",
+        "The full Run & verify command is run, not only the new test.",
+        "Refactoring happens with the suite green and behaviour unchanged."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fix the bug where a transfer can be submitted twice in the same minute. There is no regression test yet.",
+      "expected_output": "The fix starts with a regression test that fails for the bug's reason, then fixes the shared cause, and runs the full suite.",
+      "expectations": [
+        "A regression test is written first.",
+        "The reply watches the test fail before fixing the code.",
+        "The fix lands in the shared code path, not each caller.",
+        "The full suite is green after the fix."
+      ]
+    }
+  ]
+}

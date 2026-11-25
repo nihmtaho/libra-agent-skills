@@ -22,6 +22,8 @@ route() { # <regex of a request a human would type> <the one skill that answers 
   fail=1
 }
 
+# A new idea enters through the classifier, not straight into an editor.
+route 'new idea|behavior change'                      using-libra
 # The Define ladder: unclear request, then hunch, then chosen direction, then bar.
 route 'request is ambiguous'                          interview-me
 route 'one question per turn|you know what I mean'    interview-me
@@ -59,8 +61,8 @@ route '[Cc]ut a version'                              release
 route 'verdict passed'                                ship
 
 # Two pairs that name nearly the same moment, and must stay apart.
-route 'claim a pass'                                  verify
-route 'bound to one commit'                           review
+route 'claim a pass'                                  verify-work
+route 'bound to one commit'                           change-review
 
 # An OR-ed case hides a dead branch: one live alternative makes the whole line
 # green while the other matches no description at all. Every alternative must

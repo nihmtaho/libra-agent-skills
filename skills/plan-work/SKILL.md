@@ -25,7 +25,8 @@ acceptance criteria is a wish list.
 ## Steps
 
 1. Check the spec has acceptance criteria. If it does not, send it back to
-   `spec-driven-development`; do not invent criteria here.
+   `spec-driven-development`; do not invent criteria here. No acceptance, no
+   task file: write nothing and name the spec skill in the reply.
 2. Draw dependencies: which task must finish before another can start. A cycle
    means the split is wrong; split by outcome instead.
 3. Cut vertical slices: each task crosses the layers it needs and leaves the

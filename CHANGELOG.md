@@ -7,6 +7,12 @@ All notable changes to this skill set. Earlier releases are in the git tags.
 Waiting for the next version: a checker rule for markdown tables, the table it
 caught, and an authorship rule that no longer reads as concealment.
 
+### Added
+- per-skill evals: 63 cases across the 27 skills, a sandbox runner and fixtures,
+  and a verifier. The full run scored 44/63 with-skill against 6/63 baseline.
+- an intake gate and a question guard: a hunch goes through `idea-refine`, two
+  readings through `interview-me`, and a question is answered, not implemented.
+
 ### Fixed
 - the `## Features` table in `docs/PROJECT.md` renders as a table again: the
   separator row was missing, and `check-docs.sh` now fails a table whose separator

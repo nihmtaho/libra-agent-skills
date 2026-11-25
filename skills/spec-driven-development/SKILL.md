@@ -13,6 +13,8 @@ could describe any product is not a spec.
 
 Use when a direction is chosen and the next action would be writing code, or when
 an existing spec must absorb a change.
+A request to skip the spec is not a decision: write it, or stop and ask for the
+missing acceptance and limits.
 Not for a request with two readings (`interview-me`), an idea still being shaped
 (`idea-refine`), or for slicing work into tasks (`plan-work`).
 
@@ -40,7 +42,7 @@ Not for a request with two readings (`interview-me`), an idea still being shaped
    - Test plan: the command that proves it, plus one failure path that must be
      tested.
    - Limits: what is deliberately not in this version, and what would make this
-     spec wrong.
+     spec wrong. Out of scope is never empty.
 2. Acceptance criteria: one line per use case, checkable by a command or an
    observation. "It works" is not a criterion.
 3. Name the biggest risk and the assumption behind it. If it is untested, say

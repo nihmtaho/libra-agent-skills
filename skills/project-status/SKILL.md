@@ -1,9 +1,9 @@
 ---
-name: resume
+name: project-status
 description: Read the state file and report where work stands in four lines. Use when a session starts in a project with docs/PROJECT.md, or when returning after a break.
 ---
 
-# resume
+# project-status
 
 The four lines this skill prints are the whole point of this set: what this is,
 where it stands, what is half-done, what is next. It reads and reports; it

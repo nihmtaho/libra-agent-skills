@@ -1,9 +1,9 @@
 ---
-name: debug
+name: root-cause
 description: Diagnose a failure whose cause is unknown, then fix the cause once. Use when a test fails, a build breaks, or behavior contradicts expectation.
 ---
 
-# debug
+# root-cause
 
 Five steps, in order. The point is that the fix follows the cause, not the
 symptom, and that the same defect cannot come back quietly.
@@ -31,7 +31,8 @@ Not when the behavior is merely undesigned; that is `spec-driven-development`.
 3. Shrink to the smallest case that still fails. A one-line reproduction is worth
    ten paragraphs of theory.
 4. Fix the cause once, in the code path all callers share. Patching each caller
-   is how one bug becomes three.
+   is how one bug becomes three. If the test is the cause, fix the test, not the
+   source. Apply the fix in this session; a proposal is not a fix.
 5. Add the regression test that fails before the fix and passes after. Run it
    before and after; if you did not watch it fail, you do not know it tests the
    defect.

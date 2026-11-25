@@ -1,0 +1,26 @@
+{
+  "skill_name": "context-engineering",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This repository is huge and the task file's Read first is empty. Find what you need to change the retry path.",
+      "expected_output": "The reply writes the question in one line, reads the smallest set including the retry code and its tests, quotes the lines relied on, and writes the pack into the task file's Read first.",
+      "expectations": [
+        "The reply states the question before reading.",
+        "The reply reads the entry point and the tests that name the behaviour.",
+        "The reply quotes the lines it relied on.",
+        "The reply updates the task file's Read first with the pack."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We keep forgetting to run the migration check. Add a rule so the next session remembers.",
+      "expected_output": "The rule is written into AGENTS.md as one checkable line, not a vague mood, and the reply says which command proves it.",
+      "expectations": [
+        "The rule is one line in AGENTS.md.",
+        "The rule is a command or a checkable statement.",
+        "The reply does not add a paragraph of vague advice."
+      ]
+    }
+  ]
+}

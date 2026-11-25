@@ -1,9 +1,9 @@
 ---
-name: simplify
+name: simplify-change
 description: Remove complexity while keeping behavior identical. Use when code works but is harder to read, change or extend than it should be, or when asked to clean up a change.
 ---
 
-# simplify
+# simplify-change
 
 Less code, same behavior, proven by the same tests. Understanding why something
 exists comes before deciding it should not.
@@ -30,7 +30,7 @@ Not for changing behavior, and not while a test is red.
    before removing it. Ask the human when the history is silent.
 3. Make one change at a time and run the full suite after each. A refactor that
    also changes behavior is two changes in one commit, and the failing one hides
-   the other.
+   the other. One removal, one suite run; do not batch.
 4. Delete before adding. A helper that removes two lines is a net loss.
 5. Stop when the next removal would change what the code does, or would require
    a new test to keep it safe.

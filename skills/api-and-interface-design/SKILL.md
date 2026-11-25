@@ -31,11 +31,13 @@ Not for a change no caller outside the file can see: that is ordinary code.
    on — field order, null versus absent, error text, status codes, timing. Anything
    you would not promise, do not expose. Do not leak a database column name.
 3. One error format, everywhere: a stable machine-readable code plus a human
-   message, and the same envelope in every failure. Never return a raw exception;
-   never return 200 with a failure inside unless the whole API already does.
+   message, and the same envelope in every failure. The envelope is a body shape,
+   not a list of codes. Never return a raw exception; never return 200 with a
+   failure inside unless the whole API already does.
 4. Validate at the boundary, once: reject a missing, unknown or wrongly typed
    field at the edge, before any business logic. Never trust a caller's type,
-   however typed the client is.
+   however typed the client is. A handler that names error shapes but rejects
+   no bad field is not done.
 5. A write that can be retried is idempotent: a key the caller supplies, or a
    documented rule for repeating it safely.
 6. Additive change needs no version; a breaking change does. Say which one this

@@ -1,9 +1,9 @@
 ---
-name: review
+name: change-review
 description: Judge a diff or PR and return a verdict bound to one commit, changing nothing. Use when a branch is proposed for merge.
 ---
 
-# review
+# change-review
 
 A verdict is bound to a commit, otherwise it means nothing. This skill reads the
 diff, runs the checks, and answers with `PASS <sha>` or `FAIL` plus findings.

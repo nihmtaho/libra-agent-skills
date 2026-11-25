@@ -42,7 +42,8 @@ covers: run the suite, see green, then change shape.
    data is what the test says. A helper that hides the data hides the failure.
    Duplication in a test is cheaper than a test nobody can read.
 8. A bug fix starts with a test that fails for the reason the bug is real. If you
-   cannot make it fail, you have not found the bug.
+   cannot make it fail, you have not found the bug. Write it in this session; a
+   proposed test is not a test.
 
 ## Write
 

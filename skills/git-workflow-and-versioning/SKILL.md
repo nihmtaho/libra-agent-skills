@@ -29,7 +29,7 @@ change that passed review: that is `ship`.
    daily. A commit may go straight to the default branch only when this file says
    so. A long-lived `develop` is legitimate with a reason: a release train, a
    supported older version, an environment that cannot deploy every commit.
-2. The single commit. State branch-or-direct in one line before making it. Direct
+2. The single commit. State branch-or-direct before the first edit; create the branch then. Direct
    only when this file allows it and the change is one concern that does not alter
    behaviour; a short branch when it alters behaviour, needs review, or a release
    will come from it. Unclear means branch: a branch costs a merge, a commit on
@@ -62,6 +62,9 @@ change that passed review: that is `ship`.
    format, not concealment.
 7. Write `docs/GIT.md`, one page. `bootstrap-project` records the one-line
    decision in `## Decisions`; a project past bootstrap lets `decide` do it.
+   For the GitHub side — required checks, reviews, rulesets, auto-merge — follow
+   `references/branch-protection.md`. Apply a policy only after the human approves
+   it, and never bypass it with `--admin`.
 
 ## Write
 
