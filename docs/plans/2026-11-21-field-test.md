@@ -71,6 +71,10 @@ incorrect. For `wrong`, quote the exact words that were said.
 | 2026-11-25 | `goxviet` | `project-status` | `wrong` | Said “`docs/PROJECT.md` is malformed … its line 5 is a tool-call string”; line 5 is `## Run & verify`. Standing and next came back unverified/unknown. |
 | 2026-11-25 | `libra-agent-skills` | `project-status` | `helped` | Four lines correct. The first Read was truncated; it used `sed`, then reported the right next step and the stale build task. |
 
+The first `Read` in these sessions can be truncated by the tool. The
+`libra-agent-skills` run used `sed` and was right; the other two trusted the
+truncated read and reported the state file as empty or malformed.
+
 The only question that must be answered at the end: after five or more days away,
 does a fresh session answer "what is this, where does it stand, what is next" in
 four lines without reading the code?
