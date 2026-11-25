@@ -53,7 +53,7 @@ updated: 2026-11-25
 | markdown check after every write | done | | [spec](specs/markdown-check.md) |
 | Phase A: collision renames, installer groups, trust hierarchy, intake gate, `AGENTS.md` bootstrap, branch protection | done | | [spec](specs/phase-a-skill-hardening.md) |
 | per-skill evals and a runnable sandbox per case | done | | [spec](specs/phase-a-skill-hardening.md) · [evals](../evals/skills/README.md) |
-| the two-week field test on three projects | running | clock started 2026-11-21; waiting for the first log line | [plan](plans/2026-11-21-field-test.md) |
+| the two-week field test on three projects | running | first lines in: 2 of 3 `project-status` runs were wrong | [plan](plans/2026-11-21-field-test.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
@@ -63,6 +63,6 @@ updated: 2026-11-25
 - A new idea is classified by `using-libra` before any edit; a feature or behavior change gets a spec and a task first, and the branch is created before the first edit.
 
 ## Next
-1. Update the three field-test projects to the shipped branch and log the first line.
-2. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; `0.3.0` is the prune release.
+1. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; the first lines are in and 2 of 3 `project-status` runs are wrong.
+2. Cut `0.3.0` as the prune release after the 2026-12-05 review; do not add a skill to it.
 3. Phase B starts in `0.4.0` with `failure-guardrails`, `documentation-and-adrs`, and the GitHub suite; each addition needs evidence from two projects.

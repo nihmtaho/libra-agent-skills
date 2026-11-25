@@ -1,6 +1,6 @@
 ---
 title: Two-week field test of the 27-skill set
-updated: 2026-11-22
+updated: 2026-11-25
 ---
 # Two-week field test
 
@@ -41,7 +41,9 @@ Three blockers found before day 1:
       `skills-lock.json`, `scripts/check-docs.sh`, `.rules`).
 - [x] This repository: clock started 2026-11-21.
 
-Day 1 is done. The next action is the first log line, not another setup change.
+Day 1 is done. The first log line is in: two of the three `project-status` runs
+were wrong even though the state files held content. That is the finding the
+next session must explain, not another setup change.
 
 ## Scope change 2026-11-22
 Phase A is a non-additive hardening pass and stays inside the baseline:
@@ -65,6 +67,9 @@ incorrect. For `wrong`, quote the exact words that were said.
 
 | Date | Project | Skill | Verdict | Note |
 |---|---|---|---|---|
+| 2026-11-25 | `libra-pomodoro` | `project-status` | `wrong` | Said “`docs/PROJECT.md` has no content”; the file has 77 lines. It inferred the project from file names and reported `Next: Unknown`. |
+| 2026-11-25 | `goxviet` | `project-status` | `wrong` | Said “`docs/PROJECT.md` is malformed … its line 5 is a tool-call string”; line 5 is `## Run & verify`. Standing and next came back unverified/unknown. |
+| 2026-11-25 | `libra-agent-skills` | `project-status` | `helped` | Four lines correct. The first Read was truncated; it used `sed`, then reported the right next step and the stale build task. |
 
 The only question that must be answered at the end: after five or more days away,
 does a fresh session answer "what is this, where does it stand, what is next" in
