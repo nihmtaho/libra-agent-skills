@@ -67,8 +67,8 @@ No check can know every tool's command list at author time. One prefix can.
       `ls skills | wc -l` still prints 27.
 - [ ] `bash scripts/check.sh` fails an unprefixed directory name, and
       `test-check-docs.sh` proves it on a tree that was green first.
-- [ ] `check.sh` fails a `marketplace.json` path that does not exist and a skill
-      listed twice or not at all.
+- [ ] A rename that misses `marketplace.json` fails the suite: `test-install.sh`
+      already compares the manifest with `skills/`, so no second check is added.
 - [ ] `bash scripts/test.sh` prints its five green lines, and
       `evals/skills/run.sh --inventory` prints `inventory passed`.
 - [ ] No current-truth file names a retired identifier as a skill; the sweep in

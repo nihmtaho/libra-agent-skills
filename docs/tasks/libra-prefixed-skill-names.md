@@ -5,7 +5,7 @@ spec: ../specs/libra-prefixed-skill-names.md
 ---
 # Prefix every skill name with libra-
 
-Stopped at: T5 done; T6 next
+Stopped at: T6 done; T7 next
 
 ## Checkpoint — after T3
 `bash scripts/test.sh` prints its five green lines, `ls skills | grep -c '^libra-'`
@@ -103,7 +103,7 @@ skills should be re-planned before T4.
       `release` is the other homograph: changelog prose and "release notes" stay;
       only the skill identifier moves.
 
-- [ ] **T6 — the guard: an unprefixed name cannot merge**
+- [x] **T6 — the guard: an unprefixed name cannot merge**
       Done means: `bash scripts/check.sh` prints `all checks passed`;
       `bash scripts/test-check-docs.sh` prints `fixtures passed`; and that file
       contains one mutation that renames a skill directory to an unprefixed name
@@ -111,12 +111,12 @@ skills should be re-planned before T4.
       Touches: `scripts/check.sh`, `scripts/test-check-docs.sh`
       Depends on: T5
 
-      `check.sh` gains `case "$name" in libra-*) ;; *) FAIL ... ;; esac`, and a
-      pass over `marketplace.json` that every `./skills/<name>` path exists and
-      every skill appears exactly once — the rename is the moment a manifest path
-      silently rots. Prove both on the throwaway tree the existing test already
-      builds: the unmutated tree must be green before each mutation, so a tree
-      that was already red cannot pass for the wrong reason.
+      `check.sh` gains `case "$name" in libra-*) ;; *) FAIL ... ;; esac`. The
+      manifest needs no new check: `test-install.sh` already compares every
+      `./skills/<name>` path with `skills/`, so a rename that misses it fails the
+      same suite. Prove the prefix rule on the throwaway tree the existing test
+      builds; the tree is green before the mutation, so it cannot pass for the
+      wrong reason.
 
 - [ ] **T7 — the record: README upgrade path, changelog, state file**
       Done means: `bash scripts/test.sh` exits 0 and prints its five green lines;

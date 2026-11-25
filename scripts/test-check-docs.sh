@@ -864,6 +864,23 @@ fi
 # Put the tree back, so each later case fails only for its own reason.
 cp "$root/skills/libra-incremental-implementation/SKILL.md" "$tree/skills/libra-incremental-implementation/SKILL.md"
 
+# A name without the prefix is the collision ADR-0004 exists to prevent: the
+# contract must fail even when the skill is otherwise perfect.
+mkdir -p "$tree/skills/no-prefix"
+sed 's/^name: libra-ship$/name: no-prefix/; s/^# libra-ship$/# no-prefix/' \
+  "$root/skills/libra-ship/SKILL.md" > "$tree/skills/no-prefix/SKILL.md"
+if out=$(bash "$tree/scripts/check.sh" 2>&1); then
+  echo "FAIL check.sh stayed green on a name without the libra- prefix"
+  fail=1
+else
+  case "$out" in
+    *"FAIL no-prefix: name must start with libra-"*) ;;
+    *) echo "FAIL check.sh lost the prefix rule: $out"; fail=1 ;;
+  esac
+fi
+rm -rf "$tree/skills/no-prefix"
+
+
 # The untrusted-text rule must name the skill that carries the rules: a stray
 # "untrusted" elsewhere is not a policy, and every common spelling is a trigger.
 i=0

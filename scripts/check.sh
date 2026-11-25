@@ -26,6 +26,12 @@ for dir in "$root"/skills/*/; do
   desc=$(awk '/^description:[ ]*/{sub(/^description:[ ]*/,""); print; exit}' "$f")
   [ "$fmname" = "$name" ] || { echo "FAIL $name: name field is '$fmname'"; fail=1; }
   [[ "$name" =~ ^[a-z0-9-]+$ ]] || { echo "FAIL $name: directory name not [a-z0-9-]"; fail=1; }
+  # The prefix is the whole answer to a name shadowing a tool's own command: a
+  # tool would have to ship libra-<name> to collide. See ADR-0004.
+  case "$name" in
+    libra-*) ;;
+    *) echo "FAIL $name: name must start with libra-"; fail=1 ;;
+  esac
   case "$desc" in
     *"Use when"*) ;;
     *) echo "FAIL $name: description lacks 'Use when'"; fail=1 ;;
