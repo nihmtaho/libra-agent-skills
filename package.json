@@ -1,0 +1,71 @@
+{
+  "name": "libra-agent-skills",
+  "version": "0.3.0",
+  "description": "27 skills for coding agents, one plugin for Claude Code, OpenCode and Pi, and the same skills for CommandCode.",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "nihmtaho"
+  },
+  "homepage": "https://github.com/nihmtaho/libra-agent-skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nihmtaho/libra-agent-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nihmtaho/libra-agent-skills/issues"
+  },
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "claude-code",
+    "opencode"
+  ],
+  "exports": {
+    ".": "./adapters/opencode/index.ts",
+    "./opencode": "./adapters/opencode/index.ts",
+    "./pi": "./adapters/pi/index.ts"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ],
+    "extensions": [
+      "./adapters/pi/index.ts"
+    ]
+  },
+  "files": [
+    "skills",
+    ".claude-plugin",
+    "hooks",
+    "adapters",
+    "lib",
+    "scripts/check-docs.sh",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "dependencies": {
+    "@opencode/plugin": "^2.4.1"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "bash scripts/test.sh",
+    "test:plugins": "bash scripts/test-plugins.sh"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^1.6.0",
+    "@types/node": "^26.6.11",
+    "typescript": "^7.0.2"
+  }
+}

@@ -18,9 +18,9 @@ expected=$(ls -d "$root"/skills/*/ | wc -l | tr -d ' ')
 
 # The installer groups every skill exactly once. A skill missing from the
 # manifest is invisible in `npx skills add` and nobody notices.
-listed=$(sed -n 's|.*"\./skills/\([a-z0-9-]*\)".*|\1|p' "$root/.claude-plugin/marketplace.json" | sort | tr '\n' ' ')
-actual=$(for dir in "$root"/skills/*/; do basename "$dir"; done | sort | tr '\n' ' ')
-[ "$listed" = "$actual" ] || { echo "FAIL marketplace groups do not match skills/"; fail=1; }
+# 0.3.0 ships one plugin entry, so the marketplace no longer lists skills.
+node -e 'const m = require(process.argv[1]); if (m.plugins.length !== 1 || m.plugins[0].name !== "libra") process.exit(1)' \
+  "$root/.claude-plugin/marketplace.json" || { echo "FAIL marketplace is not one libra entry"; fail=1; }
 
 before=$(readlink "$d/.agents/skills/libra-start")
 "$root/install.sh" --to agents,claude --dest "$d" >/dev/null || {

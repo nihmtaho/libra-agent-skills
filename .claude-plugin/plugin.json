@@ -1,0 +1,17 @@
+{
+  "name": "libra",
+  "version": "0.3.0",
+  "description": "27 skills for coding agents, with a markdown check and a direct-commit guard.",
+  "author": {
+    "name": "nihmtaho"
+  },
+  "homepage": "https://github.com/nihmtaho/libra-agent-skills",
+  "repository": "https://github.com/nihmtaho/libra-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "spec-driven-development",
+    "project-state",
+    "markdown"
+  ]
+}

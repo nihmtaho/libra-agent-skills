@@ -2,12 +2,20 @@
 
 All notable changes to this skill set. Earlier releases are in the git tags.
 
-## [Unreleased]
+## [0.3.0] - 2026-11-26
 
-Waiting for the next version: a checker rule for markdown tables, the table it
-caught, and an authorship rule that no longer reads as concealment.
+One npm package installs as a plugin on Claude Code, OpenCode and Pi, and as the
+same skills on Command Code. Two rules run without a human remembering them.
 
 ### Added
+- `libra-agent-skills` on npm: one package, 27 skills, Claude Code plugin
+  manifest and marketplace, OpenCode plugin, Pi package, and a Command Code
+  install through `cmd skills add`.
+- a markdown guard: after a write or edit of a `.md` file, the shipped
+  `scripts/check-docs.sh` runs and its FAIL goes back to the model on Claude
+  Code, OpenCode and Pi.
+- a commit guard: a `git commit` on the default branch, or a forced push to it,
+  is blocked unless `docs/GIT.md` carries `<!-- libra:allow-direct-commit -->`.
 - per-skill evals: 63 cases across the 27 skills, a sandbox runner and fixtures,
   and a verifier. The full run scored 44/63 with-skill against 6/63 baseline.
 - an intake gate and a question guard: a hunch goes through `libra-idea-refine`,
@@ -15,6 +23,10 @@ caught, and an authorship rule that no longer reads as concealment.
   implemented.
 
 ### Changed
+- **Breaking:** the Claude Code marketplace has one `libra` entry instead of six
+  groups. A plugin manifest with hooks and a group entry that declares skills
+  conflict, so `/plugin install libra@libra-agent-skills` replaces the six.
+  `npx skills add` shows one group.
 - **Breaking:** every skill name starts with `libra-`, and `using-libra` is now
   `libra-start`. A tool's own `/ship` or `/release` no longer collides with the
   set. Remove the 27 unprefixed links before reinstalling; the README carries the

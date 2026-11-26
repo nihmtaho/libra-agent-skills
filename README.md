@@ -10,19 +10,62 @@ as an Obsidian vault without plugins.
 
 ## Install
 
+One package, four entry points, the same 27 skills. Command Code has no plugin
+runtime, so it installs the skills directly.
+
+### Claude Code
+
+```bash
+/plugin marketplace add nihmtaho/libra-agent-skills
+/plugin install libra@libra-agent-skills
+```
+
+### OpenCode
+
+```bash
+opencode plugin add libra-agent-skills@0.3.0
+```
+
+Filter by group with the plugin options, for example
+`"plugins": [{ "package": "libra-agent-skills", "options": { "groups": ["build"] } }]`.
+
+### Pi
+
+```bash
+pi install npm:libra-agent-skills@0.3.0
+```
+
+### Command Code
+
+```bash
+cmd skills add nihmtaho/libra-agent-skills          # pick from the list
+cmd skills add nihmtaho/libra-agent-skills -s libra-project-status
+```
+
+### Flat install, any Agent Skills tool
+
 ```bash
 ./install.sh --to agents,claude --dest /path/to/your/project
 ./install.sh --to agents,claude --dest "$HOME"   # into your user dirs
 npx skills add nihmtaho/libra-agent-skills -a claude-code -a opencode
 ```
 
-`npx skills add` shows six groups: Project management, Build, Review, Ship,
-Documentation and Safety. `install.sh` links the same set flat.
-
 `--to agents` installs into `.agents/skills/`, which OpenCode, Codex, Command
 Code and Pi all read. `--to claude` installs into `.claude/skills/`. Nothing is
 overwritten: if a target already exists and is not our symlink, the installer
 stops.
+
+### Guardrails
+
+The Claude Code, OpenCode and Pi plugins run two checks:
+
+1. after a write or edit of a `.md` file, the shipped `scripts/check-docs.sh`
+   runs on that file and a FAIL goes back to the model;
+2. a `git commit` on the default branch, or a forced push to it, is blocked
+   unless `docs/GIT.md` contains `<!-- libra:allow-direct-commit -->`.
+
+Command Code has no hook system, so it gets the skills without the two checks.
+
 
 **Note:** `install.sh` creates symlinks into this repo. Moving or deleting `libra-agent-skills/` breaks the installed skills. For a standalone copy:
 
@@ -139,6 +182,15 @@ Then install again. `using-libra` is `libra-start`; every other new name is the
 old one with the prefix.
 
 ## Uninstall
+
+```bash
+/plugin uninstall libra@libra-agent-skills
+opencode plugin remove libra-agent-skills@0.3.0
+pi remove npm:libra-agent-skills
+cmd skills remove libra-project-status
+```
+
+The flat install removes the 27 links with:
 
 ```bash
 cd /path/to/your/project

@@ -5,83 +5,14 @@
   },
   "metadata": {
     "description": "Small skills for coding agents, grouped by the work they do.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
-      "name": "project-management",
-      "description": "State, discovery, specification, decisions and the quality bar",
+      "name": "libra",
+      "description": "27 skills, a markdown check and a direct-commit guard",
       "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/libra-start",
-        "./skills/libra-project-status",
-        "./skills/libra-bootstrap-project",
-        "./skills/libra-interview-me",
-        "./skills/libra-idea-refine",
-        "./skills/libra-spec-driven-development",
-        "./skills/libra-constraint-driven-development",
-        "./skills/libra-decide",
-        "./skills/libra-plan-work",
-        "./skills/libra-context-engineering"
-      ]
-    },
-    {
-      "name": "build",
-      "description": "Implementation discipline, from the first failing test to the last slice",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/libra-build",
-        "./skills/libra-test-driven-development",
-        "./skills/libra-incremental-implementation",
-        "./skills/libra-doubt-driven-development",
-        "./skills/libra-source-driven-development",
-        "./skills/libra-subagent-driven-development",
-        "./skills/libra-frontend-ui-engineering",
-        "./skills/libra-api-and-interface-design",
-        "./skills/libra-root-cause"
-      ]
-    },
-    {
-      "name": "review",
-      "description": "Prove the result, judge the change, remove what is not needed",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/libra-verify-work",
-        "./skills/libra-change-review",
-        "./skills/libra-simplify-change"
-      ]
-    },
-    {
-      "name": "ship",
-      "description": "Git policy, merge and release",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/libra-git-workflow-and-versioning",
-        "./skills/libra-ship",
-        "./skills/libra-release"
-      ]
-    },
-    {
-      "name": "documentation",
-      "description": "Read and write the documents a project keeps",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/libra-office-docs"
-      ]
-    },
-    {
-      "name": "safety",
-      "description": "Rules for text and instructions that come from outside the repository",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/libra-handling-untrusted-content"
-      ]
+      "strict": true
     }
   ]
 }
