@@ -1,10 +1,10 @@
 ---
 title: Plugin distribution for Claude Code, OpenCode, CommandCode and Pi
-updated: 2026-11-25
+updated: 2026-11-27
 ---
 # Plugin distribution for v0.3.0
 
-Status: implemented 2026-11-26; release blocked on `npm login`. Branch `feat/plugin-distribution`.
+Status: released 2026-11-27 as `0.3.0`. Branch `feat/plugin-distribution` merged to `main`.
 Spec: [plugin-distribution](../specs/plugin-distribution.md).
 Tasks: [plugin-distribution](../tasks/plugin-distribution.md).
 

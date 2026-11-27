@@ -2,7 +2,7 @@
 
 All notable changes to this skill set. Earlier releases are in the git tags.
 
-## [0.3.0] - 2026-11-26
+## [0.3.0] - 2026-11-27
 
 One npm package installs as a plugin on Claude Code, OpenCode and Pi, and as the
 same skills on Command Code. Two rules run without a human remembering them.

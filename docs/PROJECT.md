@@ -1,6 +1,6 @@
 ---
 title: libra-agent-skills
-updated: 2026-11-25
+updated: 2026-11-27
 ---
 # 27 skills for coding agents, built around one state file so a project can be reopened six months later
 
@@ -64,7 +64,7 @@ updated: 2026-11-25
 | per-skill evals and a runnable sandbox per case | done | | [spec](specs/phase-a-skill-hardening.md) · [evals](../evals/skills/README.md) |
 | the two-week field test on three projects | running | first lines in: 2 of 3 `libra-project-status` runs were wrong | [plan](plans/2026-11-21-field-test.md) |
 | `libra-` prefixed skill names | done | | [spec](specs/libra-prefixed-skill-names.md) · [task](tasks/libra-prefixed-skill-names.md) · [adr](adr/0004-prefix-every-skill-name.md) |
-| plugin distribution for Claude Code, OpenCode, CommandCode and Pi | in progress | release blocked: `npm whoami` returns E401 | [spec](specs/plugin-distribution.md) · [task](tasks/plugin-distribution.md) · [plan](plans/2026-11-25-plugin-distribution.md) · [adr](adr/0005-plugin-distribution-before-the-prune.md) |
+| plugin distribution for Claude Code, OpenCode, CommandCode and Pi | done | | [spec](specs/plugin-distribution.md) · [task](tasks/plugin-distribution.md) · [plan](plans/2026-11-25-plugin-distribution.md) · [adr](adr/0005-plugin-distribution-before-the-prune.md) |
 
 ## Decisions
 - [ADR-0001](adr/0001-markdown-is-the-only-source.md) — markdown is the only source; Word/Excel are only the way in and the way out.
@@ -77,5 +77,5 @@ updated: 2026-11-25
 
 ## Next
 1. Keep the [two-week field test](plans/2026-11-21-field-test.md) until 2026-12-05; its prune findings move to `0.4.0`.
-2. Ship [`0.3.0` as the plugin release](tasks/plugin-distribution.md); no skill body changes in it.
+2. `0.3.0` shipped on npm; collect upgrade reports on the Claude marketplace 6→1, the npm install and CommandCode.
 3. `0.4.0` holds the prune, the two judgement guardrails, Phase B (`failure-guardrails`, `documentation-and-adrs`, the GitHub suite) and needs its own spec.

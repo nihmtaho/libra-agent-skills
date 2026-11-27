@@ -1,11 +1,11 @@
 ---
 title: Ship one plugin package for four coding agents in 0.3.0
-updated: 2026-11-25
+updated: 2026-11-27
 spec: ../specs/plugin-distribution.md
 ---
 # Ship one plugin package for four coding agents in 0.3.0
 
-Stopped at: T0–T6 done 2026-11-26; release blocked on `npm login`.
+Stopped at: done, released 2026-11-27.
 
 ## Checkpoint — after T1
 
@@ -122,14 +122,16 @@ the wrong shape.
 | Pi from the packed tarball | 27 skills; commit refused; broken table FAIL surfaced |
 | Command Code | `cmd skills list` sees all 27 from `.commandcode/skills` |
 | `claude plugin validate .` | passed; only icon and `.DS_Store` warnings |
-| `npm whoami` | `E401 Unauthorized`; publish and tag are not done |
+| `npm whoami` | authenticated as `nihmtaho` |
+| `npm view libra-agent-skills version` | `0.3.0`, dist-tag `latest` |
+| `git tag v0.3.0` | annotated tag on `main` |
 
-The GitHub install for Command Code is unverified because this branch is not
-pushed; `cmd skills add` was verified against the 0.2 tree earlier.
+The Command Code install was verified against the pushed `main`:
+`cmd skills add nihmtaho/libra-agent-skills -s libra-project-status` installed
+the prefixed skill into `.commandcode/skills/`.
 
 ## Checkpoint — after T6
 
-Code gate: green. Release gate: `npm login`, then `npm publish`, push the branch,
-run `cmd skills add nihmtaho/libra-agent-skills -s libra-project-status` against
-the pushed tree, and tag `v0.3.0`. If publish fails, stop; do not tag a version
-that is not on the registry.
+Released 2026-11-27: the registry serves `0.3.0`, `main` is pushed, and the
+`v0.3.0` tag points at the release commit. If a later smoke fails, cut `0.3.1`;
+do not move the tag.
